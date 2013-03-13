@@ -37,7 +37,7 @@
         
 "Wahrheit Format":
     type: format
-    format: "<dark_aqua>God Wahrheit<white><&co> "
+    format: "<dark_aqua>God Wahrheit<white><&co> <text>"
     
 "Break In Them Newbies":
     type: task
