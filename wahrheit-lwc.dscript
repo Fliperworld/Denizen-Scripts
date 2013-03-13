@@ -1,0 +1,49 @@
+# This thing handles the lwc info for the server tutorial
+# It was written by Wahrheit and you better believe it
+# @author Wahrheit
+# @version 1.0
+# @last-updated March 4 2013
+
+"Wahrheit Pop Lock":
+    type: assignment
+    interact scripts:
+    - 10 And Drop It
+    actions:
+        on assignment:
+        - runtask 'script:Dougie' instant
+        
+"Dougie":
+    type: task
+    script:
+    - teleport npc 'location:<anchor:wahrheit-lwc>'
+    - trigger name:proximity toggle:true cooldown:5.0s radius:8
+    - trigger name:chat toggle:true radius:8
+    
+"And Drop It":
+    type: interact
+    steps:
+        'Locks On Locks On Locks*':
+            proximity trigger:
+                entry:
+                    radius: 8
+                    script:
+                    - narrate "<dark_aqua>God Wahrheit<white><&co> You can lock each of these with our protection plugin, as well as both kinds of door!"
+                    - narrate "<dark_aqua>God Wahrheit<white><&co> To make something just for you type '<green>/cprivate<white>'."
+                    - narrate "<dark_aqua>God Wahrheit<white><&co> Publicly locked stuff can be opened by anyone, but keeps it from breaking. That command is '<green>/cpublic<white>'."
+                    - narrate "<dark_aqua>God Wahrheit<white><&co> Finally, you can add someone to a private lock with '<green>/cmodify TheirUsername<white>'."
+                    - narrate "<dark_aqua>God Wahrheit<white><&co> If you want to learn more about this, type '<green>/lwc<white>'.
+                    - narrate "<dark_aqua>God Wahrheit<white><&co> Say 'ready' and you're done!"
+                    - zap 'step:Proceed'                    
+        'Proceed':
+            proximity trigger:
+                entry:
+                    radius: 8
+                    script:
+                    - narrate "<dark_aqua>God Wahrheit<white><&co> Just say <green>ready<white> when you want to go on."
+            chat trigger:
+                'Ready Up':
+                    trigger: "I'm /ready/ to claim my victory!"
+                    script:
+                    - narrate "<dark_aqua>God Wahrheit<white><&co> Whoosh!"
+                    - execute as_server "warp <player.name> tut-win"
+                    - execute as_player "sethome"
