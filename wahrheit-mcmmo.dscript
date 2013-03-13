@@ -30,7 +30,7 @@
                     - narrate "<dark_aqua>God Wahrheit<white><&co> Each of these walls has a little bit explaining our skills system setup."
                     - narrate "<dark_aqua>God Wahrheit<white><&co> You can check out information on each skill, as well as what rank unlocks it."
                     - narrate "<dark_aqua>God Wahrheit<white><&co> It's a really cool way to get bonuses for stuff you already do!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> When you're ready for the last section, just say 'ready'."
+                    - narrate "<dark_aqua>God Wahrheit<white><&co> When you're ready for the next part, just say 'ready'."
                     - zap 'step:Proceed'                    
         'Proceed':
             proximity trigger:
