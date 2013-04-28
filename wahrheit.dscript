@@ -30,8 +30,8 @@
     type: task
     script:
     - teleport npc 'location:<anchor:tutwahrheit>'
-    - trigger name:proximity toggle:true cooldown:5.0s radius:45
-    - trigger name:chat toggle:true radius:45
+    - trigger name:proximity toggle:true cooldown:0.1s radius:20
+    - trigger name:chat toggle:true cooldown:0.1s radius:20
     
 "Nagging":
     type: task
@@ -50,16 +50,18 @@
         'Welcome*':
             proximity trigger:
                 entry:
-                    radius: 45
+                    radius: 20
                     script:
                     - narrate "format:Wahrheit Format" "Welcome to the Summa Crossroads Minecraft server, <player.name>!"
                     - narrate "format:Wahrheit Format" "Let me give you a tour! Head on outside."
-                    - flag player "Current Moan:<cons:Outside <util.random.int[1].to[3]>>"
-                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
-#                exit:
-#                    radius: 36
-#                    script:
-#                    - narrate "format:Wahrheit Format" "Keep going!"
+#                    - flag player "Current Moan:<cons:Outside <util.random.int[1].to[3]>>"
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
+                exit:
+                    radius: 20
+                    script:
+                    - narrate "format:Wahrheit Format" "Keep going!"
+#                    - queue clear "Moan at <player.name>"
+                    - zap 'step:Cleared'
                     
             chat trigger:
                 'Cactus':
@@ -72,14 +74,21 @@
                     script:
                     - narrate "format:Wahrheit Format" "I am Wahrheit, god of these realms and protector of all living things. I have summoned you to become a hero and achieve your true potential!"
                     - narrate "format:Wahrheit Format" "<green>Head outside so we can get started!"
-                    - flag player "Current Moan:<cons:Outside <util.random.int[1].to[3]>>"
-                    - queue clear "Moan at <player.name>"
-                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                             
+#                    - flag player "Current Moan:<cons:Outside <util.random.int[1].to[3]>>"
+#                    - queue clear "Moan at <player.name>"
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                             
                 'Hello':
                     trigger: "/Hello/, who are you?"
                     script:
                     - narrate "format:Wahrheit Format" "I am Wahrheit, god of these realms and protector of all living things. I have summoned you to become a hero and achieve your true potential!"
                     - narrate "format:Wahrheit Format" "<green>Head outside so we can get started!"     
-                    - flag player "Current Moan:<cons:Outside <util.random.int[1].to[3]>>"
-                    - queue clear "Moan at <player.name>"
-                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                          
+#                    - flag player "Current Moan:<cons:Outside <util.random.int[1].to[3]>>"
+#                    - queue clear "Moan at <player.name>"
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                          
+        'Cleared':
+            chat trigger:
+                'Cactus':
+                    trigger: 'Give me the /cactus/!'
+                    script:
+                    - narrate "format:Wahrheit Format" "Cactus, you say? Cactus you shall have!"
+                    - execute as_server "warp <player.name> cactus"

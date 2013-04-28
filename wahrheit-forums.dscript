@@ -16,8 +16,8 @@
     type: task
     script:
     - teleport npc 'location:<anchor:wahrheit-forums>'
-    - trigger name:proximity toggle:true cooldown:5.0s radius:8
-    - trigger name:chat toggle:true radius:8
+    - trigger name:proximity toggle:true cooldown:0.1s radius:8
+    - trigger name:chat toggle:true cooldown:0.1s radius:8
     
 "Join My Forums Bitch":
     type: interact
@@ -25,7 +25,7 @@
         'Forums*':
             proximity trigger:
                 entry:
-                    radius: 8
+                    radius: 14
                     script:
                     - narrate "<dark_aqua>God Wahrheit<white><&co> Right on <player.name>, did you know we have awesome forums?"
                     - narrate "<dark_aqua>God Wahrheit<white><&co> You get gold for posting, so go check them out! It's also how you earn ranks."

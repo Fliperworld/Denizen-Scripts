@@ -16,8 +16,8 @@
     type: task
     script:
     - teleport npc 'location:<anchor:wahrheit-map>'
-    - trigger name:proximity toggle:true cooldown:5.0s radius:8
-    - trigger name:chat toggle:true radius:8
+    - trigger name:proximity toggle:true cooldown:0.1s radius:8
+    - trigger name:chat toggle:true cooldown:0.1s radius:8
     
 "Maptastic":
     type: interact
@@ -32,7 +32,14 @@
                     - narrate "<dark_aqua>God Wahrheit<white><&co> If you use the '<green>/dynmap webregister<white>' command you can sign in and see where you are!"
                     - narrate "<dark_aqua>God Wahrheit<white><&co> It's really useful when you're out exploring the huge world."
                     - narrate "<dark_aqua>God Wahrheit<white><&co> When you're all ready to go on, just say '<green>ready<white>'."
-                    - zap 'step:Proceed'                    
+                    - zap 'step:Proceed'                   
+            chat trigger:
+                'Ready Up':
+                    trigger: "I'm /ready/, let's do this thing."
+                    script:
+                    - narrate "<dark_aqua>God Wahrheit<white><&co> Off we go!"
+                    - execute as_server "warp <player.name> tut-ranks"
+                    - execute as_player "sethome"                    
         'Proceed':
             proximity trigger:
                 entry:
