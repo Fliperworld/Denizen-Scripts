@@ -23,6 +23,63 @@
     - trigger name:proximity toggle:true cooldown:0.1s radius:6
     - trigger name:chat toggle:true cooldown:0.1s radius:6
 
+"Begin Game":
+    type: task
+    script:
+    - listen 
+    - flag global "Minecarts-1:->:MinecartA"
+    - flag global "Minecarts-1:->:MinecartB"
+    - flag global "Minecarts-1:->:MinecartC"
+    - flag global "Minecarts-1:->:MinecartD"
+    - flag global "Minecarts-1:->:MinecartE"
+    - flag global "Minecarts-2:->:MinecartF"
+    - flag global "Minecarts-2:->:MinecartG"
+    - flag global "Minecarts-2:->:MinecartH"
+    - flag global "Minecarts-2:->:MinecartI"
+    - flag global "Minecarts-2:->:MinecartJ"
+    - runtask "script:Roll Carts" instant
+    - wait 60.0s
+    - flag global "range-side:0"
+    
+"Roll Carts":
+    type: task
+    script:
+    - wait 4.0s
+    - random 2
+    - flag range-side:right
+    - flag range-side:left
+    - if <flag.g:range-side> == right runtask "script:Right Cart" instant
+    - if <flag.g:range-side> == left runtask "script:Left Cart" instant
+    - if <flag.g:range-side> == 0 runtask "script:Time Up" instant
+    
+"Right Cart":
+    type: task
+    script:
+    - flag global "Current Minecart:<util.random.element[<flag.g:Minecarts-1.aslist>]>"
+    - switch "location:<anchor:<flag.g:Current Minecart>>"
+    - flag global "Minecarts-1:<-:<flag.g:Current Minecart>"
+    - wait 6.0s
+    - flag global "Minecarts-1:->:<flag.g:Current Minecart>"
+    - if <flag.g:range-side> !== 0 runtask "script:Roll Carts" instant
+
+"Left Cart":
+    type: task
+    script:
+    - flag global "Current Minecart:<util.random.element[<flag.g:Minecarts-2.aslist>]>"
+    - switch "location:<anchor:<flag.g:Current Minecart>>"
+    - flag global "Minecarts-2:<-:<flag.g:Current Minecart>"
+    - wait 6.0s
+    - flag global "Minecarts-2:->:<flag.g:Current Minecart>"
+    - if <flag.g:range-side> !== 0 runtask "script:Roll Carts" instant
+    
+"Time Up":
+    type: task
+    script:
+    - narrate "format:Range Master Format" "Time's up! You won "<flag.g:Range Winnings>" gold!"
+    - execute as_console money grant <player.name> <"flag.g:Range Winnings">
+    - execute as_console warp <player.name> shootingrange
+    - zap 'step:In Range'
+
 "Target Practice":
     type: interact
     steps:
@@ -31,24 +88,20 @@
                 entry:
                     radius: 6
                     script:
-                    - narrate "Hey there! Come to practice your aim? It'll cost you 5 gold, but I'll give you 2 for each target!"
-                    - narrate "Otherwise, just say 'leave' and I'll take you to spawn."
+                    - if <player.money> > 8 narrate "format:Range Master Format" "Hey there <player.name>! Come to practice your aim? It'll cost you 8 gold, but I'll give you 2 for each target! Right click me to start."
+                    - if <player.money> == 8 narrate "format:Range Master Format" "Hey there <player.name>! Looks like you've got just enough to play a round, are you up for it? It'll cost 8 gold, but I'll give you 2 per target! Right click me to start."
+                    - if <player.money> < 8 narrate "format:Range Master Format" "Hey there <player.name>! Doesn't look like you have enough cash to play, come back later and take a shot or two."
                 exit:
                     radius: 6
                     script:
-                    - narrate "Come back when you've got some bigger balls."
+                    - narrate "format:Range Master Format" "Thanks for visiting, come back soon."
             click trigger:
                 script:
-                - narrate "If you want to fight, click me again and I'll send you to the prep room."
+                - narrate "format:Range Master Format" "Okay, here we go!"
                 - zap 'step:Game On'
-            chat trigger:
-                'Leave':
-                    trigger: '/leave/'
-                    script:
-                    - execute as_player "spawn"
         'Game On':
             click trigger:
                 script:
-                - narrate "Alright, here you go. Right click a sign and then punch the iron block."
-                - execute as_player "ma join Underdome"
-                - zap 'step:Player Seen'
+                - narrate "format:Range Master Format" "Okay, you've got 1 minute! Good luck!"
+                - execute as_console "warp <player.name> shootingrange-1"
+                - runtask "script:Begin Game" instant            
