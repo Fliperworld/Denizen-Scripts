@@ -15,7 +15,7 @@
         on assignment:
         - runtask 'script:Break In Them Newbies' instant
     default constants:
-        Format: "<dark_aqua>God Wahrheit<white><&co> "
+        Format: "<gold>Tutorial Guide<white><&co> "
         Test Start Moan 1: "Hey <player.name>, are you still there? I can show you the rest of the server, do you want to take the test so you can see?"
         Test Start Moan 2: "Are you still there <player.name>? I really want to show you what we have to offer!"
         Test Start Moan 3: "Hey! Wake up, <player.name>! Don't you want to see what's out there?"
@@ -44,7 +44,7 @@
         
 "Wahrheit Format":
     type: format
-    format: "<dark_aqua>God Wahrheit<white><&co> "
+    format: "<gold>Tutorial Guide<white><&co> "
     
 "Break In Them Newbies":
     type: task

@@ -27,15 +27,15 @@
                 entry:
                     radius: 8
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Hey, whenever you're ready just type '<green>ready<white>'."
+                    - narrate "<gold>Tutorial Guide<white><&co> Hey, whenever you're ready just type '<green>ready<white>'."
 #                exit:
 #                    radius: 36
 #                    script:
-#                    - narrate "<dark_aqua>God Wahrheit<white><&co> Keep going!"             
+#                    - narrate "<gold>Tutorial Guide<white><&co> Keep going!"             
             chat trigger:
                 'Ready Up':
                     trigger: "/Ready/!"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Just a bit more!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Just a bit more!"
                     - execute as_server "warp <player.name> tut-mcmmo"
                     - execute as_player "sethome"

@@ -27,17 +27,17 @@
                 entry:
                     radius: 8
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Do you like maps, <player.name>? We've got quite a big one!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> If you type '<green>/map<white>' at any time, you'll get a link to our live map."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> If you use the '<green>/dynmap webregister<white>' command you can sign in and see where you are!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> It's really useful when you're out exploring the huge world."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> When you're all ready to go on, just say '<green>ready<white>'."
+                    - narrate "<gold>Tutorial Guide<white><&co> Do you like maps, <player.name>? We've got quite a big one!"
+                    - narrate "<gold>Tutorial Guide<white><&co> If you type '<green>/map<white>' at any time, you'll get a link to our live map."
+                    - narrate "<gold>Tutorial Guide<white><&co> If you use the '<green>/dynmap webregister<white>' command you can sign in and see where you are!"
+                    - narrate "<gold>Tutorial Guide<white><&co> It's really useful when you're out exploring the huge world."
+                    - narrate "<gold>Tutorial Guide<white><&co> When you're all ready to go on, just say '<green>ready<white>'."
                     - zap 'step:Proceed'                   
             chat trigger:
                 'Ready Up':
                     trigger: "I'm /ready/, let's do this thing."
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Off we go!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Off we go!"
                     - execute as_server "warp <player.name> tut-ranks"
                     - execute as_player "sethome"                    
         'Proceed':
@@ -45,11 +45,11 @@
                 entry:
                     radius: 8
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Just say <green>ready<white> when you want to go on."
+                    - narrate "<gold>Tutorial Guide<white><&co> Just say <green>ready<white> when you want to go on."
             chat trigger:
                 'Ready Up':
                     trigger: "I'm /ready/, let's do this thing."
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Off we go!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Off we go!"
                     - execute as_server "warp <player.name> tut-ranks"
                     - execute as_player "sethome"

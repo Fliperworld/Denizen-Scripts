@@ -27,11 +27,11 @@
                 entry:
                     radius: 8
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> These next few platforms will list a few benefits of each rank."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> We're always working on adding more features, so it's not nearly done!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Got questions? Feel free to ask, or even better post on the forums."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> You can also become a VIP and get extra bonus features - type '<green>/vip<white>' to learn about that."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Head on upstairs!"
+                    - narrate "<gold>Tutorial Guide<white><&co> These next few platforms will list a few benefits of each rank."
+                    - narrate "<gold>Tutorial Guide<white><&co> We're always working on adding more features, so it's not nearly done!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Got questions? Feel free to ask, or even better post on the forums."
+                    - narrate "<gold>Tutorial Guide<white><&co> You can also become a VIP and get extra bonus features - type '<green>/vip<white>' to learn about that."
+                    - narrate "<gold>Tutorial Guide<white><&co> Head on upstairs!"
                     - execute as_player "sethome"
                     - zap 'step:Proceed'
         'Proceed':
@@ -39,4 +39,4 @@
                 entry:
                     radius: 8
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Go upstairs and I'll take you to the next area."
+                    - narrate "<gold>Tutorial Guide<white><&co> Go upstairs and I'll take you to the next area."

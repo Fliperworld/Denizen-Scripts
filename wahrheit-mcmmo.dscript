@@ -27,21 +27,21 @@
                 entry:
                     radius: 20
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Each of these walls has a little bit explaining our skills system setup."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> You can check out information on each skill, as well as what rank unlocks it."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> It's a really cool way to get bonuses for stuff you already do!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> When you're ready for the next part, just say 'ready'."
+                    - narrate "<gold>Tutorial Guide<white><&co> Each of these walls has a little bit explaining our skills system setup."
+                    - narrate "<gold>Tutorial Guide<white><&co> You can check out information on each skill, as well as what rank unlocks it."
+                    - narrate "<gold>Tutorial Guide<white><&co> It's a really cool way to get bonuses for stuff you already do!"
+                    - narrate "<gold>Tutorial Guide<white><&co> When you're ready for the next part, just say 'ready'."
                     - zap 'step:Proceed'                    
         'Proceed':
             proximity trigger:
                 entry:
                     radius: 8
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Just say <green>ready<white> when you want to go on."     
+                    - narrate "<gold>Tutorial Guide<white><&co> Just say <green>ready<white> when you want to go on."     
             chat trigger:
                 'Ready Up':
                     trigger: "Okay, I'm /ready/ - teach me more things!"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> YOU ARE SO CLOSE TO DONE!"
+                    - narrate "<gold>Tutorial Guide<white><&co> YOU ARE SO CLOSE TO DONE!"
                     - execute as_server "warp <player.name> tut-lwc"
                     - execute as_player "sethome"

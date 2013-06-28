@@ -16,7 +16,7 @@
         on assignment:
         - runtask 'script:Riddler' instant
     default constants:
-        Format: "<dark_aqua>God Wahrheit<white><&co> "
+        Format: "<gold>Tutorial Guide<white><&co> "
         Stuck: "Are you stuck or confused <player.name>?<&nl>"
         Test Start Moan 1: "Hey <player.name>, are you still there? I can show you the rest of the server, do you want to take the test so you can see?"
         Test Start Moan 2: "Are you still there <player.name>? I really want to show you what we have to offer!"
@@ -34,11 +34,11 @@
         Question 6 Moan 2: "Here's the question again - <green>Sixth question, even though we're going to turn on PVP should you harass other players?<&nl>"
         Question 6 Moan 3: "I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."
         Question 7 Moan 2: "Here's the question again - <green>last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?<&nl>"
-        Question 7 Moan 3: "I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."
+        Question 7 Moan 3: "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."
         
 "Wahrheit Format":
     type: format
-    format: "<dark_aqua>God Wahrheit<white><&co> <text>"
+    format: "<gold>Tutorial Guide<white><&co> <text>"
     
 "Riddler":
     type: task
@@ -464,7 +464,7 @@
                     radius: 16
                     script:
                     - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."      
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."      
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 7 Moan 2><cons:Format><cons:Question 7 Moan 3>"
 #                    - queue clear "Moan at <player.name>"
 #                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       
@@ -490,7 +490,7 @@
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
                     - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 7 Moan 2><cons:Format><cons:Question 7 Moan 3>"
 #                    - queue clear "Moan at <player.name>"
 #                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       
@@ -499,7 +499,7 @@
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
                     - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."  
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."  
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 7 Moan 2><cons:Format><cons:Question 7 Moan 3>"
 #                    - queue clear "Moan at <player.name>"
 #                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       
@@ -508,7 +508,7 @@
                     script:
                     - narrate "format:Wahrheit Format" "That's not quite the answer I'm looking for, why don't you try again?"
                     - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 7 Moan 2><cons:Format><cons:Question 7 Moan 3>"
 #                    - queue clear "Moan at <player.name>"
 #                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       

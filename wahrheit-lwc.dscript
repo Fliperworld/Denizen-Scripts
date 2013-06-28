@@ -27,23 +27,23 @@
                 entry:
                     radius: 8
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> You can lock each of these with our protection plugin, as well as both kinds of door!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> To make something just for you type '<green>/cprivate<white>'."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Publicly locked stuff can be opened by anyone, but keeps it from breaking. That command is '<green>/cpublic<white>'."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Finally, you can add someone to a private lock with '<green>/cmodify TheirUsername<white>'."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> If you want to learn more about this, type '<green>/lwc<white>'.
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Say '<green>ready<white>' and you're on to the final challenge!"
+                    - narrate "<gold>Tutorial Guide<white><&co> You can lock each of these with our protection plugin, as well as both kinds of door!"
+                    - narrate "<gold>Tutorial Guide<white><&co> To make something just for you type '<green>/cprivate<white>'."
+                    - narrate "<gold>Tutorial Guide<white><&co> Publicly locked stuff can be opened by anyone, but keeps it from breaking. That command is '<green>/cpublic<white>'."
+                    - narrate "<gold>Tutorial Guide<white><&co> Finally, you can add someone to a private lock with '<green>/cmodify TheirUsername<white>'."
+                    - narrate "<gold>Tutorial Guide<white><&co> If you want to learn more about this, type '<green>/lwc<white>'.
+                    - narrate "<gold>Tutorial Guide<white><&co> Say '<green>ready<white>' and you're on to the final challenge!"
                     - zap 'step:Proceed'                    
         'Proceed':
             proximity trigger:
                 entry:
                     radius: 8
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Just say <green>ready<white> when you want to go on."
+                    - narrate "<gold>Tutorial Guide<white><&co> Just say <green>ready<white> when you want to go on."
             chat trigger:
                 'Ready Up':
                     trigger: "I'm /ready/ to face the final challenge!"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Whoosh!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Whoosh!"
                     - execute as_server "warp <player.name> tut-test"
                     - execute as_player "sethome"

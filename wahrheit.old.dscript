@@ -27,327 +27,327 @@
                 entry:
                     radius: 24
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Welcome to the Summa Crossroads Minecraft server, <player.name>!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Have you come to take the <aqua>test<white> of the chosen?"
+                    - narrate "<gold>Tutorial Guide<white><&co> Welcome to the Summa Crossroads Minecraft server, <player.name>!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Have you come to take the <aqua>test<white> of the chosen?"
 #                exit:
 #                    radius: 36
 #                    script:
-#                    - narrate "<dark_aqua>God Wahrheit<white><&co> Keep going!"
+#                    - narrate "<gold>Tutorial Guide<white><&co> Keep going!"
                     
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Cactus, you say? Cactus you shall have!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Cactus, you say? Cactus you shall have!"
                     - execute as_server "warp <player.name> cactus"
                 'Test':
                     trigger: 'What /test/ are you talking about?'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> It's not a terribly hard test. I have some rules for the world that I watch over. You just have to show me you understand them."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Why don't you type <green>/rules<white> and read them so we can get started? <green>First question - should you ever grief for any reason?"
+                    - narrate "<gold>Tutorial Guide<white><&co> It's not a terribly hard test. I have some rules for the world that I watch over. You just have to show me you understand them."
+                    - narrate "<gold>Tutorial Guide<white><&co> Why don't you type <green>/rules<white> and read them so we can get started? <green>First question - should you ever grief for any reason?"
                     - zap 'step:Question 1'
                 'Hi':
                     trigger: "/Hi/, who are you?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I am Wahrheit, god of these realms and protector of all living things. I have summoned you to become a hero and achieve your true potential!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Are you ready to take my test and accept your place as the chosen?"
+                    - narrate "<gold>Tutorial Guide<white><&co> I am Wahrheit, god of these realms and protector of all living things. I have summoned you to become a hero and achieve your true potential!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Are you ready to take my test and accept your place as the chosen?"
                 'Hello':
                     trigger: "/Hello/, who are you?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I am Wahrheit, god of these realms and protector of all living things. I have summoned you to become a hero and achieve your true potential!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Are you ready to take my test and accept your place as the chosen?"                
+                    - narrate "<gold>Tutorial Guide<white><&co> I am Wahrheit, god of these realms and protector of all living things. I have summoned you to become a hero and achieve your true potential!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Are you ready to take my test and accept your place as the chosen?"                
                 'Yeah sure':
                     trigger: "/Sure/, I'll try the test."
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> It's not a terribly hard test. I have some rules for the world that I watch over. You just have to show me you understand them."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Why don't you type <green>/rules<white> and read them so we can get started? <green>First question - should you ever grief for any reason?"
+                    - narrate "<gold>Tutorial Guide<white><&co> It's not a terribly hard test. I have some rules for the world that I watch over. You just have to show me you understand them."
+                    - narrate "<gold>Tutorial Guide<white><&co> Why don't you type <green>/rules<white> and read them so we can get started? <green>First question - should you ever grief for any reason?"
                     - zap 'step:Question 1'
                 'Yup':
                     trigger: '/Yes/, I have come to claim my destiny!'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> It's not a terribly hard test. I have some rules for the world that I watch over. You just have to show me you understand them."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Why don't you type <green>/rules<white> and read them so we can get started? <green>First question - should you ever grief for any reason?"
+                    - narrate "<gold>Tutorial Guide<white><&co> It's not a terribly hard test. I have some rules for the world that I watch over. You just have to show me you understand them."
+                    - narrate "<gold>Tutorial Guide<white><&co> Why don't you type <green>/rules<white> and read them so we can get started? <green>First question - should you ever grief for any reason?"
                     - zap 'step:Question 1'
                 'What':
                     trigger: "/What/ do I have to do?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> It's not a terribly hard test. I have some rules for the world that I watch over. You just have to show me you understand them."
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Why don't you type <green>/rules<white> and read them so we can get started? <green>First question - should you ever grief for any reason?"
+                    - narrate "<gold>Tutorial Guide<white><&co> It's not a terribly hard test. I have some rules for the world that I watch over. You just have to show me you understand them."
+                    - narrate "<gold>Tutorial Guide<white><&co> Why don't you type <green>/rules<white> and read them so we can get started? <green>First question - should you ever grief for any reason?"
                     - zap 'step:Question 1'                    
         'Question 1':
             proximity trigger:
                 entry:
                     radius: 24
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>First question - should you ever grief for any reason?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint - if you do, you'll get <red>banned<white>."
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>First question - should you ever grief for any reason?"
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint - if you do, you'll get <red>banned<white>."
             chat trigger:
                 'No Griefing':
                     trigger: '/No/, what a silly idea! Griefing is horrible.'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Very good!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Very good!"
 #                    - execute as_server "warp <player.name> question2"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Next question, will admins ignore begging?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Next question, will admins ignore begging?"
                     - zap 'step:Question 2'
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>First question - should you ever grief for any reason?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint - if you do, you'll get <red>banned<white>."
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>First question - should you ever grief for any reason?"
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint - if you do, you'll get <red>banned<white>."
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"                
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>First question - should you ever grief for any reason?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint - if you do, you'll get <red>banned<white>."                
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>First question - should you ever grief for any reason?"
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint - if you do, you'll get <red>banned<white>."                
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>First question - should you ever grief for any reason?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint - if you do, you'll get <red>banned<white>."                                    
+                    - narrate "<gold>Tutorial Guide<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>First question - should you ever grief for any reason?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint - if you do, you'll get <red>banned<white>."                                    
         'Question 2':
             proximity trigger:
                 entry:
                     radius: 24
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Second question, will admins ignore begging?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, we certainly <aqua>won't<white> answer it!"    
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Second question, will admins ignore begging?"
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, we certainly <aqua>won't<white> answer it!"    
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Cactus, you say? Cactus you shall have!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Cactus, you say? Cactus you shall have!"
                     - execute as_server "warp <player.name> cactus"
                     - zap 'step:Test Start'
                 'No Begging':
                     trigger: '/Yes/, asking for things is like asking for death.'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> You're a natural!"
+                    - narrate "<gold>Tutorial Guide<white><&co> You're a natural!"
 #                    - execute as_server "warp <player.name> question3"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Next question, is whining a good idea?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Next question, is whining a good idea?"
                     - zap 'step:Question 3'
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Second question, will admins ignore begging?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, we certainly <aqua>won't<white> answer it!"     
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Second question, will admins ignore begging?"
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, we certainly <aqua>won't<white> answer it!"     
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Second question, will admins ignore begging?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, we certainly <aqua>won't<white> answer it!"     
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Second question, will admins ignore begging?"
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, we certainly <aqua>won't<white> answer it!"     
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Second question, will admins ignore begging?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, we certainly <aqua>won't<white> answer it!"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Second question, will admins ignore begging?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, we certainly <aqua>won't<white> answer it!"                    
         'Question 3':
             proximity trigger:
                 entry:
                     radius: 24
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Third question, is whining a good idea?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, it's definitely a <red>bad<white> one."         
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Third question, is whining a good idea?"
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, it's definitely a <red>bad<white> one."         
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Cactus, you say? Cactus you shall have!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Cactus, you say? Cactus you shall have!"
                     - execute as_server "warp <player.name> cactus"
                     - zap 'step:Test Start'
                 'No Whining':
                     trigger: '/No/, I am a strong hero and I shall decide my own fate independent of my struggle!'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Great! This isn't so hard is it?"
+                    - narrate "<gold>Tutorial Guide<white><&co> Great! This isn't so hard is it?"
 #                    - execute as_server "warp <player.name> question4"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Next question, what should you do with other players?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Next question, what should you do with other players?"
                     - zap 'step:Question 4'
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Third question, is whining a good idea?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, it's definitely a <red>bad<white> one."
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Third question, is whining a good idea?"
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, it's definitely a <red>bad<white> one."
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Third question, is whining a good idea?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, it's definitely a <red>bad<white> one."                    
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Third question, is whining a good idea?"
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, it's definitely a <red>bad<white> one."                    
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Third question, is whining a good idea?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, it's definitely a <red>bad<white> one."
+                    - narrate "<gold>Tutorial Guide<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Third question, is whining a good idea?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, it's definitely a <red>bad<white> one."
         'Question 4':
             proximity trigger:
                 entry:
                     radius: 24
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Fourth question, what should you do with other players?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"                 
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Fourth question, what should you do with other players?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"                 
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Cactus, you say? Cactus you shall have!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Cactus, you say? Cactus you shall have!"
                     - execute as_server "warp <player.name> cactus"
                     - zap 'step:Test Start'
                 'Be Friendly':
                     trigger: 'You should always be /friendly/ and help others!'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Yes, it's much more fun to get along with people."
+                    - narrate "<gold>Tutorial Guide<white><&co> Yes, it's much more fun to get along with people."
 #                    - execute as_server "warp <player.name> question5"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Next question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Next question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"
                     - zap 'step:Question 5'
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Fourth question, what should you do with other players?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Fourth question, what should you do with other players?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Fourth question, what should you do with other players?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Fourth question, what should you do with other players?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"                    
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Fourth question, what should you do with other players?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"
+                    - narrate "<gold>Tutorial Guide<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Fourth question, what should you do with other players?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"
         'Question 5':
             proximity trigger:
                 entry:
                     radius: 24
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, you <blue>shouldn't<white> do it!"           
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, you <blue>shouldn't<white> do it!"           
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Cactus, you say? Cactus you shall have!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Cactus, you say? Cactus you shall have!"
                     - execute as_server "warp <player.name> cactus"
                     - zap 'step:Test Start'
                 'No Hacking':
                     trigger: '/Yes/, it''s a good way to be dishonored in the eyes of the Gods and earn banishment from the realms.'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Correct, none of it will be tolerated and you WILL be caught."
+                    - narrate "<gold>Tutorial Guide<white><&co> Correct, none of it will be tolerated and you WILL be caught."
 #                    - execute as_server "warp <player.name> question6"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Next question, even though we're going to turn on PVP should you harass other players?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Next question, even though we're going to turn on PVP should you harass other players?"
                     - zap 'step:Question 6'
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, you <blue>shouldn't<white> do it!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, you <blue>shouldn't<white> do it!"
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, you <blue>shouldn't<white> do it!"                     
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, you <blue>shouldn't<white> do it!"                     
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, you <blue>shouldn't<white> do it!"
+                    - narrate "<gold>Tutorial Guide<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, you <blue>shouldn't<white> do it!"
         'Question 6':
             proximity trigger:
                 entry:
                     radius: 24
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Sixth question, even though we're going to turn on PVP should you harass other players?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."      
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Sixth question, even though we're going to turn on PVP should you harass other players?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."      
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Cactus, you say? Cactus you shall have!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Cactus, you say? Cactus you shall have!"
                     - execute as_server "warp <player.name> cactus"
                     - zap 'step:Test Start'
                 'No Harassment':
                     trigger: '/No/, I will respect other players - not harass them.'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Good. Harassment in any form is unacceptable."
+                    - narrate "<gold>Tutorial Guide<white><&co> Good. Harassment in any form is unacceptable."
 #                    - execute as_server "warp <player.name> question7"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"
                     - zap 'step:Question 7'
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Sixth question, even though we're going to turn on PVP should you harass other players?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Sixth question, even though we're going to turn on PVP should you harass other players?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Sixth question, even though we're going to turn on PVP should you harass other players?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."                    
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Sixth question, even though we're going to turn on PVP should you harass other players?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."                    
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Sixth question, even though we're going to turn on PVP should you harass other players?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."
+                    - narrate "<gold>Tutorial Guide<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Sixth question, even though we're going to turn on PVP should you harass other players?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."
         'Question 7':
             proximity trigger:
                 entry:
                     radius: 24
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."                      
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."                      
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Cactus, you say? Cactus you shall have!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Cactus, you say? Cactus you shall have!"
                     - execute as_server "warp <player.name> cactus"
                     - zap 'step:Test Start'
                 'Visual Griefing':
                     trigger: 'Visual /griefing/, and I won''t ever ever do it! I promise!'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Well done, adventurer! You are well on your way to becoming a renowned hero. Let's head outside!"
+                    - narrate "<gold>Tutorial Guide<white><&co> Well done, adventurer! You are well on your way to becoming a renowned hero. Let's head outside!"
 #                    - execute as_server "warp <player.name> testwin"
                     - execute as_server "warp <player.name> question2"
                     - zap 'step:A Winner Is You'
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> Sure thing!"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."                        
+                    - narrate "<gold>Tutorial Guide<white><&co> Sure thing!"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."                        
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> <green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."
+                    - narrate "<gold>Tutorial Guide<white><&co> That's not quite the answer I'm looking for, why don't you try again?"
+                    - narrate "<gold>Tutorial Guide<white><&co> <green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
+                    - narrate "<gold>Tutorial Guide<white><&co> I'll give you a hint, it rhymes with <blue>gisual vriefing<white>."
         'A Winner Is You':
             click trigger:
                 script:
-                - narrate "<dark_aqua>God Wahrheit<white><&co> You want to do the test again? Very well!"
+                - narrate "<gold>Tutorial Guide<white><&co> You want to do the test again? Very well!"
                 - zap 'step:Test Start'
             chat trigger:
                 trigger: '/Restart/ the test please.'
                 script:
-                    - narrate "<dark_aqua>God Wahrheit<white><&co> One fresh test coming up!"
+                    - narrate "<gold>Tutorial Guide<white><&co> One fresh test coming up!"
                     - zap 'step:Test Start'
