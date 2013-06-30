@@ -27,58 +27,58 @@
     type: task
     script:
     - listen 
-    - flag global "Minecarts-1:->:MinecartA"
-    - flag global "Minecarts-1:->:MinecartB"
-    - flag global "Minecarts-1:->:MinecartC"
-    - flag global "Minecarts-1:->:MinecartD"
-    - flag global "Minecarts-1:->:MinecartE"
-    - flag global "Minecarts-2:->:MinecartF"
-    - flag global "Minecarts-2:->:MinecartG"
-    - flag global "Minecarts-2:->:MinecartH"
-    - flag global "Minecarts-2:->:MinecartI"
-    - flag global "Minecarts-2:->:MinecartJ"
+    - flag npc "Minecarts-1:->:MinecartA"
+    - flag npc "Minecarts-1:->:MinecartB"
+    - flag npc "Minecarts-1:->:MinecartC"
+    - flag npc "Minecarts-1:->:MinecartD"
+    - flag npc "Minecarts-1:->:MinecartE"
+    - flag npc "Minecarts-2:->:MinecartF"
+    - flag npc "Minecarts-2:->:MinecartG"
+    - flag npc "Minecarts-2:->:MinecartH"
+    - flag npc "Minecarts-2:->:MinecartI"
+    - flag npc "Minecarts-2:->:MinecartJ"
     - runtask "script:Roll Carts" instant
-    - wait 60.0s
-    - flag global "range-side:0"
+    - wait 64.0s
+    - flag npc "range-side:0"
     
 "Roll Carts":
     type: task
     script:
     - wait 4.0s
     - random 2
-    - flag range-side:right
-    - flag range-side:left
-    - if <flag.g:range-side> == right runtask "script:Right Cart" instant
-    - if <flag.g:range-side> == left runtask "script:Left Cart" instant
+    - flag npc range-side:right
+    - flag npc range-side:left
+    - if <flag.g:range-side> == "right" runtask "script:Right Cart" instant
+    - if <flag.g:range-side> == "left" runtask "script:Left Cart" instant
     - if <flag.g:range-side> == 0 runtask "script:Time Up" instant
     
 "Right Cart":
     type: task
     script:
-    - flag global "Current Minecart:<util.random.element[<flag.g:Minecarts-1.aslist>]>"
+    - flag npc "Current Minecart:<util.random.element[<flag.g:Minecarts-1.aslist>]>"
     - switch "location:<anchor:<flag.g:Current Minecart>>"
-    - flag global "Minecarts-1:<-:<flag.g:Current Minecart>"
+    - flag npc "Minecarts-1:<-:<flag.g:Current Minecart>"
     - wait 6.0s
-    - flag global "Minecarts-1:->:<flag.g:Current Minecart>"
+    - flag npc "Minecarts-1:->:<flag.g:Current Minecart>"
     - if <flag.g:range-side> !== 0 runtask "script:Roll Carts" instant
 
 "Left Cart":
     type: task
     script:
-    - flag global "Current Minecart:<util.random.element[<flag.g:Minecarts-2.aslist>]>"
-    - switch "location:<anchor:<flag.g:Current Minecart>>"
-    - flag global "Minecarts-2:<-:<flag.g:Current Minecart>"
+    - flag npc "Current Minecart:<util.random.element[<flag.g:Minecarts-2.aslist>]>"
+    - switch "location:<anchor:<flag.g:Current Minecart>>" state:on duration:1.0s
+    - flag npc "Minecarts-2:<-:<flag.g:Current Minecart>"
     - wait 6.0s
-    - flag global "Minecarts-2:->:<flag.g:Current Minecart>"
+    - flag npc "Minecarts-2:->:<flag.g:Current Minecart>"
     - if <flag.g:range-side> !== 0 runtask "script:Roll Carts" instant
     
 "Time Up":
     type: task
     script:
-    - narrate "format:Range Master Format" "Time's up! You won "<flag.g:Range Winnings>" gold!"
-    - execute as_console money grant <player.name> <"flag.g:Range Winnings">
-    - execute as_console warp <player.name> shootingrange
-    - zap 'step:In Range'
+    - narrate "format:Range Master Format" "Time's up! You won '<npc.flag:Range Winnings>' gold!"
+#    - execute as_server money grant <player.name> "<npc.flag:Range Winnings>"
+    - execute as_server warp <player.name> shootingrange
+    - zap 'script:Target Practice' 'step:In Range'
 
 "Target Practice":
     type: interact
@@ -97,11 +97,11 @@
                     - narrate "format:Range Master Format" "Thanks for visiting, come back soon."
             click trigger:
                 script:
-                - narrate "format:Range Master Format" "Okay, here we go!"
-                - zap 'step:Game On'
-        'Game On':
+                - narrate "format:Range Master Format" "Click me once more to get started!"
+                - zap 'step:Game Start'
+        'Game Start':
             click trigger:
                 script:
                 - narrate "format:Range Master Format" "Okay, you've got 1 minute! Good luck!"
-                - execute as_console "warp <player.name> shootingrange-1"
+                - execute as_server "warp <player.name> shootingrange-1"
                 - runtask "script:Begin Game" instant            
