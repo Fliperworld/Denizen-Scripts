@@ -37,3 +37,4 @@
                 - narrate "format:Tormented Spirit Format" "AHHHHH! YOU WILL NOT ESCAPE THIS PLACE ALIVE, I SWEARRRRRR!"
                 - DIE
                 - switch state:on location:<anchor:mbswitch>
+                - switch state:on location:-1,74,1,ultimatus

@@ -31,8 +31,8 @@
 "Wave3":
     type: task
     script:
-    - execute as_npc "spawnmob spider 15 -55,65,-32"
-    - listen kill script:wave4 id:wave3 type:entity target:spider qty:10
+    - execute as_npc "spawnmob spider 10 -55,65,-32"
+    - listen kill script:wave4 id:wave3 type:entity target:spider qty:5
 "Wave4":
     type: task
     script:

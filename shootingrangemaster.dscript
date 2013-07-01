@@ -48,29 +48,29 @@
     - random 2
     - flag npc range-side:right
     - flag npc range-side:left
-    - if <flag.g:range-side> == "right" runtask "script:Right Cart" instant
-    - if <flag.g:range-side> == "left" runtask "script:Left Cart" instant
-    - if <flag.g:range-side> == 0 runtask "script:Time Up" instant
+    - if <npc.flag:range-side> == "right" runtask "script:Right Cart" instant
+    - if <npc.flag:range-side> == "left" runtask "script:Left Cart" instant
+    - if <npc.flag:range-side> == 0 runtask "script:Time Up" instant
     
 "Right Cart":
     type: task
     script:
-    - flag npc "Current Minecart:<util.random.element[<flag.g:Minecarts-1.aslist>]>"
-    - switch "location:<anchor:<flag.g:Current Minecart>>"
-    - flag npc "Minecarts-1:<-:<flag.g:Current Minecart>"
+    - flag npc "Current Minecart:<util.random.element[<npc.flag:Minecarts-1.aslist>]>"
+    - switch "location:<anchor:<npc.flag:Current Minecart>>"
+    - flag npc "Minecarts-1:<-:<npc.flag:Current Minecart>"
     - wait 6.0s
-    - flag npc "Minecarts-1:->:<flag.g:Current Minecart>"
-    - if <flag.g:range-side> !== 0 runtask "script:Roll Carts" instant
+    - flag npc "Minecarts-1:->:<npc.flag:Current Minecart>"
+    - if <npc.flag:range-side> !== 0 runtask "script:Roll Carts" instant
 
 "Left Cart":
     type: task
     script:
-    - flag npc "Current Minecart:<util.random.element[<flag.g:Minecarts-2.aslist>]>"
-    - switch "location:<anchor:<flag.g:Current Minecart>>" state:on duration:1.0s
-    - flag npc "Minecarts-2:<-:<flag.g:Current Minecart>"
+    - flag npc "Current Minecart:<util.random.element[<npc.flag:Minecarts-2.aslist>]>"
+    - switch "location:<anchor:<npc.flag:Current Minecart>>" state:on duration:1.0s
+    - flag npc "Minecarts-2:<-:<npc.flag:Current Minecart>"
     - wait 6.0s
-    - flag npc "Minecarts-2:->:<flag.g:Current Minecart>"
-    - if <flag.g:range-side> !== 0 runtask "script:Roll Carts" instant
+    - flag npc "Minecarts-2:->:<npc.flag:Current Minecart>"
+    - if <npc.flag:range-side> !== 0 runtask "script:Roll Carts" instant
     
 "Time Up":
     type: task
