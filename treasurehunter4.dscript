@@ -26,7 +26,7 @@
                 entry:
                     radius: 3
                     script:
-                    - narrate "<dark_green>Treasure Hunter<white><&co> Cool, you made it! I'll tell Wahrheit. Keep it up!"
+                    - narrate "<dark_green>Treasure Hunter<white><&co> Cool, you made it! I'll tell the Quest Master. Keep it up!"
                     - if "<flag.p:npccount || 0>"  >= 1 flag npccount:++ else flag npccount:1
                     - zap 'step:Found4'
         'Found4':

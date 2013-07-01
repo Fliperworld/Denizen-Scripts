@@ -1,0 +1,39 @@
+# This thing handles mini-boss in the fire temple
+# It was written by Wahrheit and you better believe it
+# @author Wahrheit
+# @version 1.0
+# @last-updated July 1 2013
+
+"Tormented Spirit":
+    type: assignment
+    interact scripts:
+    - 10 Great Balls of Fire
+    actions:
+        on assignment:
+        - runtask 'script:Kill Invaders' instant
+        
+"Kill Invaders":
+    type: task
+    script:
+    - teleport npc 'location:<anchor:ftminiboss>'
+    - trigger name:proximity toggle:true cooldown:0.1s radius:8
+"Tormented Spirit Format":
+    type: format
+    format: "<red>Tormented Spirit<white><&co> <text>"
+    
+"Great Balls of Fire":
+    type: interact
+    steps:
+        'Entry*':
+            proximity trigger:
+                entry:
+                    radius: 25
+                    script:
+                    - narrate "format:Tormented Spirit Format" "HOW DARE YOU INVADE MY DWELLING! PREPARE TO DIE!"                    
+                    - anchor ftminiboss walknear range:30
+                    
+            Npcdeath Trigger:
+                script:
+                - narrate "format:Tormented Spirit Format" "AHHHHH! YOU WILL NOT ESCAPE THIS PLACE ALIVE, I SWEARRRRRR!"
+                - DIE
+                - switch state:on location:<anchor:mbswitch>
