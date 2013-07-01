@@ -55,7 +55,7 @@
 "Right Cart":
     type: task
     script:
-    - flag npc "Current Minecart:<util.random.element[<npc.flag[Minecarts-1]>]>"
+    - flag npc "Current Minecart:<npc.flag[Minecarts-1].random>"
     - switch "location:<anchor:<npc.flag[Current Minecart]>>" state:on duration:1
     - flag npc "Minecarts-1:<-:<npc.flag[Current Minecart]>"
     - wait 6.0s
@@ -65,7 +65,7 @@
 "Left Cart":
     type: task
     script:
-    - flag npc "Current Minecart:<util.random.element[<npc.flag[Minecarts-2]>]>"
+    - flag npc "Current Minecart:<npc.flag[Minecarts-2].random>"
     - switch "location:<anchor:<npc.flag[Current Minecart]>>" state:on duration:1
     - flag npc "Minecarts-2:<-:<npc.flag[Current Minecart]>"
     - wait 6.0s
