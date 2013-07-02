@@ -10,7 +10,7 @@
     - 10 Target Practice
     actions:
         on assignment:
-        - runtask 'script:Slingshot' instant
+        - runtask 'script:Slingshot'
 
 "Range Master Format":
     type: format
@@ -37,20 +37,33 @@
     - flag npc "Minecarts-2:->:MinecartH"
     - flag npc "Minecarts-2:->:MinecartI"
     - flag npc "Minecarts-2:->:MinecartJ"
-    - runtask "script:Roll Carts" instant
-    - wait 64.0s
+    - random 2
+    - flag npc range-side:right
+    - flag npc range-side:left
+    
+"Start Timer":
+    type: task
+    script:
+    - runtask "script:Roll Carts"
+    - runtask "script:End Game" delay:64
+
+    
+"End Game":
+    type: task
+    script:
     - flag npc "range-side:0"
+    - announce "End Game has been triggered."
     
 "Roll Carts":
     type: task
     script:
-    - wait 4.0s
     - random 2
-    - flag npc range-side:right
-    - flag npc range-side:left
-    - if <npc.flag[range-side]> == "right" runtask "script:Right Cart" instant
-    - if <npc.flag[range-side]> == "left" runtask "script:Left Cart" instant
-    - if <npc.flag[range-side]> == 0 runtask "script:Time Up" instant
+    - if <npc.flag[range-side]> == right || <npc.flag[range-side]> == left flag npc range-side:right else runtask "script:Time Up"
+    - if <npc.flag[range-side]> == right || <npc.flag[range-side]> == left flag npc range-side:left else runtask "script:Time Up"
+    - if <npc.flag[range-side]> == "right" runtask "script:Right Cart"
+    - if <npc.flag[range-side]> == "left" runtask "script:Left Cart"
+    - if <npc.flag[range-side]> == 0 runtask "script:Time Up"
+    - if <npc.flag[range-side]> == 0 announce "Roll Carts has detected end game."
     
 "Right Cart":
     type: task
@@ -58,9 +71,13 @@
     - flag npc "Current Minecart:<npc.flag[Minecarts-1].random>"
     - switch "location:<anchor:<npc.flag[Current Minecart]>>" state:on duration:1
     - flag npc "Minecarts-1:<-:<npc.flag[Current Minecart]>"
-    - wait 6.0s
+    - runtask "script:Add Cart Right" delay:6
+    - if <npc.flag[range-side]> == right || <npc.flag[range-side]> == left runtask "script:Roll Carts" delay:4
+
+"Add Cart Right":
+    type: task
+    script:
     - flag npc "Minecarts-1:->:<npc.flag[Current Minecart]>"
-    - if <npc.flag[range-side]> !== 0 runtask "script:Roll Carts" instant
 
 "Left Cart":
     type: task
@@ -68,9 +85,13 @@
     - flag npc "Current Minecart:<npc.flag[Minecarts-2].random>"
     - switch "location:<anchor:<npc.flag[Current Minecart]>>" state:on duration:1
     - flag npc "Minecarts-2:<-:<npc.flag[Current Minecart]>"
-    - wait 6.0s
+    - runtask "script:Add Cart Left" delay:6
+    - if <npc.flag[range-side]> == right || <npc.flag[range-side]> == left runtask "script:Roll Carts" delay:4
+    
+"Add Cart Left":
+    type: task
+    script:
     - flag npc "Minecarts-2:->:<npc.flag[Current Minecart]>"
-    - if <npc.flag[range-side]> !== 0 runtask "script:Roll Carts" instant
     
 "Time Up":
     type: task
@@ -104,4 +125,5 @@
                 script:
                 - narrate "format:Range Master Format" "Okay, you've got 1 minute! Good luck!"
                 - execute as_server "warp <player.name> shootingrange-1"
-                - runtask "script:Begin Game" instant            
+                - runtask "script:Begin Game" instant
+                - runtask "script:Start Timer"
