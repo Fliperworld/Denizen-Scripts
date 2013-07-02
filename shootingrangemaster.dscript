@@ -45,7 +45,8 @@
     type: task
     script:
     - runtask "script:Roll Carts"
-    - runtask "script:End Game" delay:64
+    - wait 64
+    - runtask "script:End Game"
 
     
 "End Game":
