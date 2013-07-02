@@ -37,30 +37,38 @@
     - flag npc "Minecarts-2:->:MinecartH"
     - flag npc "Minecarts-2:->:MinecartI"
     - flag npc "Minecarts-2:->:MinecartJ"
+    - flag npc range-time:start
     - random 2
     - flag npc range-side:right
     - flag npc range-side:left
+
+"Wait Test":
+    type: task
+    script:
+    - narrate "Starting Wait"
+    - wait 64
+    - narrate "Ending Wait"
     
 "Start Timer":
     type: task
     script:
     - runtask "script:Roll Carts"
     - wait 64
-    - runtask "script:End Game"
+    - runtask "script:End Game" delay
 
     
 "End Game":
     type: task
     script:
-    - flag npc "range-side:0"
+    - flag npc "range-time:end"
     - announce "End Game has been triggered."
     
 "Roll Carts":
     type: task
     script:
     - random 2
-    - if <npc.flag[range-side]> == right || <npc.flag[range-side]> == left flag npc range-side:right else runtask "script:Time Up"
-    - if <npc.flag[range-side]> == right || <npc.flag[range-side]> == left flag npc range-side:left else runtask "script:Time Up"
+    - if <npc.flag[range-time]> == "start" flag npc range-side:right else runtask "script:Time Up"
+    - if <npc.flag[range-time]> == "start" flag npc range-side:left else runtask "script:Time Up"
     - if <npc.flag[range-side]> == "right" runtask "script:Right Cart"
     - if <npc.flag[range-side]> == "left" runtask "script:Left Cart"
     - if <npc.flag[range-side]> == 0 runtask "script:Time Up"
@@ -127,4 +135,5 @@
                 - narrate "format:Range Master Format" "Okay, you've got 1 minute! Good luck!"
                 - execute as_server "warp <player.name> shootingrange-1"
                 - runtask "script:Begin Game" instant
+                - runtask "script:Wait Test"
                 - runtask "script:Start Timer"
