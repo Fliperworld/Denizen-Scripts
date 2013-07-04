@@ -56,67 +56,26 @@
 #    - wait 64
 #    - narrate "Ending Wait"
     
-"Start Timer":
-    type: task
-    script:
-    - runtask "script:Roll Carts"
-    - wait 64
-    - runtask "script:End Game"
-
-    
-"End Game":
-    type: task
-    script:
-    - flag npc "range-time:end"
-    - announce "End Game has been triggered."
-    
 "Roll Carts":
     type: task
     script:
-    - random 2
-    - if "<npc.flag[range-time]>" == "start" flag npc range-side:right else runtask "script:Time Up"
-    - if "<npc.flag[range-time]>" == "start" flag npc range-side:left else runtask "script:Time Up"
-    - if "<npc.flag[range-side]>" == "right" runtask "script:Right Cart"
-    - if "<npc.flag[range-side]>" == "left" runtask "script:Left Cart"
-    - if "<npc.flag[range-side]>" == 0 runtask "script:Time Up"
-    - if "<npc.flag[range-side]>" == 0 announce "Roll Carts has detected end game."
-    
-"Right Cart":
-    type: task
-    script:
-    - flag npc "Current Minecart:<npc.flag[Minecarts-1].random>"
-    - switch "location:<anchor:<npc.flag[Current Minecart]>>" state:on duration:1
-    - flag npc "Minecarts-1:<-:<npc.flag[Current Minecart]>"
-    - runtask "script:Add Cart Right" delay:6
-    - if "<npc.flag[range-side]>" == right || "<npc.flag[range-side]>" == left runtask "script:Roll Carts" delay:4
-
-"Add Cart Right":
-    type: task
-    script:
-    - flag npc "Minecarts-1:->:<npc.flag[Current Minecart]>"
-
-"Left Cart":
-    type: task
-    script:
-    - flag npc "Current Minecart:<npc.flag[Minecarts-2].random>"
-    - switch "location:<anchor:<npc.flag[Current Minecart]>>" state:on duration:1
-    - flag npc "Minecarts-2:<-:<npc.flag[Current Minecart]>"
-    - runtask "script:Add Cart Left" delay:6
-    - if "<npc.flag[range-side]>" == right || "<npc.flag[range-side]>" == left runtask "script:Roll Carts" delay:4
-    
-"Add Cart Left":
-    type: task
-    script:
-    - flag npc "Minecarts-2:->:<npc.flag[Current Minecart]>"
-    
-"Time Up":
-    type: task
-    script:
-    - flag npc range-winnings:<m<flag.npc[minecarts-hit]>*3>
-    - narrate "format:Range Master Format" "Time's up! You won '<npc.flag[range-winnings]>' gold!"
-#    - execute as_server money grant <player.name> "<npc.flag[range-winnings]>"
-    - execute as_server warp <player.name> shootingrange
-    - zap 'script:Target Practice' 'step:In Range'
+    - if "<npc.flag[range-runs] || 0>" < 10 {
+      - flag npc range-runs:++
+      - if "<npc.flag[range-side] || 0>" > 0
+        flag npc "Minecarts-<npc.flag[range-side]>:->:<npc.flag[Current Minecart]>"
+      - flag npc range-side:<util.random.int[1].to[2]>
+      - flag npc "Current Minecart:<npc.flag[Minecarts-<npc.flag[range-side]>.random>"
+      - switch "location:<anchor:<npc.flag[Current Minecart]>>" state:on duration:1
+      - flag npc "Minecarts-<npc.flag[range-side]>:<-:<npc.flag[Current Minecart]>"
+      - runtask "script:Roll Carts" delay:6 queue:<util.random.uuid> }
+      else {
+      - flag npc range-runs:!
+      - flag npc range-side:!
+      - flag npc range-winnings:<m<flag.npc[minecarts-hit]>*3>
+      - narrate "format:Range Master Format" "Time's up! You won '<npc.flag[range-winnings]>' gold!"
+      - give money qty:<npc.flag[range-winnings]>
+      - execute as_server warp <player.name> shootingrange
+      - zap 'script:Target Practice' 'step:In Range' }
 
 "Target Practice":
     type: interact
