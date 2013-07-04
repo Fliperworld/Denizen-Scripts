@@ -27,7 +27,7 @@
     type: world
     events:
         on player kills minecart:
-        - if "<npc.flag[range-time]>" == "start" && "<player.name>" == "<npc.flag[active-player]>" flag npc "minecarts-hit:++"
+        - if npcid:68 "<npc.flag[range-time]>" == "start" && "<player.name>" == "<npc.flag[active-player]>" flag npc "minecarts-hit:++"
     
 "Begin Game":
     type: task
