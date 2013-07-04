@@ -71,7 +71,7 @@
       else {
       - flag npc range-runs:!
       - flag npc range-side:!
-      - flag npc range-winnings:<m<flag.npc[minecarts-hit]>*3>
+      - flag npc range-winnings:<m:<flag.npc[minecarts-hit]>*3>
       - narrate "format:Range Master Format" "Time's up! You won '<npc.flag[range-winnings]>' gold!"
       - give money qty:<npc.flag[range-winnings]>
       - execute as_server warp <player.name> shootingrange
