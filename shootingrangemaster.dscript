@@ -33,44 +33,31 @@
     type: task
     script:
     - flag npc minecarts-hit:0
+    - flag npc range-runs:0
     - flag npc active-player:<player.name>
-    - flag npc "Minecarts-1:->:MinecartA"
-    - flag npc "Minecarts-1:->:MinecartB"
-    - flag npc "Minecarts-1:->:MinecartC"
-    - flag npc "Minecarts-1:->:MinecartD"
-    - flag npc "Minecarts-1:->:MinecartE"
-    - flag npc "Minecarts-2:->:MinecartF"
-    - flag npc "Minecarts-2:->:MinecartG"
-    - flag npc "Minecarts-2:->:MinecartH"
-    - flag npc "Minecarts-2:->:MinecartI"
-    - flag npc "Minecarts-2:->:MinecartJ"
+    - flag npc "range-level:->:1"
+    - flag npc "range-level:->:2"
+    - flag npc "range-level:->:3"
+    - flag npc "range-level:->:4"
+    - flag npc "range-level:->:5"
     - flag npc range-time:start
-    - random 2
-    - flag npc range-side:right
-    - flag npc range-side:left
-
-#"Wait Test":
-#    type: task
-#    script:
-#    - narrate "Starting Wait"
-#    - wait 64
-#    - narrate "Ending Wait"
+    - flag npc range-level:<util.random.int[1].to[5]>
     
 "Roll Carts":
     type: task
     script:
-    - if "<npc.flag[range-runs] || 0>" < 10 {
+    - if "<npc.flag[range-runs] || 0>" < 15 {
       - flag npc range-runs:++
-      - if "<npc.flag[range-side] || 0>" > 0
-        flag npc "Minecarts-<npc.flag[range-side]>:->:<npc.flag[Current Minecart]>"
-      - flag npc range-side:<util.random.int[1].to[2]>
-      - flag npc "Current Minecart:<npc.flag[Minecarts-<npc.flag[range-side]>.random>"
-      - switch "location:<anchor:<npc.flag[Current Minecart]>>" state:on duration:1
-      - flag npc "Minecarts-<npc.flag[range-side]>:<-:<npc.flag[Current Minecart]>"
+      - if "<npc.flag[range-level] || 0>" > 0
+        flag npc "range-level:->:<npc.flag[current-level]>"
+      - flag npc range-level:<util.random.int[1].to[5]>
+      - flag npc "current-level:<npc.flag[Minecarts-<npc.flag[range-level]>].random>"
+      - switch "location:<anchor:<npc.flag[current-level]><util.random.int[1].to[2]>" state:on duration:1
+      - flag npc "range-level:<-:<npc.flag[current-level]>"
       - runtask "script:Roll Carts" delay:6 queue:<util.random.uuid> }
       else {
       - flag npc range-runs:!
-      - flag npc range-side:!
+      - flag npc range-level:!
       - flag npc range-winnings:<m:<flag.npc[minecarts-hit]>*3>
       - narrate "format:Range Master Format" "Time's up! You won '<npc.flag[range-winnings]>' gold!"
       - give money qty:<npc.flag[range-winnings]>
@@ -102,5 +89,4 @@
                 - narrate "format:Range Master Format" "Okay, you've got 1 minute! Good luck!"
                 - execute as_server "warp <player.name> shootingrange-1"
                 - runtask "script:Begin Game" instant
-                - runtask "script:Wait Test"
-                - runtask "script:Start Timer"
+                - runtask "script:Roll Carts"
