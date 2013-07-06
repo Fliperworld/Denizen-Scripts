@@ -41,24 +41,24 @@
     - flag npc "range-level:->:4"
     - flag npc "range-level:->:5"
     - flag npc range-time:start
-    - flag npc range-level:<util.random.int[1].to[5]>
+#    - flag npc range-level:<util.random.int[1].to[5]>
     
 "Roll Carts":
     type: task
     script:
-    - if "<npc.flag[range-runs] || 0>" < 15 {
+    - if "<npc.flag[range-runs] || 0>" < 5 {
       - flag npc range-runs:++
       - if "<npc.flag[range-level] || 0>" > 0
         flag npc "range-level:->:<npc.flag[current-level]>"
-      - flag npc range-level:<util.random.int[1].to[5]>
-      - flag npc "current-level:<npc.flag[Minecarts-<npc.flag[range-level]>].random>"
-      - switch "location:<anchor:<npc.flag[current-level]><util.random.int[1].to[2]>" state:on duration:1
+      - flag npc "range-level:<util.random.int[1].to[5]>"
+      - flag npc "current-level:<npc.flag[range-level].random>"
+      - switch location:<anchor:Minecart<npc.flag[current-level]><util.random.int[1].to[2]>> state:on duration:1
       - flag npc "range-level:<-:<npc.flag[current-level]>"
       - runtask "script:Roll Carts" delay:6 queue:<util.random.uuid> }
       else {
       - flag npc range-runs:!
       - flag npc range-level:!
-      - flag npc range-winnings:<m:<flag.npc[minecarts-hit]>*3>
+      - flag npc range-winnings:<m:<npc.flag[minecarts-hit]>*3>
       - narrate "format:Range Master Format" "Time's up! You won '<npc.flag[range-winnings]>' gold!"
       - give money qty:<npc.flag[range-winnings]>
       - execute as_server warp <player.name> shootingrange
