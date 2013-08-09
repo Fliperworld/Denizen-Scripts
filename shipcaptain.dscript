@@ -1,0 +1,48 @@
+# This thing handles the dude in the ship at spawn
+# It was written by Wahrheit and you better believe it
+# @author Wahrheit
+# @version 1.0
+# @last-updated July 19 2013
+
+"Ship Captain":
+    type: assignment
+    interact scripts:
+    - 10 Seafaring
+    actions:
+        on assignment:
+        - runtask 'script:Spawn' instant
+        
+"Captain Format":
+    type: format
+    format: "<dark_green>Ship Captain<white><&co> <text>"
+    
+"Spawn":
+    type: task
+    script:
+    - teleport npc 'location:<anchor:shipcaptain>'
+    - trigger name:proximity toggle:true cooldown:0.1s radius:6
+
+"Seafaring":
+    type: interact
+    steps:
+        'First Timer*':
+            proximity trigger:
+                entry:
+                    radius: 5
+                    script:
+                    - narrate "format:Captain Format" "Rise and shine, <player.name>! We've arrived in Dawn's Landing."
+                    - narrate "format:Captain Format" "I could use your help with something, otherwise feel free to head into town and have a look around."
+                    - narrate "format:Captain Format" "If you want to go out and start adventuring, there are boats over on that dock and a train station just above it."
+                    - zap 'step:Visited'
+        'Visited':
+            proximity trigger:
+                entry:
+                    radius: 5
+                    script:
+                    - narrate "format:Captain Format" "Hey there, <player.name>! Hope your adventure is going well!"
+                    - narrate "format:Captain Format" "If you need some supplies, try going to check out the Questing Hall in town. It's just to the right of the inn."
+                    - narrate "format:Captain Format" "The Quest Master there probably has some jobs you can do to earn your keep!"
+                exit:
+                    radius: 5
+                    script:
+                    - narrate "format:Captain Format" "Happy travels!"

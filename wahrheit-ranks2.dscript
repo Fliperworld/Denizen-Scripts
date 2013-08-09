@@ -11,7 +11,9 @@
     actions:
         on assignment:
         - runtask 'script:Bitch' instant
-        
+"Tutorial Guide Format":
+    type: format
+    format: "<gold>Tutorial Guide<white><&co> <text>"         
 "Bitch":
     type: task
     script:
@@ -27,15 +29,15 @@
                 entry:
                     radius: 8
                     script:
-                    - narrate "<gold>Tutorial Guide<white><&co> Hey, whenever you're ready just type '<green>ready<white>'."
+                    - narrate "format:Tutorial Guide Format" "Hey, whenever you're ready just type '<green>ready<white>'."
 #                exit:
 #                    radius: 36
 #                    script:
-#                    - narrate "<gold>Tutorial Guide<white><&co> Keep going!"             
+#                    - narrate "format:Tutorial Guide Format" "Keep going!"             
             chat trigger:
                 'Ready Up':
                     trigger: "/Ready/!"
                     script:
-                    - narrate "<gold>Tutorial Guide<white><&co> Just a bit more!"
+                    - narrate "format:Tutorial Guide Format" "Just a bit more!"
                     - execute as_server "warp <player.name> tut-mcmmo"
                     - execute as_player "sethome"

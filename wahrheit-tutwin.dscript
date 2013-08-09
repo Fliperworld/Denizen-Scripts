@@ -18,21 +18,24 @@
     - teleport npc 'location:<anchor:wahrheit-lwc>'
     - trigger name:proximity toggle:true cooldown:0.1s radius:8
     - trigger name:chat toggle:true cooldown:0.1s radius:8
+"Tutorial Guide Format":
+    type: format
+    format: "<gold>Tutorial Guide<white><&co> <text>"     
 #"No Diamonds":
 #    type: task
 #    script:
-#    - narrate "<gold>Tutorial Guide<white><&co> Shame you didn't get the Treasure Hunters. There are still plenty of opportunities for greatness!"
+#    - narrate "format:Tutorial Guide Format" "Shame you didn't get the Treasure Hunters. There are still plenty of opportunities for greatness!"
 #"Some Diamonds":
 #    type: task
 #    script:
-#    - narrate "<gold>Tutorial Guide<white><&co> Not quite all the Treasure Hunters, but here's what you've earned!"
+#    - narrate "format:Tutorial Guide Format" "Not quite all the Treasure Hunters, but here's what you've earned!"
 #    - give item:DIAMOND "qty:<flag.p:npccount || 0>"
 #    - give item:EMERALD "qty:<flag.p:npccount || 0>"
 #    - flag npccount:0
 #"ALL THE DIAMONDS":
 #    type: task
 #    script:
-#    - narrate "<gold>Tutorial Guide<white><&co> Oh, and I see you found all the Treasure Hunters! Here are your rewards!"
+#    - narrate "format:Tutorial Guide Format" "Oh, and I see you found all the Treasure Hunters! Here are your rewards!"
 #    - give item:DIAMOND qty:8
 #    - give item:EMERALD qty:8
 #    - give item:DIAMOND_SWORD qty:1
@@ -55,14 +58,14 @@
                 entry:
                     radius: 8
                     script:
-                    - narrate "<gold>Tutorial Guide<white><&co> Great job, <player.name>! I'm so proud of you! I really think you're going to fit in well here."
-                    - narrate "<gold>Tutorial Guide<white><&co> When you get to Prosperus, head to the docks and down the river with a boat if you want to build."
-                    - narrate "<gold>Tutorial Guide<white><&co> Feel free to explore spawn, there's plenty to do and more all the time!"
-                    - narrate "<gold>Tutorial Guide<white><&co> Again, if you have any questions just ask other players or on the forums. We love to help!"
-                    - narrate "<gold>Tutorial Guide<white><&co> Good luck on your journey, <player.name>. I can't wait to see what you become."
-                    - if "<flag.p:npccount || 0>"  == 8 narrate "<gold>Tutorial Guide<white><&co> Great job finding all the Treasure Hunters too! Go talk to the Quest Master down the road to the left at spawn to get your stuff!"
-                    - if "<flag.p:npccount || 0>"  < 8 && "<flag.p:npccount || 0>"  > 0 narrate "<gold>Tutorial Guide<white><&co> Great job finding those Treasure Hunters! Go talk to the Quest Master down the road to the left at spawn to get your stuff!"
-                    - if "<player.permission[group.default]>" == true narrate "<gold>Tutorial Guide<white><&co> I hereby designate you <gray>Youngling <player.name><white>!"
-                    - if "<player.permission[group.default]>" == true runtask "script:Promotion" instant else narrate "<gold>Tutorial Guide<white><&co> You've already proven yourself worthy, so you're good to go."
+                    - narrate "format:Tutorial Guide Format" "Great job, <player.name>! I'm so proud of you! I really think you're going to fit in well here."
+                    - narrate "format:Tutorial Guide Format" "When you get to Prosperus, head to the docks and down the river with a boat if you want to build."
+                    - narrate "format:Tutorial Guide Format" "Feel free to explore spawn, there's plenty to do and more all the time!"
+                    - narrate "format:Tutorial Guide Format" "Again, if you have any questions just ask other players or on the forums. We love to help!"
+                    - narrate "format:Tutorial Guide Format" "Good luck on your journey, <player.name>. I can't wait to see what you become."
+                    - if "<flag.p:npccount || 0>"  == 8 narrate "format:Tutorial Guide Format" "Great job finding all the Treasure Hunters too! Go talk to the Quest Master down the road to the left at spawn to get your stuff!"
+                    - if "<flag.p:npccount || 0>"  < 8 && "<flag.p:npccount || 0>"  > 0 narrate "format:Tutorial Guide Format" "Great job finding those Treasure Hunters! Go talk to the Quest Master down the road to the left at spawn to get your stuff!"
+                    - if "<player.permission[group.default]>" == true narrate "format:Tutorial Guide Format" "I hereby designate you <gray>Youngling <player.name><white>!"
+                    - if "<player.permission[group.default]>" == true runtask "script:Promotion" instant else narrate "format:Tutorial Guide Format" "You've already proven yourself worthy, so you're good to go."
                     - if "<player.permission[group.God]>" narrate "Pleasure to see you, Wahrheit."
                                         

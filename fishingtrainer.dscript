@@ -10,15 +10,10 @@
     - 10 Fishing
     actions:
         on assignment:
-        - runtask 'script:By the Docks' instant
+        - teleport npc 'location:<anchor:fishingmaster>'
+        - trigger name:proximity toggle:true
+        - trigger name:chat toggle:true
 
-"By the Docks":
-    type: task
-    script:
-    - teleport npc 'location:<anchor:fishingmaster>'
-    - trigger name:proximity toggle:true cooldown:0.1s radius:6
-    - trigger name:chat toggle:true cooldown:0.1s radius:6
-    
 "Fishing Master Format":
     type: format
     format: "<gray>Old Fisherman<white><&co> <text>"
@@ -29,11 +24,9 @@
         'Player Seen*':
             proximity trigger:
                 entry:
-                    radius: 6
                     script:
                     - narrate "format:Fishing Master Format" "Well, hello there. Have you come to learn some tricks about fishing? I can teach you. Right click me."
                 exit:
-                    radius: 6
                     script:
                     - narrate "format:Fishing Master Format" "Thanks for visiting."
             click trigger:
@@ -49,8 +42,9 @@
                     - if <player.flag[ChosenAmount]> <= <player.money> {
                        - narrate "format:Fishing Master Format" "Okay, let's get you trained up."
                        - execute as_server "addxp <player.name> fishing <util.as_element[<m:<player.flag[ChosenAmount]>*100>].as_int>"
-                       - narrate "format:Fishing Master Format" "All done. Enjoy." }
-                      else narrate "format:Fishing Master Format" "You don't have that much gold."
+                       - narrate "format:Fishing Master Format" "All done. Enjoy." 
+                       }
+                       else narrate "format:Fishing Master Format" "You don't have that much gold."
                     - zap 'step:Player Seen'
                 'Cancel':
                     trigger: "/REGEX:.+/"

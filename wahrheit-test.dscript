@@ -16,7 +16,6 @@
         on assignment:
         - runtask 'script:Riddler' instant
     default constants:
-        Format: "<gold>Tutorial Guide<white><&co> "
         Stuck: "Are you stuck or confused <player.name>?<&nl>"
         Test Start Moan 1: "Hey <player.name>, are you still there? I can show you the rest of the server, do you want to take the test so you can see?"
         Test Start Moan 2: "Are you still there <player.name>? I really want to show you what we have to offer!"
