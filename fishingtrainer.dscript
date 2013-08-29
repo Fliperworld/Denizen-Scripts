@@ -42,6 +42,7 @@
                     - if <player.flag[ChosenAmount]> <= <player.money> {
                        - narrate "format:Fishing Master Format" "Okay, let's get you trained up."
                        - execute as_server "addxp <player.name> fishing <util.as_element[<m:<player.flag[ChosenAmount]>*100>].as_int>"
+                       - execute as_server "money grant <player.name> -<player.flag[ChosenAmount]>"                       
                        - narrate "format:Fishing Master Format" "All done. Enjoy." 
                        }
                        else narrate "format:Fishing Master Format" "You don't have that much gold."

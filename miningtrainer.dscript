@@ -2,7 +2,7 @@
 # It was written by Wahrheit and you better believe it
 # @author Wahrheit
 # @version 1.0
-# @last-updated August 7th 2013
+# @last-updated August 14th 2013
 
 "Mining Master":
     type: assignment
@@ -16,7 +16,7 @@
     
 "Mining Master Format":
     type: format
-    format: "<gray>Head Miners<white><&co> <text>"
+    format: "<gray>Head Miner<white><&co> <text>"
 
 "Mining":
     type: interact
@@ -26,7 +26,7 @@
                 entry:
                     radius: 6
                     script:
-                    - narrate "format:Mining Master Format" "Hello stonesmasher! Want to learn about mining? I'll show help you break some rocks. Right click me."
+                    - narrate "format:Mining Master Format" "Hello stonesmasher! Want to learn about mining? I'll help you break some rocks. Right click me."
                 exit:
                     radius: 6
                     script:
@@ -44,6 +44,7 @@
                     - if <player.flag[ChosenAmount]> <= <player.money> {
                        - narrate "format:Mining Master Format" "Okay, let's get you trained up."
                        - execute as_server "addxp <player.name> mining <util.as_element[<m:<player.flag[ChosenAmount]>*100>].as_int>"
+                       - execute as_server "money grant <player.name> -<player.flag[ChosenAmount]>"                       
                        - narrate "format:Mining Master Format" "All done. Enjoy." 
                        }
                        else narrate "format:Mining Master Format" "You don't have that much gold."
