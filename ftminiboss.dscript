@@ -16,7 +16,7 @@
     type: task
     script:
     - teleport npc 'location:<anchor:ftminiboss>'
-    - trigger name:proximity toggle:true cooldown:0.1s radius:8
+    - trigger name:proximity toggle:true radius:25
 "Servant Format":
     type: format
     format: "<red>Servant of Flame<white><&co> <text>"
@@ -24,11 +24,11 @@
     type: task
     script:
     - narrate "format:Servant Format" "Master... I've failed you..."
-    - narrate "format:Servant Format" "You'll never make it to the high chambers!"
     - narrate "<yellow>You hear the sound of a large crash of stone above. It may be worth investigating."
     - switch state:on location:-4,74,1,ultimatus
     - switch state:on location:-1,74,1,ultimatus
-    - zap "script:Great Balls of Fire" step:Leaving
+    - execute as_server "npc despawn 87"
+    - zap "script:Great Balls of Fire" "step:Leaving"
     
 "Great Balls of Fire":
     type: interact

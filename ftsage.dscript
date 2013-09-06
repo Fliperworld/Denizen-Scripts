@@ -39,27 +39,32 @@
     - silk_touch:1
 "Temple Tracker":
     type: world
-    on player death:
-    - if <player.location.world> != 'ultimatus' && <player.name> == <flag.npc[89]:firetemple-challenger> {
-      - flag npcid:89 npc firetempleclear:1
-      - announce "<red><player.name> Has been conquered by the Fire Temple. It is now clear."
-      - flag npcid:89 npc firetemple-challenger:! }
-    on player teleports:
-    - if <player.location.world> != 'ultimatus' && <player.name> == <flag.npc[89]:firetemple-challenger> {
-      - flag npcid:89 npc firetempleclear:1
-      - announce "<red><player.name> Has abandoned the Fire Temple. It is now clear."
-      - flag npcid:89 npc firetemple-challenger:! }
-    on player quits:
-    - if <player.name> == <flag.npc[89]:firetemple-challenger> {
-      - flag npcid:89 npc firetempleclear:1
-      - flag npcid:89 npc firetemple-challenger:!
-      - flag npcid:89 npc "abandoner:->:<player.name>"
-      - determine passive "<red><player.name> has vanished into the mists and abandoned the Fire Temple. It is now clear." }
-    on player joins:
-    - if <player.name> == <flag.npc[89]:abandoner> {
-      - execute as_server "warp <player.name> spawn"
-      - flag npcid:89 npc "abandoner:<-:<player.name>"
-      - narrate "<red>You disconnected while in the Fire Temple and have been returned to spawn." }
+    events:
+        on player dies:
+        - if <player.location.world> != 'w@ultimatus' && <player.name> == <npc[89].flag[firetemple-challenger]> {
+          - flag npcid:89 npc firetempleclear:1
+          - announce "<red><player.name> Has been conquered by the Fire Temple. It is now clear."
+          - flag npcid:89 npc firetemple-challenger:! 
+          }
+        on player changes world from w@ultimatus:
+        - if <player.location.world> != 'w@ultimatus' && <player.name> == <npc[89].flag[firetemple-challenger]> {
+          - flag npcid:89 npc firetempleclear:1
+          - announce "<red><player.name> Has abandoned the Fire Temple. It is now clear."
+          - flag npcid:89 npc firetemple-challenger:! 
+          }
+        on player quits:
+        - if <player.name> == <npc[89].flag[firetemple-challenger]> {
+          - flag npcid:89 npc firetempleclear:1
+          - flag npcid:89 npc firetemple-challenger:!
+          - determine passive "<red><player.name> has vanished into the mists and abandoned the Fire Temple. It is now clear."         
+          - flag npcid:89 npc "abandoner:->:<player.name>"
+          }
+        on player joins:
+        - if <player.name> == <npc[89].flag[abandoner]> {
+          - execute as_server "warp <player.name> spawn"
+          - flag npcid:89 npc "abandoner:<-:<player.name>"
+          - narrate "<red>You disconnected while in the Fire Temple and have been returned to spawn." 
+          }
 "Reset":
     type: task
     script:
@@ -75,6 +80,9 @@
     - switch state:off location:1,74,4,ultimatus      
     # Spawns boss at entry point
     - execute as_server "npc spawn 88 --at 0,119,-30,ultimatus"
+    - execute as_server "npc spawn 87 --at 56,29,-26,ultimatus"
+    - zap "script:Great Balls of Fire" "step:Miniboss"
+    - zap "script:Get Out My House" "step:Boss Battle"
     
 "Challenger":
     type: interact
@@ -86,6 +94,9 @@
                     script:
                     - narrate "format:Sage Format" "Hello, <player.name>. Welcome to the Altar of Flame."
                     - if <flag.p:firetemplecomplete> == 1 runtask "script:Temple Complete" else zap 'step:Entrance'
+            click trigger:
+                script:
+                - narrate "format:Sage Format" "You're at the step 'Greeting'! This is a debug message!"
 
         'Entrance':
             click trigger:
@@ -102,7 +113,7 @@
             click trigger:
                 script:
                 - if <flag.npc:firetempleclear> == 1 {
-                  - narrate "format:Sage Format" "Very well. I wish you the very best of luck in your efforts.
+                  - narrate "format:Sage Format" "Very well. I wish you the very best of luck in your efforts."
                   - flag npc firetempleclear:0
                   - flag npc firetemple-challenger:<player.name>
                   - runtask "script:Reset"
