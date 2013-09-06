@@ -94,11 +94,10 @@
                 - narrate "format:Sage Format" "We need a bold, powerful adventurer to challenge him and end his heresy. Are you up to the challenge?"
                 - zap 'step:Verify'
             proximity trigger:
-                entry:
+                exit:
                     radius: 5
                     script:
-                    - narrate "format:Sage Format" "The vile and wretched Lord Emfyrius has established a corrupted domain in an effort to challenge the God of Flame."
-                    - narrate "format:Sage Format" "We need a bold, powerful adventurer to challenge him and end his heresy. Are you up to the challenge?"
+                    - zap 'step:Greeting'
         'Verify':
             click trigger:
                 script:
@@ -111,3 +110,8 @@
                   - announce "<red><player.name> is challenging the Fire Temple."}
                   else {
                   - narrate "format:Sage Format" "Sorry, it appears the temple is currently being challenged by another brave soul. You will have to wait." }
+            proximity trigger:
+                exit:
+                    radius: 5
+                    script:
+                    - zap 'step:Greeting'
