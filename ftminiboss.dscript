@@ -29,6 +29,10 @@
     - switch state:on location:-1,74,1,ultimatus
     - execute as_server "npc despawn 87"
     - zap "script:Great Balls of Fire" "step:Leaving"
+"More Mobs":
+    type: task
+    script:
+    - execute as_npc "spawnmob blaze 5 56,34,-25"
     
 "Great Balls of Fire":
     type: interact
@@ -40,7 +44,11 @@
                     script:
                     - narrate "format:Servant Format" "I serve the great Lord Emfyrius! I will not allow you to defile him!"
                     - narrate "format:Servant Format" "Your soul shall burn for all eternity. Minions of flame, destroy the infiltrator!"
-                    - listen kill script:Proceed id:Miniboss type:entity target:Blaze qty:25
+                    - listen kill "script:More Mobs" id:Miniboss type:entity target:Blaze qty:5
+                    - listen kill "script:More Mobs" id:Miniboss-2 type:entity target:Blaze qty:10
+                    - listen kill "script:More Mobs" id:Miniboss-3 type:entity target:Blaze qty:15
+                    - listen kill "script:More Mobs" id:Miniboss-4 type:entity target:Blaze qty:20
+                    - listen kill "script:Proceed" id:Miniboss-5 type:entity target:Blaze qty:25
                     - execute as_npc "spawnmob blaze 5 56,34,-25"
                     
         'Leaving':

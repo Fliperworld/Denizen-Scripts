@@ -18,38 +18,21 @@
     type: task
     script:
     - teleport npc 'location:<anchor:ftsage>'
-    - trigger name:proximity toggle:true cooldown:0.1s radius:8
+    - trigger name:proximity toggle:true radius:8
     - flag npc firetempleclear:1
-"Temple Complete":
-    type: task
-    script:
-    - give money qty:2500
-    - give item:373,8259 qty:10
-    - give "item:Silk Touch Book" qty:1
-    - flag player firetemplecomplete:0
-"Silk Touch Book":
-    type: item
-    material: enchanted_book
-    lore:
-    - This book of magic
-    - was obtained from the
-    - Fire Temple.
-    display name: "Engulfed Book of Silk Touch"
-    enchantments:
-    - silk_touch:1
 "Temple Tracker":
     type: world
     events:
         on player dies:
         - if <player.location.world> != 'w@ultimatus' && <player.name> == <npc[89].flag[firetemple-challenger]> {
           - flag npcid:89 npc firetempleclear:1
-          - announce "<red><player.name> Has been conquered by the Fire Temple. It is now clear."
+          - announce "<red><player.name> has been conquered by the Fire Temple. It is now clear."
           - flag npcid:89 npc firetemple-challenger:! 
           }
         on player changes world from w@ultimatus:
         - if <player.location.world> != 'w@ultimatus' && <player.name> == <npc[89].flag[firetemple-challenger]> {
           - flag npcid:89 npc firetempleclear:1
-          - announce "<red><player.name> Has abandoned the Fire Temple. It is now clear."
+          - announce "<red><player.name> has abandoned the Fire Temple. It is now clear."
           - flag npcid:89 npc firetemple-challenger:! 
           }
         on player quits:
@@ -80,9 +63,16 @@
     - switch state:off location:1,74,4,ultimatus      
     # Spawns boss at entry point
     - execute as_server "npc spawn 88 --at 0,119,-30,ultimatus"
+    - execute as_server "npc select 88"
+    - execute as_server "npc anchor --assume 'boss-spawn'"
     - execute as_server "npc spawn 87 --at 56,29,-26,ultimatus"
+    - execute as_server "npc select 87"
+    - execute as_server "npc anchor --assume 'ftminiboss'"
+    - execute as_server "npc despawn 93"
     - zap "script:Great Balls of Fire" "step:Miniboss"
     - zap "script:Get Out My House" "step:Boss Battle"
+    - zap "script:Flame Savior" "step:Before Fight"
+    - zap "script:Player Approaches" "step:Entry"
     
 "Challenger":
     type: interact
@@ -93,10 +83,10 @@
                     radius: 5
                     script:
                     - narrate "format:Sage Format" "Hello, <player.name>. Welcome to the Altar of Flame."
-                    - if <flag.p:firetemplecomplete> == 1 runtask "script:Temple Complete" else zap 'step:Entrance'
-            click trigger:
-                script:
-                - narrate "format:Sage Format" "You're at the step 'Greeting'! This is a debug message!"
+                    - zap 'step:Entrance'
+#            click trigger:
+#                script:
+#                - narrate "format:Sage Format" "You're at the step 'Greeting'! This is a debug message!"
 
         'Entrance':
             click trigger:
@@ -116,11 +106,12 @@
                   - narrate "format:Sage Format" "Very well. I wish you the very best of luck in your efforts."
                   - flag npc firetempleclear:0
                   - flag npc firetemple-challenger:<player.name>
+                  - narrate "<yellow>The Sage of Flame begins chanting a spell..."
                   - runtask "script:Reset"
                   - execute as_npc "warp <player.name> firetemple"
                   - announce "<red><player.name> is challenging the Fire Temple."}
                   else {
-                  - narrate "format:Sage Format" "Sorry, it appears the temple is currently being challenged by another brave soul. You will have to wait." }
+                  - narrate "format:Sage Format" "Sorry, it appears the temple is currently being challenged by <flag.npc:firetemple-challenger>. You will have to wait." }
             proximity trigger:
                 exit:
                     radius: 5

@@ -29,7 +29,11 @@
 #    - switch state:on location:-4,74,1,ultimatus
 #    - switch state:on location:-1,74,1,ultimatus
     - execute as_server "npc despawn 88"
-    - zap "script:Get Out My House" step:Victory
+    - execute as_server "npc spawn 93"
+    - execute as_server "npc select 93"
+    - execute as_server "npc anchor --assume 'ftoracle'"
+    - zap "script:Get Out My House" "step:Victory"
+    - zap "script:Flame Savior" "step:Congratulations"
     - flag player firetemplecomplete:1
     
     

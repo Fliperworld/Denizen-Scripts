@@ -74,10 +74,10 @@
             click trigger:
                 script:
                 - narrate "format:Fire Guard Format" "You have already bested this challenge."
-            chat trigger:
-                'Repeat':
-                    trigger: 'Please /repeat/ the challenge.'
-                    script:
-                    - narrate "format:Fire Guard Format" "Very well. Challenge reset."
-                    - switch state:off location:-1,74,4,ultimatus
-                    - zap step:Entry
+#            chat trigger:
+#                'Repeat':
+#                    trigger: 'Please /repeat/ the challenge.'
+#                    script:
+#                    - narrate "format:Fire Guard Format" "Very well. Challenge reset."
+#                    - switch state:off location:-1,74,4,ultimatus
+#                    - zap step:Entry
