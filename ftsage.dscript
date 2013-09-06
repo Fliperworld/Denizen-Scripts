@@ -1,0 +1,113 @@
+# This thing handles the dude that sits at the entrance to the fire temple portal
+# It was written by Wahrheit and you better believe it
+# @author Wahrheit
+# @version 1.0
+# @last-updated September 5 2013
+
+"Sage of Flame":
+    type: assignment
+    interact scripts:
+    - 10 Challenger
+    actions:
+        on assignment:
+        - runtask 'script:Flame Gate' instant
+"Sage Format":
+    type: format
+    format: "<red>Sage of Flame<white><&co> <text>"
+"Flame Gate":
+    type: task
+    script:
+    - teleport npc 'location:<anchor:ftsage>'
+    - trigger name:proximity toggle:true cooldown:0.1s radius:8
+    - flag npc firetempleclear:1
+"Temple Complete":
+    type: task
+    script:
+    - give money qty:2500
+    - give item:373,8259 qty:10
+    - give "item:Silk Touch Book" qty:1
+    - flag player firetemplecomplete:0
+"Silk Touch Book":
+    type: item
+    material: enchanted_book
+    lore:
+    - This book of magic
+    - was obtained from the
+    - Fire Temple.
+    display name: "Engulfed Book of Silk Touch"
+    enchantments:
+    - silk_touch:1
+"Temple Tracker":
+    type: world
+    on player death:
+    - if <player.location.world> != 'ultimatus' && <player.name> == <flag.npc[89]:firetemple-challenger> {
+      - flag npcid:89 npc firetempleclear:1
+      - announce "<red><player.name> Has been conquered by the Fire Temple. It is now clear."
+      - flag npcid:89 npc firetemple-challenger:! }
+    on player teleports:
+    - if <player.location.world> != 'ultimatus' && <player.name> == <flag.npc[89]:firetemple-challenger> {
+      - flag npcid:89 npc firetempleclear:1
+      - announce "<red><player.name> Has abandoned the Fire Temple. It is now clear."
+      - flag npcid:89 npc firetemple-challenger:! }
+    on player quits:
+    - if <player.name> == <flag.npc[89]:firetemple-challenger> {
+      - flag npcid:89 npc firetempleclear:1
+      - flag npcid:89 npc firetemple-challenger:!
+      - flag npcid:89 npc "abandoner:->:<player.name>"
+      - determine passive "<red><player.name> has vanished into the mists and abandoned the Fire Temple. It is now clear." }
+    on player joins:
+    - if <player.name> == <flag.npc[89]:abandoner> {
+      - execute as_server "warp <player.name> spawn"
+      - flag npcid:89 npc "abandoner:<-:<player.name>"
+      - narrate "<red>You disconnected while in the Fire Temple and have been returned to spawn." }
+"Reset":
+    type: task
+    script:
+    # Miniboss Gate / Bridge
+    - switch state:off location:-4,74,1,ultimatus
+    # Upstairs Bridges
+    - switch state:off location:-1,74,1,ultimatus
+    # West Stairs
+    - switch state:off location:2,74,1,ultimatus
+    # West Key
+    - switch state:off location:-1,74,4,ultimatus
+    # East Key
+    - switch state:off location:1,74,4,ultimatus      
+    # Spawns boss at entry point
+    - execute as_server "npc spawn 88 --at 0,119,-30,ultimatus"
+    
+"Challenger":
+    type: interact
+    steps:
+        'Greeting*':
+            proximity trigger:
+                entry:
+                    radius: 5
+                    script:
+                    - narrate "format:Sage Format" "Hello, <player.name>. Welcome to the Altar of Flame."
+                    - if <flag.p:firetemplecomplete> == 1 runtask "script:Temple Complete" else zap 'step:Entrance'
+
+        'Entrance':
+            click trigger:
+                script:
+                - narrate "format:Sage Format" "The vile and wretched Lord Emfyrius has established a corrupted domain in an effort to challenge the God of Flame."
+                - narrate "format:Sage Format" "We need a bold, powerful adventurer to challenge him and end his heresy. Are you up to the challenge?"
+                - zap 'step:Verify'
+            proximity trigger:
+                entry:
+                    radius: 5
+                    script:
+                    - narrate "format:Sage Format" "The vile and wretched Lord Emfyrius has established a corrupted domain in an effort to challenge the God of Flame."
+                    - narrate "format:Sage Format" "We need a bold, powerful adventurer to challenge him and end his heresy. Are you up to the challenge?"
+        'Verify':
+            click trigger:
+                script:
+                - if <flag.npc:firetempleclear> == 1 {
+                  - narrate "format:Sage Format" "Very well. I wish you the very best of luck in your efforts.
+                  - flag npc firetempleclear:0
+                  - flag npc firetemple-challenger:<player.name>
+                  - runtask "script:Reset"
+                  - execute as_npc "warp <player.name> firetemple"
+                  - announce "<red><player.name> is challenging the Fire Temple."}
+                  else {
+                  - narrate "format:Sage Format" "Sorry, it appears the temple is currently being challenged by another brave soul. You will have to wait." }
