@@ -19,7 +19,7 @@
     script:
     - teleport npc 'location:<anchor:mazemaster>'
     - trigger name:proximity toggle:true radius:8
-    - flag npc mazeclear:1
+    - flag n@94 mazeclear:1
 #"12 Hour Reset":
 #    type: world
 #    events:
@@ -58,17 +58,23 @@
         - if <player.name> == <n@94.flag[abandoner]> {
           - execute as_server "warp <player.name> spawn"
           - flag n@94 "abandoner:<-:<player.name>"
-          - narrate "<red>You disconnected while in the Grand Library and have been returned to spawn." 
+          - narrate "<red>You disconnected while in the Grand Library and have been returned to spawn."
+          - flag n@94 mazeclear:1
           }
-"Reset":
+"Player Reset":
     type: task
     script:
     # Clear the maze
-    - execute as_op "region sel library-maze"
-    - execute as_op "/set air"
-    - execute as_op "/sel"
     - teleport npc 'location:<anchor:maze-gen>'
+    - execute as_npc "warp <player.name> library-paste"
+    - wait 1
+    - execute as_op "/schem load library-blank"
+    - execute as_op "/paste"
+    - execute as_npc "warp <player.name> library-maze"
     - execute as_op "cs maze bookshelf 25 25"
+    - execute as_op "region sel library-maze"
+    - execute as_op "/replace glass air"
+    - execute as_op "/sel"    
     - teleport npc 'location:<anchor:mazemaster>'
     
 "Librarian":
@@ -101,14 +107,14 @@
                 script:
                 - if <flag.npc:mazeclear> == 1 {
                   - narrate "format:Librarian Format" "Very well. I wish you the very best of luck in your efforts."
-                  - flag n@94 mazeclear:0
+                  - flag n@94 mazeclear:!
                   - flag n@94 maze-challenger:<player.name>
                   - narrate "<yellow>The Librarian begins chanting a spell..."
-                  - run Reset
-                  - execute as_npc "warp <player.name> library-maze"
+                  - run "Player Reset" instant
                   }
                   else {
                   - narrate "format:Librarian Format" "Sorry, it appears the temple is currently being challenged by <flag.npc:maze-challenger>. You will have to wait."
+                  - narrate "format:Librarian Format" "Debug <flag.npc:mazeclear>"
                   }
             proximity trigger:
                 exit:
