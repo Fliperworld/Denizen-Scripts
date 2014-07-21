@@ -1,0 +1,63 @@
+# This thing handles the dude in the ship at spawn
+# It was written by Wahrheit and you better believe it
+# @author Wahrheit
+# @version 1.1
+# @last-updated July 14 2014
+# @last-change moved Swabby and reduced initial text
+
+"Swabby":
+    type: assignment
+    interact scripts:
+    - 10 Seafaring
+    actions:
+        on assignment:
+        - runtask 'script:Spawn' instant
+        
+"Swabby Format":
+    type: format
+    format: "<dark_green>Swabby<white><&co> <text>"
+    
+"Spawn":
+    type: task
+    script:
+    - teleport npc 'location:<anchor:shipSwabby>'
+    - trigger name:proximity toggle:true cooldown:0.1s radius:3
+
+"Seafaring":
+    type: interact
+    steps:
+        'First Timer*':
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Swabby Format" "Rise and shine, <player.name>! We've arrived in Dawn's Landing."
+                    - adjust <player> "show_boss_bar:Right click an NPC to talk to them!"
+                    - zap 'step:Visited'   
+            click trigger:
+                script:
+                - narrate "format:Swabby Format" "If you want to go out and start adventuring, there are boats over on that dock and a train station just above it."
+                - adjust <player> "show_boss_bar:Say '<green>yes<white>' in chat to accept the quest, or '<red>no<white>' to decline."
+        'Visited':
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Swabby Format" "Hey there, <player.name>! Hope your adventure is going well!"
+                    - adjust <player> "show_boss_bar:Right click an NPC to talk to them!"
+                exit:
+                    script:
+                    - narrate "format:Swabby Format" "Happy travels!"
+                    - adjust <player> show_boss_bar
+            click trigger:
+                script:
+                - narrate "format:Swabby Format" "If you want to go out and start adventuring, there are boats over on that dock and a train station just above it."
+                - adjust <player> "show_boss_bar:Say '<green>yes<white>' in chat to accept the quest, or '<red>no<white>' to decline."
+        'Visited and Done':
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Swabby Format" "Hey there, <player.name>! Hope your adventure is going well!"
+                    - narrate "format:Swabby Format" "If you need some supplies, try going to check out the Questing Hall in town. It's just to the right of the inn."
+                    - narrate "format:Swabby Format" "The Quest Master there probably has some jobs you can do to earn your keep!"
+                exit:
+                    script:
+                    - narrate "format:Swabby Format" "Happy travels!"
