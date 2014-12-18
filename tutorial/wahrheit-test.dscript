@@ -34,10 +34,6 @@
         Question 6 Moan 3: "I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."
         Question 7 Moan 2: "Here's the question again - <green>last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?<&nl>"
         Question 7 Moan 3: "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."
-        
-"Wahrheit Format":
-    type: format
-    format: "<gold>Tutorial Guide<white><&co> <text>"
     
 "Riddler":
     type: task

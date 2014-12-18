@@ -45,10 +45,6 @@
     - narrate "format:Fire Guard Format" "Well done, <player.name>. I have placed my key."
     - switch state:on location:-1,74,4,ultimatus
     - zap "script:Player Approaches" step:Winner
-
-"Fire Guard Format":
-    type: format
-    format: "<red>Fire Guard<white><&co> <text>"
     
 "Player Approaches":
     type: interact

@@ -1,8 +1,8 @@
 # This thing handles the main quest line, at least for now
 # It was written by Wahrheit and you better believe it
 # @author Wahrheit
-# @version 2.0
-# @last-updated July 19 2013
+# @version 2.1
+# @last-updated August 7 2014
 
 "New Quest Master":
     type: assignment
@@ -41,14 +41,21 @@
 "Fishing Done":
     type: task
     script:
-    - zap "script:Newbie" "step:No Quests"    
+    - zap "script:Newbie" "step:Find Youngling Trainers"
+"Youngling Trainers Found":
+    type: task
+    script:
+    - zap "script:Newbie" "step:Talk to Postmaster"
+"Postmaster Spoken To":
+    type: task
+    script:
+    - zap "script:Newbie" "step:Waiting for Quest"
 "Newbie":
     type: interact
     steps:
         'Greeting*':
             proximity trigger:
                 entry:
-                    radius: 3
                     script:
                     - narrate "format:Quest Master Format" "Welcome to the Questing Hall, <player.name>! The guys here have a variety of quests that you can complete either daily or weekly to help out our citizens."
                     - narrate "format:Quest Master Format" "If you need some equipment, I have a quest for you. Right click me to view its information."
@@ -59,14 +66,31 @@
         'Fishing':
             proximity trigger:
                 entry:
-                    radius: 3
                     script:
                     - narrate "format:Quest Master Format" "Hey <player.name>! I can still help you get some equipment, right click me to see the quest details."
                     - narrate "format:Quest Master Format" "This won't work if you have an active quest - you can check if you do with /quest."
                     - narrate "format:Quest Master Format" "If you want to quit the one you're on at any time, you can type /quests quit."
+        'Find Youngling Trainers':
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "Hey there, <player.name>. There are some people I'd like you to meet, if you have time."
+        'Talk to Postmaster':
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "Howdy <player.name>! Want another quick task?"
+        'Waiting for Quest':
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "I don't have any quests for you right now <player.name>, but have a look around! There are plenty of others."
+        ## When the next quest is ready to go, uncomment the following line and change the zap to the new step.
+                    # - narrate "format:Quest Master Format" "Hey, I have a new quest for you!"
+                    # - zap 'step:New Quest'
         'No Quests':
             proximity trigger:
                 entry:
-                    radius: 3
                     script:
                     - narrate "format:Quest Master Format" "I don't have any quests for you right now <player.name>, but have a look around! There are plenty of others."
+                    - zap 'step:Next Quest'

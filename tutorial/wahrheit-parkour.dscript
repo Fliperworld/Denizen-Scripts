@@ -11,9 +11,7 @@
     actions:
         on assignment:
         - runtask 'script:On Your Mark' instant
-"Tutorial Guide Format":
-    type: format
-    format: "<gold>Tutorial Guide<white><&co> <text>"         
+      
 "On Your Mark":
     type: task
     script:

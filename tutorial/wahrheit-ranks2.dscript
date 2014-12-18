@@ -11,9 +11,7 @@
     actions:
         on assignment:
         - runtask 'script:Bitch' instant
-"Tutorial Guide Format":
-    type: format
-    format: "<gold>Tutorial Guide<white><&co> <text>"         
+
 "Bitch":
     type: task
     script:
