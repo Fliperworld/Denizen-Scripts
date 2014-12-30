@@ -20,12 +20,6 @@
     - teleport npc 'location:<anchor:mazemaster>'
     - trigger name:proximity toggle:true radius:3
     - flag n@94 mazeclear:1
-"Library Win":
-    type: task
-    script:
-    - flag n@94 mazeclear:1
-    - announce "<green><player.name> has conquered The Grand Library! It is now clear."
-    - flag n@94 maze-challenger:!     
 #"12 Hour Reset":
 #    type: world
 #    events:
