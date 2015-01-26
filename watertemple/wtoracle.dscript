@@ -23,9 +23,9 @@
 #    - narrate "Challenger flag read as <n@184.flag[watertemple-challenger]>"
     - give money qty:2500
     - narrate "<yellow>You have received 2500 gold."
-    - give item:373,8262 qty:6
-    - give item:373,8269 qty:6
-    - give item:373,8269 qty:6
+    - give item:373,8262 qty:6 unlimit_stack_size
+    - give item:373,8269 qty:6 unlimit_stack_size
+    - give item:373,8269 qty:6 unlimit_stack_size
     - give "item:Water Temple Depth Strider book" qty:1
     - give item:384 qty:64
     - give item:384 qty:64

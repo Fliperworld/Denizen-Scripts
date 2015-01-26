@@ -27,7 +27,7 @@
     script:
     - give money qty:2500
     - narrate "<yellow>You have received 2500 gold."
-    - give item:373,8259 qty:10
+    - give item:373,8259 qty:10 unlimit_stack_size
     - give "item:Silk Touch Book" qty:1
     - give item:384 qty:64
     - give item:384 qty:64
@@ -138,17 +138,20 @@
                     - narrate "format:Oracle Format" "I will bestow your rewards upon you and return you to the Altar of Flame."
             click trigger:
                 script:
+                - engage
                 - if <flag.p:firetemplecomplete> == 1 {
                   - narrate "format:Oracle Format" "Okay, here are your rewards."
                   - run "script:Temple Complete" def:<queue>
                   - queue pause
                   - narrate "Format:Oracle Format" "Best of luck on your future travels!"
                   - execute as_npc "warp <player.name> firealtar"
+                  - disengage
                   }
                   else {
                   - narrate "format:Oracle Format" "It looks like I've already rewarded you."
                   - narrate "format:Oracle Format" "Best of luck on your future travels!"
                   - execute as_npc "warp <player.name> firealtar"
+                  - disengage
                   }
                   
         'After Warp':
