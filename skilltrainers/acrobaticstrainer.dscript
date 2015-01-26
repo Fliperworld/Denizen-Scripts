@@ -10,7 +10,7 @@
     - 10 Acrobatics
     actions:
         on assignment:   
-        - teleport <npc> <npc.anchor[acrobaticsmaster]>
+        - teleport npc <npc.anchor[acrobaticsmaster]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
     

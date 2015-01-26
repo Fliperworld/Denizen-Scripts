@@ -10,7 +10,7 @@
     - 10 Flame Savior
     actions:
         on assignment:
-        - runtask 'script:Redemption' instant
+        - run 'script:Redemption' instant
         
 "Redemption":
     type: task
@@ -42,6 +42,7 @@
     - flag player firetemplewins:++
     - flag player firetemplecomplete:0
     - flag npcid:89 npc firetempleclear:1
+    - queue <def[1]> resume    
 
 "Engulfed Helm":
     type: item
@@ -50,7 +51,7 @@
     - This blazing helm was
     - obtained from the
     - Fire Temple by
-    - <npc[89].flag[firetemple-challenger]>.
+    - <n@89.flag[firetemple-challenger]>.
     display name: "Engulfed Helm"
     enchantments:
     - protection_fire:4
@@ -66,7 +67,7 @@
     - This blazing plate was
     - obtained from the
     - Fire Temple by
-    - <npc[89].flag[firetemple-challenger]>.
+    - <n@89.flag[firetemple-challenger]>.
     display name: "Engulfed Chestplate"
     enchantments:
     - protection_fire:4
@@ -82,7 +83,7 @@
     - These blazing leggings were
     - obtained from the
     - Fire Temple by
-    - <npc[89].flag[firetemple-challenger]>.
+    - <n@89.flag[firetemple-challenger]>.
     display name: "Engulfed Leggings"
     enchantments:
     - protection_fire:4
@@ -98,7 +99,7 @@
     - These blazing boots were
     - obtained from the
     - Fire Temple by
-    - <npc[89].flag[firetemple-challenger]>.
+    - <n@89.flag[firetemple-challenger]>.
     display name: "Engulfed Boots"
     enchantments:
     - protection_fire:4
@@ -114,7 +115,7 @@
     - This book of magic
     - was obtained from the
     - Fire Temple by
-    - <npc[89].flag[firetemple-challenger]>.
+    - <n@89.flag[firetemple-challenger]>.
     display name: "Engulfed Book of Silk Touch"
     enchantments:
     - silk_touch:1    
@@ -137,10 +138,10 @@
                     - narrate "format:Oracle Format" "I will bestow your rewards upon you and return you to the Altar of Flame."
             click trigger:
                 script:
-                - narrate "format: Oracle Format" "Okay, here are your rewards."
                 - if <flag.p:firetemplecomplete> == 1 {
                   - narrate "format:Oracle Format" "Okay, here are your rewards."
-                  - runtask "script:Temple Complete"
+                  - run "script:Temple Complete" def:<queue>
+                  - queue pause
                   - narrate "Format:Oracle Format" "Best of luck on your future travels!"
                   - execute as_npc "warp <player.name> firealtar"
                   }

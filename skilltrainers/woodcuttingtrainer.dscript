@@ -10,7 +10,7 @@
     - 10 Woodcutting
     actions:
         on assignment:   
-        - teleport <npc> <npc.anchor[woodcuttingmaster]>
+        - teleport npc <npc.anchor[woodcuttingmaster]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
     

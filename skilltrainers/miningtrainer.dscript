@@ -10,7 +10,7 @@
     - 10 Mining
     actions:
         on assignment:   
-        - teleport <npc> <npc.anchor[miningmaster]>
+        - teleport npc <npc.anchor[miningmaster]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
     

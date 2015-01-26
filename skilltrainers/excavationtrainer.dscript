@@ -10,7 +10,7 @@
     - 10 Excavation
     actions:
         on assignment:   
-        - teleport <npc> <npc.anchor[excavationmaster]>
+        - teleport npc <npc.anchor[excavationmaster]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
     

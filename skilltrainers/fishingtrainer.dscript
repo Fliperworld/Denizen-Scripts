@@ -10,7 +10,7 @@
     - 10 Fishing
     actions:
         on assignment:
-        - teleport <npc> <npc.anchor[fishingmaster]>
+        - teleport npc <npc.anchor[fishingmaster]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
 

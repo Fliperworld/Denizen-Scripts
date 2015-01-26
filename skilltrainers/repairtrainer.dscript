@@ -10,7 +10,7 @@
     - 10 Repair
     actions:
         on assignment:   
-        - teleport <npc> <npc.anchor[repairmaster]>
+        - teleport npc <npc.anchor[repairmaster]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
     

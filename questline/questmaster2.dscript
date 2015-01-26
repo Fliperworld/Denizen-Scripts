@@ -10,15 +10,12 @@
     - 10 Newbie
     actions:
         on assignment:
-        - runtask 'script:Quests n Such' instant
+        - teleport npc 'location:<anchor:questmaster>'
+        - trigger name:proximity toggle:true        
+    
 "Quest Master Format":
     type: format
     format: "<dark_green>Quest Master<white><&co> <text>"
-"Quests n Such":
-    type: task
-    script:
-    - teleport npc 'location:<anchor:questmaster>'
-    - trigger name:proximity toggle:true cooldown:0.1s radius:3
 
 "Some Diamonds":
     type: task
@@ -93,4 +90,10 @@
                 entry:
                     script:
                     - narrate "format:Quest Master Format" "I don't have any quests for you right now <player.name>, but have a look around! There are plenty of others."
-                    - zap 'step:Next Quest'
+#                    - zap 'step:Next Quest'
+        'Next Quest':
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "I don't have any quests for you right now <player.name>, but have a look around! There are plenty of others."
+                    - zap 'step:No Quests'

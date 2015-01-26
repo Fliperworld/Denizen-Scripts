@@ -10,7 +10,7 @@
     - 10 Taming
     actions:
         on assignment:   
-        - teleport <npc> <npc.anchor[tamingmaster]>
+        - teleport npc <npc.anchor[tamingmaster]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
     

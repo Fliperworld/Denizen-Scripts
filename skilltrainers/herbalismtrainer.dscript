@@ -10,7 +10,7 @@
     - 10 Herbalism
     actions:
         on assignment:   
-        - teleport <npc> <npc.anchor[herbalismmaster]>
+        - teleport npc <npc.anchor[herbalismmaster]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
     
