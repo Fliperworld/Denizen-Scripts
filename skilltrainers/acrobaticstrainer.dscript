@@ -1,8 +1,8 @@
 # This thing lets players pay for XP in acrobatics if you have mcMMO
 # It was written by Wahrheit and you better believe it
 # @author Wahrheit
-# @version 1.0
-# @last-updated August 14th 2013
+# @version 1.8
+# @last-updated June 23rd 2016
 
 "Acrobatics Master":
     type: assignment
@@ -41,7 +41,7 @@
                     - flag player ChosenAmount:<context.message>
                     - if <context.message.is[OR_LESS].than[<player.money>]> {
                        - narrate "format:Acrobatics Master Format" "Okay, let's get you trained up."
-                       - execute as_server "addxp <player.name> acrobatics <util.as_element[<m:<context.message>*100>].as_int>"
+                       - execute as_server "addxp <player.name> acrobatics <context.message.mul[100]||0>"
                        - take money qty:<context.message>                       
                        - narrate "format:Acrobatics Master Format" "All done. Enjoy." 
                        }

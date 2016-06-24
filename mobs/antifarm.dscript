@@ -1,0 +1,8 @@
+"No Farms For You":
+    type: world
+    events:
+        on entity dies:
+        - flag server spawnlimit.<context.entity.location.simple>:++ duration:30m
+        - if <server.flag[spawnlimit.<context.entity.location.simple>]> >= 3 {
+            - determine NO_DROPS_OR_XP
+        }

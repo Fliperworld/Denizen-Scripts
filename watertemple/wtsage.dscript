@@ -24,13 +24,13 @@
     type: world
     events:
         on player dies:
-        - if <player.location.world> != 'w@ultimatus' && <player.name> == <n@184.flag[watertemple-challenger]> {
+        - if <player.location.world.name> == 'ultimatus' && <player.name> == <n@184.flag[watertemple-challenger]> {
           - flag npcid:184 npc watertempleclear:1
           - announce "<red><player.name> has been conquered by the Water Temple. It is now clear."
           - flag npcid:184 npc watertemple-challenger:! 
           }
         on player changes world from w@ultimatus:
-        - if <player.location.world> != 'w@ultimatus' && <player.name> == <n@184.flag[watertemple-challenger]> {
+        - if <player.location.world.name> != 'ultimatus' && <player.name> == <n@184.flag[watertemple-challenger]> {
           - flag npcid:184 npc watertempleclear:1
           - announce "<red><player.name> has abandoned the Water Temple. It is now clear."
           - flag npcid:184 npc watertemple-challenger:! 

@@ -22,7 +22,7 @@
     type: format
     format: "<red>Oracle of Flame<white><&co> <text>"
     
-"Temple Complete":
+"Fire Temple Complete":
     type: task
     script:
     - give money qty:2500
@@ -141,7 +141,7 @@
                 - engage
                 - if <flag.p:firetemplecomplete> == 1 {
                   - narrate "format:Oracle Format" "Okay, here are your rewards."
-                  - run "script:Temple Complete" def:<queue>
+                  - run "script:Fire Temple Complete" def:<queue>
                   - queue pause
                   - narrate "Format:Oracle Format" "Best of luck on your future travels!"
                   - execute as_npc "warp <player.name> firealtar"

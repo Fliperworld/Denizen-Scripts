@@ -1,8 +1,8 @@
 # This thing lets players pay for XP in fishing if you have mcMMO
 # It was written by Wahrheit and you better believe it
 # @author Wahrheit
-# @version 1.0
-# @last-updated August 7th 2013
+# @version 1.8
+# @last-updated June 23rd 2016
 
 "Fishing Master":
     type: assignment

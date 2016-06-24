@@ -1,8 +1,8 @@
 # This thing lets players pay for XP in herbalism if you have mcMMO
 # It was written by Wahrheit and you better believe it
 # @author Wahrheit
-# @version 1.0
-# @last-updated August 6th 2014
+# @version 1.8
+# @last-updated June 23rd 2016
 
 "Herbalism Master":
     type: assignment
@@ -41,7 +41,7 @@
                     - flag player ChosenAmount:<context.message>
                     - if <context.message.is[OR_LESS].than[<player.money>]> {
                        - narrate "format:Herbalism Master Format" "Okay, let's get you trained up."
-                       - execute as_server "addxp <player.name> herbalism <util.as_element[<m:<context.message>*100>].as_int>"
+                       - execute as_server "addxp <player.name> herbalism <context.message.mul[100]||0>"
                        - take money qty:<context.message>                       
                        - narrate "format:Herbalism Master Format" "All done. Enjoy." 
                        }
