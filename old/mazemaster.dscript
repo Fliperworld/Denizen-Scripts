@@ -1,4 +1,4 @@
-# This thing handles the dude that sits at the entrance to The Grand Library portal
+# This thing handles the dude that sits at the entrance to the Grand Library portal
 # It was written by Wahrheit and you better believe it
 # @author Wahrheit
 # @version 1.0
@@ -18,7 +18,7 @@
     type: task
     script:
     - teleport npc 'location:<anchor:mazemaster>'
-    - trigger name:proximity toggle:true radius:3
+    - trigger name:proximity toggle:true radius:8
     - flag n@94 mazeclear:1
 #"12 Hour Reset":
 #    type: world
@@ -38,39 +38,27 @@
         on player dies:
         - if <player.location.world> == 'w@prosperus' && <player.name> == <n@94.flag[maze-challenger]> {
           - flag n@94 mazeclear:1
-          - announce "<red><player.name> has been conquered by The Grand Library. It is now clear."
+          - announce "<red><player.name> has been conquered by the Grand Library. It is now clear."
           - flag n@94 maze-challenger:! 
           }
         on player changes world from w@prosperus:
         - if <player.location.world> != 'w@prosperus' && <player.name> == <n@94.flag[maze-challenger]> {
           - flag n@94 mazeclear:1
-          - announce "<red><player.name> has abandoned The Grand Library. It is now clear."
+          - announce "<red><player.name> has abandoned the Grand Library. It is now clear."
           - flag n@94 maze-challenger:! 
           }
-        on home command:
-        - if <player.name> == <n@94.flag[maze-challenger]> {
-          - flag n@94 mazeclear:1
-          - announce "<red><player.name> has abandoned The Grand Library. It is now clear."
-          - flag n@94 maze-challenger:!        
-          }
-        on spawn command:
-        - if <player.name> == <n@94.flag[maze-challenger]> {
-          - flag n@94 mazeclear:1
-          - announce "<red><player.name> has abandoned The Grand Library. It is now clear."
-          - flag n@94 maze-challenger:!        
-          }          
         on player quits:
         - if <player.name> == <n@94.flag[maze-challenger]> {
           - flag n@94 mazeclear:1
           - flag n@94 maze-challenger:!
-          - determine passive "<red><player.name> has vanished into the mists and abandoned The Grand Library. It is now clear."         
+          - determine passive "<red><player.name> has vanished into the mists and abandoned the Grand Library. It is now clear."         
           - flag n@94 "abandoner:->:<player.name>"
           }
         on player joins:
         - if <player.name> == <n@94.flag[abandoner]> {
           - execute as_server "warp <player.name> spawn"
           - flag n@94 "abandoner:<-:<player.name>"
-          - narrate "<red>You disconnected while in The Grand Library and have been returned to spawn."
+          - narrate "<red>You disconnected while in the Grand Library and have been returned to spawn."
           - flag n@94 mazeclear:1
           }
 "Player Reset":
@@ -95,9 +83,9 @@
         'Greeting*':
             proximity trigger:
                 entry:
-                    radius: 3
+                    radius: 5
                     script:
-                    - narrate "format:Librarian Format" "Hello, <player.name>. Welcome to The Grand Library."
+                    - narrate "format:Librarian Format" "Hello, <player.name>. Welcome to the Grand Library."
                     - zap 'step:Entrance'
 #            click trigger:
 #                script:
@@ -111,7 +99,7 @@
                 - zap 'step:Verify'
             proximity trigger:
                 exit:
-                    radius: 3
+                    radius: 5
                     script:
                     - zap 'step:Greeting'
         'Verify':
@@ -130,6 +118,6 @@
                   }
             proximity trigger:
                 exit:
-                    radius: 3
+                    radius: 5
                     script:
                     - zap 'step:Greeting'

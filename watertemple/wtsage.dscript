@@ -1,16 +1,16 @@
 # This thing handles the dude that sits at the entrance to the water temple portal
 # It was written by Wahrheit and you better believe it
 # @author Wahrheit
-# @version 2.0
-# @last-updated December 20 2017
+# @version 1.0
+# @last-updated December 30 2014
 
 "Sage of Water":
     type: assignment
     interact scripts:
-    - 10 Water Temple Challenger
+    - 10 Water Challenger
     actions:
         on assignment:
-        - run "script:Water Gate" instant
+        - run 'script:Water Gate' instant
 "Water Sage Format":
     type: format
     format: "<red>Sage of Water<white><&co> <text>"
@@ -19,41 +19,36 @@
     script:
     - teleport npc 'location:<anchor:wtsage>'
     - trigger name:proximity toggle:true radius:3
-    - flag global watertempleclear:1
-    - flag global watertemple-challenger:!
-    - flag global watertemple-challenger-name:!
+    - flag npc watertempleclear:1
 "Water Temple Tracker":
     type: world
     events:
         on player dies:
-        - if <player.location.world.name> == 'ultimatus' && <player.uuid> == <global.flag[watertemple-challenger]> {
-          - flag global watertempleclear:1
+        - if <player.location.world.name> == 'ultimatus' && <player.name> == <n@184.flag[watertemple-challenger]> {
+          - flag npcid:184 npc watertempleclear:1
           - announce "<red><player.name> has been conquered by the Water Temple. It is now clear."
-          - flag global watertemple-challenger:! 
-          - flag global watertemple-challenger-name:!
+          - flag npcid:184 npc watertemple-challenger:! 
           }
-        on player changes world from ultimatus:
-        - if <player.location.world.name> != 'ultimatus' && <player.uuid> == <global.flag[watertemple-challenger]> {
-          - flag global watertempleclear:1
+        on player changes world from w@ultimatus:
+        - if <player.location.world.name> != 'ultimatus' && <player.name> == <n@184.flag[watertemple-challenger]> {
+          - flag npcid:184 npc watertempleclear:1
           - announce "<red><player.name> has abandoned the Water Temple. It is now clear."
-          - flag global watertemple-challenger:!
-          - flag global watertemple-challenger-name:!
+          - flag npcid:184 npc watertemple-challenger:! 
           }
         on player quits:
-        - if <player.uuid> == <global.flag[watertemple-challenger]> {
-          - flag global watertempleclear:1
-          - flag global watertemple-challenger:!
-          - flag global watertemplechallenger-name:!
+        - if <player.name> == <n@184.flag[watertemple-challenger]> {
+          - flag npcid:184 npc watertempleclear:1
+          - flag npcid:184 npc watertemple-challenger:!
           - determine passive "<red><player.name> has vanished into the mists and abandoned the Water Temple. It is now clear."         
-          - flag global "watertemple-abandoner:->:<player.uuid>"
+          - flag npcid:184 npc "abandoner:->:<player.name>"
           }
         on player joins:
-        - if <player.uuid> == <global.flag[watertemple-abandoner]> {
+        - if <player.name> == <n@184.flag[abandoner]> {
           - execute as_server "warp <player.name> spawn"
-          - flag global "watertemple-abandoner:<-:<player.uuid>"
+          - flag npcid:184 npc "abandoner:<-:<player.name>"
           - narrate "<red>You disconnected while in the Water Temple and have been returned to spawn." 
           }
-"WaterTemple-Reset":
+"Water Reset":
     type: task
     script:
     #J1-9
@@ -82,7 +77,7 @@
     - zap "script:Water Savior" "step:Before Fight"
     - zap "script:Player Approaches" "step:Entry"
     
-"Water Temple Challenger":
+"Water Challenger":
     type: interact
     steps:
         'Greeting*':
@@ -110,19 +105,17 @@
         'Verify':
             click trigger:
                 script:
-                - if <global.flag[watertempleclear]> == 1 {
+                - if <flag.npc:watertempleclear> == 1 {
                   - narrate "format:Water Sage Format" "Very well. I wish you the very best of luck in your efforts."
-                  - flag global watertempleclear:0
-                  - flag global watertemple-challenger:<player.uuid>
-                  - flag global watertemple-challenger-name:<player.name>
-#                  - narrate "Challenger flag set to <global.flag[watertemple-challenger]>"
-#                  - narrate "Challenger name flag set to <global.flag[watertemple-challenger-name]>"
+                  - flag npc watertempleclear:0
+                  - flag npc watertemple-challenger:<player.name>
+                  - narrate "Challenger flag set to <n@184.flag[watertemple-challenger]>"
                   - narrate "<yellow>The Sage of Water begins chanting a spell..."
-                  - run "script:WaterTemple-Reset"
+                  - run "script:Water Reset"
                   - execute as_npc "warp <player.name> watertemple"
                   - announce "<red><player.name> is challenging the Water Temple."}
                   else {
-                  - narrate "format:Water Sage Format" "Sorry, it appears the temple is currently being challenged by <flag.global[watertemple-challenger-name]>. You will have to wait." }
+                  - narrate "format:Water Sage Format" "Sorry, it appears the temple is currently being challenged by <flag.npc:watertemple-challenger>. You will have to wait." }
             proximity trigger:
                 exit:
                     radius: 3

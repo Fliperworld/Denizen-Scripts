@@ -22,16 +22,15 @@
 "Library Win":
     type: task
     script:
-    - flag global mazeclear:1
+    - flag n@94 mazeclear:1
     - announce "<green><player.name> has conquered The Grand Library! It is now clear."
-    - flag global maze-challenger:!
-    - flag global maze-challenger-name:!
+    - flag n@94 maze-challenger:!     
 "Bookkeeper":
     type: interact
     steps:
         'Victory*':
             click trigger:
                 script:
-                - if <player.uuid> == <global.flag[maze-challenger]> {
+                - if <player.name> == <n@94.flag[maze-challenger]> {
                   - run "Library Win"
                   }

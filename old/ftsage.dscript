@@ -1,8 +1,8 @@
 # This thing handles the dude that sits at the entrance to the fire temple portal
 # It was written by Wahrheit and you better believe it
 # @author Wahrheit
-# @version 1.1
-# @last-updated December 30 2014
+# @version 1.0
+# @last-updated September 5 2013
 
 "Sage of Flame":
     type: assignment
@@ -10,7 +10,7 @@
     - 10 Challenger
     actions:
         on assignment:
-        - run 'script:Flame Gate' instant
+        - runtask 'script:Flame Gate' instant
 "Sage Format":
     type: format
     format: "<red>Sage of Flame<white><&co> <text>"
@@ -18,32 +18,32 @@
     type: task
     script:
     - teleport npc 'location:<anchor:ftsage>'
-    - trigger name:proximity toggle:true radius:3
+    - trigger name:proximity toggle:true radius:8
     - flag npc firetempleclear:1
-"Fire Temple Tracker":
+"Temple Tracker":
     type: world
     events:
         on player dies:
-        - if <player.location.world.name> == 'ultimatus' && <player.name> == <n@89.flag[firetemple-challenger]> {
+        - if <player.location.world> != 'w@ultimatus' && <player.name> == <npc[89].flag[firetemple-challenger]> {
           - flag npcid:89 npc firetempleclear:1
           - announce "<red><player.name> has been conquered by the Fire Temple. It is now clear."
           - flag npcid:89 npc firetemple-challenger:! 
           }
         on player changes world from w@ultimatus:
-        - if <player.location.world.name> != 'ultimatus' && <player.name> == <n@89.flag[firetemple-challenger]> {
+        - if <player.location.world> != 'w@ultimatus' && <player.name> == <npc[89].flag[firetemple-challenger]> {
           - flag npcid:89 npc firetempleclear:1
           - announce "<red><player.name> has abandoned the Fire Temple. It is now clear."
           - flag npcid:89 npc firetemple-challenger:! 
           }
         on player quits:
-        - if <player.name> == <n@89.flag[firetemple-challenger]> {
+        - if <player.name> == <npc[89].flag[firetemple-challenger]> {
           - flag npcid:89 npc firetempleclear:1
           - flag npcid:89 npc firetemple-challenger:!
           - determine passive "<red><player.name> has vanished into the mists and abandoned the Fire Temple. It is now clear."         
           - flag npcid:89 npc "abandoner:->:<player.name>"
           }
         on player joins:
-        - if <player.name> == <n@89.flag[abandoner]> {
+        - if <player.name> == <npc[89].flag[abandoner]> {
           - execute as_server "warp <player.name> spawn"
           - flag npcid:89 npc "abandoner:<-:<player.name>"
           - narrate "<red>You disconnected while in the Fire Temple and have been returned to spawn." 
@@ -64,7 +64,7 @@
     # Spawns boss at entry point
     - execute as_server "npc spawn 88 --at 0,119,-30,ultimatus"
     - execute as_server "npc select 88"
-    - execute as_server "npc anchor --assume 'ftboss1'"
+    - execute as_server "npc anchor --assume 'boss-spawn'"
     - execute as_server "npc spawn 87 --at 56,29,-26,ultimatus"
     - execute as_server "npc select 87"
     - execute as_server "npc anchor --assume 'ftminiboss'"
@@ -73,7 +73,6 @@
     - zap "script:Get Out My House" "step:Boss Battle"
     - zap "script:Flame Savior" "step:Before Fight"
     - zap "script:Player Approaches" "step:Entry"
-    - remove <l@0,74,4,ultimatus.find.entities[wither].within[400]>
     
 "Challenger":
     type: interact
@@ -81,7 +80,7 @@
         'Greeting*':
             proximity trigger:
                 entry:
-                    radius: 3
+                    radius: 5
                     script:
                     - narrate "format:Sage Format" "Hello, <player.name>. Welcome to the Altar of Flame."
                     - zap 'step:Entrance'
@@ -97,7 +96,7 @@
                 - zap 'step:Verify'
             proximity trigger:
                 exit:
-                    radius: 3
+                    radius: 5
                     script:
                     - zap 'step:Greeting'
         'Verify':
@@ -107,15 +106,14 @@
                   - narrate "format:Sage Format" "Very well. I wish you the very best of luck in your efforts."
                   - flag npc firetempleclear:0
                   - flag npc firetemple-challenger:<player.name>
-                  - narrate "Flag firetemple-challenger is <n@89.flag[firetemple-challenger]>"
                   - narrate "<yellow>The Sage of Flame begins chanting a spell..."
-                  - run "script:Reset"
+                  - runtask "script:Reset"
                   - execute as_npc "warp <player.name> firetemple"
                   - announce "<red><player.name> is challenging the Fire Temple."}
                   else {
                   - narrate "format:Sage Format" "Sorry, it appears the temple is currently being challenged by <flag.npc:firetemple-challenger>. You will have to wait." }
             proximity trigger:
                 exit:
-                    radius: 3
+                    radius: 5
                     script:
                     - zap 'step:Greeting'
