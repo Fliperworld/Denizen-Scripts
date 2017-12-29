@@ -1,10 +1,9 @@
 # This thing handles the dude that sits at the entrance to The Grand Library portal
-# It was written by Wahrheit and you better believe it
 # @author Wahrheit
 # @version 1.0
-# @last-updated March 9 2014
+# @last-updated July 28 2017
 
-"Maze Master":
+"Grand Librarian":
     type: assignment
     interact scripts:
     - 10 Librarian
@@ -19,74 +18,91 @@
     script:
     - teleport npc 'location:<anchor:mazemaster>'
     - trigger name:proximity toggle:true radius:3
-    - flag n@94 mazeclear:1
+    - flag global mazeclear:1
+    - flag global maze-challenger-name:!
+    - flag global maze-challenger:!
 #"12 Hour Reset":
 #    type: world
 #    events:
 #        on time changes in w@prosperus:
-#        - if <util.date.time.hour> == "0" && !<n@94.flag[resetrun]> {
-#          - run Reset
-#          - flag n@94 resetrun duration:1h
-#          }
-#          else if <util.date.time.hour> == "12" && !<n@94.flag[resetrun]> {
-#          - run Reset
-#          - flag n@94 resetrun duration:1h
-#          }
+#        - if <util.date.time.hour> == "0" && !<global.flag[resetrun]>
+#        {
+#            - run Reset
+#            - flag global resetrun duration:1h
+#        }
+#        - else if <util.date.time.hour> == "12" && !<global.flag[resetrun]>
+#        {
+#            - run Reset
+#            - flag global resetrun duration:1h
+#        }
 "Maze Tracker":
     type: world
     events:
         on player dies:
-        - if <player.location.world> == 'w@prosperus' && <player.name> == <n@94.flag[maze-challenger]> {
-          - flag n@94 mazeclear:1
+        - if <player.location.world> == 'w@prosperus' && <player.uuid> == <global.flag[maze-challenger]>
+        {
+          - flag global mazeclear:1
           - announce "<red><player.name> has been conquered by The Grand Library. It is now clear."
-          - flag n@94 maze-challenger:! 
-          }
-        on player changes world from w@prosperus:
-        - if <player.location.world> != 'w@prosperus' && <player.name> == <n@94.flag[maze-challenger]> {
-          - flag n@94 mazeclear:1
+          - flag global maze-challenger:!
+          - flag global maze-challenger-name:!
+        }
+        on player changes world from prosperus:
+        - if <player.location.world> != 'w@prosperus' && <player.uuid> == <global.flag[maze-challenger]>
+        {
+          - flag global mazeclear:1
           - announce "<red><player.name> has abandoned The Grand Library. It is now clear."
-          - flag n@94 maze-challenger:! 
-          }
+          - flag global maze-challenger:!
+          - flag global maze-challenger-name:!
+        }
         on home command:
-        - if <player.name> == <n@94.flag[maze-challenger]> {
-          - flag n@94 mazeclear:1
+        - if <player.uuid> == <global.flag[maze-challenger]>
+        {
+          - flag global mazeclear:1
           - announce "<red><player.name> has abandoned The Grand Library. It is now clear."
-          - flag n@94 maze-challenger:!        
-          }
+          - flag global maze-challenger:!
+          - flag global maze-challenger-name:!
+        }
         on spawn command:
-        - if <player.name> == <n@94.flag[maze-challenger]> {
-          - flag n@94 mazeclear:1
+        - if <player.uuid> == <global.flag[maze-challenger]>
+        {
+          - flag global mazeclear:1
           - announce "<red><player.name> has abandoned The Grand Library. It is now clear."
-          - flag n@94 maze-challenger:!        
-          }          
+          - flag global maze-challenger:!
+          - flag global maze-challenger-name:!
+        }          
         on player quits:
-        - if <player.name> == <n@94.flag[maze-challenger]> {
-          - flag n@94 mazeclear:1
-          - flag n@94 maze-challenger:!
+        - if <player.uuid> == <global.flag[maze-challenger]>
+        {
+          - flag global mazeclear:1
+          - flag global maze-challenger:!
+          - flag global maze-challenger-name:!
           - determine passive "<red><player.name> has vanished into the mists and abandoned The Grand Library. It is now clear."         
-          - flag n@94 "abandoner:->:<player.name>"
-          }
+          - flag global "maze-abandoner:->:<player.uuid>"
+        }
         on player joins:
-        - if <player.name> == <n@94.flag[abandoner]> {
-          - execute as_server "warp <player.name> spawn"
-          - flag n@94 "abandoner:<-:<player.name>"
-          - narrate "<red>You disconnected while in The Grand Library and have been returned to spawn."
-          - flag n@94 mazeclear:1
-          }
+        - if <player.uuid> == <global.flag[maze-abandoner]>
+        {
+            - execute as_server "warp <player.name> spawn"
+            - flag global "maze-abandoner:<-:<player.uuid>"
+            - narrate "<red>You disconnected while in The Grand Library and have been returned to spawn."
+            - flag global mazeclear:1
+        }
 "Player Reset":
     type: task
     script:
     # Clear the maze
     - teleport npc 'location:<anchor:maze-gen>'
-    - execute as_npc "warp <player.name> library-paste"
+    - execute as_npc "cs maze bookshelf 25 25 4 e"
     - wait 1
-    - execute as_op "/schem load library-blank"
-    - execute as_op "/paste"
+#    - execute as_npc "warp <player.name> library-paste"
+#    - wait 1
+#    - execute as_op "/schem load library-blank"
+#    - execute as_op "/paste"
     - execute as_npc "warp <player.name> library-maze"
-    - execute as_op "cs maze bookshelf 25 25"
-    - execute as_op "region sel library-maze"
-    - execute as_op "/replace glass air"
-    - execute as_op "/sel"    
+#    - execute as_op "cs maze bookshelf 25 25 4"
+#    - execute as_op "region sel library-maze"
+#    - execute as_op "/replace glass air"
+#    - execute as_op "/sel"    
     - teleport npc 'location:<anchor:mazemaster>'
     
 "Librarian":
@@ -117,16 +133,17 @@
         'Verify':
             click trigger:
                 script:
-                - if <flag.npc:mazeclear> == 1 {
+                - if <global.flag[mazeclear]> == 1 {
                   - narrate "format:Librarian Format" "Very well. I wish you the very best of luck in your efforts."
-                  - flag n@94 mazeclear:!
-                  - flag n@94 maze-challenger:<player.name>
+                  - flag global mazeclear:!
+                  - flag global maze-challenger:<player.uuid>
+                  - flag global maze-challenger-name:<player.name>
                   - narrate "<yellow>The Librarian begins chanting a spell..."
                   - run "Player Reset" instant
                   }
                   else {
-                  - narrate "format:Librarian Format" "Sorry, it appears the temple is currently being challenged by <flag.npc:maze-challenger>. You will have to wait."
-                  - narrate "format:Librarian Format" "Debug <flag.npc:mazeclear>"
+                  - narrate "format:Librarian Format" "Sorry, it appears the maze is currently being challenged by <global.flag[maze-challenger-name]>. You will have to wait."
+#                  - narrate "format:Librarian Format" "Debug <global.flag[mazeclear]>"
                   }
             proximity trigger:
                 exit:
