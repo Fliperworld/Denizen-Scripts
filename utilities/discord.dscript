@@ -1,0 +1,19 @@
+"Start Bot":
+  type: world
+  events:
+    on server start:
+      - wait 80s
+      - run "Connect Denizen Bot"
+      - announce to_console "Denizen Bot has successfully loaded"
+"Startup Test":
+  type: task
+  script:
+    - wait 5s
+    - run "Connect Denizen Bot"
+    - announce to_console "Denizen Bot has successfully loaded via the test script"
+"New Player Alert":
+  type: world
+  events:
+    on player logs in for the first time:
+      - run as_server "money create <player.name>"
+      - discord id:sxr message channel:343105813293826059 "<&lt>@187282281688203264<&gt>, **<player.name>** has joined the server for the first time! Say hello in <&lt><&ns>191040977652285450<&gt>!"

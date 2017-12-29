@@ -1,8 +1,7 @@
 # This thing will manage the shooting range, sending carts and such.
-# It was written by Wahrheit and you better believe it
 # @author Wahrheit
-# @version 1.1
-# @last-updated August 7th 2013
+# @version 1.2
+# @last-updated September 30th 2017
 
 "Shooting Range":
     type: assignment
@@ -10,7 +9,7 @@
     - 10 Target Practice
     actions:
         on assignment:
-        - runtask 'script:Slingshot'
+        - run 'script:Slingshot'
 
 "Range Master Format":
     type: format
@@ -19,7 +18,7 @@
 "Slingshot":
     type: task
     script:
-    - teleport npc 'location:<anchor:sr1>'
+    - teleport npc 'location:<npc.anchor[sr1]>'
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
     - trigger name:chat toggle:true cooldown:0.1s radius:3
 
@@ -28,25 +27,33 @@
     events:
         on player destroys minecart:
 #        - announce "Minecart was destroyed!"
-        - if "<npc[68].flag[range-runs] || 0>" > 0
-          && "<player.name>" == "<npc[68].flag[active-player]>"
-          flag npcid:68 npc "minecarts-hit:++"
+        - if "<global.flag[range-runs] || 0>" > 0
+            {
+            - if "<player.name>" == "<global.flag[active-player]>"
+                {
+                - flag global "minecarts-hit:++"
+                }
+            }
 
 "Roll Carts":
     type: task
     script:
-    - if "<npc.flag[range-runs] || 0>" < 10 {
-      - flag npc range-runs:++
-      - switch location:<anchor:Minecart<util.random.int[1].to[5]><util.random.int[1].to[2]>> state:on duration:1
-      - runtask "script:Roll Carts" delay:6 queue:<util.random.uuid> }
-      else {
-      - flag npc range-runs:!
-      - flag npc range-level:!
-      - flag npc range-winnings:<m:<npc.flag[minecarts-hit]>*3>
-      - narrate "format:Range Master Format" "Time's up! You won '<npc.flag[range-winnings]>' gold!"
-      - give money qty:<npc.flag[range-winnings]>
-      - execute as_server "warp <player.name> shootingrange"
-      - zap "script:Target Practice" "step:In Range" }
+    - if "<global.flag[range-runs] || 0>" < 10 
+        {
+        - flag global range-runs:++
+        - switch location:<npc.anchor[Minecart<util.random.int[1].to[5]><util.random.int[1].to[2]>]> state:on duration:0.5
+        - run "script:Roll Carts" delay:6
+        }
+      else
+        {
+        - flag global range-runs:!
+        - flag global range-level:!
+        - flag global range-winnings:<m:<global.flag[minecarts-hit]>*3>
+        - narrate "format:Range Master Format" "Time's up! You won '<global.flag[range-winnings]>' gold!"
+        - give money qty:<global.flag[range-winnings]>
+        - execute as_server "warp <player.name> shootingrange"
+        - zap "script:Target Practice" "step:In Range"
+        }
 
 "Target Practice":
     type: interact
@@ -74,6 +81,6 @@
                 - take money qty:10
                 - narrate "format:Range Master Format" "Okay, you've got 1 minute! Good luck!"
                 - execute as_server "warp <player.name> shootingrange-1"
-                - flag npc active-player:<player.name>
-                - flag npc minecarts-hit:0
-                - runtask "script:Roll Carts"
+                - flag global active-player:<player.name>
+                - flag global minecarts-hit:0
+                - run "script:Roll Carts"

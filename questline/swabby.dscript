@@ -31,7 +31,7 @@
             click trigger:
                 script:
                 - narrate "format:Swabby Format" "If you want to go out and start adventuring, there are boats over on that dock and a train station just above it."
-                - adjust <player> "show_boss_bar:Say '<green>yes<white>' in chat to accept the quest, or '<red>no<white>' to decline."
+                - adjust <player> "show_boss_bar:Say '<green>1<white>' in chat to select the quest, then '<green>yes<white>' accept it, or '<red>no<white>' to decline."
         'Visited':
             proximity trigger:
                 entry:
@@ -45,7 +45,7 @@
             click trigger:
                 script:
                 - narrate "format:Swabby Format" "If you want to go out and start adventuring, there are boats over on that dock and a train station just above it."
-                - adjust <player> "show_boss_bar:Say '<green>yes<white>' in chat to accept the quest, or '<red>no<white>' to decline."
+                - adjust <player> "show_boss_bar:Say '<green>1<white>' in chat to select the quest, then '<green>yes<white>' accept it, or '<red>no<white>' to decline."
         'Visited and Done':
             proximity trigger:
                 entry:
