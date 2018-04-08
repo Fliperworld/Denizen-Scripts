@@ -45,7 +45,8 @@
                         - narrate "format:Acrobatics Master Format" "Okay, let's get you trained up."
                         - execute as_server "addxp <player.name> acrobatics <player.flag[ChosenAmount].mul[100]||0>"
                         - announce to_console "ran command 'addxp <player.name> acrobatics <player.flag[ChosenAmount].mul[100]||0>'"
-                        - take money qty:<context.message>
+                        - take money qty:<player.flag[ChosenAmount]>
+                        - flag player ChosenAmount:!
                         - narrate "format:Acrobatics Master Format" "All done. Enjoy." 
                     }
                     else
