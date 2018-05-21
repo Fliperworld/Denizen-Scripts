@@ -70,4 +70,13 @@
     - wait 40t
     - execute as_player "shock -k <context.args.get[1]>"
     - narrate "<green>Now ban the player."
- 
+"Fill Super Energy":
+    type: command
+    name: fillsuper
+    usage: fillsuper
+    description: Immediately sets your Super energy to 299.
+    permission: denizen.fillsuper
+    permission message: You dare try to wield the powers of the Gods?
+    script:
+    - yaml id:super-counter set energy.<player.uuid>:299
+    - narrate "<green>Super energy set to 299."

@@ -2,7 +2,7 @@
     type: world
     events:
         on player enters bed:
-        - flag server bedcount.<player.world.name>:->:<player>
+        - flag server bedcount.<player.world.name>:->:<player.uuid>
         - if <server.flag[bedcount.<player.world.name>].as_list.size> >= <player.world.players.size.div[2]>
         {
             - adjust <player.world> 'time:600'
@@ -10,4 +10,4 @@
             - flag server bedcount.<player.world.name>:!
         }
         on player leaves bed:
-        - flag server bedcount.<player.world.name>:<-:<player>
+        - flag server bedcount.<player.world.name>:<-:<player.uuid>

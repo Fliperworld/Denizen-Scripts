@@ -1,0 +1,13 @@
+#"Flag On Sethome":
+#    type: world
+#    events:
+#        on command:
+#        - flag server sethome.<player.uuid> true
+#"Check Sethome":
+#    type: world
+#    events:
+#        on player does thing:
+#        - if <server.flag[sethome.<player.uuid>]> = true
+#            {
+#            - do thing
+#            }
