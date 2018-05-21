@@ -9,6 +9,4 @@ Please consider visiting us at mc.summaxr.com - we have a lovely little communit
 
 Below are some YouTube videos demonstrating the use of various scripts.
 
-Shooting Range (shootingrangemaster.dscript): http://www.youtube.com/watch?v=b14VWb0CjKI
-
-Fire Temple (Scripts prefixed with ft): http://www.youtube.com/watch?v=OxJ5tHex5mk
+Super energy system demo: https://www.youtube.com/watch?v=OkRGPiwMwZc
