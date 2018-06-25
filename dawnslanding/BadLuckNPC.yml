@@ -44,7 +44,10 @@
     type: world
     events:
         on mm denizen mechanic:
+        - if <context.skill> == CreateVeteranToken
+        {
             - give VeteranToken quantity:1 to:<context.caster.inventory>
+        }
 
 VeteranToken:
     type: item
