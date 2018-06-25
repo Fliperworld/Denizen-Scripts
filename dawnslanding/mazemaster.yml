@@ -37,6 +37,7 @@
 #        }
 "Maze Tracker":
     type: world
+    debug: false
     events:
         on player dies:
         - if <player.location.world> == 'w@prosperus' && <player.uuid> == <global.flag[maze-challenger]>

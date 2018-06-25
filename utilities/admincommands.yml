@@ -63,11 +63,11 @@
         - queue clear
     }
     - announce "<red>The Gods speak<white>: There's a passage I got memorized. Ezekiel 25:17."
-    - wait 40t
-    - announce "<red>The Gods speak<white>: <&dq>The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness, for he is truly his brother's keeper and the finder of lost children."
     - wait 80t
-    - announce "<red>The Gods speak<white>: And I will strike down upon thee WITH GREAT VENGEANCE AND FURIOUS ANGER THOSE WHO ATTEMPT TO POISON AND DESTROY MY BROTHERS. AND YOU WILL KNOW MY NAME IS THE LORD WHEN I LAY MY VENGEANCE UPON THEE.<&dq>"
-    - wait 40t
+    - announce "<red>The Gods speak<white>: <&dq>The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness, for he is truly his brother's keeper and the finder of lost children."
+    - wait 160t
+    - announce "<red>The Gods speak<white>: And I will strike down upon thee WITH <&l><&o>GREAT VENGEANCE<&r> AND <&l><&o>FURIOUS ANGER<&r> THOSE WHO ATTEMPT TO POISON AND DESTROY MY BROTHERS. AND YOU WILL KNOW MY NAME IS <&l><&n><&o>THE LORD<&r> WHEN I LAY MY VENGEANCE <&l><&o>UPON<&r> THEE.<&dq>"
+    - wait 80t
     - execute as_player "shock -k <context.args.get[1]>"
     - narrate "<green>Now ban the player."
 "Fill Super Energy":

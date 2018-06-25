@@ -42,14 +42,17 @@
                     - announce to_console "player.money is <player.money>"
                     - if <player.flag[ChosenAmount].is[OR_LESS].than[<player.money>]>
                     {
-                       - narrate "format:Alchemy Master Format" "Okay, let's get you trained up."
+                        - narrate "format:Alchemy Master Format" "Okay, let's get you trained up."
                         - execute as_server "addxp <player.name> alchemy <player.flag[ChosenAmount].mul[100]||0>"
                         - announce to_console "ran command 'addxp <player.name> alchemy <player.flag[ChosenAmount].mul[100]||0>'"
                         - take money qty:<player.flag[ChosenAmount]>
                         - flag player ChosenAmount:!
-                       - narrate "format:Alchemy Master Format" "All done. Enjoy." 
-                       }
-                       else narrate "format:Alchemy Master Format" "You don't have that much gold."
+                        - narrate "format:Alchemy Master Format" "All done. Enjoy." 
+                    }
+                    else
+                    {
+                        - narrate "format:Alchemy Master Format" "You don't have that much gold."
+                    }
                     - zap 'step:Player Seen'
                 'Fail':
                     trigger: "/REGEX:.+/"

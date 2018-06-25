@@ -1,0 +1,288 @@
+"Player Login Checker":
+    type: world
+    debug: false
+    events:
+        on player logs in:
+        - if !<server.has_flag[daily-login.<player.uuid>]>
+        {
+            - flag server daily-login-count.<player.uuid>:++
+            - flag player daily-spin-available:1
+            - flag server daily-login.<player.uuid>:1
+            - if <server.flag[daily-login-count.<player.uuid>]> > 28
+            {
+                - flag server daily-login-count.<player.uuid>:28
+            }
+        }
+        - if <player.has_flag[daily-spin-available]>
+        {
+            - wait 4s
+            - narrate "<&a>Your daily login reward is available, <proc[msgcommand].context[<&b>click here or type /dailylogin|dailylogin|<&a>/dailylogin]> <&a>to get it!" targets:<player>
+        }
+        on system time 19:00:
+        - flag server daily-login:!
+        - announce "<&a>Daily server rewards have reset, and will become available when you next log in!"
+
+"DailyLogin":
+    type: command
+    name: dailylogin
+    description: Receive your daily login reward, if available.
+    usage: /dailylogin
+    script:
+    - if <player.has_flag[daily-spin-available]>
+    {
+        - run daily-login-spinner
+        - flag player daily-spin-available:!
+        - narrate "<&a>You are on day <&b><server.flag[daily-login-count.<player.uuid>]><&a> of <&b>28<&a> for daily login rewards!"
+    }
+    else
+    {
+        - narrate "<&c>Sorry, your daily login reward is unavailable!"
+        - narrate "<&c>You are on day <&b><server.flag[daily-login-count.<player.uuid>]><&c> of <&b>28<&c> for daily login rewards!"
+    }
+    - if <server.flag[daily-login-count.<player.uuid>]> >= 28
+    {
+        - flag server daily-login-count.<player.uuid>:0
+    }
+
+VeteranBox:
+    type: item
+    material: blue_shulker_box[flags=li@HIDE_ENCHANTS;nbt=li@BonusBox/Veteran]
+    display name: "<&9>Veteran Bonus Box"
+    lore:
+    - "<&6>A bonus box containing powerful gear!"
+    enchantments:
+    - MENDING:1
+
+EliteBox:
+    type: item
+    material: pink_shulker_box[flags=li@HIDE_ENCHANTS;nbt=li@BonusBox/Elite]
+    display name: "<&d>Elite Bonus Box"
+    lore:
+    - "<&6>A bonus box containing powerful gear!"
+    enchantments:
+    - MENDING:1
+
+daily-login-spinner:
+    type: task
+    debug: false
+    speed: 0
+    script:
+    # Create some cleared lists to work with
+    - define daily-display-list li@
+    - define daily-roll-list li@
+    - define pick li@
+    - flag player cannot_close_inv
+
+    # Create your list of weighted items
+
+    # Days 1-6
+    - if <server.flag[daily-login-count.<player.uuid>]> >= 1 && <server.flag[daily-login-count.<player.uuid>]> <= 6
+    {
+        # A list of items, with their respective weights.
+        - define itemlist li@i@VeteranBox/4|i@VeteranToken[quantity=32]/160|i@VeteranToken[quantity=64]/40|i@diamond[quantity=16]/20|i@diamond[quantity=8]/40|i@emerald_block[quantity=8]/20|i@emerald[quantity=16]/40
+        
+        # Assemble a usable list to take from.
+        - foreach <def[itemlist]>
+        {
+            - define daily-display-list <def[daily-display-list].pad_left[<def[daily-display-list].size.add[<def[value].after_last[/]>]>].with[<def[value].before_last[/]>]>
+        }
+    }
+    else if <server.flag[daily-login-count.<player.uuid>]> == 7
+    {
+        - define itemlist li@i@VeteranToken[quantity=64]/100|
+    }
+    else if <server.flag[daily-login-count.<player.uuid>]> >= 8 && <server.flag[daily-login-count.<player.uuid>]> <= 13
+    {
+        # A list of items, with their respective weights.
+        - define itemlist li@i@VeteranBox/8|i@VeteranToken[quantity=32]/150|i@VeteranToken[quantity=64]/50|i@diamond[quantity=32]/20|i@diamond[quantity=16]/40|i@emerald_block[quantity=16]/20|i@emerald[quantity=32]/40
+        
+        # Assemble a usable list to take from.
+        - foreach <def[itemlist]>
+        {
+            - define daily-display-list <def[daily-display-list].pad_left[<def[daily-display-list].size.add[<def[value].after_last[/]>]>].with[<def[value].before_last[/]>]>
+        }
+    }
+    else if <server.flag[daily-login-count.<player.uuid>]> == 14
+    {
+    }
+    else if <server.flag[daily-login-count.<player.uuid>]> >= 15 && <server.flag[daily-login-count.<player.uuid>]> <= 20
+    {
+        # A list of items, with their respective weights.
+        - define itemlist li@i@VeteranBox/12|i@VeteranToken[quantity=32]/140|i@VeteranToken[quantity=64]/60|i@diamond[quantity=48]/20|i@diamond[quantity=24]/40|i@emerald_block[quantity=24]/20|i@emerald[quantity=48]/40
+        
+        # Assemble a usable list to take from.
+        - foreach <def[itemlist]>
+        {
+            - define daily-display-list <def[daily-display-list].pad_left[<def[daily-display-list].size.add[<def[value].after_last[/]>]>].with[<def[value].before_last[/]>]>
+        }
+    }
+    else if <server.flag[daily-login-count.<player.uuid>]> == 21
+    {
+    }
+    else if <server.flag[daily-login-count.<player.uuid>]> >= 22 && <server.flag[daily-login-count.<player.uuid>]> <= 27
+    {
+        # A list of items, with their respective weights.
+        - define itemlist li@i@VeteranBox/16|i@VeteranToken[quantity=32]/130|i@VeteranToken[quantity=64]/70|i@diamond[quantity=64]/20|i@diamond[quantity=32]/40|i@emerald_block[quantity=32]/20|i@emerald[quantity=64]/40
+        
+        # Assemble a usable list to take from.
+        - foreach <def[itemlist]>
+        {
+            - define daily-display-list <def[daily-display-list].pad_left[<def[daily-display-list].size.add[<def[value].after_last[/]>]>].with[<def[value].before_last[/]>]>
+        }
+    }
+    else if <server.flag[daily-login-count.<player.uuid>]> == 28
+    {
+        # A list of items, with their respective weights.
+        - define itemlist li@i@VeteranBox/200|i@EliteBox/50
+        
+        # Assemble a usable list to take from.
+        - foreach <def[itemlist]>
+        {
+            - define daily-display-list <def[daily-display-list].pad_left[<def[daily-display-list].size.add[<def[value].after_last[/]>]>].with[<def[value].before_last[/]>]>
+        }
+    }
+
+    # Pick 60 random items from the weighted list
+    - define roll-size "60"
+    - define daily-roll-list "<def[daily-display-list].random[60]>"
+    - note "in@generic[title=<&6><&l>Daily Login Reward;size=27;contents=li@i@air|i@air|i@air|i@air|i@emerald|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@emerald]" as:daily-spinner.<player.uuid>
+    - inventory open "d:in@daily-spinner.<player.uuid>"
+    # Roll
+    - repeat 50
+    {
+        - inventory set d:in@daily-spinner.<player.uuid> o:<def[daily-roll-list].get[<def[value]>].to[<def[value].add[8]>]> slot:10
+        - wait <util.e.power[<def[value].mul[0.125].sub[3]>].round_up>t
+    }
+    - if <player.open_inventory.slot[14].scriptname> == VETERANBOX
+    {
+        - run Veteran-Spinner
+        - queue clear
+    }
+    else if <player.open_inventory.slot[14].scriptname> == ELITEBOX
+    {
+        - run Elite-Spinner
+        - queue clear
+    }
+    else
+    {
+        - wait 1s
+        - narrate '<&a>You got <&f><player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>><&a>!'
+        - announce to_console "<player.name> got <player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>>"
+        - give <player.open_inventory.slot[14]>
+        - flag player cannot_close_inv:!
+        - inventory close
+    }
+
+Veteran-Spinner:
+    type: task
+    debug: false
+    speed: 0
+    script:
+    # Create some cleared lists to work with
+    - define veteran-display-list li@
+    - define veteran-roll-list li@
+    - define pick li@
+    - flag player cannot_close_inv
+    - define itemlist li@i@EliteBox/20|<mythicitem@ImbuedSword.get_item>/20|<mythicitem@ImbuedBow.get_item>/20|<mythicitem@ImbuedShield.get_item>/20|<mythicitem@ImbuedHelm.get_item>/20|<mythicitem@ImbuedChest.get_item>/20|<mythicitem@ImbuedLegs.get_item>/20|<mythicitem@ImbuedBoots.get_item>/20|<mythicitem@ImbuedAxe.get_item>/20|<mythicitem@ImbuedPickaxe.get_item>/20|<mythicitem@ImbuedShovel.get_item>/20|<mythicitem@ImbuedHoe.get_item>/20|<mythicitem@ImbuedFishingRod.get_item>/20
+    - foreach <def[itemlist]>
+    {
+        - define veteran-display-list <def[veteran-display-list].pad_left[<def[veteran-display-list].size.add[<def[value].after_last[/]>]>].with[<def[value].before_last[/]>]>
+    }
+    # Pick 60 random items from the weighted list
+    - define roll-size "60"
+    - define veteran-roll-list "<def[veteran-display-list].random[60]>"
+    - note "in@generic[title=<&6><&l>Veteran BONUS ROUND!;size=27;contents=li@i@air|i@air|i@air|i@air|i@emerald|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@emerald]" as:veteran-spinner.<player.uuid>
+    - inventory open "d:in@veteran-spinner.<player.uuid>"
+    # Roll
+    - repeat 50
+    {
+        - inventory set d:in@veteran-spinner.<player.uuid> o:<def[veteran-roll-list].get[<def[value]>].to[<def[value].add[8]>]> slot:10
+        - wait <util.e.power[<def[value].mul[0.125].sub[3]>].round_up>t
+    }
+    - if <player.open_inventory.slot[14].scriptname> == ELITEBOX
+    {
+        - run Elite-Spinner
+    }
+    else
+    {
+        - wait 1s
+        - narrate '<&a>You got <&f><player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>><&a>!'
+        - announce to_console "<player.name> got <player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>>"
+        - give <player.open_inventory.slot[14]>
+        - flag player cannot_close_inv:!
+        - inventory close
+    }
+
+Elite-Spinner:
+    type: task
+    debug: false
+    speed: 0
+    script:
+    # Create some cleared lists to work with
+    - define elite-display-list li@
+    - define elite-roll-list li@
+    - define pick li@
+    - flag player cannot_close_inv
+    - define itemlist li@<mythicitem@BurnishedSword.get_item>/20|<mythicitem@BurnishedBow.get_item>/20|<mythicitem@BurnishedShield.get_item>/20|<mythicitem@BountifulBlade.get_item>/20|<mythicitem@WitheringBlade.get_item>/20|<mythicitem@BurnishedHelm.get_item>/20|<mythicitem@BurnishedChest.get_item>/20|<mythicitem@BurnishedLegs.get_item>/20|<mythicitem@BurnishedBoots.get_item>/20|<mythicitem@BurnishedAxe.get_item>/20|<mythicitem@BurnishedPickaxe.get_item>/20|<mythicitem@BurnishedShovel.get_item>/20|<mythicitem@BurnishedHoe.get_item>/20|<mythicitem@BurnishedFishingRod.get_item>/20
+    - foreach <def[itemlist]>
+    {
+        - define elite-display-list <def[elite-display-list].pad_left[<def[elite-display-list].size.add[<def[value].after_last[/]>]>].with[<def[value].before_last[/]>]>
+    }
+    # Pick 60 random items from the weighted list
+    - define roll-size "60"
+    - define elite-roll-list "<def[elite-display-list].random[60]>"
+    - note "in@generic[title=<&6><&l>Elite BONUS ROUND!;size=27;contents=li@i@air|i@air|i@air|i@air|i@emerald|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@emerald]" as:elite-spinner.<player.uuid>
+    - inventory open "d:in@elite-spinner.<player.uuid>"
+    # Roll
+    - repeat 50
+    {
+        - inventory set d:in@elite-spinner.<player.uuid> o:<def[elite-roll-list].get[<def[value]>].to[<def[value].add[8]>]> slot:10
+        - wait <util.e.power[<def[value].mul[0.125].sub[3]>].round_up>t
+    }
+
+    - wait 1s
+    - narrate '<&a>You got <&f><player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>><&a>!'
+    - announce to_console "<player.name> got <player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>>"
+    - give <player.open_inventory.slot[14]>
+    - flag player cannot_close_inv:!
+    - inventory close
+
+"Spinner Anti-Cheat":
+    type: world
+    debug: false
+    events:
+        on player clicks in inventory:
+        - if <context.inventory> == in@daily-spinner.<player.uuid>
+        {
+            - determine cancelled
+        }
+        - if <context.inventory> == in@veteran-spinner.<player.uuid>
+        {
+            - determine cancelled
+        }
+        - if <context.inventory> == in@elite-spinner.<player.uuid>
+        {
+            - determine cancelled
+        }
+        on player drags in inventory:
+        - if <context.inventory> == in@daily-spinner.<player.uuid>
+        {
+            - determine cancelled
+        }
+        - if <context.inventory> == in@veteran-spinner.<player.uuid>
+        {
+            - determine cancelled
+        }
+        - if <context.inventory> == in@elite-spinner.<player.uuid>
+        {
+            - determine cancelled
+        }
+        on player closes inventory:
+        - if <context.inventory.title.escaped.starts_with[&ss0&ss4&ss8&ss5&ssr]>
+        {
+            - if <player.has_flag[cannot_close_inv]>
+            {
+                - determine cancelled
+            }
+            - flag player cannot_close_inv:!
+        }

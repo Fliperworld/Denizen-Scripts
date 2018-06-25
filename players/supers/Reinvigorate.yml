@@ -1,0 +1,15 @@
+"Reinvigorate Player Target Condition":
+    type: world
+    events:
+        on mm denizen targetcondition:
+        - if <context.condition> == "reinvigorate-targeter"
+        {
+            - if <context.targetentity.is_player.not>
+            {
+                - determine false
+            }
+            - if <context.entity.location.distance[<context.targetentity.location>]> > 20
+            {
+                - determine false
+            }
+        }

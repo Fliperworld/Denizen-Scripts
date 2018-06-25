@@ -1,5 +1,6 @@
 "YAML Anti-Farm Script":
     type: world
+    debug: false
     events:
         on server start:
         - yaml create id:antifarm-flags
@@ -73,6 +74,7 @@
 
 "YAML Anti-Spawner Script":
     type: world
+    debug: false
     events:
         on server start:
         - yaml create id:antispawner-flags
@@ -84,11 +86,24 @@
         {
             - queue clear
         }
+#        - announce to_console "[DEBUG] context.entity.location.find.blocks[mob_spawner].within[8] is <context.entity.location.find.blocks[mob_spawner].within[8]>"
+#        - if <context.entity.location.find.blocks[mob_spawner].within[8]> !== li@
+#        {
+#            - wait 1t
+##            - announce to_console "[DEBUG] Mob spawned within 8 blocks of spawner, reason is <context.reason>"
+#            - yaml id:antispawner-flags set entities.spawned-by-spawner:->:<context.entity.uuid>
+#        }
         - if '<context.reason>' == 'SPAWNER'
         {
             - wait 1t
-            - yaml id:antispawner-flags set entities.spawned-by-spawner.<context.entity.uuid>
+#            - announce to_console "mob with reason SPAWNER spawned"
+            - yaml id:antispawner-flags set entities.spawned-by-spawner:->:<context.entity.uuid>
         }
+#        - if '<context.reason>' == 'CUSTOM'
+#        {
+#            - wait 1t
+#            - yaml id:antispawner-flags set entities.spawned-by-spawner:->:<context.entity.uuid>
+#        }
         
         on entity dies:
         - if <context.entity.is_player>
@@ -96,18 +111,18 @@
             - queue clear
         }
         
-        - if <yaml[antispawner-flags].contains[entities.spawned-by-spawner.<context.entity.uuid>]>
+        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<context.entity.uuid>]>
         {
 #            - announce to_console "[DEBUG] Normal mobs YAML spawner"
             - determine NO_DROPS_OR_XP
-            - yaml id:antispawner-flags set entities.spawned-by-spawner.<context.entity.uuid>:!
+            - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<context.entity.uuid>
         }
         
         on mm denizen death:
         
-        - if <yaml[antispawner-flags].contains[entities.spawned-by-spawner.<context.activemob.uuid>]>
+        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<context.activemob.uuid>]>
         {
 #            - announce to_console "[DEBUG] MythicMobs YAML spawner"
             - determine drops:li@;money:0;exp:0
-            - yaml id antispawner-flags set entities.spawned-by-spawner.<context.activemob.uuid>:!
+            - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<context.activemob.uuid>
         }

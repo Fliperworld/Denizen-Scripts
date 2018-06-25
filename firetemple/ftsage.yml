@@ -24,6 +24,7 @@
     - flag global firetemplechallenger-name:!
 "Fire Temple Tracker":
     type: world
+    debug: false
     events:
         on player dies:
         - if <player.location.world.name> == 'ultimatus' && <player.uuid> == <global.flag[firetemple-challenger]> {

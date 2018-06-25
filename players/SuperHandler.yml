@@ -8,6 +8,7 @@
 
 "Super Reset on Equip":
     type: world
+    debug: false
     events:
         on player equips chestplate:
         - if <context.armor.contains[lore=&ss5&ssoLegendary]>
@@ -21,6 +22,7 @@
 
 "Super Enable on Login":
     type: world
+    debug: false
     events:
         on player joins:
         - wait 20t
@@ -42,6 +44,7 @@
 
 "Damage Super Charge":
     type: world
+    debug: false
     events:
         on player damages entity:
         - if <context.damager.equipment.chestplate.contains[lore=&ss5&ssoLegendary]>
@@ -79,6 +82,7 @@
 
 "Super Bossbar":
     type: world
+    debug: false
     events:
         on player equips chestplate:
         - if <context.armor.contains[lore=&ss5&ssoLegendary]>
@@ -93,6 +97,7 @@
 
 "Super Conditions":
     type: world
+    debug: false
     events:
         on mm denizen condition:
             - if <context.condition> == "super-charged"
@@ -118,6 +123,7 @@
             }
 "Super Activation Mechanic":
     type: world
+    debug: false
     events:
         on mm denizen mechanic:
             - if <context.skill> == "super-activate"
