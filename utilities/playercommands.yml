@@ -133,17 +133,36 @@
     }
     else if <player.in_group[Apprentice]>
     {
-        - execute as_player "ar view Knight Rank"
+        - narrate "<&a>You're currently an <&b>Apprentice<&a>! Here are the requirements to level up to <&b>Knight<&a><&co>"
+        - execute as_player "ar track 1"
+        - execute as_player "ar track 2"
+        - execute as_player "ar track 3"
+        - execute as_player "ar track 4"
+        - execute as_player "ar track 5"
     }
     else if <player.in_group[Squire]>
     {
-        - execute as_player "ar view Apprentice Rank"
+        - narrate "<&a>You're currently a <&b>Squire<&a>! Here are the requirements to level up to <&b>Apprentice<&a><&co>"
+        - execute as_player "ar track 1"
+        - execute as_player "ar track 2"
+        - execute as_player "ar track 3"
+        - execute as_player "ar track 4"
+        - execute as_player "ar track 5"
     }
     else if <player.in_group[Page]>
     {
-        - execute as_player "ar view Squire Rank"
+        - narrate "<&a>You're currently a <&b>Page<&a>! Here are the requirements to level up to <&b>Squire<&a><&co>"
+        - execute as_player "ar track 1"
+        - execute as_player "ar track 2"
+        - execute as_player "ar track 3"
+        - execute as_player "ar track 4"
+        - execute as_player "ar track 5"
     }
     else if <player.in_group[Youngling]>
     {
-         - execute as_player "ar view Page Rank"
+        - narrate "<&a>You're currently a <&b>Youngling<&a>! Here are the requirements to level up to <&b>Page<&a><&co>"
+        - execute as_player "ar track 1"
+        - execute as_player "ar track 2"
+        - execute as_player "ar track 3"
+        - execute as_player "ar track 4"
     }

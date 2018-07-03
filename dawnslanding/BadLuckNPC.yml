@@ -129,26 +129,31 @@ EliteToken:
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive an <&9>Imbued Axe<&f>!"
+                    - announce to_console "<player.name> received an Imbued Axe"
                     - give <mythicitem@ImbuedAxe.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive an <&9>Imbued Pickaxe<&f>!"
+                    - announce to_console "<player.name> received an Imbued Pickaxe"
                     - give <mythicitem@ImbuedPickaxe.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive an <&9>Imbued Shovel<&f>!"
+                    - announce to_console "<player.name> received an Imbued Shovel"
                     - give <mythicitem@ImbuedShovel.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive an <&9>Imbued Hoe<&f>!"
+                    - announce to_console "<player.name> received an Imbued Hoe"
                     - give <mythicitem@ImbuedHoe.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive an <&9>Imbued Fishing Rod<&f>!"
+                    - announce to_console "<player.name> received an Imbued Fishing Rod"
                     - give <mythicitem@ImbuedFishingRod.get_item> quantity:1
                 }
             }
@@ -172,36 +177,43 @@ EliteToken:
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive an <&9>Imbued Sword<&f>!"
+                    - announce to_console "<player.name> received an Imbued Sword"
                     - give <mythicitem@ImbuedSword.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive an <&9>Imbued Bow<&f>!"
+                    - announce to_console "<player.name> received an Imbued Bow"
                     - give <mythicitem@ImbuedBow.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive an <&9>Imbued Shield<&f>!"
+                    - announce to_console "<player.name> received an Imbued Shield"
                     - give <mythicitem@ImbuedShield.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive an <&9>Imbued Helm<&f>!"
+                    - announce to_console "<player.name> received an Imbued Helm"
                     - give <mythicitem@ImbuedHelm.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive an <&9>Imbued Chestplate<&f>!"
+                    - announce to_console "<player.name> received an Imbued Chestplate"
                     - give <mythicitem@ImbuedChest.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a pair of <&9>Imbued Leggings<&f>!"
+                    - announce to_console "<player.name> received Imbued Leggings"
                     - give <mythicitem@ImbuedLegs.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a pair of <&9>Imbued Boots<&f>!"
+                    - announce to_console "<player.name> received Imbued Boots"
                     - give <mythicitem@ImbuedBoots.get_item> quantity:1
                 }
             }
@@ -224,26 +236,31 @@ EliteToken:
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a <&d>Burnished Axe<&f>!"
+                    - announce to_console "<player.name> received a Burnished Axe"
                     - give <mythicitem@BurnishedAxe.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a <&d>Burnished Pickaxe<&f>!"
+                    - announce to_console "<player.name> received a Burnished Pickaxe"
                     - give <mythicitem@BurnishedPickaxe.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a <&d>Burnished Shovel<&f>!"
+                    - announce to_console "<player.name> received a Burnished Shovel"
                     - give <mythicitem@BurnishedShovel.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a <&d>Burnished Hoe<&f>!"
+                    - announce to_console "<player.name> received a Burnished Hoe"
                     - give <mythicitem@BurnishedHoe.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a <&d>Burnished Fishing Rod<&f>!"
+                    - announce to_console "<player.name> received a Burnished Fishing Rod"
                     - give <mythicitem@BurnishedFishingRod.get_item> quantity:1
                 }
             }
@@ -266,46 +283,55 @@ EliteToken:
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a <&d>Burnished Sword<&f>!"
+                    - announce to_console "<player.name> received a Burnished Sword"
                     - give <mythicitem@BurnishedSword.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a <&d>Burnished Bow<&f>!"
+                    - announce to_console "<player.name> received a Burnished Bow"
                     - give <mythicitem@BurnishedBow.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a <&d>Burnished Shield<&f>!"
+                    - announce to_console "<player.name> received a Burnished Shield"
                     - give <mythicitem@BurnishedShield.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a <&d>Burnished Helm<&f>!"
+                    - announce to_console "<player.name> received a Burnished Helm"
                     - give <mythicitem@BurnishedHelm.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a <&d>Burnished Chestplate<&f>!"
+                    - announce to_console "<player.name> received a Burnished Chestplate"
                     - give <mythicitem@BurnishedChest.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a pair of <&d>Burnished Leggings<&f>!"
+                    - announce to_console "<player.name> received a Burnished Leggings"
                     - give <mythicitem@BurnishedLegs.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a pair of <&d>Burnished Boots<&f>!"
+                    - announce to_console "<player.name> received a Burnished Boots"
                     - give <mythicitem@BurnishedBoots.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a <&d>Bountiful Blade<&f>!"
+                    - announce to_console "<player.name> received a Bountiful Blade"
                     - give <mythicitem@BountifulBlade.get_item> quantity:1
                 }
                 - repeat 1
                 {
                     - narrate "format:Arcane Forger Format" "The magics coalesce... and you receive a <&d>Withering Blade<&f>!"
+                    - announce to_console "<player.name> received a Withering Blade"
                     - give <mythicitem@WitheringBlade.get_item> quantity:1
                 }
             }

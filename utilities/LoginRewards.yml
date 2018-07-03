@@ -80,7 +80,7 @@ daily-login-spinner:
     {
         # A list of items, with their respective weights.
         - define itemlist li@i@VeteranBox/4|i@VeteranToken[quantity=32]/160|i@VeteranToken[quantity=64]/40|i@diamond[quantity=16]/20|i@diamond[quantity=8]/40|i@emerald_block[quantity=8]/20|i@emerald[quantity=16]/40
-        
+
         # Assemble a usable list to take from.
         - foreach <def[itemlist]>
         {
@@ -89,7 +89,14 @@ daily-login-spinner:
     }
     else if <server.flag[daily-login-count.<player.uuid>]> == 7
     {
-        - define itemlist li@i@VeteranToken[quantity=64]/100|
+        # A list of items, with their respective weights.
+        - define itemlist li@i@VeteranBox/12|i@VeteranToken[quantity=32]/80|i@VeteranToken[quantity=64]/80|i@diamond[quantity=16]/40|i@diamond[quantity=8]/20|i@emerald_block[quantity=8]/40|i@emerald[quantity=16]/20
+
+        # Assemble a usable list to take from.
+        - foreach <def[itemlist]>
+        {
+            - define daily-display-list <def[daily-display-list].pad_left[<def[daily-display-list].size.add[<def[value].after_last[/]>]>].with[<def[value].before_last[/]>]>
+        }
     }
     else if <server.flag[daily-login-count.<player.uuid>]> >= 8 && <server.flag[daily-login-count.<player.uuid>]> <= 13
     {
@@ -104,6 +111,14 @@ daily-login-spinner:
     }
     else if <server.flag[daily-login-count.<player.uuid>]> == 14
     {
+        # A list of items, with their respective weights.
+        - define itemlist li@i@VeteranBox/16|i@VeteranToken[quantity=32]/50|i@VeteranToken[quantity=64]/150|i@diamond[quantity=32]/40|i@diamond[quantity=16]/20|i@emerald_block[quantity=16]/40|i@emerald[quantity=32]/20
+        
+        # Assemble a usable list to take from.
+        - foreach <def[itemlist]>
+        {
+            - define daily-display-list <def[daily-display-list].pad_left[<def[daily-display-list].size.add[<def[value].after_last[/]>]>].with[<def[value].before_last[/]>]>
+        }
     }
     else if <server.flag[daily-login-count.<player.uuid>]> >= 15 && <server.flag[daily-login-count.<player.uuid>]> <= 20
     {
@@ -118,6 +133,14 @@ daily-login-spinner:
     }
     else if <server.flag[daily-login-count.<player.uuid>]> == 21
     {
+        # A list of items, with their respective weights.
+        - define itemlist li@i@VeteranBox/24|i@VeteranToken[quantity=32]/60|i@VeteranToken[quantity=64]/140|i@diamond[quantity=48]/40|i@diamond[quantity=24]/20|i@emerald_block[quantity=24]/40|i@emerald[quantity=48]/20
+        
+        # Assemble a usable list to take from.
+        - foreach <def[itemlist]>
+        {
+            - define daily-display-list <def[daily-display-list].pad_left[<def[daily-display-list].size.add[<def[value].after_last[/]>]>].with[<def[value].before_last[/]>]>
+        }
     }
     else if <server.flag[daily-login-count.<player.uuid>]> >= 22 && <server.flag[daily-login-count.<player.uuid>]> <= 27
     {
@@ -169,6 +192,7 @@ daily-login-spinner:
         - narrate '<&a>You got <&f><player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>><&a>!'
         - announce to_console "<player.name> got <player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>>"
         - give <player.open_inventory.slot[14]>
+        - note remove as:daily-spinner.<player.uuid>
         - flag player cannot_close_inv:!
         - inventory close
     }
@@ -209,6 +233,7 @@ Veteran-Spinner:
         - narrate '<&a>You got <&f><player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>><&a>!'
         - announce to_console "<player.name> got <player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>>"
         - give <player.open_inventory.slot[14]>
+        - note remove as:veteran-spinner.<player.uuid>
         - flag player cannot_close_inv:!
         - inventory close
     }
@@ -244,6 +269,7 @@ Elite-Spinner:
     - narrate '<&a>You got <&f><player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>><&a>!'
     - announce to_console "<player.name> got <player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>>"
     - give <player.open_inventory.slot[14]>
+    - note remove as:elite-spinner.<player.uuid>
     - flag player cannot_close_inv:!
     - inventory close
 
@@ -278,7 +304,23 @@ Elite-Spinner:
             - determine cancelled
         }
         on player closes inventory:
-        - if <context.inventory.title.escaped.starts_with[&ss0&ss4&ss8&ss5&ssr]>
+        - if <context.inventory> == in@daily-spinner.<player.uuid>
+        {
+            - if <player.has_flag[cannot_close_inv]>
+            {
+                - determine cancelled
+            }
+            - flag player cannot_close_inv:!
+        }
+        - if <context.inventory> == in@veteran-spinner.<player.uuid>
+        {
+            - if <player.has_flag[cannot_close_inv]>
+            {
+                - determine cancelled
+            }
+            - flag player cannot_close_inv:!
+        }
+        - if <context.inventory> == in@elite-spinner.<player.uuid>
         {
             - if <player.has_flag[cannot_close_inv]>
             {

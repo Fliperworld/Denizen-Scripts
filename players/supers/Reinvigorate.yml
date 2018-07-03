@@ -1,24 +1,6 @@
 "Reinvigorate Player Target Condition":
     type: world
     events:
-#        on mm denizen condition:
-#        - narrate "<context.condition>" targets:<context.caster>
-#        - if <context.condition> == "reinvigorate-targeter"
-#        {
-#            - if <context.target.is_player.not>
-#            {
-#                - determine false
-#            }
-#            - if <context.caster.location.distance[<context.target.location>]> > 20
-#            {
-#                - determine false
-#            }
-#            - narrate "<context.target.name>" targets:<context.caster>
-#            - narrate "<context.target.is_player.not>" targets:<context.caster>
-#            - narrate "<context.caster.location.distance[<context.target.location>]>" targets:<context.caster>
-#            - heal <context.target> 30
-#            - narrate "<&a>You imbue your target with a surge of healing magic!" targets:<context.caster>
-#        }
         on mm denizen mechanic:
         - if <context.skill> == "reinvigorate-targeter"
         {
@@ -53,7 +35,7 @@
                 }
                 - if <def[reinvigorate-particle-count]> == 0
                 {
-                    - mmcastplayer "caster:<context.caster>" "target:<context.target>" "skill:Reinvigorate-Heal"
+                    - mmcastplayer caster:<context.caster> target:<context.target> skill:Reinvigorate-Heal
                 }
             }
             - define reinvigorate-particle-count 0

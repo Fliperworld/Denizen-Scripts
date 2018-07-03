@@ -6,100 +6,31 @@
         on shutdown:
         - yaml unload id:arcblade
 
-
-    # This shitty code doesn't work. It causes massive lag and makes mobs attack each other. Use only for entertainment purposes.
-#    events:
-#        on mm denizen mechanic:
-#            - if <context.skill> == "arcblade-first-hit"
-#            {
-#                - announce to_console "arcblade-first-hit firing"
-#                - yaml id:arcblade set mobs-hit.<context.caster.uuid>:!
-#                - yaml id:arcblade set cast-source.<context.target.uuid>:<context.caster.uuid>
-##                - mmskillcast caster:<context.target> target:<context.target.location.find.entities.within[5].exclude[<context.caster.uuid>]> skill:Arcblade-Lightning-Chain1
-##                - announce to_console "mmskillcast caster:<context.target> target:<context.target.location.find.entities.within[5].exclude[<context.caster.uuid>]> skill:Arcblade-Lightning-Chain1"
-#                - foreach <context.target.location.find.entities.within[5].exclude[<context.caster.uuid>]>
-#                {
-#                    - mmskillcast "caster:<context.target>" "target:<def[value]>" "skill:Arcblade-Lightning-Chain1"
-##                    - announce to_console "mmskillcast caster:<context.target> target:<def[value]> skill:Arcblade-Lightning-Chain1"
-#                }
-#                - yaml id:arcblade set mobs-hit.<context.caster.uuid>:|:<context.target.location.find.entities.within[5]>
-#                - wait 5s
-#                - yaml id:arcblade set cast-source.<context.target.uuid>:!
-#            }
-#            - if <context.skill> == "arcblade-lightning-chain1"
-#            {
-#                - announce to_console "arcblade-lightning-chain1 firing"
-#                - define caster <yaml[arcblade].read[cast-source.<context.caster.uuid>]>
-##                - mmskillcast caster:<context.target> target:<context.target.location.find.entities.within[5].exclude[<def[caster]>].exclude[<yaml[arcblade].read[mobs-hit.<def[caster]>]>]> skill:Arcblade-Lightning-Chain2
-#                - foreach <context.target.location.find.entities.within[5].exclude[<def[caster]>].exclude[<yaml[arcblade].read[mobs-hit.<def[caster]>]>]>
-#                {
-#                    - mmskillcast "caster:<context.target>" "target:<def[value]>" "skill:Arcblade-Lightning-Chain2"
-#                    #- announce to_console "mmskillcast caster:<context.target> target:<def[value]> skill:Arcblade-Lightning-Chain2"
-#                }
-#                - yaml id:arcblade set mobs-hit.<def[caster].uuid>:|:<context.target.location.find.entities.within[5]>
-#                - yaml id:arcblade set cast-source.<context.target.uuid>:<def[caster]>
-#            }
-#            - if <context.skill> == "arcblade-lightning-chain2"
-#            {
-#                - announce to_console "arcblade-lightning-chain2 firing"
-#                - define caster <yaml[arcblade].read[cast-source.<context.caster.uuid>]>
-##                - mmskillcast caster:<context.target> target:<context.target.location.find.entities.within[5].exclude[<def[caster]>].exclude[<yaml[arcblade].read[mobs-hit.<def[caster]>]>]> skill:Arcblade-Lightning-Chain3
-#                - foreach <context.target.location.find.entities.within[5].exclude[<def[caster]>].exclude[<yaml[arcblade].read[mobs-hit.<def[caster]>]>]>
-#                {
-#                    - mmskillcast "caster:<context.target>" "target:<def[value]>" "skill:Arcblade-Lightning-Chain3"
-##                    - announce to_console "mmskillcast caster:<context.target> target:<def[value]> skill:Arcblade-Lightning-Chain3"
-#                }
-##                - yaml id:arcblade set mobs-hit.<def[caster].uuid>:|:<context.target.location.find.entities.within[5]>
-##                - yaml id:arcblade set cast-source.<context.target.uuid>:<def[caster]>
-#                - wait 5s
-#                - yaml id:arcblade set cast-source.<context.target.uuid>:!
-#            }
-##            - if <context.skill> == "arcblade-lightning-chain3"
-##            {
-##                - announce to_console "arcblade-lightning-chain3 firing"
-##                - define caster <yaml[arcblade].read[cast-source.<context.caster.uuid>]>
-##                - mmskillcast caster:<context.target> target:<context.target.location.find.entities.within[5].exclude[<def[caster]>].exclude[<yaml[arcblade].read[mobs-hit.<def[caster]>].as_list>]> skills:Arcblade-Lightning-Chain
-##            }
-#            - if <context.skill> == "arcblade-print-test"
-#            {
-##                - announce to_console "<context.target.location.find.entities[zombie|creeper|skeleton|witch|spider|CAVE_SPIDER|CREEPER|WITHER|Vex].within[5]>"
-##                - announce to_console "<context.target.location.find.entities.within[5]>"
-#                - announce to_console "<context.caster.uuid>"
-#            }
-
-"Arcblade Task Runner":
+"Arcblade Chain":
     type: world
     events:
         on mm denizen mechanic:
-            - if <context.skill> == "arcblade-task-runner"
-            {
-                - run "Arcblade Task" def:<context.target>|5
-                - announce to_console "Arcblade event fired"
-            }
-
-"Arcblade Task":
-    type: task
-    speed: 0
-    script:
-    # You need to define what targets the Arcblade can hit. These are using the Bukkit Entity_Type enum, found here
-    # https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html
-    - announce to_console "Arcblade task run"
-    - define validtargets zombie|creeper|skeleton|witch|spider|CAVE_SPIDER|CREEPER|WITHER|Vex
-    - define targetlist li@%1%
-    - define chain 3
-    - repeat <def[chain]>
-    {
-        - define last <def[targetlist].last>
-        - define next <def[last].location.find.entities[%validtargets%].within[%2%].exclude[%targetlist%].first>
-        - announce to_console "%next%"
-        - define targetlist <def[targetlist].include[%next%]>
-    }
-    - foreach <def[targetlist].exclude[%1%]>
-    {
-        # - playeffect <def[value].location.add[0,1,0]> effect:redstone data:0 visibility:50 quantity:10 offset:0.05
-        - define previous <def[targetlist].get[<def[targetlist].find[%value%].sub[1]>]>
-        - foreach <def[previous].location.points_between[<def[value].location>].distance[0.1]>
+        - if <context.skill> == "arcblade-task-runner"
         {
-            - playeffect <def[value]> effect:magic_Crit data:0 visibility:50 quantity:1 offset:0.1
+            - define L1 <context.target.location.find.entities.within[10].exclude[<c.caster>|<c.target>].get[1].to[5]>
+            - if <def[L1].size> == 0 queue clear
+            - define L1_dist <def[L1].last.location.distance[<c.target.location>]>
+            - define L2 li@
+            - foreach <def[L1]>
+            {
+                - define L2 <def[L2].include[<def[value].location.find.entities.within[10].exclude[<def[L1].include[<c.caster>|<c.target>]>].filter[location.distance[<c.target.location>].is[MORE].than[<def[L1_dist]>]]>]>
+            }
+            - define L2 <def[L2].deduplicate.get[1].to[6]>
+            - foreach <def[L1]>
+            {
+                - define ent <def[value]>
+                - playeffect <c.target.location.points_between[<def[ent].location>].distance[0.1]> effect:villager_happy offset:0,0,0
+                - repeat 2
+                {
+                    - if <def[L2].size> == 0 queue clear
+                    - define L2 <def[L2].sort_by_number[location.distance[<def[ent].location>]]>
+                    - playeffect <def[ent].location.points_between[<def[L2].get[1].location>].distance[0.1]> effect:villager_happy offset:0,0,0
+                    - define L2 <def[L2].remove[1]>
+                }
+            }
         }
-    }

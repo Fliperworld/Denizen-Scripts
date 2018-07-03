@@ -40,6 +40,10 @@
     debug: false
     events:
         on player dies:
+        - if !<global.flag[maze-challenger]>
+        {
+            - queue clear
+        }
         - if <player.location.world> == 'w@prosperus' && <player.uuid> == <global.flag[maze-challenger]>
         {
           - flag global mazeclear:1
