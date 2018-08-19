@@ -2,15 +2,21 @@
     type: world
     debug: false
     events:
-        on player logs in:
+        on player joins:
+        - announce to_console "Checking if player <player.name> has daily login flag, flag is <server.flag[daily-login.<player.uuid>]>"
         - if !<server.has_flag[daily-login.<player.uuid>]>
         {
+            - announce to_console "Player <player.name> daily login flag did not exist, running "
+            - announce to_console "Increasing login count for <player.name>, current count <server.flag[daily-login-count.<player.uuid>]>"
             - flag server daily-login-count.<player.uuid>:++
+            - announce to_console "New login count for <player.name> is <server.flag[daily-login-count.<player.uuid>]>"
             - flag player daily-spin-available:1
             - flag server daily-login.<player.uuid>:1
+            - announce to_console "Flagged daily spin available and login used, checking if login above 28 - current count for <player.name> is <server.flag[daily-login-count.<player.uuid>]>"
             - if <server.flag[daily-login-count.<player.uuid>]> > 28
             {
-                - flag server daily-login-count.<player.uuid>:28
+                - announce to_console "Daily login count for <player.name> above 28, setting to 1"
+                - flag server daily-login-count.<player.uuid>:1
             }
         }
         - if <player.has_flag[daily-spin-available]>
@@ -20,7 +26,8 @@
         }
         on system time 19:00:
         - flag server daily-login:!
-        - announce "<&a>Daily server rewards have reset, and will become available when you next log in!"
+        - announce "<&a>Daily server rewards have reset and will become available when you next log in!"
+        - discord id:sxr message channel:343105813293826059 "<&lt><&at><&amp>223441207341219840<&gt>, daily login rewards have been reset!"
 
 "DailyLogin":
     type: command
@@ -30,8 +37,8 @@
     script:
     - if <player.has_flag[daily-spin-available]>
     {
-        - run daily-login-spinner
         - flag player daily-spin-available:!
+        - run daily-login-spinner
         - narrate "<&a>You are on day <&b><server.flag[daily-login-count.<player.uuid>]><&a> of <&b>28<&a> for daily login rewards!"
     }
     else
@@ -46,6 +53,7 @@
 
 VeteranBox:
     type: item
+    debug: false
     material: blue_shulker_box[flags=li@HIDE_ENCHANTS;nbt=li@BonusBox/Veteran]
     display name: "<&9>Veteran Bonus Box"
     lore:
@@ -55,6 +63,7 @@ VeteranBox:
 
 EliteBox:
     type: item
+    debug: false
     material: pink_shulker_box[flags=li@HIDE_ENCHANTS;nbt=li@BonusBox/Elite]
     display name: "<&d>Elite Bonus Box"
     lore:
@@ -71,7 +80,7 @@ daily-login-spinner:
     - define daily-display-list li@
     - define daily-roll-list li@
     - define pick li@
-    - flag player cannot_close_inv
+    - flag <player> cannot_close_inv:1
 
     # Create your list of weighted items
 
@@ -278,53 +287,56 @@ Elite-Spinner:
     debug: false
     events:
         on player clicks in inventory:
-        - if <context.inventory> == in@daily-spinner.<player.uuid>
+        - if <context.inventory.notable_name||null> == daily-spinner.<player.uuid>
         {
             - determine cancelled
         }
-        - if <context.inventory> == in@veteran-spinner.<player.uuid>
+        else if <context.inventory.notable_name||null> == veteran-spinner.<player.uuid>
         {
             - determine cancelled
         }
-        - if <context.inventory> == in@elite-spinner.<player.uuid>
+        else if <context.inventory.notable_name||null> == elite-spinner.<player.uuid>
         {
             - determine cancelled
         }
         on player drags in inventory:
-        - if <context.inventory> == in@daily-spinner.<player.uuid>
+        - if <context.inventory.notable_name||null> == daily-spinner.<player.uuid>
         {
             - determine cancelled
         }
-        - if <context.inventory> == in@veteran-spinner.<player.uuid>
+        else if <context.inventory.notable_name||null> == veteran-spinner.<player.uuid>
         {
             - determine cancelled
         }
-        - if <context.inventory> == in@elite-spinner.<player.uuid>
+        else if <context.inventory.notable_name||null> == elite-spinner.<player.uuid>
         {
             - determine cancelled
         }
         on player closes inventory:
-        - if <context.inventory> == in@daily-spinner.<player.uuid>
+        - if <context.inventory.notable_name||null> == daily-spinner.<player.uuid>
         {
             - if <player.has_flag[cannot_close_inv]>
             {
-                - determine cancelled
+                - wait 1t
+                - inventory open d:in@daily-spinner.<player.uuid>
             }
             - flag player cannot_close_inv:!
         }
-        - if <context.inventory> == in@veteran-spinner.<player.uuid>
+        else if <context.inventory.notable_name||null> == veteran-spinner.<player.uuid>
         {
             - if <player.has_flag[cannot_close_inv]>
             {
-                - determine cancelled
+                - wait 1t
+                - inventory open d:in@veteran-spinner.<player.uuid>
             }
             - flag player cannot_close_inv:!
         }
-        - if <context.inventory> == in@elite-spinner.<player.uuid>
+        else if <context.inventory.notable_name||null> == elite-spinner.<player.uuid>
         {
             - if <player.has_flag[cannot_close_inv]>
             {
-                - determine cancelled
+                - wait 1t
+                - inventory open d:elite-spinner.<player.uuid>
             }
             - flag player cannot_close_inv:!
         }

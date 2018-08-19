@@ -78,9 +78,10 @@
     events:
         on server start:
         - yaml create id:antispawner-flags
+        - yaml id:antispawner-flags set entities.spawned-by-spawner:!
         on shutdown:
         - yaml unload id:antispawner-flags
-        
+
         on entity spawns:
         - if <context.entity.is_player>
         {
@@ -97,7 +98,8 @@
         {
             - wait 1t
 #            - announce to_console "mob with reason SPAWNER spawned"
-            - yaml id:antispawner-flags set entities.spawned-by-spawner:->:<context.entity.uuid>
+            - yaml id:antispawner-flags set entities.spawned-by-spawner:+:<context.entity.uuid>
+#            - announce to_console <context.entity.uuid>
         }
 #        - if '<context.reason>' == 'CUSTOM'
 #        {
@@ -106,16 +108,18 @@
 #        }
         
         on entity dies:
-        - if <context.entity.is_player>
+        - define entity <context.entity>
+        - if <def[entity].is_player>
         {
             - queue clear
         }
         
-        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<context.entity.uuid>]>
+        #- announce to_console <def[entity].uuid>
+        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].as_list.contains[<def[entity].uuid>]>
         {
 #            - announce to_console "[DEBUG] Normal mobs YAML spawner"
             - determine NO_DROPS_OR_XP
-            - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<context.entity.uuid>
+            - yaml id:antispawner-flags set entities.spawned-by-spawner:-:<def[entity].uuid>
         }
         
         on mm denizen death:
@@ -124,5 +128,5 @@
         {
 #            - announce to_console "[DEBUG] MythicMobs YAML spawner"
             - determine drops:li@;money:0;exp:0
-            - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<context.activemob.uuid>
+            - yaml id:antispawner-flags set entities.spawned-by-spawner:-:<context.activemob.uuid>
         }

@@ -32,8 +32,8 @@
     permission message: You dare try to wield the powers of the Gods?
     script:
     - inventory clear
-    - give wood_axe 1 player:<player>
-    - give compass 1 player:<player>
+    - give wood_axe player:<player>
+    - give compass player:<player>
 "Pulp Fiction Ban 1":
     type: command
     name: banpf-1

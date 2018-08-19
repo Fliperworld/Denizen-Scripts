@@ -1,10 +1,11 @@
 "Reinvigorate Player Target Condition":
+    debug: false
     type: world
     events:
         on mm denizen mechanic:
         - if <context.skill> == "reinvigorate-targeter"
         {
-            - define Reinvigorate-Cost 100
+            - define cost 100
             - if <context.targettype> != "ENTITY"
             {
                 - determine false
@@ -22,7 +23,7 @@
 #            - narrate "Distance between caster and target: <context.caster.location.distance[<context.target.location>]>" targets:<context.caster>
 #            - heal <context.target> 30
             - narrate "<&a>You imbue <&b><context.target.name><&a> with a surge of healing magic!" targets:<context.caster>
-            - yaml id:super-counter set energy.<context.caster.uuid>:<yaml[super-counter].read[energy.<context.caster.uuid>].sub[<def[Reinvigorate-Cost]>]>
+            - yaml id:super-counter set energy.<context.caster.uuid>:<yaml[super-counter].read[energy.<context.caster.uuid>].sub[<def[cost]>]>
 #            - narrate "mmskillcast caster:<context.caster> target:<context.target> skill:Reinvigorate-Heal" targets:<context.caster>
             - define reinvigorate-particle-count 40
             - repeat 40

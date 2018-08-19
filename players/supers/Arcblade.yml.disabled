@@ -1,6 +1,5 @@
 "Arcblade YAML Handler":
     type: world
-    debuge: false
     events:
         on server start:
         - yaml create id:arcblade
@@ -9,7 +8,6 @@
 
 "Arcblade Chain":
     type: world
-    debug: false
     events:
         on mm denizen mechanic:
         - if <context.skill> == "arcblade-task-runner"

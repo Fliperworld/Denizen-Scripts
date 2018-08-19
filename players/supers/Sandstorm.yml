@@ -1,0 +1,50 @@
+"Sandstorm Cast":
+    type: world
+    debug: false
+    events:
+        on mm denizen mechanic:
+        - if <context.skill> == "sandstorm-cast"
+        {
+            - define caster <context.caster>
+            - define location <context.caster.location>
+            - define duration 20
+            - define super-passive-spending 4
+            - define super-max-energy 300
+            - define wait 1
+            - define duration-calculated <def[super-max-energy].div[<def[duration]>].sub[<def[super-passive-spending]>].div[20].mul[<def[wait]>]>
+            - if <def[caster].as_player.has_flag[sandstorm-activated]>
+            {
+#                - narrate "Caster already had the flag" targets:<def[caster]>
+                - queue clear
+            }
+            - flag <def[caster]> sandstorm-activated:1
+            - define radius 10
+            - define angle-inc 10
+            - define radians <def[angle-inc].to_radians>
+            - define edge l@<def[radius]>,0,0
+            - define point-number 20
+            - define amplitude 3
+            - while <yaml[super-counter].read[energy.<context.caster.uuid>].is[more].than[0]>
+            {
+                - yaml id:super-counter set energy.<context.caster.uuid>:<yaml[super-counter].read[energy.<context.caster.uuid>].sub[<def[duration-calculated]>]>
+                - cast slow duration:5 power:4 <def[location].find.entities.within[10].exclude[<def[caster]>]>
+                - define edge <def[edge].rotate_around_y[<def[radians]>]>
+                - define perp <def[edge].rotate_around_y[<util.pi.div[4]>].div[<def[radius]>].mul[<def[amplitude]>]>
+                - define edge-plus <def[location].add[<def[edge]>]>
+                - define edge-minus <def[location].sub[<def[edge]>]>
+                - define list li@
+                - foreach <def[edge-minus].points_between[<def[edge-plus]>].distance[<def[radius].div[<def[point-number]>]>]>
+                {
+                    - define offset <def[loop_index].mul[<util.pi>].div[<def[point-number]>].sin>
+                    - define sin-angle <def[loop_index].mul[<def[radius]>].sin>
+                    - define list <def[list].include[<def[value].add[<def[perp].mul[<def[offset]>]>]>]>
+                }
+                - playeffect <def[list]> effect:blockcrack_12 quantity:12 offset:2,1,2 visibility:100
+                - foreach <def[location].find.entities.within[10].exclude[<def[caster]>]>
+                {
+                    - adjust <def[value]> velocity:<def[value].location.face[<def[location]>].direction.vector.div[8]>
+                }
+                - wait 1t
+            }
+            - flag <def[caster]> sandstorm-activated:!
+        }
