@@ -1,26 +1,30 @@
 "Champion Handler":
     type: world
-    debug: false
+    debug: true
     events:
         on server start:
         - flag server champion-spawner-avenfeld:0
+        - flag server champion-recent-avenfeld:0
         - flag server champion-spawner-heavens:0
+        - flag server champion-recent-heavens:0
         - flag server champion-spawner-prosperus_nether:0
+        - flag server champion-recent-prosperus_nether:0
         - flag server champion-spawner-prosperus_the_end:0
+        - flag server champion-recent-prosperus_the_end:0
 
         on entity killed by player in avenfeld:
-        # Elite
-        - define world avenfeld
-        - if <context.entity.name.starts_with[<&9>]>
-        {
-            - flag server champion-spawner-<def[world]>:+:5 duration:30m
-        }
-        else if <context.entity.name.starts_with[<&d>]>
         # Veteran
+        - define world avenfeld
+        - if <context.entity.name.starts_with[<&9>]||null>
         {
             - flag server champion-spawner-<def[world]>:+:1 duration:30m
         }
-        - if <server.flag[champion-spawner-<def[world]>]> >= 300 && !<server.flag[champion-recent-<def[world]>]>
+        else if <context.entity.name.starts_with[<&d>]||null>
+        # Elite
+        {
+            - flag server champion-spawner-<def[world]>:+:5 duration:30m
+        }
+        - if <server.flag[champion-spawner-<def[world]>]> >= 500 && !<server.flag[champion-recent-<def[world]>]>
         {
             - title "title:<yellow>CHAMPION SUMMONED" "subtitle:Prepare for battle!" fade_in:1s stay:2s fade_out:1s targets:<w@<def[world]>.players>
             - flag server champion-spawner-<def[world]>:0
@@ -29,25 +33,25 @@
             - strike no_damage <def[location]>
             - random
             {
-                - mmspawnmob mobtype:Umbra <def[location]> world:<def[world]>
-                - mmspawnmob mobtype:Toxus <def[location]> world:<def[world]>
+                - mmspawnmob mobtype:Umbra <def[location].add[0,1,0]> world:<def[world]>
+                - mmspawnmob mobtype:Toxus <def[location].add[0,1,0]> world:<def[world]>
             }
             - playeffect <def[location]> effect:EXPLOSION_HUGE visibility:500 quantity:50 offset:2.0,2.0,2.0
             - playsound <def[location]> sound:ENTITY_GENERIC_EXPLODE volume:1.0
         }
         on entity killed by player in heavens:
-        # Elite
-        - define world heavens
-        - if <context.entity.name.starts_with[<&9>]>
-        {
-            - flag server champion-spawner-<def[world]>:+:5 duration:30m
-        }
-        else if <context.entity.name.starts_with[<&d>]>
         # Veteran
+        - define world heavens
+        - if <context.entity.name.starts_with[<&9>]||null>
         {
             - flag server champion-spawner-<def[world]>:+:1 duration:30m
         }
-        - if <server.flag[champion-spawner-<def[world]>]> >= 300 && !<server.flag[champion-recent-<def[world]>]>
+        else if <context.entity.name.starts_with[<&d>]||null>
+        # Elite
+        {
+            - flag server champion-spawner-<def[world]>:+:5 duration:30m
+        }
+        - if <server.flag[champion-spawner-<def[world]>]> >= 500 && !<server.flag[champion-recent-<def[world]>]>
         {
             - title "title:<yellow>CHAMPION SUMMONED" "subtitle:Prepare for battle!" fade_in:1s stay:2s fade_out:1s targets:<w@<def[world]>.players>
             - flag server champion-spawner-<def[world]>:0
@@ -56,25 +60,25 @@
             - strike no_damage <def[location]>
             - random
             {
-                - mmspawnmob mobtype:Umbra <def[location]> world:<def[world]>
-                - mmspawnmob mobtype:Toxus <def[location]> world:<def[world]>
+                - mmspawnmob mobtype:Umbra <def[location].add[0,1,0]> world:<def[world]>
+                - mmspawnmob mobtype:Toxus <def[location].add[0,1,0]> world:<def[world]>
             }
             - playeffect <def[location]> effect:EXPLOSION_HUGE visibility:500 quantity:50 offset:2.0,2.0,2.0
             - playsound <def[location]> sound:ENTITY_GENERIC_EXPLODE volume:1.0
         }
         on entity killed by player in prosperus_nether:
-        # Elite
-        - define world prosperus_nether
-        - if <context.entity.name.starts_with[<&9>]>
-        {
-            - flag server champion-spawner-<def[world]>:+:5 duration:30m
-        }
-        else if <context.entity.name.starts_with[<&d>]>
         # Veteran
+        - define world prosperus_nether
+        - if <context.entity.name.starts_with[<&9>]||null>
         {
             - flag server champion-spawner-<def[world]>:+:1 duration:30m
         }
-        - if <server.flag[champion-spawner-<def[world]>]> >= 300 && !<server.flag[champion-recent-<def[world]>]>
+        else if <context.entity.name.starts_with[<&d>]||null>
+        # Elite
+        {
+            - flag server champion-spawner-<def[world]>:+:5 duration:30m
+        }
+        - if <server.flag[champion-spawner-<def[world]>]> >= 500 && !<server.flag[champion-recent-<def[world]>]>
         {
             - title "title:<yellow>CHAMPION SUMMONED" "subtitle:Prepare for battle!" fade_in:1s stay:2s fade_out:1s targets:<w@<def[world]>.players>
             - flag server champion-spawner-<def[world]>:0
@@ -83,8 +87,8 @@
             - strike no_damage <def[location]>
             - random
             {
-                - mmspawnmob mobtype:Umbra <def[location]> world:<def[world]>
-                - mmspawnmob mobtype:Toxus <def[location]> world:<def[world]>
+                - mmspawnmob mobtype:Umbra <def[location].add[0,1,0]> world:<def[world]>
+                - mmspawnmob mobtype:Toxus <def[location].add[0,1,0]> world:<def[world]>
             }
             - playeffect <def[location]> effect:EXPLOSION_HUGE visibility:500 quantity:50 offset:2.0,2.0,2.0
             - playsound <def[location]> sound:ENTITY_GENERIC_EXPLODE volume:1.0
@@ -92,16 +96,16 @@
         on entity killed by player in prosperus_the_end:
         # Elite
         - define world prosperus_the_end
-        - if <context.entity.name.starts_with[<&9>]>
+        - if <context.entity.name.starts_with[<&9>]||null>
         {
             - flag server champion-spawner-<def[world]>:+:5 duration:30m
         }
-        else if <context.entity.name.starts_with[<&d>]>
+        else if <context.entity.name.starts_with[<&d>]||null>
         # Veteran
         {
             - flag server champion-spawner-<def[world]>:+:1 duration:30m
         }
-        - if <server.flag[champion-spawner-<def[world]>]> >= 300 && !<server.flag[champion-recent-<def[world]>]>
+        - if <server.flag[champion-spawner-<def[world]>]> >= 500 && !<server.flag[champion-recent-<def[world]>]>
         {
             - title "title:<yellow>CHAMPION SUMMONED" "subtitle:Prepare for battle!" fade_in:1s stay:2s fade_out:1s targets:<w@<def[world]>.players>
             - flag server champion-spawner-<def[world]>:0
@@ -110,8 +114,8 @@
             - strike no_damage <def[location]>
             - random
             {
-                - mmspawnmob mobtype:Umbra <def[location]> world:<def[world]>
-                - mmspawnmob mobtype:Toxus <def[location]> world:<def[world]>
+                - mmspawnmob mobtype:Umbra <def[location].add[0,1,0]> world:<def[world]>
+                - mmspawnmob mobtype:Toxus <def[location].add[0,1,0]> world:<def[world]>
             }
             - playeffect <def[location]> effect:EXPLOSION_HUGE visibility:500 quantity:50 offset:2.0,2.0,2.0
             - playsound <def[location]> sound:ENTITY_GENERIC_EXPLODE volume:1.0

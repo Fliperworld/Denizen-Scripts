@@ -19,6 +19,7 @@
 ## Gem NBT
 # gem_type (VALUE) | The type of a gem, e.g. "attack"/"defense"/"utility"
 # gem_specific (VALUE) | The actual gem e.g. "crit_chance"/"health_on_hit"/"speed_on_hit"
+# gem_attributes (LIST) | List of nbt_attributes to be applied to the item on adding the gem. TK / Incomplete
 
 
 nbt_craft_prevention:

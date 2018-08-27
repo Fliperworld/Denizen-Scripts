@@ -41,7 +41,7 @@
                 }
                 - repeat 1
                 {
-                    - announce "<&a>You can discover and travel to magical warp points throughout the server! View your unlocked warps with <&b>/ftw<&a> and travel to any of them for the listed price in gold with <&b>/ftw <&gt>warpname<&lt>"
+                    - announce "<&a>You can discover and travel to magical warp points throughout the server! View your unlocked warps with <&b>/ftw<&a> and travel to any of them for the listed price in gold with <&b>/ftw <&lt>warpname<&gt>"
                 }
 #                - repeat 1
 #                {
