@@ -109,7 +109,7 @@
             }
             - if <context.condition> == "super-activated"
             {
-                - if <yaml[super-counter].read[super-activated.<context.entity.uuid>]> == 0
+                - if <yaml[super-counter].read[super-activated.<context.entity.uuid>]||0> == 0
                 {
                     - determine false
                 }

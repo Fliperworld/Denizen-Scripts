@@ -187,20 +187,26 @@ daily-login-spinner:
     }
     - if <player.open_inventory.slot[14].scriptname> == VETERANBOX
     {
+        - flag player cannot_close_inv:!
+        - inventory close
+        - note remove as:daily-spinner.<player.uuid>
         - run Veteran-Spinner
         - queue clear
     }
     else if <player.open_inventory.slot[14].scriptname> == ELITEBOX
     {
+        - flag player cannot_close_inv:!
+        - inventory close
+        - note remove as:daily-spinner.<player.uuid>
         - run Elite-Spinner
         - queue clear
     }
     else
     {
         - wait 1s
-        - narrate '<&a>You got <&f><player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>><&a>!'
-        - announce to_console "<player.name> got <player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>>"
-        - give <player.open_inventory.slot[14]>
+        - narrate "<&a>You got <&f><def[daily-roll-list].get[54].display||<def[daily-roll-list].get[54].formatted.to_titlecase>><&a>!"
+        - announce to_console "<player.name> got <def[daily-roll-list].get[54].display||<def[daily-roll-list].get[54].formatted.to_titlecase>>"
+        - give <def[daily-roll-list].get[54]>
         - note remove as:daily-spinner.<player.uuid>
         - flag player cannot_close_inv:!
         - inventory close
@@ -208,14 +214,14 @@ daily-login-spinner:
 
 Veteran-Spinner:
     type: task
-    debug: false
+    debug: true
     speed: 0
     script:
     # Create some cleared lists to work with
     - define veteran-display-list li@
     - define veteran-roll-list li@
     - define pick li@
-    - flag player cannot_close_inv
+    - flag player cannot_close_inv:1
     - define itemlist li@i@EliteBox/20|<mythicitem@ImbuedSword.get_item>/20|<mythicitem@ImbuedBow.get_item>/20|<mythicitem@ImbuedShield.get_item>/20|<mythicitem@ImbuedHelm.get_item>/20|<mythicitem@ImbuedChest.get_item>/20|<mythicitem@ImbuedLegs.get_item>/20|<mythicitem@ImbuedBoots.get_item>/20|<mythicitem@ImbuedAxe.get_item>/20|<mythicitem@ImbuedPickaxe.get_item>/20|<mythicitem@ImbuedShovel.get_item>/20|<mythicitem@ImbuedHoe.get_item>/20|<mythicitem@ImbuedFishingRod.get_item>/20
     - foreach <def[itemlist]>
     {
@@ -234,29 +240,30 @@ Veteran-Spinner:
     }
     - if <player.open_inventory.slot[14].scriptname> == ELITEBOX
     {
+        - flag player cannot_close_inv:!
+        - note remove as:veteran-spinner.<player.uuid>
         - run Elite-Spinner
     }
     else
     {
         - wait 1s
-        - narrate '<&a>You got <&f><player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>><&a>!'
-        - announce to_console "<player.name> got <player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>>"
-        - give <player.open_inventory.slot[14]>
-        - note remove as:veteran-spinner.<player.uuid>
+        - narrate "<&a>You got <&f><def[veteran-roll-list].get[54].display||<def[veteran-roll-list].get[54].formatted.to_titlecase>><&a>!"
+        - announce to_console "<player.name> got <def[veteran-roll-list].get[54].display||<def[veteran-roll-list].get[54].formatted.to_titlecase>>"
+        - give <def[veteran-roll-list].get[54]>
         - flag player cannot_close_inv:!
+        - note remove as:veteran-spinner.<player.uuid>
         - inventory close
     }
 
 Elite-Spinner:
     type: task
-    debug: false
+    debug: true
     speed: 0
     script:
     # Create some cleared lists to work with
     - define elite-display-list li@
     - define elite-roll-list li@
     - define pick li@
-    - flag player cannot_close_inv
     - define itemlist li@<mythicitem@BurnishedSword.get_item>/20|<mythicitem@BurnishedBow.get_item>/20|<mythicitem@BurnishedShield.get_item>/20|<mythicitem@BountifulBlade.get_item>/20|<mythicitem@WitheringBlade.get_item>/20|<mythicitem@BurnishedHelm.get_item>/20|<mythicitem@BurnishedChest.get_item>/20|<mythicitem@BurnishedLegs.get_item>/20|<mythicitem@BurnishedBoots.get_item>/20|<mythicitem@BurnishedAxe.get_item>/20|<mythicitem@BurnishedPickaxe.get_item>/20|<mythicitem@BurnishedShovel.get_item>/20|<mythicitem@BurnishedHoe.get_item>/20|<mythicitem@BurnishedFishingRod.get_item>/20
     - foreach <def[itemlist]>
     {
@@ -267,6 +274,7 @@ Elite-Spinner:
     - define elite-roll-list "<def[elite-display-list].random[60]>"
     - note "in@generic[title=<&6><&l>Elite BONUS ROUND!;size=27;contents=li@i@air|i@air|i@air|i@air|i@emerald|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@air|i@emerald]" as:elite-spinner.<player.uuid>
     - inventory open "d:in@elite-spinner.<player.uuid>"
+    - flag player cannot_close_inv:1
     # Roll
     - repeat 50
     {
@@ -275,11 +283,11 @@ Elite-Spinner:
     }
 
     - wait 1s
-    - narrate '<&a>You got <&f><player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>><&a>!'
-    - announce to_console "<player.name> got <player.open_inventory.slot[14].display||<player.open_inventory.slot[14].formatted.to_titlecase>>"
-    - give <player.open_inventory.slot[14]>
-    - note remove as:elite-spinner.<player.uuid>
+    - narrate "<&a>You got <&f><def[elite-roll-list].get[54].display||<def[elite-roll-list].get[54].formatted.to_titlecase>><&a>!"
+    - announce to_console "<player.name> got <def[elite-roll-list].get[54].display||<def[elite-roll-list].get[54].formatted.to_titlecase>>"
+    - give <def[elite-roll-list].get[54]>
     - flag player cannot_close_inv:!
+    - note remove as:elite-spinner.<player.uuid>
     - inventory close
 
 "Spinner Anti-Cheat":
@@ -319,6 +327,7 @@ Elite-Spinner:
             {
                 - wait 1t
                 - inventory open d:in@daily-spinner.<player.uuid>
+                - queue clear
             }
             - flag player cannot_close_inv:!
         }
@@ -328,6 +337,7 @@ Elite-Spinner:
             {
                 - wait 1t
                 - inventory open d:in@veteran-spinner.<player.uuid>
+                - queue clear
             }
             - flag player cannot_close_inv:!
         }
@@ -336,7 +346,8 @@ Elite-Spinner:
             - if <player.has_flag[cannot_close_inv]>
             {
                 - wait 1t
-                - inventory open d:elite-spinner.<player.uuid>
+                - inventory open d:in@elite-spinner.<player.uuid>
+                - queue clear
             }
             - flag player cannot_close_inv:!
         }

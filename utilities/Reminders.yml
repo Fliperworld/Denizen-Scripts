@@ -1,5 +1,6 @@
 "Information Rotation":
     type: world
+    debug: false
     events:
         on system time minutely:
         - if <context.minute.mod[20]> == 0

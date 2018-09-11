@@ -1,0 +1,29 @@
+#socket_gem_defense_armor_handler:
+#    type: world
+#    debug: false
+#    events:
+#        on player damages entity priority:-10:
+#        - define critchance 0
+#        - define gem_count 0
+#        - foreach <context.damager.equipment.include[<context.damager.item_in_hand>]>
+#        {
+#            - define gem_count <def[gem_count].add[<def[value].nbt.filter[matches[socket[0-9]+_gem/socket_gem_attack_crit_chance]].size||0>]>
+#        }
+#        - define critchance <def[gem_count].mul[5]>
+#        - if <util.random.int[1].to[1000]> <= <def[critchance]>
+#        {
+#            - determine <context.damage.mul[1.5]>
+#            - playeffect <context.entity.location.add[0,0.5,0]> effect:crit quantity:20 offset:0.0 
+#        }
+
+socket_gem_defense_armor_chest:
+    debug: false
+    type: item
+    material: emerald[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;nbt=li@uncraftable/true|gem_type/defense|gem_specific/socket_gem_defense_armor_chest|gem_attribute1/generic&dotarmor/chest/0/1.0]
+    display name: "<&9>Gem of Chestplate Armor"
+    lore:
+    - "<&6>Gem"
+    - "<&9>Defense"
+    - "<&f>+1 Armor when added to Chestplate"
+    enchantments:
+    - MENDING:1

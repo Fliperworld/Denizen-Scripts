@@ -1,0 +1,90 @@
+veteran_potential_drop_list:
+    type: yaml data
+    debug: false
+    list:
+    - ImbuedSword_sealed_potential
+    - ImbuedHelm_sealed_potential
+    - ImbuedChest_sealed_potential
+    - ImbuedLegs_sealed_potential
+    - ImbuedBoots_sealed_potential
+    - ImbuedBow_sealed_potential
+    - ImbuedShield_sealed_potential
+    - ImbuedAxe_sealed_potential
+elite_potential_drop_list:
+    type: yaml data
+    debug: false
+    list:
+    - BurnishedSword_sealed_potential
+    - BountifulBlade_sealed_potential
+    - WitheringBlade_sealed_potential
+    - BurnishedSword_sealed_potential
+    - BurnishedHelm_sealed_potential
+    - BurnishedChest_sealed_potential
+    - BurnishedLegs_sealed_potential
+    - BurnishedBoots_sealed_potential
+    - BurnishedBow_sealed_potential
+    - BurnishedShield_sealed_potential
+    - BurnishedAxe_sealed_potential
+gem_drop_list:
+    type: yaml data
+    debug: false
+    list:
+    - socket_gem_attack_crit_chance
+    - socket_gem_attack_health_on_hit
+    - socket_gem_utility_speed_on_hit
+    - socket_gem_defense_max_health_head
+    - socket_gem_defense_max_health_chest
+    - socket_gem_defense_max_health_legs
+    - socket_gem_defense_max_health_feet
+    - socket_gem_defense_armor_head
+    - socket_gem_defense_armor_chest
+    - socket_gem_defense_armor_legs
+    - socket_gem_defense_armor_feet
+veteran_potential_drop:
+    type: world
+    debug: false
+    events:
+        on mm denizen death:
+        - if !<context.entity.name.starts_with[<&9>]||null>
+        {
+            - queue clear
+        }
+        else if <context.entity.name.starts_with[<&9>]||null>
+        {
+            - if <util.random.int[1].to[500]> <= 1
+            {
+                - drop <s@veteran_potential_drop_list.yaml_key[list].random[1]> location:<context.entity.location>
+            }
+            - if <util.random.int[1].to[600]> <= 1
+            {
+                - drop SocketMaker location:<context.entity.location>
+            }
+        }
+elite_potential_drop:
+    type: world
+    debug: false
+    events:
+        on mm denizen death:
+        - if !<context.entity.name.starts_with[<&d>]||null>
+        {
+            - queue clear
+        }
+        else if <context.entity.name.starts_with[<&d>]||null>
+        {
+            - if <util.random.int[1].to[500]> <= 2
+            {
+                - drop <s@veteran_potential_drop_list.yaml_key[list].random[1]> location:<context.entity.location>
+            }
+            - if <util.random.int[1].to[500]> <= 1
+            {
+                - drop <s@elite_potential_drop_list.yaml_key[list].random[1]> location:<context.entity.location>
+            }
+            - if <util.random.int[1].to[50]> <= 1
+            {
+                - drop SocketMaker location:<context.entity.location>
+            }
+            - if <util.random.int[1].to[1000]>
+            {
+                - drop <gem_drop_list.yaml_key[list].random[1]> location:<context.entity.location>
+            }
+        }

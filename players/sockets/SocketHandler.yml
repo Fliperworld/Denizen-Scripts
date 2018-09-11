@@ -19,7 +19,7 @@
 ## Gem NBT
 # gem_type (VALUE) | The type of a gem, e.g. "attack"/"defense"/"utility"
 # gem_specific (VALUE) | The actual gem e.g. "crit_chance"/"health_on_hit"/"speed_on_hit"
-# gem_attributes (LIST) | List of nbt_attributes to be applied to the item on adding the gem. TK / Incomplete
+# gem_attribute# (VALUE) | NBT attributes to be applied to item upon socketing
 
 
 nbt_craft_prevention:
@@ -171,6 +171,7 @@ prismatic_seer_inventory_handler:
     type: world
     events:
         on server start:
+        - wait 30s
         - flag server SocketAddCost:32
         - flag server SealedPotentialCost:64
         on player clicks in prismatic_seer_menu:
@@ -465,10 +466,11 @@ prismatic_seer_gem_add_gem_handler:
             - foreach <player.flag[sockets_gem_add_item_empty].as_list>
             {
                 ## We're finally adding the gem to the item!
-                # <def[value]> is socket1_empty etc
+                # <def[value-empty]> is socket1_empty etc
                 # <def[value-type]> is socket1_type etc
                 # <def[item]> is the selected item
                 # Get the NBT value of the item's socket with <player.flag[sockets_gem_add_item].as_item.nbt[<def[value-type]>]>
+                - define value-empty <def[value]>
                 - define value-type <def[value].replace[empty].with[type]>
                 - if <def[item].nbt[<def[value-type]>]> == <context.item.nbt[gem_type]||null>
                 {
@@ -482,11 +484,28 @@ prismatic_seer_gem_add_gem_handler:
                     - nbt <def[item]> "<def[value]>:!" "save:edited"
                     # Add NBT to indicate the gem being added
                     - nbt <entry[edited].new_item> "<def[value].replace[empty].with[gem]>:<context.item.nbt[gem_specific]>" "save:edited"
+                    - define entry new_item
+                    ## Handle any NBT attributes, if they exist
+                    - define nbt_attributes_list <context.item.nbt_keys.filter[matches[gem_attribute[0-9]+]].alphanumeric>
+                    - foreach <def[nbt_attributes_list]>
+                    {
+                        - announce to_console "NBT <context.item.nbt[<def[value]>]>"
+                        - define attribute_location <entry[edited].new_item.nbt_attributes.as_list.find_partial[<context.item.nbt[<def[value]>].before_last[/]>]||0>
+                        - if <def[attribute_location]> >= 1
+                        {
+                            - adjust <entry[edited].new_item> "nbt_attributes:<entry[edited].new_item.nbt_attributes.as_list.set[<entry[edited].new_item.nbt_attributes.as_list.get[<def[attribute_location]>].before_last[/]>/<context.item.nbt[<def[value]>].after_last[/].add[<entry[edited].new_item.nbt_attributes.as_list.get[<def[attribute_location]>].after_last[/]>]>].at[<def[attribute_location]>]>" "save:edited"
+                        }
+                        else
+                        {
+                            - adjust <entry[edited].new_item> "nbt_attributes:<entry[edited].new_item.nbt_attributes.as_list.include[<context.item.nbt[<def[value]>]>]>" "save:edited"
+                        }
+                        - define entry result
+                    }
                     ## Adjust the lore
                     # First line after "<&6>Sockets"
                     - define first_socket_line <def[item].lore.find[<&6>Sockets]>
                     # Line where our targeted socket is
-                    - define socket_target <def[value].replace[regex:socket([0-9]+)_empty].with[$1].add[<def[first_socket_line]>]>
+                    - define socket_target <def[value-empty].replace[regex:socket([0-9]+)_empty].with[$1].add[<def[first_socket_line]>]>
                     # Set up the lore line for the socket
                     # Can probably eliminate this if chain if gems have standardized colors for their names
                     - if <context.item.nbt[gem_type]> == attack
@@ -501,16 +520,40 @@ prismatic_seer_gem_add_gem_handler:
                     {
                         - define socket_new_line "<&a><context.item.display.strip_color>"
                     }
-                    - adjust <entry[edited].new_item> "lore:<def[item].lore.set[<def[socket_new_line]>].at[<def[socket_target]>]>" "save:edited"
-                    # Check whether any open sockets remain; if not, remove sockets_open
-                    - if <entry[edited].new_item.nbt_keys.filter[matches[socket[0-9]+_empty]].alphanumeric.size> == 0
+                    - if <def[entry]> == result
                     {
-                        - nbt <entry[edited].new_item> "sockets_open:!" "save:edited"
+                        - adjust <entry[edited].result> "lore:<def[item].lore.set[<def[socket_new_line]>].at[<def[socket_target]>]>" "save:edited"
+                    }
+                    else
+                    {
+                        - adjust <entry[edited].new_item> "lore:<def[item].lore.set[<def[socket_new_line]>].at[<def[socket_target]>]>" "save:edited"
+                    }
+                    - define entry result
+                    # Check whether any open sockets remain; if not, remove sockets_open
+                    - if <entry[edited].result.nbt_keys.filter[matches[socket[0-9]+_empty]].alphanumeric.size> == 0
+                    {
+                        - nbt <entry[edited].result> "sockets_open:!" "save:edited"
+                        - define entry new_item
                     }
                     # Give the new item
-                    - give <entry[edited].result> to:<player.inventory>
-                    - narrate "format:prismatic_seer_format" "This is where I tell you that I added the gem to the socket!"
-                    - announce to_console "Hooray!"
+                    - if <def[entry]> == new_item
+                    {
+                        - give <entry[edited].new_item> to:<player.inventory>
+                        - narrate "format:prismatic_seer_format" "This is where I tell you that I added the gem to the socket!"
+                        - announce to_console "Hooray!"
+                    }
+                    else if <def[entry]> == result
+                    {
+                        - give <entry[edited].result> to:<player.inventory>
+                        - narrate "format:prismatic_seer_format" "This is where I tell you that I added the gem to the socket!"
+                        - announce to_console "Hooray!"
+                    }
+                    else
+                    {
+                        - narrate "format:prismatic_seer_format" "Something went wrong! Here are your items back."
+                        - give <context.item> to:<player.inventory>
+                        - give <def[item]> to:<player.inventory>
+                    }
                     - foreach stop
                 }
             }
