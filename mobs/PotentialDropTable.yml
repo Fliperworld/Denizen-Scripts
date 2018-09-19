@@ -29,6 +29,8 @@ gem_drop_list:
     type: yaml data
     debug: false
     list:
+    - socket_gem_attackdamage_mainhand
+    - socket_gem_attackspeed_mainhand
     - socket_gem_attack_crit_chance
     - socket_gem_attack_health_on_hit
     - socket_gem_utility_speed_on_hit
@@ -51,11 +53,11 @@ veteran_potential_drop:
         }
         else if <context.entity.name.starts_with[<&9>]||null>
         {
-            - if <util.random.int[1].to[500]> <= 1
+            - if <util.random.int[1].to[500]> <= <tern[<s@drop_rate_data.yaml_key[drop_multiplier_active]>]:<el@1.mul[<s@drop_rate_data.yaml_key[drop_rate_multiplier]>].mul[<player.flag[player_drop_rate]||1>]>||<el@1.mul[<player.flag[player_drop_rate]>||1]>||1>
             {
                 - drop <s@veteran_potential_drop_list.yaml_key[list].random[1]> location:<context.entity.location>
             }
-            - if <util.random.int[1].to[600]> <= 1
+            - if <util.random.int[1].to[600]> <= <tern[<s@drop_rate_data.yaml_key[drop_multiplier_active]>]:<el@1.mul[<s@drop_rate_data.yaml_key[drop_rate_multiplier]>].mul[<player.flag[player_drop_rate]||1>]>||<el@1.mul[<player.flag[player_drop_rate]>||1]>||1>
             {
                 - drop SocketMaker location:<context.entity.location>
             }
@@ -71,19 +73,19 @@ elite_potential_drop:
         }
         else if <context.entity.name.starts_with[<&d>]||null>
         {
-            - if <util.random.int[1].to[500]> <= 2
+            - if <util.random.int[1].to[250]> <= <tern[<s@drop_rate_data.yaml_key[drop_multiplier_active]>]:<el@1.mul[<s@drop_rate_data.yaml_key[drop_rate_multiplier]>].mul[<player.flag[player_drop_rate]||1>]>||<el@1.mul[<player.flag[player_drop_rate]>||1]>||1>
             {
                 - drop <s@veteran_potential_drop_list.yaml_key[list].random[1]> location:<context.entity.location>
             }
-            - if <util.random.int[1].to[500]> <= 1
+            - if <util.random.int[1].to[500]> <= <tern[<s@drop_rate_data.yaml_key[drop_multiplier_active]>]:<el@1.mul[<s@drop_rate_data.yaml_key[drop_rate_multiplier]>].mul[<player.flag[player_drop_rate]||1>]>||<el@1.mul[<player.flag[player_drop_rate]>||1]>||1>
             {
                 - drop <s@elite_potential_drop_list.yaml_key[list].random[1]> location:<context.entity.location>
             }
-            - if <util.random.int[1].to[50]> <= 1
+            - if <util.random.int[1].to[50]> <= <tern[<s@drop_rate_data.yaml_key[drop_multiplier_active]>]:<el@1.mul[<s@drop_rate_data.yaml_key[drop_rate_multiplier]>].mul[<player.flag[player_drop_rate]||1>]>||<el@1.mul[<player.flag[player_drop_rate]>||1]>||1>
             {
                 - drop SocketMaker location:<context.entity.location>
             }
-            - if <util.random.int[1].to[1000]>
+            - if <util.random.int[1].to[1000]> <= <tern[<s@drop_rate_data.yaml_key[drop_multiplier_active]>]:<el@1.mul[<s@drop_rate_data.yaml_key[drop_rate_multiplier]>].mul[<player.flag[player_drop_rate]||1>]>||<el@1.mul[<player.flag[player_drop_rate]>||1]>||1>
             {
                 - drop <gem_drop_list.yaml_key[list].random[1]> location:<context.entity.location>
             }

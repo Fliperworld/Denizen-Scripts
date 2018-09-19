@@ -1,0 +1,32 @@
+GoldBooster2x:
+    type: item
+    material: potion[flags=li@HIDE_ENCHANTS;nbt=li@uncraftable/true;color=co@255,255,0]
+    display name: "<&a>Golden Brew"
+    lore:
+    - "<&6>There's gold in them there hills - or, rather, in the pockets of them there monsters! Drink this potion to improve gold drops from monsters you slay."
+    enchantments:
+    - MENDING:1
+GoldBooster4x:
+    type: item
+    material: potion[flags=li@HIDE_ENCHANTS;nbt=li@uncraftable/true;color=co@255,255,0]
+    display name: "<&a>Improved Golden Brew"
+    lore:
+    - "<&6>There's gold in them there hills - or, rather, in the pockets of them there monsters! Drink this potion to greatly improve gold drops from monsters you slay."
+    enchantments:
+    - MENDING:1
+gold_booster_handler:
+    type: world
+    debug: true
+    events:
+        on player consumes GoldBooster2x:
+        - take GoldBooster2x
+        - narrate "<&6>You feel a golden aura about you, and will find more gold drops from slain monsters!"
+        - flag player player_gold_rate:2 duration:30m
+        - wait 30m
+        - narrate "<&6>Your golden aura wears off..."
+        on player consumes GoldBooster4x:
+        - take GoldBooster4x
+        - narrate "<&6>You feel a golden aura about you, and will find more gold drops from slain monsters!"
+        - flag player player_gold_rate:4 duration:30m
+        - wait 30m
+        - narrate "<&6>Your golden aura wears off..."

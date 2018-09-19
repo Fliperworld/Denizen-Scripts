@@ -9,7 +9,7 @@ socket_gem_utility_speed_on_hit_handler:
             - define gem_count <def[gem_count].add[<def[value].nbt.filter[matches[socket[0-9]+_gem/socket_gem_utility_speed_on_hit]].size||0>]>
         }
         - cast speed duration:<def[gem_count].mul[3]> p:1 <player>
-        
+
 socket_gem_utility_speed_on_hit:
     debug: false
     type: item
@@ -18,6 +18,6 @@ socket_gem_utility_speed_on_hit:
     lore:
     - "<&6>Gem"
     - "<&a>Utility"
-    - "<&f>+3s speed on hit"
+    - "<&f>+3s Speed level 1 on hit"
     enchantments:
     - MENDING:1

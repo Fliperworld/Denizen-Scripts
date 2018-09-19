@@ -84,23 +84,6 @@ sockets_sword_sealed_potential:
     enchantments:
     - MENDING:1
 
-# Usage:
-# - run add_socket def:<item>|<player>
-
-add_socket:
-    type: task
-    debug: true
-    speed: 0
-    definitions: item|player
-    script:
-    - take <def[item]> from:<def[player].inventory>
-    - nbt <def[item]> "sockets_current:<def[item].nbt[sockets_current].add[1]>" "save:edited"
-    - if <entry[edited].nbt[sockets_current]||null> == <entry[edited].nbt[sockets_max]>
-    {
-        - nbt <entry[edited]> "sockets_can_add:!" "save:edited"
-    }
-    - give <entry[edited].new_item> to:<def[player].inventory>
-
 prismatic_seer:
     type: assignment
     interact scripts:
@@ -356,17 +339,6 @@ prismatic_seer_socket_potential_handler:
             - define potential_line "<entry[edited].new_item.lore.find[<&6>Sealed Potential]>"
             - adjust <entry[edited].new_item> lore:<entry[edited].new_item.lore.set[<&6>Sockets].at[<def[potential_line]>]> save:edited
             - adjust <entry[edited].result> lore:<entry[edited].result.lore.pad_right[<entry[edited].result.nbt[sockets_max].add[<def[potential_line]>]>].with[<&8>LOCKED]> save:edited
-            #- repeat <entry[edited].result.nbt[sockets_max]>
-            #{
-            #    - if <entry[edited].result.lore.size> >= <def[potential_line].add[<def[value]>]>
-            #    {
-            #        - adjust <entry[edited].result> lore:<entry[edited].result.lore.set[<&8>LOCKED].at[<def[potential_line].add[<def[value]>]>]> save:edited
-            #    }
-            #    else
-            #    {
-            #        - adjust <entry[edited].result> lore:<entry[edited].result.lore.insert[<&8>LOCKED].at[<def[potential_line].add[<def[value]>]>]> save:edited
-            #    }
-            #}
             - inventory close d:in@sealed_potential.<player.uuid>
             - note remove as:in@sealed_potential<player.uuid>
             - give <entry[edited].result> to:<player.inventory>
@@ -380,22 +352,6 @@ prismatic_seer_socket_potential_handler:
         {
             - narrate "format:prismatic_seer_format" "Something went wrong! It doesn't look like I can unlock the <&6>Sealed Potential<&f> of that item."
         }
-## Use this if you want to make an inventory of only the items for which the player has gems in their inventory, rather than all items with open sockets
-# This script will return a list of open socket types in the player's inventory
-#        if <context.item.has_nbt[sockets_open]>
-#        {
-#            - define sockets_open_types li@
-#            - foreach <player.inventory.list_contents>
-#            {
-#                - define item <def[value]>
-#                - foreach <def[value].nbt_keys.filter[matches[socket[0-9]+_type]]>
-#                {
-#                    - define sockets_open_types <def[sockets_open_types].include[<def[item].nbt[<def[value]>]>]>
-#                }
-#            }
-#            - define sockets_open_types <def[sockets_open_types].deduplicate>
-#            - announce to_console "sockets_open_types is <def[sockets_open_types]>"
-#        }
         - narrate "format:prismatic_seer_format" "Right click me again if you'd like to choose another option!"
 prismatic_seer_gem_add_item_handler:
     type: world
