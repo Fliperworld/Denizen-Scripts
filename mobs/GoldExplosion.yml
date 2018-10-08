@@ -110,7 +110,7 @@ veteran_gold_drop_list:
     - 10g_pouch
     - 25g_pouch
 
-veteran_gold_drop_list:
+elite_gold_drop_list:
     type: yaml data
     debug: false
     list:
