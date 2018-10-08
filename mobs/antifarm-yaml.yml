@@ -65,6 +65,18 @@
             - determine drops:li@;money:0;exp:0
             - queue clear
         }
+        
+        on mythicmobs lootdrop:
+        - if <yaml[antifarm-flags].contains[expirations.<context.activemob.location.simple>]>
+        {
+            - yaml id:antifarm-flags set expirations.<context.activemob.location.simple>:<yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>].as_list.filter[in_seconds.is[more].than[<util.date.time.duration.in_seconds>]]>
+        }
+        - yaml id:antifarm-flags set expirations.<context.activemob.location.simple>:<list[<util.date.time.duration.add[30m]>].include[<yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>]||li@>]>
+        - if <yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>].as_list.size||0> >= 3
+        {
+            - determine li@
+            - queue clear
+        }
 
         # Check for and cancel an empty gold message
         on player receives message:
@@ -123,6 +135,8 @@
             - determine NO_DROPS_OR_XP
             - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<def[entity].uuid>
         }
+        
+        
         
         on mm denizen death:
         

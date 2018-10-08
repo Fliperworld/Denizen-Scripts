@@ -81,8 +81,8 @@ gold_pouch_opener:
 gold_rate_data:
     type: yaml data
     debug: false
-    gold_multiplier_active: true
-    gold_rate_multiplier: 2
+    gold_multiplier_active: false
+    gold_rate_multiplier: 1
     gold_amount_multiplier: 3
 
 gold_rate_announcement:
