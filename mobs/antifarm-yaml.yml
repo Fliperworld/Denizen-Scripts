@@ -117,7 +117,7 @@
         }
         
         #- announce to_console <def[entity].uuid>
-        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].as_list.contains[<def[entity].uuid>]>
+        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<def[entity].uuid>]||null>
         {
 #            - announce to_console "[DEBUG] Normal mobs YAML spawner"
             - determine NO_DROPS_OR_XP
@@ -126,9 +126,17 @@
         
         on mm denizen death:
         
-        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<context.activemob.uuid>]>
+        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<context.activemob.uuid>]||null>
         {
 #            - announce to_console "[DEBUG] MythicMobs YAML spawner"
             - determine drops:li@;money:0;exp:0
+            - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<context.activemob.uuid>
+        }
+        
+        on mythicmobs lootdrop:
+        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<context.activemob.uuid>]||null>
+        {
+#            - announce to_console "[DEBUG] MythicMobs YAML spawner"
+            - determine li@
             - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<context.activemob.uuid>
         }

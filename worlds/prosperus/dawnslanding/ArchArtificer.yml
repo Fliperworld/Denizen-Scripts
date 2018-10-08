@@ -62,7 +62,7 @@ CrystallizedExperienceIngot:
             proximity trigger:
                 entry:
                     script:
-                    - narrate "format:Arch Artificer Format" "Hello, adventurer! What can I help you with? I can take all of that magical experience you've earned from slaying monsters and crystallize it. A sliver will cost you 30 levels, a chunk will cost you 50, and a billet will cost you 70."
+                    - narrate "format:Arch Artificer Format" "Hello, adventurer! What can I help you with? I can take all of that magical experience you've earned from slaying monsters and crystallize it. A sliver will cost you 30 levels, a chunk will cost you 50, a billet will cost you 70, a bloom will cost you 90, and an ingot will cost you 110."
                 exit:
                     script:
                     - narrate "format:Arch Artificer Format" "See you again, and good hunting!"

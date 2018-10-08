@@ -159,6 +159,7 @@ translation_data:
 
 link_inventory_events:
     type: world
+    debug: false
     events:
         on player clicks in inventory:
         - if !<context.inventory.title.starts_with[<el@link_cmd.to_itemscript_hash>]> {
@@ -172,6 +173,7 @@ link_inventory_events:
 
 #link_chat_events:
 #    type: world
+#    debug: true
 #    events:
 #        on player chats:
 #        - if <player.item_in_hand> == i@air {

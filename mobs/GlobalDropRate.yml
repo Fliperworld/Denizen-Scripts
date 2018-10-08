@@ -9,8 +9,8 @@
 drop_rate_data:
     type: yaml data
     debug: false
-    drop_rate_multiplier: 4
-    drop_multiplier_active: true
+    drop_rate_multiplier: 1
+    drop_multiplier_active: false
 drop_rate_announcement:
     type: world
     debug: false
