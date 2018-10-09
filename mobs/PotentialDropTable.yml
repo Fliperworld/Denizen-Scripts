@@ -10,6 +10,7 @@ veteran_potential_drop_list:
     - ImbuedBow_sealed_potential
     - ImbuedShield_sealed_potential
     - ImbuedAxe_sealed_potential
+    - ImbuedDagger_sealed_potential
 elite_potential_drop_list:
     type: yaml data
     debug: false
@@ -25,6 +26,7 @@ elite_potential_drop_list:
     - BurnishedBow_sealed_potential
     - BurnishedShield_sealed_potential
     - BurnishedAxe_sealed_potential
+    - BurnishedDagger_sealed_potential
 gem_drop_list:
     type: yaml data
     debug: false
