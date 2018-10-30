@@ -49,19 +49,19 @@ The effect of each multiplier will vary per-spell; they could increase damage de
 
 * `sealed_potential` (BOOLEAN) | Whether the item has Sealed Potential e.g. `true`
   * Items with Sealed Potential should have no socket data; data will be wiped on unlock.
-* sockets_current (INTEGER) | Number of sockets currently on the item, filled or unfilled e.g. `4`
-* sockets_max (INTEGER) | Maximum number of sockets possible to exist on the item, whether existing or not, e.g. `5`
-* sockets_can_add (BOOLEAN) | Whether it is possible to add any more sockets to the item, to be removed when sockets_current equals sockets_max e.g. `true`, `false`
-* sockets_open (BOOLEAN) | Whether an item has sockets that are empty e.g. `true`, `false`
-* socket*_type (VALUE) | The type of a socket, e.g. `socket1_type` `attack`, `defense`, `utility`
-* socket*_gem (VALUE) | The actual gem inserted into a socket e.g. `socket1_gem` `crit_chance`, `healt1h_on_hit`, `speed_on_hit`
-* socket*_empty (BOOLEAN) | Whether the numbered socket is empty, e.g. `socket1_empty` `true`
+* `sockets_current` (INTEGER) | Number of sockets currently on the item, filled or unfilled e.g. `4`
+* `sockets_max` (INTEGER) | Maximum number of sockets possible to exist on the item, whether existing or not, e.g. `5`
+* `sockets_can_add` (BOOLEAN) | Whether it is possible to add any more sockets to the item, to be removed when sockets_current equals sockets_max e.g. `true`, `false`
+* `sockets_open` (BOOLEAN) | Whether an item has sockets that are empty e.g. `true`, `false`
+* `socket#_type` (VALUE) | The type of a socket, e.g. `socket1_type` `attack`, `defense`, `utility`
+* `socket#_gem` (VALUE) | The actual gem inserted into a socket e.g. `socket1_gem` `crit_chance`, `healt1h_on_hit`, `speed_on_hit`
+* `socket#_empty` (BOOLEAN) | Whether the numbered socket is empty, e.g. `socket1_empty` `true`
 
 ### Gem functions
 
-* gem_type (VALUE) | The type of a gem e.g. `attack`, `defense`, `utility`
-* gem_specific (VALUE) | The actual gem e.g. `crit_chance`, `health_on_hit`, `speed_on_hit`
-* gem_attribute# (VALUE) | NBT attributes to be applied to item upon socketing e.g. `gem_attribute1` `generic&dotarmor/chest/0/1.0`
+* `gem_type` (VALUE) | The type of a gem e.g. `attack`, `defense`, `utility`
+* `gem_specific` (VALUE) | The actual gem e.g. `crit_chance`, `health_on_hit`, `speed_on_hit`
+* `gem_attribute#` (VALUE) | NBT attributes to be applied to item upon socketing e.g. `gem_attribute1` `generic&dotarmor/chest/0/1.0`
   * Note that the value of this entry uses `&dot` instead of a period for the attribute name so it parses correctly when socketed
 
 ### Armor functions
