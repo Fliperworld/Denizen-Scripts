@@ -1,0 +1,21 @@
+# Use with PAPI placeholders of the relevant magic type e.g. %denizen_<proc[Magic_Multiplier_Handler].context[fire]>%
+Magic_Multiplier_Handler:
+    type: procedure
+    definitions: magic_type
+    script:
+    - define multiplier <player.equipment.parse[nbt[<def[magic_type]>_magic_multiplier]].sum.add[<player.flag[<def[magic_type]>_magic_multiplier]||0>].add[1]>
+    - define set_list <player.equipment.parse[nbt[armor_set]].deduplicated||li@>
+    - foreach <def[set_list]>:
+        - define multiplier <def[multiplier].add[<proc[<def[value]>_armor_set_bonuses].context[<player.equipment.parse[nbt[armor_set]].filter[matches[<def[value]>]].size>]>]>
+    - determine <def[multiplier]>
+
+    ## Use this to get all of the magic multipliers for some reason
+    ## Not sure what to do with it but I scripted it so I might as well keep it
+    #- foreach <player.equipment>:
+    #    - define equipment <def[value]>
+    #    - foreach <def[equipment].nbt_keys.filter[matches[[a-zA-Z]+_magic_multiplier]]>:
+    #        - define multiplier <def[equipment].nbt_keys.filter[matches[[a-zA-Z]+_magic_multiplier]].get[<def[loop_index]>]>
+    #        - define <def[multiplier]> <def[multiplier].add[<def[equipment].nbt[<def[multiplier]>]>||0]>
+    #    - define set_list <def[set_list].include[<def[value].nbt[armor_set]>]>
+    #- foreach <def[set_list].deduplicated>:
+    #    - define fire_magic_multiplier <def[fire_magic_multiplier].add[<proc[<def[value]>_armor_set_bonuses].context[<def[set_list].find_all[<def[value]>].size>]>
