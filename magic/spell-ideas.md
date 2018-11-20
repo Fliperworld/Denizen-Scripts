@@ -35,14 +35,17 @@ Using this file to write / store spell ideas while their development is either o
 * Gust
   * Linear force push
   * Scales: Range, velocity
+  * *Completed initial spell, needs testing*
 * Gustleap
   * Jump forward
   * Dependency: `Gust`
   * Scales: Velocity (range)
+  * *Completed initial spell, needs testing*
 * Gustlaunch
   * Jump up
   * Dependency: `Gust`
   * Scales: Velocity (range)
+  * *Completed initial spell, needs testing*
 
 ## Fire magic
 
@@ -55,13 +58,16 @@ Using this file to write / store spell ideas while their development is either o
 * Singe
   * Amplifies fire damage against singed targets
   * Scales: Duration, amplifier
+  * (Probably) Infeasible until multiplier system is in effect
 * Flamebolt
   * Projectile fire spell, hits 1 target
   * Scales: Range, damage
+  * *Completed initial spell, needs testing*
 * Flamesurge
   * Greater projectile fire spell, small AOE on strike, ignites targets
   * Dependency: `Flamebolt`
   * Scales: Range, damage, AOE, ignite duration
+  * *Completed initial spell, needs testing*
 * Incinerate
   * PBAOE, exhausts flames on burning targets to deal high damage
   * Scales: Range, damage
