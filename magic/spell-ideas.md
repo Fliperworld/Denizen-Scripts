@@ -71,6 +71,7 @@ Using this file to write / store spell ideas while their development is either o
 * Incinerate
   * PBAOE, exhausts flames on burning targets to deal high damage
   * Scales: Range, damage
+  * *Completed initial spell, needs testing*
 * Firestorm
   * PBAOE, ignites targets, high damage
   * Scales: Range, ignite duration, damage
@@ -109,6 +110,7 @@ Using this file to write / store spell ideas while their development is either o
 * Rootbind
   * Roots targets in a straight line
   * Scales: Range, root duration
+  * *Completed initial spell, needs testing*
 * Rootsurge
   * Roots targets in a conal wave
   * Dependency: `Rootbind`
