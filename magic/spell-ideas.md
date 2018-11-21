@@ -115,6 +115,7 @@ Using this file to write / store spell ideas while their development is either o
   * Roots targets in a conal wave
   * Dependency: `Rootbind`
   * Scales: Range, root duration
+  * *Completed initial spell, needs testing*
 * Naturedrain (need better name)
   * Steal health from targets, extra-effective versus rooted targets
   * Scales: Damage, drain, root amplifier
