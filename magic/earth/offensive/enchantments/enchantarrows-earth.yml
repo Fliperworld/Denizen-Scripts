@@ -3,5 +3,4 @@ enchantarrows-earth:
     debug: false
     definitions: player
     script:
-    - define player <player[<def[player]>]>
     - flag <def[player]> enchantarrows-earth:true duration:300s
