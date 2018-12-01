@@ -4,3 +4,20 @@ enchantarrows-earth:
     definitions: player
     script:
     - flag <def[player]> enchantarrows-earth:true duration:300s
+enchantarrows-earth-handler:
+    type: world
+    debug: false
+    script:
+        on player shoots bow:
+        - if <context.entity.has_flag[enchantarrows-earth]>:
+            - flag <context.projectile> enchanted:true
+            - flag <context.projectile> enchantment:earth
+        on player damages entity:
+        - if <context.damager.has_flag[enchantarrows-earth]> && <context.projectile.flag[enchantment]> == earth:
+            - flag <context.entity> no-fall-damage:true duration:1.5s
+            - cast jump duration:1s power:-7 <context.entity>
+            - cast slow duration:1s power:10 <context.entity>
+        on entity damaged:
+        - if !<context.entity.has_flag[no-fall-damage]>:
+            - queue clear
+        - determine cancelled
