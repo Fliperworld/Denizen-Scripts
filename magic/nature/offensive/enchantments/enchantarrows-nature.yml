@@ -1,19 +1,19 @@
-enchantarrows-earth:
+enchantarrows-nature:
     type: task
     debug: false
     definitions: player
     script:
-    - flag <def[player]> enchantarrows-earth:true duration:300s
-enchantarrows-earth-handler:
+    - flag <def[player]> enchantarrows-nature:true duration:300s
+enchantarrows-nature-handler:
     type: world
     debug: false
     script:
         on player shoots bow:
-        - if <context.entity.has_flag[enchantarrows-earth]>:
+        - if <context.entity.has_flag[enchantarrows-nature]>:
             - flag <context.projectile> enchanted:true
-            - flag <context.projectile> enchantment:earth
+            - flag <context.projectile> enchantment:nature
         on player damages entity:
-        - if <context.damager.has_flag[enchantarrows-earth]> && <context.projectile.flag[enchantment]> == earth:
+        - if <context.damager.has_flag[enchantarrows-nature]> && <context.projectile.flag[enchantment]> == nature:
             - flag <context.entity> no-fall-damage:true duration:1.5s
             - cast jump duration:1s power:-7 <context.entity>
             - cast slow duration:1s power:10 <context.entity>

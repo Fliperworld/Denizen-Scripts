@@ -63,24 +63,29 @@ Using this file to write / store spell ideas while their development is either o
   * Projectile fire spell, hits 1 target
   * Scales: Range, damage
   * *Completed initial spell, needs testing*
+  * Rank: Page
 * Flamesurge
   * Greater projectile fire spell, small AOE on strike, ignites targets
   * Dependency: `Flamebolt`
   * Scales: Range, damage, AOE, ignite duration
   * *Completed initial spell, needs testing*
-* Incinerate
+  * Rank: Squire
+* Searing Flames
   * PBAOE, exhausts flames on burning targets to deal high damage
   * Scales: Range, damage
   * *Completed initial spell, needs testing*
+  * Rank: Apprentice
 * Firestorm
   * PBAOE, ignites targets, high damage
   * Scales: Range, ignite duration, damage
+  * Rank: Apprentice
 
 ##### Enchants
 
 * Enchant arrows: Fire
   * Arrows ignite (+ singe?)
   * Scales: Ignite duration, enchant duration
+  * Rank: Page
 
 ### Magma spec
 
@@ -111,20 +116,24 @@ Using this file to write / store spell ideas while their development is either o
   * Roots targets in a straight line
   * Scales: Range, root duration
   * *Completed initial spell, needs testing*
+  * Rank: Page
 * Rootsurge
   * Roots targets in a conal wave
   * Dependency: `Rootbind`
   * Scales: Range, root duration
   * *Completed initial spell, needs testing*
+  * Rank: Squire
 * Naturedrain (need better name)
   * Steal health from targets, extra-effective versus rooted targets
   * Scales: Damage, drain, root amplifier
+  * Rank: Apprentice
 
 ##### Enchants
 
 * Enchant arrows: Nature
   * Arrows briefly root on hit
   * Scales: Root duration, enchant duration
+  * Rank: Page
 
 #### Defensive
 
@@ -144,9 +153,11 @@ Using this file to write / store spell ideas while their development is either o
 * Aquabolt
   * Projectile water spell, hits 1 target
   ** Scales: Range, damage
+  * Rank: Page
 * Aquasurge
   * Greater projectile water spell, small aoe on strike, slows targets
   * Scales: Range, AOE, damage
+  * Rank: Squire
 * Typhoon
   * Spin mobs around in a large PBAOE radius dealing damage
   * **Needs dependency and differentiation from `Hurricane`**
@@ -162,9 +173,11 @@ Using this file to write / store spell ideas while their development is either o
 * Soothing Mist
   * PBAOE, heal allies in area, pulses 3 times
   * Scales: Healing, # of pulses
+  * Rank: Squire
 * Drench (name subject to change)
   * PBAOE, allies gain burning immunity + fire magic resistance
   * Scales: Duration, fire magic resistance
+  * Rank: Squire
 
 ### Frost spec
 
