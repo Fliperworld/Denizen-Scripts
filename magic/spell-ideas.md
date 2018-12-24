@@ -1,5 +1,27 @@
 Using this file to write / store spell ideas while their development is either ongoing or infeasible.
 
+<!-- New spec format -->
+
+<!--- ### New spec
+
+#### Offensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Defensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Utility
+
+##### Direct cast
+
+##### Enchants--->
+
 # Elemental spells
 
 ## Air magic
@@ -9,7 +31,6 @@ Using this file to write / store spell ideas while their development is either o
 #### Offensive
 
 ##### Direct cast
-
 
 * Whirlwind
   * Spin mobs around in small targeted AOE dealing damage
@@ -46,6 +67,36 @@ Using this file to write / store spell ideas while their development is either o
   * Dependency: `Gust`
   * Scales: Velocity (range)
   * *Deployed*
+  
+### Lightning spec
+
+#### Offensive
+
+##### Direct cast
+
+* Lightning Javelin
+  * Inspired by [Guild Wars](https://wiki.guildwars.com/wiki/Lightning_Javelin) skill of the same name
+
+##### Enchants
+
+
+
+#### Defensive
+
+##### Direct cast
+* Blinding Flash
+  * Inspired by [Guild Wars](https://wiki.guildwars.com/wiki/Blinding_Flash) skill of the same name
+
+<!--##### Enchants-->
+
+#### Utility
+
+<!--##### Direct cast-->
+
+##### Enchants
+
+* Storm Haste
+  * Inspired by [Guild Wars](https://wiki.guildwars.com/wiki/Storm_Djinn%27s_Haste) skill
 
 ## Fire magic
 
@@ -138,10 +189,30 @@ Using this file to write / store spell ideas while their development is either o
 
 #### Defensive
 
-* Earthen Shield (need better name)
+* Nature Shield (need better name)
   * Shield target/self + heal damage taken
   * Possible to heal damage taken in last number of seconds? Maybe not
   * Scales: Shield amount, shield duration, healing
+
+### Earth spec
+
+#### Offensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Defensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Utility
+
+##### Direct cast
+
+##### Enchants
 
 ## Water magic
 
@@ -220,6 +291,26 @@ Using this file to write / store spell ideas while their development is either o
 * Iceblock
   * Already exists
   * Scales: Duration
+
+### (Placeholder healling) spec
+
+#### Offensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Defensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Utility
+
+##### Direct cast
+
+##### Enchants
 
 # General plans
 
