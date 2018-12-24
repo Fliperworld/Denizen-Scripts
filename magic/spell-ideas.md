@@ -35,17 +35,17 @@ Using this file to write / store spell ideas while their development is either o
 * Gust
   * Linear force push
   * Scales: Range, velocity
-  * *Completed initial spell, needs testing*
+  * *Deployed*
 * Gustleap
   * Jump forward
   * Dependency: `Gust`
   * Scales: Velocity (range)
-  * *Completed initial spell, needs testing*
+  * *Deployed*
 * Gustlaunch
   * Jump up
   * Dependency: `Gust`
   * Scales: Velocity (range)
-  * *Completed initial spell, needs testing*
+  * *Deployed*
 
 ## Fire magic
 
@@ -62,18 +62,18 @@ Using this file to write / store spell ideas while their development is either o
 * Flamebolt
   * Projectile fire spell, hits 1 target
   * Scales: Range, damage
-  * *Completed initial spell, needs testing*
+  * *Deployed*
   * Rank: Page
 * Flamesurge
   * Greater projectile fire spell, small AOE on strike, ignites targets
   * Dependency: `Flamebolt`
   * Scales: Range, damage, AOE, ignite duration
-  * *Completed initial spell, needs testing*
+  * *Deployed*
   * Rank: Squire
 * Searing Flames
   * PBAOE, exhausts flames on burning targets to deal high damage
   * Scales: Range, damage
-  * *Completed initial spell, needs testing*
+  * *Deployed*
   * Rank: Apprentice
 * Firestorm
   * PBAOE, ignites targets, high damage
@@ -115,13 +115,13 @@ Using this file to write / store spell ideas while their development is either o
 * Rootbind
   * Roots targets in a straight line
   * Scales: Range, root duration
-  * *Completed initial spell, needs testing*
+  * *Deployed*
   * Rank: Page
 * Rootsurge
   * Roots targets in a conal wave
   * Dependency: `Rootbind`
   * Scales: Range, root duration
-  * *Completed initial spell, needs testing*
+  * *Deployed*
   * Rank: Squire
 * Naturedrain (need better name)
   * Steal health from targets, extra-effective versus rooted targets
@@ -133,6 +133,7 @@ Using this file to write / store spell ideas while their development is either o
 * Enchant arrows: Nature
   * Arrows briefly root on hit
   * Scales: Root duration, enchant duration
+  * *Deployed*
   * Rank: Page
 
 #### Defensive
