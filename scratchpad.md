@@ -27,4 +27,4 @@ Stuff I come up with on lunch breaks.
 
 * What is this element bad at?
 * What is this element good at?
-* What is this element best at?
+* What is this element the best at (i.e. better than any other element at)?
