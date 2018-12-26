@@ -22,3 +22,9 @@ Stuff I come up with on lunch breaks.
 ### "Elite" spells
 
 * If an Elite spell is on cooldown, no other Elite spell may be cast
+
+### More magic stuff to flesh out later
+
+* What is this element bad at?
+* What is this element good at?
+* What is this element best at?
