@@ -26,6 +26,12 @@ Using this file to write / store spell ideas while their development is either o
 
 ## Air magic
 
+**What's the playstyle?**
+
+Direct damage: Armor reduction / piercing. High single-target damage (lightning strikes) or pierce/chain targets.
+
+Utility: Increased mobility.
+
 ### Base spec
 
 #### Offensive
@@ -79,8 +85,6 @@ Using this file to write / store spell ideas while their development is either o
 
 ##### Enchants
 
-
-
 #### Defensive
 
 ##### Direct cast
@@ -99,6 +103,12 @@ Using this file to write / store spell ideas while their development is either o
   * Inspired by [Guild Wars](https://wiki.guildwars.com/wiki/Storm_Djinn%27s_Haste) skill
 
 ## Fire magic
+
+**What's the playstyle?**
+
+Direct damage: AOE and damage over time via burning. Manipulate burning for damage or effects. Long cooldowns for heavy damage, spammable short cooldowns for lower damage / spreading burning.
+
+Utility: Manipulate burning (self, enemies) to inflict negative effects on enemies and gain positive effects for self.
 
 ### Base spec
 
@@ -169,6 +179,12 @@ Using this file to write / store spell ideas while their development is either o
 
 ## Nature magic
 
+**What's the playstyle?**
+
+Direct damage: Damage and status effects. Lower damage than air and fire in exchange for utility. Resource-management.
+
+Utility: Slows, roots, and stuns. Regen / damage over time for chaining skills. Improved mining.
+
 ### Base spec
 
 #### Offensive
@@ -233,6 +249,12 @@ Using this file to write / store spell ideas while their development is either o
 ##### Enchants
 
 ## Water magic
+
+**What's the playstyle?**
+
+Direct damage: Damage and status effects. Lower damage than air and fire in exchange for utility. More healing and prevention.
+
+Utility: Slows and pulls, etc. Improved swimming and breathing.
 
 ### Base spec
 
