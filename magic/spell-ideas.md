@@ -137,6 +137,18 @@ Using this file to write / store spell ideas while their development is either o
   * Arrows ignite (+ singe?)
   * Scales: Ignite duration, enchant duration
   * Rank: Page
+* Burning Speed
+  * Inspired by [Guild Wars](https://wiki.guildwars.com/wiki/Burning_Speed) skill of the same name
+  * Gain haste, ignite self, ignite enemies in PBAOE on end
+  * Scales: Haste duration, enemy ignite range, enemy ignite duration
+  * Rank: Page
+* Double Dragon
+  * Inspired by [Guild Wars](https://wiki.guildwars.com/wiki/Double_Dragon) skill of the same name
+  * Also affects target/nearest ally. Ignite nearby foes each tick, spells that target a foe also ignite them
+  * Scales: Ignite duration
+  * Rank: Apprentice
+    * Maybe Knight
+  * Originally Elite
 
 ### Magma spec
 
@@ -199,6 +211,12 @@ Using this file to write / store spell ideas while their development is either o
 #### Offensive
 
 ##### Direct cast
+* Ash Blast
+  * Inspired by [Guild Wars](https://wiki.guildwars.com/wiki/Ash_Blast) skill of the same name
+  * Damage PBAOE. Blind burning foes, blinded foes % chance to miss attacks
+  * Scales: % chance
+  * Rank: Squire
+  * Tie in to fire/magma somehow
 
 ##### Enchants
 
