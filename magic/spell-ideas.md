@@ -312,6 +312,138 @@ Using this file to write / store spell ideas while their development is either o
 
 ##### Enchants
 
+# Non-elemental (?) spells
+
+## Holy magic
+
+### Base spec
+
+#### Offensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Defensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Utility
+
+##### Direct cast
+
+### Smite spec
+
+#### Offensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Defensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Utility
+
+##### Direct cast
+
+### Protection spec
+
+#### Offensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Defensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Utility
+
+##### Direct cast
+
+### Healing spec
+
+#### Offensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Defensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Utility
+
+##### Direct cast
+
+## Dark magic
+
+### Base spec
+
+#### Offensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Defensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Utility
+
+##### Direct cast
+
+### Blood spec
+
+#### Offensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Defensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Utility
+
+##### Direct cast
+
+### Death spec
+
+#### Offensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Defensive
+
+##### Direct cast
+
+##### Enchants
+
+#### Utility
+
+##### Direct cast
+
 # General plans
 
 ## Mana
