@@ -58,9 +58,4 @@ Stuff I come up with on lunch breaks.
 
 * Key concept - first ten minutes
 
-* Move/change fishing
 * Hint at skill trainer locations
-* New quests for jumping in immediately
-  * Look, menial bullshit is not *the best* game design, but it's better than confusion
-  * Menial bullshit could be made valuable by dialogue and rewards
-    * "Wouldn't you like to be doing something more interesting?" / "I think you're ready for a challenge" / something else
