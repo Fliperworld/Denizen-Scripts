@@ -54,8 +54,10 @@ Stuff I come up with on lunch breaks.
     * Player teleportation ![Progress](http://progressed.io/bar/0)
     * Timer ![Progress](http://progressed.io/bar/0)
 
-# Introduction rework
+## Introduction rework
 
 * Key concept - first ten minutes
 
 * Hint at skill trainer locations
+
+* Force user to open book
