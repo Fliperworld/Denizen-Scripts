@@ -33,6 +33,8 @@ Stuff I come up with on lunch breaks.
 
 * MobArena with MythicMobs that uses the players' equipped inventories so they can practice combat
   * Requires writing a Denizen script to cancel drops / money mobs in the arena
+  
+* Do this but better: https://www.spigotmc.org/resources/mobhunting.3582/
 
 ### Pocket realms for gold and redstone farming
 
