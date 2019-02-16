@@ -1,12 +1,12 @@
 RedstoneFinderBooster2x:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@255,0,0;lore=<proc[lineWrap].context[<&6>This brew is radiating pure magical energy. Rumor has it that drinking it will attune you to the forces of magic.|50]>]
+    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@255,0,0;lore=<proc[lineWrap].context[<&6>This brew is radiating pure magical energy. Rumor has it that drinking it will attune you to the forces of magic.|40]>]
     display name: "<&a>Magic-Leeching Brew"
     enchantments:
     - MENDING:1
 RedstoneFinderBooster4x:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@255,0,0;lore=<proc[lineWrap].context[<&6>This brew is radiating pure magical energy. Rumor has it that drinking it will greatly attune you to the forces of magic.|50]>]
+    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@255,0,0;lore=<proc[lineWrap].context[<&6>This brew is radiating pure magical energy. Rumor has it that drinking it will greatly attune you to the forces of magic.|40]>]
     display name: "<&a>Improved Magic-Leeching Brew"
     enchantments:
     - MENDING:1
