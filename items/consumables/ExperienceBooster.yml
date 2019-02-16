@@ -21,12 +21,12 @@ exp_booster_handler:
         on player consumes ExperienceBooster2x:
         - take ExperienceBooster2x
         - narrate "<&6>You consume the potion and are imbued with magical energy allowing you to extract more experience from defeated monsters!"
-        - flag player player_exp_rate:2 duration:30m
+        - flag player player_experience_rate:2 duration:30m
         - wait 30m
         - narrate "<&6>The experience magic wears off..."
         on player consumes ExperienceBooster4x:
         - take ExperienceBooster4x
         - narrate "<&6>You consume the potion and are imbued with magical energy allowing you to extract more experience from defeated monsters!"
-        - flag player player_exp_rate:4 duration:30m
+        - flag player player_experience_rate:4 duration:30m
         - wait 30m
         - narrate "<&6>The experience magic wears off..."

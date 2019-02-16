@@ -1,0 +1,13 @@
+experience_rate_data:
+    type: yaml data
+    debug: false
+    experience_rate_multiplier: 1
+    experience_multiplier_active: false
+experience_rate_announcement:
+    type: world
+    debug: false
+    events:
+        on player joins:
+        - if <s@experience_rate_data.yaml_key[experience_multiplier_active]>:
+            - wait 4s
+            - narrate "<&a><s@experience_rate_data.yaml_key[experience_rate_multiplier]>x Experience event active! <&6>Monsters you slay will drop <s@experience_rate_data.yaml_key[experience_rate_multiplier]>x experience!"
