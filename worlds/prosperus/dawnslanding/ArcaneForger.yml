@@ -58,15 +58,6 @@ VeteranToken:
     enchantments:
     - MENDING:1
 
-EliteToken:
-    type: item
-    material: bone[flags=li@HIDE_ENCHANTS;nbt=li@BadLuckToken/Elite]
-    display name: "<&d>Elite Bones"
-    lore:
-    - "<&6>The bones of a very powerful monster, slain by a hero. They are, even still, infused with a large amount of magical energy."
-    enchantments:
-    - MENDING:1
-
 "VeteranToolForge":
     type: item
     material: diamond_pickaxe[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS]
