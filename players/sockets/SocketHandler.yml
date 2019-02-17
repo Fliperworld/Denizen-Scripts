@@ -342,6 +342,8 @@ prismatic_seer_socket_potential_handler:
             - inventory close d:in@sealed_potential.<player.uuid>
             - note remove as:in@sealed_potential<player.uuid>
             - give <entry[edited].result> to:<player.inventory>
+            - take scriptname:SocketMaker quantity:<server.flag[SealedPotentialCost]>
+            - take scriptname:CrystallizedExperienceIngot quantity:1
             - narrate "format:prismatic_seer_format" "Congratulations, your <entry[edited].result.display><&r>'s potential has been unlocked!"
         }
         else if <context.item> == i@air
