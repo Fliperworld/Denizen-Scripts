@@ -1,4 +1,4 @@
-# Usage: ;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped]>
+# Usage: ;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>
 # Lore should be stored like normal Denizen lore, but in lore_list rather than lore
 lore_builder:
     type: procedure
