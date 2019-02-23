@@ -34,9 +34,9 @@ nbt_craft_prevention:
 
 SocketMaker:
     type: item
-    material: nether_star[flags=li@HIDE_ENCHANTS;nbt=li@uncraftable/true]
+    material: nether_star[flags=li@HIDE_ENCHANTS;nbt=li@uncraftable/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
     display name: "<&a>Purified Dark Matter"
-    lore:
+    lore_list:
     - "<&6>This coalesced energy has been purged of the darkness inside. It now pulses and radiates in an unstoppable splendor."
     enchantments:
     - MENDING:1
@@ -127,9 +127,9 @@ sockets:
     - "[] [] [] [] [] [] [] [] []"
 socket_add:
     type: item
-    material: nether_star[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS]
+    material: nether_star[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
     display name: "<&a>Add a socket to an item"
-    lore:
+    lore_list:
     - "<&f>Requires <server.flag[SocketAddCost]> Purified Dark Matter and 1 Ingot of Crystallized Experience."
     enchantments:
     - MENDING:1
@@ -143,9 +143,9 @@ gem_add:
     - MENDING:1
 socket_potential:
     type: item
-    material: gold_ingot[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS]
+    material: gold_ingot[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
     display name: "<&a>Unlock the <&6>Sealed Potential<&a> of an item"
-    lore:
+    lore_list:
     - "<&f>Requires an item with <&6>Sealed Potential<&f>, <server.flag[SealedPotentialCost]> Purified Dark Matter, and 1 Ingot of Crystallized Experience."
     enchantments:
     - MENDING:1
