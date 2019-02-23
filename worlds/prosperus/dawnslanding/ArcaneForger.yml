@@ -51,9 +51,9 @@
 
 VeteranToken:
     type: item
-    material: bone[flags=li@HIDE_ENCHANTS;nbt=li@BadLuckToken/Veteran]
+    material: bone[flags=li@HIDE_ENCHANTS;nbt=li@BadLuckToken/Veteran;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
     display name: "<&9>Phantasmal Bones"
-    lore:
+    lore_list:
     - "<&6>The bones of a powerful monster, slain by a hero. When held, you can still feel energy pouring out of them."
     enchantments:
     - MENDING:1
