@@ -143,14 +143,6 @@
                 - wait 1t
                 - teleport <server.flag[<def[portal-unsafe-exit]>]>
 #                - announce to_console "teleport <server.flag[<def[portal-unsafe-exit]>]>"
-                - if <player.equipment.chestplate.material.name> != elytra
-                {
-                    - flag <player> player-gliding-chestplate:<player.equipment.chestplate>
-                    - announce to_console "Giving player temporary elytra, player chestplate was <player.equipment.chestplate>"
-                    - narrate "<&a>You channel aerial magic to conjure a temporary elytra! Be sure to land safely, using fireworks with this elyta is too unstable to be safe!"
-                    - wait 1t
-                    - equip <player> chest:elytra
-                }
                 - adjust <player> gliding:true
                 - queue clear
             }
@@ -179,19 +171,11 @@
             else
             {
                 - announce to_console "No safe spot, let's glide!"
-                - flag server <def[portal-unsafe-exit]>:l@<context.from.x.div[2]>,100,<context.from.z.div[2]>,heavens
-                - define teleport-location l@<context.from.x.div[2]>,100,<context.from.z.div[2]>,heavens
+                - flag server <def[portal-unsafe-exit]>:l@<context.from.x.div[2]>,256,<context.from.z.div[2]>,heavens
+                - define teleport-location l@<context.from.x.div[2]>,256,<context.from.z.div[2]>,heavens
                 - wait 1t
                 - teleport <def[teleport-location]>
 #                - announce to_console "teleport <def[teleport-location]>"
-                - if <player.equipment.chestplate.material.name> != elytra
-                {
-                    - flag <player> player-gliding-chestplate:<player.equipment.chestplate>
-                    - announce to_console "Giving player temporary elytra, player chestplate was <player.equipment.chestplate>"
-                    - narrate "<&a>You channel aerial magic to conjure a temporary elytra! Be sure to land safely, using fireworks with this elyta is too unstable to be safe!"
-                    - wait 1t
-                    - equip <player> chest:elytra
-                }
                 - adjust <player> gliding:true
                 - queue clear
             }
@@ -202,18 +186,6 @@
         {
             - equip <player> chest:<player.flag[player-gliding-chestplate]>
             - flag <player> player-gliding-chestplate:!
-        }
-        on player clicks in inventory:
-        - if <player.has_flag[player-gliding-chestplate]> && <context.slot> == 39
-        {
-            - narrate "<&c>You can change your chestplate after landing!"
-            - determine cancelled
-        }
-        on player right clicks with firework in heavens:
-        - if <player.has_flag[player-gliding-chestplate]>
-        {
-            - narrate "<&c>You can only use fireworks with your own elytra!"
-            - determine cancelled
         }
 #"Portal Gliding Handler":
 #    type: world

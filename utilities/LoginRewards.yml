@@ -22,7 +22,7 @@
         - if <player.has_flag[daily-spin-available]>
         {
             - wait 4s
-            - narrate "<&a>Your daily login reward is available, <proc[msgcommand].context[<&b>click here or type /dailylogin|dailylogin|<&a>/dailylogin]> <&a>to get it!" targets:<player>
+            - narrate "<&a>Your daily login reward is available, <proc[msgcommand].context[<&b>click here or type /dailylogin|dailylogin|<&a>/dailylogin]><&a> to get it!" targets:<player>
         }
         on system time 19:00:
         - flag server daily-login:!
