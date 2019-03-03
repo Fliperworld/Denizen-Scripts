@@ -262,6 +262,12 @@ Utility
   * Steal health from targets, extra-effective versus rooted targets
   * Scales: Damage, drain, root amplifier
   * Rank: Apprentice
+* Vine whip
+* Enchanted shrooms (need better name)
+* Poison ivy
+* Bloom
+* Poison trail (need better name)
+* Rootlock (need better name)
 
 ##### Enchants
 
