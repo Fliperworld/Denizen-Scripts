@@ -7,7 +7,7 @@ enchantarrows-nature:
 enchantarrows-nature-handler:
     type: world
     debug: false
-    script:
+    events:
         on player shoots bow:
         - if <context.entity.has_flag[enchantarrows-nature]>:
             - flag <context.projectile> enchanted:true

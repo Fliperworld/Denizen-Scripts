@@ -1,0 +1,13 @@
+NewPlayerJoin:
+    type: world
+    events:
+        on player logs in for the first time:
+        - give NewPlayerBook
+GetNewPlayerBook:
+    type: command
+    name: newplayerguide
+    description: Get a copy of the New Player Guide.
+    usage: /newplayerguide
+    script:
+    - narrate "<&a>Here's a copy of the New Player Guide!"
+    - give NewPlayerBook
