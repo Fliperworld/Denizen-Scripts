@@ -4,6 +4,14 @@ Using this file to write / store spell ideas while their development is either o
 
 <!--- ### New spec
 
+**What is spec bad at?**
+
+**What is spec good at?**
+
+**What is spec best at?**
+
+**What's the playstyle?**
+
 #### Offensive
 
 ##### Direct cast
@@ -26,11 +34,21 @@ Using this file to write / store spell ideas while their development is either o
 
 ## Air magic
 
+**What is air bad at?**
+
+**What is air good at?**
+
+**What is air best at?**
+
 **What's the playstyle?**
 
-Direct damage: Armor reduction / piercing. High single-target damage (lightning strikes) or pierce/chain targets.
+Direct damage
+* Armor reduction / piercing.
+* High single-target damage (lightning strikes)
+* Pierce/chain targets
 
-Utility: Increased mobility.
+Utility
+* Increased mobility.
 
 ### Base spec
 
@@ -104,11 +122,24 @@ Utility: Increased mobility.
 
 ## Fire magic
 
+**What is fire bad at?**
+
+**What is fire good at?**
+
+**What is fire best at?**
+
 **What's the playstyle?**
 
-Direct damage: AOE and damage over time via burning. Manipulate burning for damage or effects. Long cooldowns for heavy damage, spammable short cooldowns for lower damage / spreading burning.
+Direct damage
+* AOE and damage over time via burning
+* Manipulate burning for damage or effects
+* Long cooldowns for heavy damage
+* Spammable short cooldowns for lower damage / spreading burning
 
-Utility: Manipulate burning (self, enemies) to inflict negative effects on enemies and gain positive effects for self.
+Utility
+* Manipulate burning (self, enemies)
+  * Inflict negative effects on enemies
+  * Gain positive effects for self
 
 ### Base spec
 
@@ -179,11 +210,36 @@ Utility: Manipulate burning (self, enemies) to inflict negative effects on enemi
 
 ## Nature magic
 
+**What is nature bad at?**
+
+* High damage to single targets / burst damage
+* Passive healing
+* Passive mobility
+
+**What is nature good at?**
+
+* Various CC
+* Improved food effectiveness?
+
+**What is nature best at?**
+
+* Clearing
+  * Damage scale on number of affected enemies
+* Root CC
+* Party-wide shields
+* Burst healing
+
 **What's the playstyle?**
 
-Direct damage: Damage and status effects. Lower damage than air and fire in exchange for utility. Resource-management.
+Direct damage
+* Damage and status effects
+* Lower damage than air and fire in exchange for utility
+* Resource management
 
-Utility: Slows, roots, and stuns. Regen / damage over time for chaining skills. Improved mining.
+Utility
+* Slows, roots, and stuns.
+* Damage over time for chaining skills
+* Improved mining
 
 ### Base spec
 
@@ -250,11 +306,36 @@ Utility: Slows, roots, and stuns. Regen / damage over time for chaining skills. 
 
 ## Water magic
 
+**What is water bad at?**
+
+* High damage to single targets / burst damage
+* Burst healing
+* 
+
+**What is water good at?**
+
+* Various CC
+* Low cooldowns
+* Versatile spells
+  * Enchantments, shields, CC, damage
+
+**What is water best at?**
+
+* Longer fights / damage over time; scale on affected enemies
+* Root CC
+* Party-wide shields
+* Adaptive playstyle
+
 **What's the playstyle?**
 
-Direct damage: Damage and status effects. Lower damage than air and fire in exchange for utility. More healing and prevention.
+Direct damage
+* Damage and status effects
+* Lower damage than air and fire in exchange for utility
+* More healing and prevention
 
-Utility: Slows and pulls, etc. Improved swimming and breathing.
+Utility
+* Slows and pulls, etc
+* Improved swimming and breathing
 
 ### Base spec
 
@@ -356,6 +437,32 @@ Utility: Slows and pulls, etc. Improved swimming and breathing.
 
 ## Holy magic
 
+**What is holy bad at?**
+
+* CC
+
+**What is holy good at?**
+
+* Burst healing
+* Regen
+* Party support
+
+**What is holy best at?**
+
+* CC cures
+* CC protection
+* Passive protection
+
+**What's the playstyle?**
+
+Direct damage
+* Something to do with marks
+
+Utility
+* Various protections
+* Activated movement spells
+* Party support
+
 ### Base spec
 
 #### Offensive
@@ -429,6 +536,30 @@ Utility: Slows and pulls, etc. Improved swimming and breathing.
 ##### Direct cast
 
 ## Dark magic
+
+**What is dark bad at?**
+
+* Party support
+
+**What is dark good at?**
+
+* Blinds
+* Cripples
+
+**What is dark best at?**
+
+* Stealth
+* Corruption
+* Single-target damage
+
+**What's the playstyle?**
+
+Direct damage
+* Single-target burst combos
+
+Utility
+* Blinks/warps
+* Stealth
 
 ### Base spec
 
