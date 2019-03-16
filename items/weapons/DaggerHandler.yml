@@ -1,6 +1,6 @@
 backstab_check:
     type: world
-    debug: true
+    debug: false
     events:
         on player damages entity priority:-15:
         #- if <player.item_in_hand.has_nbt[backstab]>

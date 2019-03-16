@@ -3,6 +3,7 @@
 lore_builder:
     type: procedure
     definitions: linesize|lore
+    debug: false
     script:
     - define newlist li@
     - foreach <parse:<def[lore].unescaped.as_list>>:

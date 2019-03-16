@@ -1,0 +1,4 @@
+KillstreakBooster:
+    type: world
+    debug: false
+    events:
