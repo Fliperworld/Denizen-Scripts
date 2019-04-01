@@ -2,6 +2,40 @@
 
 Stuff I come up with on lunch breaks.
 
+## Mobs
+
+### Elites
+
+#### Spider
+* Web shot 
+  * Modifies some air blocks to cobwebs
+* Leap
+* Web grab
+  * Pull players
+
+#### Wind Cultist
+* Gustlaunch players
+* Shockwave players
+* Summon air familiar
+
+#### Water Cultist
+* Heal mobs (regen)
+* Rally & speed boost
+* Summon water familiar
+* Tidal wave
+
+#### Fire Cultist
+* Fire Aura
+* Summon fire familiar
+* Firestorm
+* Flamesurge
+
+#### Nature Cultist
+* Heal mobs (burst)
+* Rally & shield
+* Rootsurge
+* Summon nature familiar
+
 ## Skills and spells
 
 ### Counter-attacks
