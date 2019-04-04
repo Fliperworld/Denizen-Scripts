@@ -38,6 +38,55 @@ Stuff I come up with on lunch breaks.
 
 ## Skills and spells
 
+###Super ideas
+
+####Sandstorm
+PBAOE
+Remains at cast location
+Applies slow pulse to entities within
+- Need logic for sand swirl particles; circling waves?
+Modify blocks in radius to sand temporarily?
+Draw towards middle?
+
+####Ice Storm
+Cone AOE
+Multi cast
+Increased damage and slow on successive casts
+Slow duration rather long
+Return energy for slowed target death?
+
+####Headshot
+Headshots deal 300% damages
+Restore energy on kill
+
+####Impenetrable
+No knockback, increased armor, decreased damage
+
+####Live Wire
+Explode after 10s
+Increased speed
+
+####Battle Soul
+Grant +dmg to ally
+Heal from % ally dmg
+
+####Swirl of blades
+Spin around dealing damage
+
+####Hundred blades
+Successive hits +dmg
+
+####Crashing wave
+Geyser up, wave outward
+Pushes mobs away + damages
+Ice platform 10s
+
+####Fleet-footed
+Velocity on jump / right click
+Speed boost
++dmg in air
+Hover while aiming
+
 ### Counter-attacks
 
 * `on entity damaged by`
