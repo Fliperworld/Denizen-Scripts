@@ -38,9 +38,9 @@ Stuff I come up with on lunch breaks.
 
 ## Skills and spells
 
-###Super ideas
+### Super ideas
 
-####Sandstorm
+#### Sandstorm
 PBAOE
 Remains at cast location
 Applies slow pulse to entities within
@@ -48,40 +48,40 @@ Applies slow pulse to entities within
 Modify blocks in radius to sand temporarily?
 Draw towards middle?
 
-####Ice Storm
+#### Ice Storm
 Cone AOE
 Multi cast
 Increased damage and slow on successive casts
 Slow duration rather long
 Return energy for slowed target death?
 
-####Headshot
+#### Headshot
 Headshots deal 300% damages
 Restore energy on kill
 
-####Impenetrable
+#### Impenetrable
 No knockback, increased armor, decreased damage
 
-####Live Wire
+#### Live Wire
 Explode after 10s
 Increased speed
 
-####Battle Soul
+#### Battle Soul
 Grant +dmg to ally
 Heal from % ally dmg
 
-####Swirl of blades
+#### Swirl of blades
 Spin around dealing damage
 
-####Hundred blades
+#### Hundred blades
 Successive hits +dmg
 
-####Crashing wave
+#### Crashing wave
 Geyser up, wave outward
 Pushes mobs away + damages
 Ice platform 10s
 
-####Fleet-footed
+#### Fleet-footed
 Velocity on jump / right click
 Speed boost
 +dmg in air
