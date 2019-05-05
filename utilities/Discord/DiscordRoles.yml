@@ -1,6 +1,6 @@
 PatreonRoleSync:
     type: world
-    debug: true
+    debug: false
     events:
         on discord message received:
         - if <context.message> == "!rolesync":

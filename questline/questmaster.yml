@@ -46,6 +46,12 @@ FoundAllDiamonds:
     type: task
     script:
     - zap "script:Newbie" "step:Waiting for Quest"
+QuestProgressHandler:
+    type: world
+    events:
+        on player joins:
+        - if "<player.quests.completed_names.contains[Deliver the Swabby's package to the Quest Master]>":
+            - zap Swabby-Completed s@Newbie
 "Newbie":
     type: interact
     steps:
@@ -53,31 +59,86 @@ FoundAllDiamonds:
             proximity trigger:
                 entry:
                     script:
-                    - narrate "format:Quest Master Format" "Welcome to the Questing Hall, <player.name>! The guys here have a variety of quests that you can complete to help out our citizens."
-                    - narrate "format:Quest Master Format" "If you need some equipment, I have a quest for you."
+                    - narrate "format:Quest Master Format" "Welcome to the Questing Hall, <player.name>! The folks here have a variety of quests that you can complete to help out our citizens."
+                    - wait 0.7s
+                    - narrate "format:Quest Master Format" "I've got a series of quests, too, that will help ease you into your adventure. I'll even toss you a little coin for your efforts, as well as a few other surprise bonuses."
                     - if <player.flag[npccount]||0>  == 8:
                         - run FoundAllDiamonds instantly
                     - if <player.flag[npccount]||0> < 8 && <player.flag[npccount]||0> > 0:
-                        - runtask FoundSomeDiamonds instantly
-                    - zap 'step:Fishing'
-
+                        - run FoundSomeDiamonds instantly
+                    - zap WoodTools-Prompt
+        Swabby-Completed:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "Thanks for delivering that package from Swabby, <player.name>!"
+                    - wait 0.7s
+                    - narrate "format:Quest Master Format" "Say, I think you're ready for something more exciting. How about it?"
+                    - zap WoodTools-Prompt
+        WoodTools-Prompt:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "I've got your first real get-out-in-the-world quest for you as soon as you're ready."
+        WoodTools-Taken:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "Hey there <player.name>, still waiting on those tools."
+        Breaking-ground-Prompt:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "Ready to put those wood tools to use? I've got another quest for you! You'll get a reward for doing just that. Quick and easy."
+        Breaking-ground-Taken:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "Hey <player.name>, you putting those tools to work yet?"
+        Mooving-on-up-Prompt:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "Nice job on that last quest. Now you've got some basic tools, but you're still missing an adventurer's essential. Talk to me for the next quest when you're ready."
+        Mooving-on-up-Taken:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "Nice job on that last quest. Now you've got some basic tools, but you're still missing an adventurer's essential. Talk to me for the next quest when you're ready."
+        Find-Warmaster-Reinwald-Prompt:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "I'm not the only one with quests for you, <player.name>. I've got two quests for you now - one to go meet a friend, and one to upgrade your armaments."
+        Reinwald-Found-Iron-Price-Prompt:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "Hey, you found Reinwald! He and his troops are a good source of quests. Keep them in mind."
+                    - wait 0.7s
+                    - narrate "format:Quest Master Format" "You ready for that next upgrade quest? I sure am."
+        Iron-Price-Paid-Find-Reinwald:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:Quest Master Format" "You're making me proud with how fast you're upgrading your equipment and building your story. Before you get more quests from me, though, you should go meet a friend of mine."
         'Fishing':
             proximity trigger:
                 entry:
                     script:
                     - narrate "format:Quest Master Format" "Hey <player.name>! I can still help you get some equipment, right click me to see the quest details."
                     - narrate "format:Quest Master Format" "If you want to quit the one you're on at any time, you can type /quests quit."
-        'Find Youngling Trainers':
+        'FindYounglingTrainers':
             proximity trigger:
                 entry:
                     script:
                     - narrate "format:Quest Master Format" "Hey there, <player.name>. There are some people I'd like you to meet, if you have time."
-        'Talk to Postmaster':
+        'TalkToPostmaster':
             proximity trigger:
                 entry:
                     script:
                     - narrate "format:Quest Master Format" "Howdy <player.name>! Want another quick task?"
-        'Waiting for Quest':
+        'WaitingForQuest':
             proximity trigger:
                 entry:
                     script:
@@ -85,13 +146,13 @@ FoundAllDiamonds:
         ## When the next quest is ready to go, uncomment the following line and change the zap to the new step.
                     # - narrate "format:Quest Master Format" "Hey, I have a new quest for you!"
                     # - zap 'step:New Quest'
-        'No Quests':
+        'NoQuests':
             proximity trigger:
                 entry:
                     script:
                     - narrate "format:Quest Master Format" "I don't have any quests for you right now <player.name>, but have a look around! There are plenty of others."
 #                    - zap 'step:Next Quest'
-        'Next Quest':
+        'NextQuest':
             proximity trigger:
                 entry:
                     script:
