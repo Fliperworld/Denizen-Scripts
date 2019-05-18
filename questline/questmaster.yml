@@ -133,6 +133,12 @@ QuestMasterStepUpdater:
                         - narrate "format:Quest Master Format" "You know, I reckon Reinwald has a quest for you."
                     - else if "<player.quests.active_names.contains[Cutting your teeth]||null>":
                         - narrate "format:Quest Master Format" "You picked up that quest from Reinwald, eh? Don't forget to wear armor!"
+                    - else:
+                        - narrate "format:Quest Master Format" "Look at you, making your way in the world! I'm very proud."
+                        - wait 0.7s
+                        - narrate "format:Quest Master Format" "There are some quests around here that we could use your help with every so often, so check back regularly."
+                        - wait 0.7s
+                        - narrate "format:Quest Master Format" "Reinwald and his troops have some similar tasks for you, too, I'm sure."
                     #- else if "<player.quests.completed_names.contains[]>" && "<player.quests.active_names.contains[].not>" && "<player.quests.completed_names.contains[].not>":
                     #    - narrate "format:Quest Master Format" ""
                     #- else if "<player.quests.active_names.contains[]||null>":
