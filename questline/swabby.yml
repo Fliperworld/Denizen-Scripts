@@ -30,6 +30,7 @@
             click trigger:
                 script:
                 - narrate "format:Swabby Format" "You came here to build a new life for yourself, right?"
+                - adjust <player> "show_boss_bar:Say '<green>1<white>' in chat to select the quest, then '<green>yes<white>' accept it, or '<red>no<white>' to decline."
                 - wait 0.7s
                 - narrate "format:Swabby Format" "I can't think of a better place to do it."
                 - wait 0.7s
@@ -44,17 +45,20 @@
                 - narrate "format:Swabby Format" "If you've got some time before you go, mind stopping by the Quest Master for me? I'll make it worth your while."
                 - wait 0.7s
                 - narrate "format:Swabby Format" "He's not very far, just over there in the Questing Hall. You can see it on the right when you stand on the ship's plank. Just past the inn."
-                - adjust <player> "show_boss_bar:Say '<green>1<white>' in chat to select the quest, then '<green>yes<white>' accept it, or '<red>no<white>' to decline."
+                - wait 10.0s
+                - adjust <player> show_boss_bar
         'Visited':
             proximity trigger:
                 entry:
                     script:
                     - narrate "format:Swabby Format" "Hey there, <player.name>! Hope your adventure is going well!"
+                    - adjust <player> "show_boss_bar:Right click an NPC to talk to them!"
                     - wait 0.7s
                     - narrate "format:Swabby Format" "If you've got some time before you go, mind stopping by the Quest Master for me? I'll make it worth your while."
                     - wait 0.7s
                     - narrate "format:Swabby Format" "He's not very far, just over there in the Questing Hall. You can see it on the right when you stand on the ship's plank. Just past the inn."
-                    - adjust <player> "show_boss_bar:Right click an NPC to talk to them!"
+                    - wait 10.0s
+                    - adjust <player> show_boss_bar
                 exit:
                     script:
                     - narrate "format:Swabby Format" "Happy travels!"
@@ -62,9 +66,11 @@
             click trigger:
                 script:
                 - narrate "format:Swabby Format" "If you've got some time before you go, mind stopping by the Quest Master for me? I'll make it worth your while."
+                - adjust <player> "show_boss_bar:Say '<green>1<white>' in chat to select the quest, then '<green>yes<white>' accept it, or '<red>no<white>' to decline."
                 - wait 0.7s
                 - narrate "format:Swabby Format" "He's not very far, just over there in the Questing Hall. You can see it on the right when you stand on the ship's plank. Just past the inn."
-                - adjust <player> "show_boss_bar:Say '<green>1<white>' in chat to select the quest, then '<green>yes<white>' accept it, or '<red>no<white>' to decline."
+                - wait 10.0s
+                - adjust <player> show_boss_bar
         'Visited and Done':
             proximity trigger:
                 entry:

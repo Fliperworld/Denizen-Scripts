@@ -36,6 +36,6 @@ RemoveWater:
         on falling_block changes block:
         - if <yaml[WaveManager].read[<context.entity.uuid>]> == RemoveOnLand:
             - determine cancelled
-        - narrate "context.entity.uuid is <context.entity.uuid>" targets:<server.match_player[Wahrheit]>
-        - narrate "context.old_material is <context.old_material>" targets:<server.match_player[Wahrheit]>
-        - narrate "context.new_material is <context.new_material>" targets:<server.match_player[Wahrheit]>
+        #- narrate "context.entity.uuid is <context.entity.uuid>" targets:<server.match_player[Wahrheit]>
+        #- narrate "context.old_material is <context.old_material>" targets:<server.match_player[Wahrheit]>
+        #- narrate "context.new_material is <context.new_material>" targets:<server.match_player[Wahrheit]>

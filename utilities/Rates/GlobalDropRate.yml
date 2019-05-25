@@ -8,7 +8,7 @@
 #        - narrate "context.xp: <context.xp>"
 drop_rate_data:
     type: yaml data
-    debug: true
+    debug: false
     drop_rate_multiplier: 1
     drop_multiplier_active: false
 drop_rate_announcement:
