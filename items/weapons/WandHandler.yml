@@ -8,7 +8,8 @@ wand_ready_check:
             - flag player attack_cooldown:true duration:<player.attack_cooldown.max_duration>
             - flag player wand_cast:true duration:1s
             - execute as_player "cast <player.item_in_hand.nbt[spell]>"
-        - flag player attack_cooldown:true duration:<player.attack_cooldown.max_duration>
+        - else if <player.item_in_hand.nbt[weapon_type]||null> == wand:
+            - flag player attack_cooldown:true duration:<player.attack_cooldown.max_duration>
 
 wand_spell_handler:
     type: world

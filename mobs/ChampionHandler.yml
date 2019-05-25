@@ -1,6 +1,6 @@
 "Champion Handler":
     type: world
-    debug: true
+    debug: false
     events:
         on server start:
         - wait 30s
