@@ -7,6 +7,7 @@ Veteran_Flame_Helm_sealed_potential:
     - "<&9><&o>Veteran"
     - "<&f>This helm is warm to the touch, radiating the energy of fire magic."
     - "<&b>+0.25x Fire Magic Effectiveness"
+    - "<&b>Set bonus: Additional 0|0.25|0.5|1x"
     - "<&6>Sealed Potential"
     enchantments:
     - PROTECTION_ENVIRONMENTAL:5
@@ -20,6 +21,7 @@ Veteran_Flame_Chest_sealed_potential:
     - "<&9><&o>Veteran"
     - "<&f>This chestplate is warm to the touch, radiating the energy of fire magic."
     - "<&b>+0.6x Fire Magic Effectiveness"
+    - "<&b>Set bonus: Additional 0|0.25|0.5|1x"
     - "<&6>Sealed Potential"
     enchantments:
     - PROTECTION_ENVIRONMENTAL:5
@@ -33,6 +35,7 @@ Veteran_Flame_Legs_sealed_potential:
     - "<&9><&o>Veteran"
     - "<&f>These leggings are warm to the touch, radiating the energy of fire magic."
     - "<&b>+0.4x Fire Magic Effectiveness"
+    - "<&b>Set bonus: Additional 0|0.25|0.5|1x"
     - "<&6>Sealed Potential"
     enchantments:
     - PROTECTION_ENVIRONMENTAL:5
@@ -46,7 +49,61 @@ Veteran_Flame_Boots_sealed_potential:
     - "<&9><&o>Veteran"
     - "<&f>These boots are warm to the touch, radiating the energy of fire magic."
     - "<&b>+0.25x Fire Magic Effectiveness"
+    - "<&b>Set bonus: Additional 0|0.25|0.5|1x"
     - "<&6>Sealed Potential"
+    enchantments:
+    - PROTECTION_ENVIRONMENTAL:5
+    - PROTECTION_FIRE:3
+
+Veteran_Flame_Helm:
+    type: item
+    no_id: true
+    material: Leather_Helmet[nbt_attributes=li@generic.maxHealth/head/0/4.0|generic.armorToughness/head/0/2.0|generic.armor/head/0/2.0;nbt=li@equipment_type/armor|item_tier/veteran|armor_set/veteran_flame|fire_magic_multiplier/0.25|enable_mana/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
+    display name: "<&9>Smoldering Leather Helm"
+    lore_list:
+    - "<&9><&o>Veteran"
+    - "<&f>This helm is warm to the touch, radiating the energy of fire magic."
+    - "<&b>+0.25x Fire Magic Effectiveness"
+    - "<&b>Set bonus: Additional 0|0.25|0.5|1x"
+    enchantments:
+    - PROTECTION_ENVIRONMENTAL:5
+    - PROTECTION_FIRE:3
+Veteran_Flame_Chest:
+    type: item
+    no_id: true
+    material: Leather_Chestplate[nbt_attributes=li@generic.maxHealth/chest/0/8.0|generic.armorToughness/chest/0/2.0|generic.armor/chest/0/4.0;nbt=li@equipment_type/armor|item_tier/veteran|armor_set/veteran_flame|fire_magic_multiplier/0.6|enable_mana/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
+    display name: "<&9>Smoldering Leather Chestplate"
+    lore_list:
+    - "<&9><&o>Veteran"
+    - "<&f>This chestplate is warm to the touch, radiating the energy of fire magic."
+    - "<&b>+0.6x Fire Magic Effectiveness"
+    - "<&b>Set bonus: Additional 0|0.25|0.5|1x"
+    enchantments:
+    - PROTECTION_ENVIRONMENTAL:5
+    - PROTECTION_FIRE:5
+Veteran_Flame_Legs:
+    type: item
+    no_id: true
+    material: Leather_Leggings[nbt_attributes=li@generic.maxHealth/legs/0/6.0|generic.armorToughness/legs/0/2.0|generic.armor/legs/0/3.0;nbt=li@equipment_type/armor|item_tier/veteran|armor_set/veteran_flame|fire_magic_multiplier/0.4|enable_mana/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
+    display name: "<&9>Smoldering Leather Leggings"
+    lore_list:
+    - "<&9><&o>Veteran"
+    - "<&f>These leggings are warm to the touch, radiating the energy of fire magic."
+    - "<&b>+0.4x Fire Magic Effectiveness"
+    - "<&b>Set bonus: Additional 0|0.25|0.5|1x"
+    enchantments:
+    - PROTECTION_ENVIRONMENTAL:5
+    - PROTECTION_FIRE:3
+Veteran_Flame_Boots:
+    type: item
+    no_id: true
+    material: Leather_Boots[nbt_attributes=li@generic.maxHealth/feet/0/2.0|generic.armorToughness/feet/0/2.0|generic.armor/feet/0/2.0;nbt=li@equipment_type/armor|item_tier/veteran|armor_set/veteran_flame|fire_magic_multiplier/0.25|enable_mana/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
+    display name: "<&9>Smoldering Leather Boots"
+    lore_list:
+    - "<&9><&o>Veteran"
+    - "<&f>These boots are warm to the touch, radiating the energy of fire magic."
+    - "<&b>+0.25x Fire Magic Effectiveness"
+    - "<&b>Set bonus: Additional 0|0.25|0.5|1x"
     enchantments:
     - PROTECTION_ENVIRONMENTAL:5
     - PROTECTION_FIRE:3
