@@ -31,7 +31,7 @@ fire_mage_drop:
         on mm denizen death:
         - if !<context.entity.name.starts_with[<&d>]||null>:
             - queue clear
-        - else if <context.entity.name.starts_with[<&d>Cultist Fire Mage]||null>:
+        - else if "<context.entity.name.starts_with[<&d>Cultist Fire Mage]||null>":
             - if <util.random.int[1].to[300]> <= <tern[<s@drop_rate_data.yaml_key[drop_multiplier_active]>]:<el@1.mul[<s@drop_rate_data.yaml_key[drop_rate_multiplier]>].mul[<player.flag[player_drop_rate]||1>]||<el@1.mul[<player.flag[player_drop_rate]||1>]>>||1>:
                 - drop <s@fire_mage_weapon_drop_list.yaml_key[list].random[1]> location:<context.entity.location>
             - else if <util.random.int[1].to[200]> <= <tern[<s@drop_rate_data.yaml_key[drop_multiplier_active]>]:<el@1.mul[<s@drop_rate_data.yaml_key[drop_rate_multiplier]>].mul[<player.flag[player_drop_rate]||1>]||<el@1.mul[<player.flag[player_drop_rate]||1>]>>||1>:
