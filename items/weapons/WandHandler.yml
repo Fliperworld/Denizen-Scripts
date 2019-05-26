@@ -17,5 +17,4 @@ wand_spell_handler:
     events:
         on magicspells player casts spell:
         - if <player.item_in_hand.nbt[weapon_type]||null> == wand && <player.has_flag[wand_cast]> && <context.spell_name> == <player.item_in_hand.nbt[spell]>:
-            - determine passively power:<proc[Magic_Multiplier_Handler].context[<player.item_in_hand.nbt[spell_magic_type]>]>
             - determine clear_reagents
