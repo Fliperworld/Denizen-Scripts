@@ -1,4 +1,3 @@
 KillstreakBooster:
-    type: world
+    type: yaml datae
     debug: false
-    events:

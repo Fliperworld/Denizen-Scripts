@@ -3,7 +3,7 @@ BurningSpeed_Power_Handler:
     debug: false
     events:
         on magicspells player casts spell:
-        - if <context.spell> != burningspeed:
+        - if <context.spell_name> != burningspeed:
             - queue clear
         - else:
             - define fire_power <proc[Magic_Power_Handler].context[fire]>

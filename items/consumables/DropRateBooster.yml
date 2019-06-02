@@ -16,14 +16,14 @@ drop_rate_booster_handler:
     events:
         on player consumes DropRateBooster2x:
         - take DropRateBooster2x
-        - narrate "<&6>You consume the potion and are imbued with magical energy improving your ability to find rare items from hunting monsters!"
+        - narrate "<&6>You consume the potion and are imbued with magical energy! Your ability to find rare items from hunting monsters is improved for the next 30 minutes."
         - flag player player_drop_rate:2 duration:30m
         - flag player has_buff:true duration:30m
         - wait 30m
         - narrate "<&6>The item-finding aura wears off..."
         on player consumes DropRateBooster4x:
         - take DropRateBooster4x
-        - narrate "<&6>You consume the potion and are imbued with magical energy greatly improving your ability to find rare items from hunting monsters!"
+        - narrate "<&6>You consume the potion and are imbued with magical energy! Your ability to find rare items from hunting monsters is improved for the next 30 minutes."
         - flag player player_drop_rate:4 duration:30m
         - flag player has_buff:true duration:30m
         - wait 30m

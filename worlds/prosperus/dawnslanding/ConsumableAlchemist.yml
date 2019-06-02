@@ -44,9 +44,9 @@ alchemist_arcaena_format:
 
 DropRateBooster2xMenu:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@0,0,255]
+    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@0,0,255;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
     display name: "<&a>Bottled Luck"
-    lore:
+    lore_list:
     - "<&f>This magic potion will give you a 2x chance to find rare items while hunting monsters!"
     - "<&6>Ingredients"
     - "<&f><s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter"
@@ -57,9 +57,9 @@ DropRateBooster2xMenu:
     crystallizedexperienceingotcost: 1
 DropRateBooster4xMenu:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@0,0,255]
+    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@0,0,255;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
     display name: "<&a>Improved Bottled Luck"
-    lore:
+    lore_list:
     - "<&f>This magic potion will give you a 4x chance to find rare items while hunting monsters!"
     - "<&6>Ingredients"
     - "<&f><s@DropRateBooster4xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter"
@@ -71,9 +71,9 @@ DropRateBooster4xMenu:
 
 GoldBooster2xMenu:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@255,255,0]
+    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@255,255,0;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
     display name: "<&a>Golden Brew"
-    lore:
+    lore_list:
     - "<&f>This magic potion will give you a 2x chance to find extra gold from slain monsters!"
     - "<&6>Ingredients"
     - "<&f><s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter"
@@ -84,9 +84,9 @@ GoldBooster2xMenu:
     crystallizedexperienceingotcost: 1
 GoldBooster4xMenu:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@255,255,0]
+    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@255,255,0;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
     display name: "<&a>Improved Golden Brew"
-    lore:
+    lore_list:
     - "<&f>This magic potion will give you a 4x chance to find extra gold from slain monsters!"
     - "<&6>Ingredients"
     - "<&f><s@GoldBooster4xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter"

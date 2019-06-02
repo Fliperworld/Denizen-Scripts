@@ -3,7 +3,7 @@ Flamebolt_Power_Handler:
     debug: false
     events:
         on magicspells player casts spell:
-        - if <context.spell> != flamebolt:
+        - if <context.spell_name> != flamebolt:
             - queue clear
         - else:
             - define fire_power <proc[Magic_Power_Handler].context[fire]>
