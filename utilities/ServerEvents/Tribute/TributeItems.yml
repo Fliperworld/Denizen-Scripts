@@ -1,0 +1,9 @@
+GodsTribute:
+    type: item
+    material: gold_nugget[flags=li@HIDE_ENCHANTS;nbt=li@event_item/gods_tribute|uncraftable/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
+    display name: "<&a>Tribute to the Gods"
+    lore_list:
+    - "<&a>Event Item"
+    - "<&f>A token that radiates a divine presence."
+    enchantments:
+    - MENDING:1

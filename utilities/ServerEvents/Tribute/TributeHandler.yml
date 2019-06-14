@@ -1,0 +1,4 @@
+Tribute_Event_Status:
+    type: yaml data
+    debug: false
+    tribute_event_active: true

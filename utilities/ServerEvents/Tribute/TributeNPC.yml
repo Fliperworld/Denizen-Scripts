@@ -1,0 +1,83 @@
+TributeNPC:
+    type: assignment
+    debug: false
+    interact scripts:
+    - 10 Tribute
+    actions:
+        on assignment:
+        - teleport npc <npc.anchor[tributenpc]>
+        - trigger name:proximity toggle:true
+        - trigger name:chat toggle:true
+
+tribute_npc_format:
+    type: format
+    debug: false
+    format: "<dark_green>Oracle of the Gods<white><&co> <text>"
+
+"Tribute":
+    type: interact
+    debug: false
+    steps:
+        General*:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate "format:tribute_npc_format" "Greetings, <player.name>."
+                    - wait 0.7s
+                    - if <s@Tribute_Event_Status.yaml_key[tribute_event_active]>:
+                        - if <player.inventory.contains[GodsTribute]>:
+                            - narrate "format:tribute_npc_format" "I see you have some Tribute for the Gods. Would you like to offer it?"
+                            - zap Offer
+                exit:
+                    script:
+                    - narrate "format:tribute_npc_format" "May the Gods bless your travels."
+        Offer:
+            click trigger:
+                script:
+                - narrate "format:tribute_npc_format" "Wonderful. Which blessing do you pray for?"
+                - wait 0.2s
+                - inventory open Tribute_Inventory
+                - zap General
+            proximity trigger:
+                exit:
+                    script:
+                    - narrate "format:tribute_npc_format" "May the Gods bless your travels."
+                    - zap General
+        Selection:
+            chat trigger:
+                'Tribute':
+                    trigger: I'd like to offer /REGEX:\d+/ Tribute.
+                    script:
+                    - if <player.inventory.contains[GodsTribute].quantity[<context.message.replace[regex:\D+]>]>:
+                        - take GodsTribute quantity:<context.message.replace[regex:\D+]> from:<player.inventory>
+                        - narrate "format:tribute_npc_format" "The Gods thank you for your tribute."
+                        - wait 0.7s
+                    - else:
+                        - narrate "format:tribute_npc_format" "You don't seem to have that much Tribute. Did you misspeak?"
+            proximity trigger:
+                exit:
+                    script:
+                    - narrate "format:tribute_npc_format" "May the Gods bless your travels."
+                    - zap General
+
+Tribute_Inventory:
+    type: inventory
+    debug: false
+    title: Blessings
+    size: 45
+    slots:
+    - "[] [] [i@Tribute_mcMMO] [] [i@Tribute_DropRate] [] [i@Tribute_Experience] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+
+Tribute_Inventory_Handler:
+    type: world
+    debug: false
+    events:
+        on player clicks Tribute_mcmmo in Tribute_Inventory:
+        
+        on player clicks Tribute_DropRate in Tribute_Inventory:
+        
+        on player clicks Tribute_Experience in Tribute_Inventory:
