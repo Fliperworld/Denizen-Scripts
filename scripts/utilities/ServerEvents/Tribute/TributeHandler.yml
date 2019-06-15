@@ -14,8 +14,8 @@ Tribute_Handler:
                 - yaml set id:rates drop.multiplier: 1
                 - yaml set id:rates experience.active:true
                 - yaml set id:rates experience.multiplier:1
-                - yaml id:rates savefile:utilities\Data\Rates.yml
-                - yaml id:events savefile:utilities\Data\Events.yml
+                - yaml id:rates savefile:scriptdata\Rates.yml
+                - yaml id:events savefile:scriptdata\Events.yml
                 - reload
         - else if <util.date.format[EEE]> == Mon:
             - if <yaml[events].read[tribute.active]> == false:
@@ -32,8 +32,8 @@ Tribute_Handler:
                 - yaml set id:rates drop.multiplier: 1
                 - yaml set id:rates experience.active:false
                 - yaml set id:rates experience.multiplier:1
-                - yaml id:rates savefile:utilities\Data\Rates.yml
-                - yaml id:events savefile:utilities\Data\Events.yml
+                - yaml id:rates savefile:scriptdata\Rates.yml
+                - yaml id:events savefile:scriptdata\Events.yml
                 - execute as_server "xprate reset"
         on player joins:
         - if <yaml[events].read[tribute.active].not>:

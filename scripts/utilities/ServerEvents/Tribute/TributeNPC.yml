@@ -2,7 +2,7 @@ TributeNPC:
     type: assignment
     debug: false
     interact scripts:
-    - 10 Tribute
+    - 10 TributeNPC
     actions:
         on assignment:
         - teleport npc <npc.anchor[tributenpc]>
@@ -14,7 +14,7 @@ tribute_npc_format:
     debug: false
     format: "<&2>Oracle of the Gods<&f><&co> <text>"
 
-"Tribute":
+"TributeNPC":
     type: interact
     debug: false
     steps:
@@ -74,18 +74,18 @@ tribute_npc_format:
                             - else if <def[choice]> == drops:
                                 - yaml id:events set tribute.drops.rate:<def[rate].add[1]>
                                 - yaml id:rates set drops.multiplier:<def[rate].add[1]>
-                                - yaml id:rates savefile:utilities\Data\Rates.yml
+                                - yaml id:rates savefile:scriptdata\Rates.yml
                                 - narrate format:tribute_npc_format "The Gods smile on us! Your offering brings the Blessing of Luck to us all!"
                                 - announce "<&c>The Gods speak<&f>: The Gods smile upon Prosperus. Thanks to the offerings by <player.name>, we offer a Blessing of Luck."
                                 - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, <&at>here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Luck!**"
                             - else if <def[choice]> == experience:
                                 - yaml id:events set tribute.experience.rate:<def[rate].add[1]>
                                 - yaml id:rates set experience.multiplier:<def[rate].add[1]>
-                                - yaml id:rates savefile:utilities\Data\Rates.yml
+                                - yaml id:rates savefile:scriptdata\Rates.yml
                                 - narrate format:tribute_npc_format "The Gods smile on us! Your offering brings the Blessing of Wisdom to us all!"
                                 - announce "<&c>The Gods speak<&f>: The Gods smile upon Prosperus. Thanks to the offerings by <player.name>, we offer a Blessing of Wisdom."
                                 - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, <&at>here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Wisdom!**"
-                        - yaml id:events savefile:utilities\Data\Events.yml
+                        - yaml id:events savefile:scriptdata\Events.yml
                         - zap General
                     - else:
                         - narrate format:tribute_npc_format "You don't seem to have that much Tribute. Did you misspeak?"
