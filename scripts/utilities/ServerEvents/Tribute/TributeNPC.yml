@@ -1,4 +1,4 @@
-TributeNPC:
+TributeAssignment:
     type: assignment
     debug: false
     interact scripts:
@@ -28,6 +28,10 @@ tribute_npc_format:
                         - if <player.inventory.contains[GodsTribute]>:
                             - narrate format:tribute_npc_format "I see you have some Tribute for the Gods. Would you like to offer it?"
                             - zap Blessing
+                        - else:
+                            - narrate format:tribute_npc_format "I seek offerings of Tribute for the Gods."
+                            - wait 0.7s
+                            - narrate format:tribute_npc_format "Go forth and adventure. Bring me any that you find."
                 exit:
                     script:
                     - narrate format:tribute_npc_format "May the Gods bless your travels."
@@ -36,7 +40,7 @@ tribute_npc_format:
                 script:
                 - narrate format:tribute_npc_format "Wonderful. Which blessing do you pray for?"
                 - wait 1s
-                - inventory open Tribute_Inventory
+                - inventory open d:in@Tribute_Inventory
                 - zap General
             proximity trigger:
                 exit:
@@ -74,18 +78,18 @@ tribute_npc_format:
                             - else if <def[choice]> == drops:
                                 - yaml id:events set tribute.drops.rate:<def[rate].add[1]>
                                 - yaml id:rates set drops.multiplier:<def[rate].add[1]>
-                                - yaml id:rates savefile:scriptdata\Rates.yml
+                                - yaml id:rates savefile:scriptdata/Rates.yml
                                 - narrate format:tribute_npc_format "The Gods smile on us! Your offering brings the Blessing of Luck to us all!"
                                 - announce "<&c>The Gods speak<&f>: The Gods smile upon Prosperus. Thanks to the offerings by <player.name>, we offer a Blessing of Luck."
                                 - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, <&at>here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Luck!**"
                             - else if <def[choice]> == experience:
                                 - yaml id:events set tribute.experience.rate:<def[rate].add[1]>
                                 - yaml id:rates set experience.multiplier:<def[rate].add[1]>
-                                - yaml id:rates savefile:scriptdata\Rates.yml
+                                - yaml id:rates savefile:scriptdata/Rates.yml
                                 - narrate format:tribute_npc_format "The Gods smile on us! Your offering brings the Blessing of Wisdom to us all!"
                                 - announce "<&c>The Gods speak<&f>: The Gods smile upon Prosperus. Thanks to the offerings by <player.name>, we offer a Blessing of Wisdom."
                                 - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, <&at>here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Wisdom!**"
-                        - yaml id:events savefile:scriptdata\Events.yml
+                        - yaml id:events savefile:scriptdata/Events.yml
                         - zap General
                     - else:
                         - narrate format:tribute_npc_format "You don't seem to have that much Tribute. Did you misspeak?"
@@ -186,7 +190,7 @@ Tribute_DropRate:
 
 Tribute_Experience:
     type: item
-    material: expbottle[flags=li@HIDE_ENCHANTS;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
+    material: i@exp_bottle[flags=li@HIDE_ENCHANTS;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
     display name: "<&6>Blessing of Wisdom"
     lore_list:
     - "<&f>Pray for the Gods to bless your ability to gain experience from slain monsters."
