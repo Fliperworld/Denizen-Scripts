@@ -26,10 +26,10 @@ tribute_npc_format:
                     - wait 0.7s
                     - if <yaml[events].read[tribute.active]>:
                         - if <player.inventory.contains[GodsTribute]>:
-                            - narrate format:tribute_npc_format "I see you have some Tribute for the Gods. Would you like to offer it?"
+                            - narrate format:tribute_npc_format "I see you have some Tribute to the Gods. Would you like to offer it?"
                             - zap Blessing
                         - else:
-                            - narrate format:tribute_npc_format "I seek offerings of Tribute for the Gods."
+                            - narrate format:tribute_npc_format "I seek offerings of Tribute to the Gods."
                             - wait 0.7s
                             - narrate format:tribute_npc_format "Go forth and adventure. Bring me any that you find."
                 exit:
