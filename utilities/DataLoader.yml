@@ -1,0 +1,8 @@
+Data_Loader:
+    type: world
+    debug: false
+    events:
+        on server start:
+        - yaml load:utilities\Data\Events.yml id:events
+        - yaml load:utilities\Data\Rates.yml id:rates
+        - yaml load:utilities\Data\DropTables.yml id:droptables

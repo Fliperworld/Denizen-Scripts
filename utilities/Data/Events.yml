@@ -1,0 +1,26 @@
+tribute:
+    active: true
+    mcmmo:
+        rate: 1
+        progress: 0
+        upgrades:
+            1: 250
+            2: 500
+            3: 1000
+            4: 2000
+    drops:
+        rate: 1
+        progress: 0
+        upgrades:
+            1: 250
+            2: 500
+            3: 1000
+            4: 2000
+    experience:
+        rate: 1
+        progress: 0
+        upgrades:
+            1: 250
+            2: 500
+            3: 1000
+            4: 2000
