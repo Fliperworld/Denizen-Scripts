@@ -1,6 +1,26 @@
+Tribute_Task:
+    type: world
+    debug: true
+    script:
+    - yaml set id:events tribute.active:false
+    - yaml set id:events tribute.mcmmo.rate:1
+    - yaml set id:events tribute.mcmmo.progress:0
+    - yaml set id:events tribute.drops.rate:1
+    - yaml set id:events tribute.drops.progress:0
+    - yaml set id:events tribute.experience.rate:1
+    - yaml set id:events tribute.experience.progress:0
+    - yaml set id:rates drops.active:false
+    - yaml set id:rates drops.multiplier:1
+    - yaml set id:rates experience.active:false
+    - yaml set id:rates experience.multiplier:1
+    - yaml id:rates savefile:scriptdata/Rates.yml
+    - yaml id:events savefile:scriptdata/Events.yml
+    - execute as_server "xprate reset"
+    - reload
+
 Tribute_Handler:
     type: world
-    debug: false
+    debug: true
     events:
         on system time hourly:
         - if <util.date.format[EEE]> != Fri || <util.date.format[EEE]> != Mon:
@@ -28,13 +48,14 @@ Tribute_Handler:
                 - yaml set id:events tribute.drops.progress:0
                 - yaml set id:events tribute.experience.rate:1
                 - yaml set id:events tribute.experience.progress:0
-                - yaml set id:rates drop.active:false
-                - yaml set id:rates drop.multiplier: 1
+                - yaml set id:rates drops.active:false
+                - yaml set id:rates drops.multiplier:1
                 - yaml set id:rates experience.active:false
                 - yaml set id:rates experience.multiplier:1
                 - yaml id:rates savefile:scriptdata/Rates.yml
                 - yaml id:events savefile:scriptdata/Events.yml
                 - execute as_server "xprate reset"
+                - reload
         on player joins:
         - if <yaml[events].read[tribute.active].not>:
             - queue clear
@@ -43,9 +64,9 @@ Tribute_Handler:
             - narrate "<&6>The Gods seek your offerings of Tribute! Collect Tribute and deliver it to the <&2>Oracle of the Gods<&6> in the castle in Dawn's Landing!"
             - if <yaml[events].read[tribute.mcmmo.rate]> > 1 || <yaml[events].read[tribute.drops.rate]> > 1 || <yaml[events].read[tribute.experience.rate]> > 1:
                 - narrate "<&a>Current blessings:"
-                - narrate "<&a>Blessing of Skillfulness: <&6><yaml[events].read[mcmmo.rate]>x"
-                - narrate "<&a>Blessing of Luck: <&6><yaml[events].read[drops.rate]>x"
-                - narrate "<&a>Blessing of Wisdom: <&6><yaml[events].read[experience.rate]>x"
+                - narrate "<&a>Blessing of Skillfulness: <&6><yaml[events].read[tribute.mcmmo.rate]>x"
+                - narrate "<&a>Blessing of Luck: <&6><yaml[events].read[tribute.drops.rate]>x"
+                - narrate "<&a>Blessing of Wisdom: <&6><yaml[events].read[tribute.experience.rate]>x"
         on player receives message:
         - if "<context.message.contains_text[mcMMO is currently in an XP rate event]>" && <yaml[events].read[tribute.active]>:
             - determine cancelled
