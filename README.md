@@ -9,12 +9,12 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareA
 
 Some scripts of note:
 
-* [Super energy system](https://github.com/SXRWahrheit/Denizen-Scripts/blob/master/players/SuperHandler.yml)
-* [Socket handler](https://github.com/SXRWahrheit/Denizen-Scripts/blob/master/players/sockets/SocketHandler.yml)
-* [Champion mob spawn handler](https://github.com/SXRWahrheit/Denizen-Scripts/blob/master/mobs/ChampionHandler.yml)
-* [Anti-farm script](https://github.com/SXRWahrheit/Denizen-Scripts/blob/master/mobs/antifarm-yaml.yml)
-* [Daily login rewards](https://github.com/SXRWahrheit/Denizen-Scripts/blob/master/utilities/LoginRewards.yml)
-* [Reminders](https://github.com/SXRWahrheit/Denizen-Scripts/blob/master/utilities/Reminders.yml)
+* [Super energy system](https://github.com/SXRWahrheit/Denizen-Scripts/blob/master/scripts/players/SuperHandler.yml)
+* [Socket handler](https://github.com/SXRWahrheit/Denizen-Scripts/blob/master/scripts/players/sockets/SocketHandler.yml)
+* [Champion mob spawn handler](https://github.com/SXRWahrheit/Denizen-Scripts/blob/master/scripts/mobs/ChampionHandler.yml)
+* [Anti-farm script](https://github.com/SXRWahrheit/Denizen-Scripts/blob/master/scripts/mobs/antifarm-yaml.yml)
+* [Daily login rewards](https://github.com/SXRWahrheit/Denizen-Scripts/blob/master/scripts/utilities/LoginRewards.yml)
+* [Reminders](https://github.com/SXRWahrheit/Denizen-Scripts/blob/master/scripts/utilities/Reminders.yml)
 
 If you have any questions about their use, you can find me as Wahrheit on the Denizen Discord. Many can be easily adapted to another server with the right setup.
 
