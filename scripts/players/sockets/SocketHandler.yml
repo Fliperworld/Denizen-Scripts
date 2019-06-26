@@ -128,7 +128,7 @@ sockets:
 socket_add:
     type: item
     material: nether_star[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
-    display name: "<&a>Add a socket to an item"
+    display name: "<&a>Unlock a socket on an item"
     lore_list:
     - "<&f>Requires <server.flag[SocketAddCost]> Purified Dark Matter and 1 Ingot of Crystallized Experience."
     enchantments:

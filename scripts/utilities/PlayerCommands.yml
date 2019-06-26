@@ -166,3 +166,10 @@
         - execute as_player "ar track 3"
         - execute as_player "ar track 4"
     }
+GetNewPlayerBook:
+    type: command
+    name: newplayerguide
+    description: View the New Player Guide.
+    usage: /newplayerguide
+    script:
+    - adjust <player> show_book:i@NewPlayerBook
