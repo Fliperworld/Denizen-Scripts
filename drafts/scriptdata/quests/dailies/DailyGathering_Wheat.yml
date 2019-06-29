@@ -1,27 +1,24 @@
 config:
     availability:
-        offering_npc: 11
+        offering_npc: 23
     reset:
         period: daily
         time: "19:00"
-    requirements:
-        quests_completed:
-        - "TeachFishing"
     rewards:
         money: 50
         quest_points: 1
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<gray>Wil Wheaton<white>: We need 5 stacks of wheat today to feed the people of Dawn's Landing. Can you help?"
+    completion: "<gray>Wil Wheaton<white>: Wow, thank you so much for your generosity! Time to get baking."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    DailyGathering_Wheat:
+        name: Wheat for the wanting (Daily)
+        description: "Wil Wheaton needs wheat for the people of Dawn's Landing!"
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Bring wheat to Wil Wheaton in the Questing Hall"
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Deliver 320 wheat"
                         progress: 0
-                        total: 16
+                        total: 320

@@ -1,27 +1,24 @@
 config:
     availability:
-        offering_npc: 11
+        offering_npc: 182
     reset:
         period: daily
         time: "19:00"
-    requirements:
-        quests_completed:
-        - "TeachFishing"
     rewards:
-        money: 50
+        money: 250
         quest_points: 1
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<gray>Bookkeeper<white>: Ah, hello! Well done on navigating the Grand Library. Go to the Quest Master for your reward."
+    completion: "<gray>Bookkeeper<white>: Hey, nice job finding your way through the Grand Library! Here's a little prize."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    DailyLibrary:
+        name: Navigate the Grand Library (Daily)
+        description: "Now that you've made your way through the Grand Library, go talk to the Quest Master for your reward!"
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Speak to the Quest Master"
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Visit the Quest Master"
                         progress: 0
-                        total: 16
+                        total: 1
