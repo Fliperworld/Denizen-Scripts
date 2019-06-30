@@ -1,27 +1,30 @@
 config:
     availability:
-        offering_npc: 11
-    reset:
-        period: daily
-        time: "19:00"
+        offering_npc: 192
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "UnlockSun"
+        permissions:
+        - magicspells.learn.sun-heavens
     rewards:
-        money: 50
-        quest_points: 1
+        money: 100
+        quest_points: 3
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Stoic Sage<white>: ecause you already know the spell to summon the sun in Prosperus, I can teach you the spell to summon it in the Heavens. I just need a few more ingredients. Bring me redstone and gold bars."
+    completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Sun-Heavens! Give it a try with <&dq>/cast sun-heavens.<&dq>"
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    UnlockSun-Heavens:
+        name: Learn the Sun-Heavens spell
+        description: "Bring reagents to the Stoic Sage and learn the Sun-Heavens spell!"
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Bring magical reagents to the Stoic Sage"
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Deliver redstone"
                         progress: 0
-                        total: 16
+                        total: 64
+                    2:
+                        name: "Deliver gold ingots"
+                        progress: 0
+                        total: 32
