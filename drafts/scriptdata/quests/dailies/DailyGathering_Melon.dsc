@@ -16,7 +16,7 @@ player_data:
         description: "Melon Matt needs melon for the people of Dawn's Landing!"
         stages:
             1:
-                description: "Bring melon to Melon Matt in the Questing Hall"
+                description: "Bring melon to Melon Matt in the Questing Hall."
                 objectives:
                     1:
                         name: "Deliver 320 melon slices"

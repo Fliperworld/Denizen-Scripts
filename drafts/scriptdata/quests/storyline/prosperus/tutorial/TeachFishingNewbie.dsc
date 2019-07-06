@@ -1,21 +1,18 @@
 config:
     availability:
         offering_npc: 11
-    reset:
-        period: daily
-        time: "19:00"
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "FindFishingNewbie"
     rewards:
-        money: 50
+        money: 250
         quest_points: 1
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<gray>Fishing Newbie<white>: I'm trying to learn how to fish... if you can teach me, I'll give you a bunch of gold."
+    completion: "<gray>Fishing Newbie<white>: Thanks so much! I hope this gold helps you."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
+    TeachFishingNewbie:
+        name: Teach the newbie to fish
         description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
         stages:
             1:

@@ -19,7 +19,7 @@ player_data:
         description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Teach the Newbie to fish."
                 objectives:
                     1:
                         name: "Catch 16 fish"

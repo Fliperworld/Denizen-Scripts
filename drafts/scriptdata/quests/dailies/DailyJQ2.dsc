@@ -16,7 +16,7 @@ player_data:
         description: "Conquer the jumping challenge!"
         stages:
             1:
-                description: "Jump your way through the challenge"
+                description: "Jump your way through the challenge."
                 objectives:
                     1:
                         name: "Speak to He Jumped Twice"

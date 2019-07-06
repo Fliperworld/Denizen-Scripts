@@ -18,7 +18,7 @@ player_data:
         description: "Bring reagents to the Wise Wizard and learn the Food spell!"
         stages:
             1:
-                description: "Bring magical reagents to the Wise Wizard"
+                description: "Bring magical reagents to the Wise Wizard."
                 objectives:
                     1:
                         name: "Deliver redstone"
@@ -53,7 +53,7 @@ player_data:
                         progress: 0
                         total: 64
             2:
-                description: "Bring crystallized experience to the Wise Wizard"
+                description: "Bring crystallized experience to the Wise Wizard."
                 objectives:
                     1:
                         name: "Deliver a sliver of crystallized experience"

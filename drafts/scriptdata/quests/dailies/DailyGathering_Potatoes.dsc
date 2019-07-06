@@ -16,7 +16,7 @@ player_data:
         description: "Potato Patrick needs potatoes for the people of Dawn's Landing!"
         stages:
             1:
-                description: "Bring potatoes to Potato Patrick in the Questing Hall"
+                description: "Bring potatoes to Potato Patrick in the Questing Hall."
                 objectives:
                     1:
                         name: "Deliver 320 potatoes"

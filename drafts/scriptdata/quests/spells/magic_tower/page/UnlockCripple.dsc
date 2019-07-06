@@ -18,7 +18,7 @@ player_data:
         description: "Bring reagents to the Stoic Sage and learn the Cripple spell!"
         stages:
             1:
-                description: "Bring magical reagents to the Stoic Sage"
+                description: "Bring magical reagents to the Stoic Sage."
                 objectives:
                     1:
                         name: "Deliver redstone"
@@ -37,7 +37,7 @@ player_data:
                         progress: 0
                         total: 64
             2:
-                description: "Bring crystallized experience to the Stoic Sage"
+                description: "Bring crystallized experience to the Stoic Sage."
                 objectives:
                     1:
                         name: "Deliver a chunk of crystallized experience"

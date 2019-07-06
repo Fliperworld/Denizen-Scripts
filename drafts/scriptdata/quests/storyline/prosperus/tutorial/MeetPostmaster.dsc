@@ -1,27 +1,24 @@
 config:
     availability:
-        offering_npc: 11
-    reset:
-        period: daily
-        time: "19:00"
+        offering_npc: 39
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "MeetSkillTrainers"
     rewards:
         money: 50
         quest_points: 1
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Quest Master<white>: The post office has some directions to other towns. Why don't you go find the postmaster?"
+    completion: "<darkgreen>Quest Master<white>: Well done, that wasn't so bad."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    MeetPostmaster:
+        name: Meet the Postmaster
+        description: "The post office has some directions to other towns. Head there and find the Postmaster."
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Meet the Postmaster."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Speak to the Postmaster"
                         progress: 0
-                        total: 16
+                        total: 1

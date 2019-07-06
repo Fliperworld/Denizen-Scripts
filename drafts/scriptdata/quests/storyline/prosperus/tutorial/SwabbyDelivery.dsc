@@ -1,27 +1,21 @@
 config:
     availability:
-        offering_npc: 11
-    reset:
-        period: daily
-        time: "19:00"
-    requirements:
-        quests_completed:
-        - "TeachFishing"
+        offering_npc: 79
     rewards:
-        money: 50
+        money: 100
         quest_points: 1
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Swabby<white>: Can you take this package to the Quest Master in the questing hall for me? I owe him a bottle of rum!"
+    completion: "<darkgreen>Quest Master<white>: Hey, thanks! I'm out of rum. This'll be real good. Say, you look like the adventuring type. You up for some quests?"
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    SwabbyDelivery:
+        name: Deliver the Swabby's package to the Quest Master
+        description: "The Swabby on The Coming Sunrise, the ship you came into port on, gave you a package to take to the Quest Master. Head to the Questing Hall to deliver it. The Questing Hall is to your right if you're looking off the plank of the ship, or to the left from /spawn."
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Find the Quest Master and deliver Swabby's package."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Speak to the Quest Master"
                         progress: 0
-                        total: 16
+                        total: 1

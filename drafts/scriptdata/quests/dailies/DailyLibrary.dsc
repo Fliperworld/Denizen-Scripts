@@ -16,9 +16,9 @@ player_data:
         description: "Now that you've made your way through the Grand Library, go talk to the Quest Master for your reward!"
         stages:
             1:
-                description: "Speak to the Quest Master"
+                description: "Return to the Quest Master."
                 objectives:
                     1:
-                        name: "Visit the Quest Master"
+                        name: "Speak to the Quest Master"
                         progress: 0
                         total: 1

@@ -1,27 +1,50 @@
 config:
     availability:
-        offering_npc: 11
-    reset:
-        period: daily
-        time: "19:00"
+        offering_npc: 193
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "UnlockBlink"
+        - "UnlockFlamebolt"
+        permissions:
+        - magicspells.learn.searingflames
     rewards:
-        money: 50
-        quest_points: 1
+        money: 100
+        quest_points: 3
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Magnificent Mage<white>: Searing Flames deals intense damage to enemies on fire and ignites those that are not already aflame. When you're ready to learn it, bring me what I need so that I can teach you."
+    completion: "<darkgreen>Magnificent Mage<white>: Congratulations, you're ready to learn Searing Flames! Give it a try with <&dq>/cast searingflames.<&dq>"
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    UnlockSearingFlames:
+        name: Learn the Searing Flames spell
+        description: "Bring reagents to the Magnificent Mage and learn the Searing Flames spell!"
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Bring magical reagents to the Magnificent Mage."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Deliver redstone"
                         progress: 0
-                        total: 16
+                        total: 1024
+                    2:
+                        name: "Deliver blaze rods"
+                        progress: 0
+                        total: 1024
+                    3:
+                        name: "Deliver fire charges"
+                        progress: 0
+                        total: 1024
+                    4:
+                        name: "Deliver diamonds"
+                        progress: 0
+                        total: 128
+                    5:
+                        name: "Deliver gold ingots"
+                        progress: 0
+                        total: 512
+            2:
+                description: "Bring crystallized experience to the Magnificent Mage."
+                objectives:
+                    1:
+                        name: "Deliver a bloom of crystallized experience"
+                        progress: 0
+                        total: 1

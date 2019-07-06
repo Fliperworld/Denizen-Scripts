@@ -16,7 +16,7 @@ player_data:
         description: "Pumpkin Paul needs pumpkins for the people of Dawn's Landing!"
         stages:
             1:
-                description: "Bring pumpkins to Pumpkin Paul in the Questing Hall"
+                description: "Bring pumpkins to Pumpkin Paul in the Questing Hall."
                 objectives:
                     1:
                         name: "Deliver 320 pumpkins"

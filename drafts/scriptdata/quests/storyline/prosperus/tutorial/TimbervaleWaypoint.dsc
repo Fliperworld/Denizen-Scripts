@@ -1,27 +1,24 @@
 config:
     availability:
-        offering_npc: 11
-    reset:
-        period: daily
-        time: "19:00"
+        offering_npc: 37
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "VisitTimbervale"
     rewards:
         money: 50
         quest_points: 1
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Vale Postmaster<white>: Now that you're here, why don't you go find the town's waypoint? Once you unlock it, you can visit whenever you like."
+    completion: "<darkgreen>Vale Postmaster<white>: Great job! Use /ftw to view the waypoints you've unlocked. To return to Timbervale at any time, just type /ftw timbervale."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    TimbervaleWaypoint:
+        name: Unlock the Timbervale waypoint
+        description: "Go find Timbervale's waypoint. Once you've reached it, you can return to it any time."
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Find the Timbervale waypoint."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Reach the waypoint"
                         progress: 0
-                        total: 16
+                        total: 1

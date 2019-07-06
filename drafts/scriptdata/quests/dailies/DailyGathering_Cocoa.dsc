@@ -16,7 +16,7 @@ player_data:
         description: "Cocoa Calvin needs cocoa for the people of Dawn's Landing!"
         stages:
             1:
-                description: "Bring cocoa to Cocoa Calvin in the Questing Hall"
+                description: "Bring cocoa to Cocoa Calvin in the Questing Hall."
                 objectives:
                     1:
                         name: "Deliver 320 cocoa"

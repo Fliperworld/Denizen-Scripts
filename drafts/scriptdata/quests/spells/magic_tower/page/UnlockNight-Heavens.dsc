@@ -18,7 +18,7 @@ player_data:
         description: "Bring reagents to the Stoic Sage and learn the Night-Heavens spell!"
         stages:
             1:
-                description: "Bring magical reagents to the Stoic Sage"
+                description: "Bring magical reagents to the Stoic Sage."
                 objectives:
                     1:
                         name: "Deliver redstone"

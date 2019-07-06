@@ -16,7 +16,7 @@ player_data:
         description: "Wil Wheaton needs wheat for the people of Dawn's Landing!"
         stages:
             1:
-                description: "Bring wheat to Wil Wheaton in the Questing Hall"
+                description: "Bring wheat to Wil Wheaton in the Questing Hall."
                 objectives:
                     1:
                         name: "Deliver 320 wheat"

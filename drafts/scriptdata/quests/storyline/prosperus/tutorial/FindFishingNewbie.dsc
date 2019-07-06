@@ -1,27 +1,24 @@
 config:
     availability:
-        offering_npc: 11
-    reset:
-        period: daily
-        time: "19:00"
+        offering_npc: 39
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "WoodTools"
     rewards:
-        money: 50
-        quest_points: 1
+        items:
+        - fishing_rod
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Quest Master<white>: There's someone over at the docks that needs some help learning how to fish. Go talk to him and I'll give you a fishing pole so you can help him out."
+    completion: "<gray>Fishing Newbie<white>: Hi there! Can you help me learn to fish? The Quest Master said to give you this fishing pole!"
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    FindFishingNewbie:
+        name: Go find the Fishing Newbie
+        description: "The Quest Master asked you to go find the Fishing Newbie by the docks."
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Meet the Fishing Newbie."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Speak to the Fishing Newbie"
                         progress: 0
-                        total: 16
+                        total: 1

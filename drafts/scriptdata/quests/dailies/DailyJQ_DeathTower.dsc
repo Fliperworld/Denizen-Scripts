@@ -16,7 +16,7 @@ player_data:
         description: "Head to the Death Tower and make your way up the first five levels!"
         stages:
             1:
-                description: "Complete the first five levels of the Death Tower"
+                description: "Complete the first five levels of the Death Tower."
                 objectives:
                     1:
                         name: "Speak to He Jumped Death"

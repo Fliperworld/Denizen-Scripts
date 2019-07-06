@@ -19,7 +19,7 @@ player_data:
         description: "Bring reagents to the Skilled Sorcerer and learn the Crippling Wave spell!"
         stages:
             1:
-                description: "Bring magical reagents to the Skilled Sorcerer"
+                description: "Bring magical reagents to the Skilled Sorcerer."
                 objectives:
                     1:
                         name: "Deliver redstone"
@@ -42,7 +42,7 @@ player_data:
                         progress: 0
                         total: 256
             2:
-                description: "Bring crystallized experience to the Skilled Sorcerer"
+                description: "Bring crystallized experience to the Skilled Sorcerer."
                 objectives:
                     1:
                         name: "Deliver a billet of crystallized experience"

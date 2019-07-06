@@ -1,27 +1,69 @@
 config:
     availability:
-        offering_npc: 11
-    reset:
-        period: daily
-        time: "19:00"
+        offering_npc: 39
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "WoodTools"
     rewards:
         money: 50
         quest_points: 1
+        items:
+        - stone_axe[enchantments=li@DURABILITY,1]
+        - stone_pickaxe[enchantments=li@DURABILITY,1]
+        - stone_spade[enchantments=li@DURABILITY,1]
+        - stone_sword[enchantments=li@DURABILITY,1]
+        - stone_hoe[enchantments=li@DURABILITY,1]
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Quest Master<white>: You had to break wood to get those tools - now it's time to use them to break some stone. Get back out there and get mining! Once you have some stone, use it to craft a set of stone tools, and bring them to me. I'll enchant them for you!"
+    completion: "<darkgreen>Quest Master<white>: Hey, nicely done! Ready for your next step?"
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    Mining:
+        name: Breaking ground
+        description: "Now that you've got wood tools, you can mine some stone and craft stone tools. Craft them and bring a full set to the Quest Master."
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Craft stone tools."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Craft a stone axe"
                         progress: 0
-                        total: 16
+                        total: 1
+                    2:
+                        name: "Craft a stone pickaxe"
+                        progress: 0
+                        total: 1
+                    3:
+                        name: "Craft a stone shovel"
+                        progress: 0
+                        total: 1
+                    4:
+                        name: "Craft a stone sword"
+                        progress: 0
+                        total: 1
+                    5:
+                        name: "Craft a stone hoe"
+                        progress: 0
+                        total: 1
+            2:
+                description: "Bring stone tools to the Quest Master."
+                objectives:
+                    1:
+                        name: "Bring a stone axe to the Quest Master"
+                        progress: 0
+                        total: 1
+                    2:
+                        name: "Bring a stone pickaxe to the Quest Master"
+                        progress: 0
+                        total: 1
+                    3:
+                        name: "Bring a stone shovel to the Quest Master"
+                        progress: 0
+                        total: 1
+                    4:
+                        name: "Bring a stone sword to the Quest Master"
+                        progress: 0
+                        total: 1
+                    5:
+                        name: "Bring a stone hoe to the Quest Master"
+                        progress: 0
+                        total: 1
