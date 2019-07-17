@@ -1,27 +1,31 @@
 config:
     availability:
-        offering_npc: 11
-    reset:
-        period: daily
-        time: "19:00"
+        offering_npc: 190
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "LichHunt"
     rewards:
-        money: 50
-        quest_points: 1
+        money: 750
+        quest_points: 8
+        items:
+        - diamond[quantity=32]
+        commands:
+        - "mm i give -s <player> BurnishedHelm 1"
+        - "mm i give -s <player> BurnishedChest 1"
+        - "mm i give -s <player> BurnishedLegs 1"
+        - "mm i give -s <player> BurnishedBoots 1"
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Warmaster Reinwald<white>: Those Elite-level monsters aren't going anywhere, and we need your help to fight them off. Get to it."
+    completion: "<darkgreen>Warmaster Reinwald<white>: Phenomenal work - you're getting quite good at this. I think you're ready for a new adventure! Go and find the Royal Geographer."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    EliteHunt:
+        name: Hunt down the Elite monsters
+        description: "Hunt down Elite monsters for Warmaster Reinwald."
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Hunt Elites in the Prosperus wilderness and beyond. Elite monsters are more common in other, more dangerous dimensions."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Kill Elite monsters"
                         progress: 0
-                        total: 16
+                        total: 25

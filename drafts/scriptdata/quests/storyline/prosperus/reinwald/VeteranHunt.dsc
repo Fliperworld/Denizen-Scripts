@@ -1,27 +1,31 @@
 config:
     availability:
-        offering_npc: 11
-    reset:
-        period: daily
-        time: "19:00"
+        offering_npc: 190
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "SkeletalRogueHunt"
     rewards:
-        money: 50
-        quest_points: 1
+        money: 500
+        quest_points: 5
+        items:
+        - diamond[quantity=8]
+        commands:
+        - "mm i give -s <player> ImbuedHelm 1"
+        - "mm i give -s <player> ImbuedChest 1"
+        - "mm i give -s <player> ImbuedLegs 1"
+        - "mm i give -s <player> ImbuedBoots 1"
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Warmaster Reinwald<white>: Your initial assault against the Skeletal Rogues was a success, and for that, we thank you. You're now ready to take on more intense challenges. Accordingly, your next task is to eliminate the rising squadrons of Veteran-level monsters that have been appearing across the land."
+    completion: "<darkgreen>Warmaster Reinwald<white>: Fantastic work. You stand as a bulwark against the darkness."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    VeteranHunt:
+        name: Hunt down the Veteran monsters
+        description: "Hunt down Veteran monsters for Warmaster Reinwald."
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Hunt Veterans in the Prosperus wilderness and beyond. You can  find them in greater numbers in other dimensions, but beware! The forces of darkness are stronger in those realms, and your foes will come for your with all their might."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Kill Veteran monsters"
                         progress: 0
-                        total: 16
+                        total: 25

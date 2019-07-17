@@ -1,27 +1,26 @@
 config:
     availability:
-        offering_npc: 11
-    reset:
-        period: daily
-        time: "19:00"
+        offering_npc: 190
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "VeteranHunt"
     rewards:
-        money: 50
-        quest_points: 1
+        money: 250
+        quest_points: 5
+        items:
+        - diamond[quantity=8]
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Warmaster Reinwald<white>: The forces of darkness are strong, but I think you're ready for a bigger challenge. I want you to hunt your first Elite-level monster - a Lich."
+    completion: "<darkgreen>Warmaster Reinwald<white>: I'm proud of you. Keep your wits about you, there's more work to do."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    LichHunt:
+        name: Hunt down a Lich
+        description: "Hunt down a Lich for Warmaster Reinwald."
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Hunt a Lich. You can find them rarely in Prosperus. Elite monsters are more common in other, more dangerous dimensions."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Kill a Lich"
                         progress: 0
-                        total: 16
+                        total: 1

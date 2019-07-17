@@ -1,27 +1,24 @@
 config:
     availability:
-        offering_npc: 11
-    reset:
-        period: daily
-        time: "19:00"
+        offering_npc: 33
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "HuntElites"
     rewards:
-        money: 50
-        quest_points: 1
+        money: 100
+        quest_points: 3
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Royal Geographer<white>: You seem to have a hungering for adventure, and your combat skills are nothing to scoff at. Go find the entrance to the Fire Temple - you may want to challenge the Temple someday, so you might as well visit the altar."
+    completion: "<darkgreen>Royal Geographer<white>: Nice job reaching the altar! If you decide to challenge the Temple, may the Gods smile upon you."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    FindFireTemple:
+        name: Find the entrance to the Fire Temple
+        description: "The Royal Geographer suggested that you go find the entrance to the Fire Temple. You might challenge it someday, so you might as well know where it is, right?"
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Reach the entrance to the Fire Temple"
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Entrance reached"
                         progress: 0
-                        total: 16
+                        total: 1
