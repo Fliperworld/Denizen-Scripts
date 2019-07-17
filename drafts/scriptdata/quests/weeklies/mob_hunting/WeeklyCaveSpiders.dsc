@@ -1,27 +1,25 @@
 config:
     availability:
-        offering_npc: 11
+        offering_npc: 31
     reset:
-        period: daily
+        period: weekly
+        day: friday
         time: "19:00"
-    requirements:
-        quests_completed:
-        - "TeachFishing"
     rewards:
-        money: 50
-        quest_points: 1
+        money: 250
+        quest_points: 3
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Lady Brightsword<white>: We need assistance fighting the cave spiders, take out 350 for us!"
+    completion: "<darkgreen>Lady Brightsword<white>: Well done citizen, your contributions are invaluable."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    WeeklyCaveSpiders:
+        name: Conquer the cave spiders (Weekly)
+        description: "Lady Brightsword needs your help hunting down cave spiders."
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Cross the universe and hunt down cave spiders wherever they are."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Slay 350 cave spiders"
                         progress: 0
-                        total: 16
+                        total: 350

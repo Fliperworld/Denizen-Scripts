@@ -9,12 +9,10 @@ config:
         money: 250
         quest_points: 3
 messages:
-    offer: "<darkgreen>Sir Firestride<white>: We need assistance fighting the
-      blaze attacks, take out 350 for us!"
-    completion: "<darkgreen>Sir Firestride<white>: Well done citizen, your contributions
-      are invaluable."
+    offer: "<darkgreen>Sir Firestride<white>: We need assistance fighting the blaze attacks, take out 350 for us!"
+    completion: "<darkgreen>Sir Firestride<white>: Well done citizen, your contributions are invaluable."
 player_data:
-    DailyFishing:
+    WeeklyBlazes:
         name: Burninate the blazes (Weekly)
         description: "Sir Firestride needs your help hunting down blazes."
         stages:
@@ -24,4 +22,4 @@ player_data:
                     1:
                         name: "Slay 350 blazes"
                         progress: 0
-                        total: 16
+                        total: 350

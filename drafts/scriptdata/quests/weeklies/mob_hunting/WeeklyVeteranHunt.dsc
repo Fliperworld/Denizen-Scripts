@@ -1,27 +1,34 @@
 config:
     availability:
-        offering_npc: 11
+        offering_npc: 190
     reset:
-        period: daily
+        period: weekly
+        day: friday
         time: "19:00"
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "VeteranHunt"
     rewards:
-        money: 50
-        quest_points: 1
+        money: 500
+        quest_points: 3
+        items:
+        - diamond[quantity=16]
+        commands:
+        - "mm i give -s <player> QuestVeteranDrops 20"
+        - "mm i give -s <player> QuestVeteranMeleeDrops 10"
+        - "mm i give -s <player> QuestVeteranRangedDrops 10"
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Warmaster Reinwald<white>: Veteran monsters continue to pose a threat. If you get out there and take them down, we'll give you some rewards from our supply cache."
+    completion: "<darkgreen>Warmaster Reinwald<white>: Excellent work."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    WeeklyVeteranHunt:
+        name: Vanquish Veterans (Weekly)
+        description: "Hunt down Veteran monsters for Warmaster Reinwald."
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Hunt Veterans in the Prosperus wilderness and beyond. Veteran monsters are more common in other, more dangerous dimensions."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Kill Veteran monsters"
                         progress: 0
-                        total: 16
+                        total: 100

@@ -1,27 +1,25 @@
 config:
     availability:
-        offering_npc: 11
+        offering_npc: 27
     reset:
-        period: daily
+        period: weekly
+        day: friday
         time: "19:00"
-    requirements:
-        quests_completed:
-        - "TeachFishing"
     rewards:
-        money: 50
-        quest_points: 1
+        money: 250
+        quest_points: 3
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Sir Firestride<white>: We need assistance fighting the ghast flocks, take out 350 for us!"
+    completion: "<darkgreen>Sir Firestride<white>: Well done citizen, your contributions are invaluable."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    WeeklyGhasts:
+        name: Garble the ghasts (Weekly)
+        description: "Sir Firestride needs your help hunting down ghasts."
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Cross the universe and hunt down ghasts wherever they are."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Slay 350 ghasts"
                         progress: 0
-                        total: 16
+                        total: 350

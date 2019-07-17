@@ -1,27 +1,34 @@
 config:
     availability:
-        offering_npc: 11
+        offering_npc: 190
     reset:
-        period: daily
+        period: weekly
+        day: friday
         time: "19:00"
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "EliteHunt"
     rewards:
-        money: 50
-        quest_points: 1
+        money: 750
+        quest_points: 3
+        items:
+        - diamond[quantity=32]
+        commands:
+        - "mm i give -s <player> QuestEliteDrops 20"
+        - "mm i give -s <player> QuestEliteMeleeDrops 10"
+        - "mm i give -s <player> QuestEliteRangedDrops 10"
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
-    completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
+    offer: "<darkgreen>Warmaster Reinwald<white>: Elite monsters continue to pose a threat. If you get out there and take them down, we'll give you some rewards from our supply cache."
+    completion: "<darkgreen>Warmaster Reinwald<white>: Excellent work."
 player_data:
-    DailyFishing:
-        name: Demonstrate your fishing skills (Daily)
-        description: "The Fishing Newbie is looking for someone to teach him to fish. Do a little fishing and he'll give you some gold!"
+    WeeklyEliteHunt:
+        name: Exterminate Elites (Weekly)
+        description: "Hunt down Elite monsters for Warmaster Reinwald."
         stages:
             1:
-                description: "Teach the Newbie to fish"
+                description: "Hunt Elites in the Prosperus wilderness and beyond. Elite monsters are more common in other, more dangerous dimensions."
                 objectives:
                     1:
-                        name: "Catch 16 fish"
+                        name: "Kill Elite monsters"
                         progress: 0
-                        total: 16
+                        total: 50
