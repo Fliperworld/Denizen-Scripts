@@ -17,15 +17,15 @@ QuestDataHandler:
 QuestAcceptHandler:
     debug: false
     type: task
-    definitions: player|quest_file|quest_internalname
+    definitions: player|quest_internalname
     script:
     - define data <[player].uuid>_quest_data
-    - yaml id:<[quest_file]> copykey:player_data.<[quest_internalname]> quests.active.<[quest_internalname]> to_id:<[data]>
+    - yaml id:<[quest_internalname]> copykey:player_data.<[quest_internalname]> quests.active.<[quest_internalname]> to_id:<[data]>
 
 QuestQuitHandler:
     debug: false
     type: task
-    definitions: player|quest_file|quest_internalname
+    definitions: player|quest_internalname
     script:
     - define data <[player].uuid>_quest_data
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
@@ -33,7 +33,7 @@ QuestQuitHandler:
 QuestCompletionHandler:
     debug: false
     type: task
-    definitions: player|quest_file|quest_internalname
+    definitions: player|quest_internalname
     script:
     - define data <[player].uuid>_quest_data
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
@@ -43,16 +43,16 @@ QuestCompletionHandler:
 QuestRewardHandler:
     debug: false
     type: task
-    definitions: player|quest_file|quest_internalname
+    definitions: player|quest_internalname
     script:
     - define data <[player].uuid>_quest_data
-    - if <yaml[<[quest_file]>].contains[rewards.money]>:
-        - money give quantity:<yaml[quest_file].read[rewards.money]> players:<[player]>
-    - if <yaml[<[quest_file]>].contains[rewards.items]>:
-        - foreach <yaml[<[quest_file]>].read[rewards.items]>:
+    - if <yaml[<[quest_internalname]>].contains[rewards.money]>:
+        - money give quantity:<yaml[quest_internalname].read[rewards.money]> players:<[player]>
+    - if <yaml[<[quest_internalname]>].contains[rewards.items]>:
+        - foreach <yaml[<[quest_internalname]>].read[rewards.items]>:
             - give <def[value]> player:<[player]>
-    - if <yaml[<quest_file]>].contains[rewards.quest_points]>:
-        - yaml id:<[data]> set quest_points:+:<yaml[<[quest_file]>].read[rewards.quest_points]>
-    - if <yaml[<[quest_file]>].contains[rewards.scripts]>:
-        - foreach <yaml[<[quest_file]>].read[rewards.scripts]>:
-            - run <[value]> def:<[player]>|<[quest_file]>|<[quest_internalname]>
+    - if <yaml[<[quest_internalname]>].contains[rewards.quest_points]>:
+        - yaml id:<[data]> set career.quest_points:+:<yaml[<[quest_internalname]>].read[rewards.quest_points]>
+    - if <yaml[<[quest_internalname]>].contains[rewards.scripts]>:
+        - foreach <yaml[<[quest_internalname]>].read[rewards.scripts]>:
+            - run <[value]> def:<[player]>|<[quest_internalname]>

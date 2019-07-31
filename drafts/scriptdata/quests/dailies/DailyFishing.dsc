@@ -6,7 +6,7 @@ config:
         time: "19:00"
     requirements:
         quests_completed:
-        - "TeachFishing"
+        - "TeachFishingNewbie"
     rewards:
         money: 50
         quest_points: 1

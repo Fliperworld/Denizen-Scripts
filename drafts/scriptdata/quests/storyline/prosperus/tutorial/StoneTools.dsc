@@ -17,7 +17,7 @@ messages:
     offer: "<darkgreen>Quest Master<white>: You had to break wood to get those tools - now it's time to use them to break some stone. Get back out there and get mining! Once you have some stone, use it to craft a set of stone tools, and bring them to me. I'll enchant them for you!"
     completion: "<darkgreen>Quest Master<white>: Hey, nicely done! Ready for your next step?"
 player_data:
-    Mining:
+    StoneTools:
         name: Breaking ground
         description: "Now that you've got wood tools, you can mine some stone and craft stone tools. Craft them and bring a full set to the Quest Master."
         stages:
