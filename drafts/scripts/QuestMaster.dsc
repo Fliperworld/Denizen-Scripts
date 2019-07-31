@@ -78,7 +78,7 @@ Newbie:
                     - if <yaml[<[data]>].contains[quests.active.SwabbyDelivery]>:
                         - narrate format:QuestMasterFormat "Have you got something for me?"
                         - wait 0.5s
-                        - title "subtitle:<&a>Right click the Quest Master!"
+                        - title "subtitle:<&a>Right-click the Quest Master!"
                         - zap SwabbyDeliveryActive
                     # Wood tools quest offer
                     - else if <yaml[<[data]>].contains[quests.completed.SwabbyDelivery]> && <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
@@ -184,3 +184,83 @@ Newbie:
                         - narrate "format:Quest Master Format" "Reinwald and his troops have some similar tasks for you, too, I'm sure."
                         - zap NoActiveQuest
         SwabbyDeliveryActive:
+            proximity trigger:
+                entry:
+                    script:
+                    - define data <player.uuid>_quest_data
+                    - narrate format:QuestMasterFormat "Have you got something for me?"
+                    - wait 0.5s
+                    - title "subtitle:<&a>Right-click the Quest Master!"
+            click trigger:
+                script:
+                - run QuestCompletionHandler def:SwabbyDelivery player:<player>
+                - zap WoodToolsOffer
+        WoodToolsOffer:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "Thanks for delivering that package from Swabby!"
+                    - wait 0.7s
+                    - narrate format:QuestMasterFormat "Say, I think you're ready forsomething more exciting. How about it?"
+                    - wait 0.7s
+                    - narrate format:QuestMasterFormat "I've got your first real get-out-in-the-world quest for you as soon as you're ready."
+                    - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
+                        - wait 0.7s
+                        - narrate format:QuestMasterFormat "I can also teach you how to set a home! It's an important skill for surviving out there."
+                        - zap ChooseWoodTools_SetHome
+                        - narrate "<gray>Right-click the Quest Master!"
+                        - stop
+                    - narrate "<gray>Right-click the Quest Master!"
+            click trigger:
+                script:
+                - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
+                    - narrate format:QuestMasterFormat "Alright! Which quest do you want? Are you ready to get adventuring, or do you want to learn to set your home first?"
+                    - narrate "<gray>Say <green>adventure <gray>for your first adventure, or <green>home <gray>to learn how to set your home!"
+                    - zap ChooseWoodTools_SetHome
+                - else:
+                    - narrate "<yaml[WoodTools].read[messages.offer]>"
+                    - narrate "<gray>Say <green>yes <gray> to accept the quest!"
+            chat trigger:
+                Confirm:
+                    trigger: /Yes/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "Yes, I'm ready for my first adventure!"
+                    - run QuestAcceptHandler def:WoodTools player:<player>
+                Invalid:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "<context.message>"
+                    - narrate format:QuestMasterFormat "I'm not sure what you mean, sorry! If you're ready for your first adventure, just let me know."
+                    - narrate "<gray>Say <green>yes <gray> if you're ready to accept the quest, or right-click the Quest Master to hear about it again."
+        ChooseWoodTools_SetHome:
+            click trigger:
+                script:
+                - narrate format:QuestMasterFormat "Well, which quest do you want to tackle first? Do you want to go on your first adventure, or do you want to learn to set your home?"
+                - narrate "<gray>Say <green>adventure <gray>for your first adventure, or <green>home <gray>to learn how to set your home!"
+            chat trigger:
+                WoodTools:
+                    trigger: /adventure/
+                    hide trigger message: true
+                SetHome:
+                    trigger: /home/
+                    hide trigger message: true
+        WoodtoolsActive:
+        StoneToolsOffer:
+        StoneToolsActive:
+        LeatherArmorOffer:
+        LeatherArmorActive:
+        FindReinwaldOffer:
+        FindReinwaldActive:
+        IronToolsArmorOffer:
+        IronToolsArmorActive:
+        FindFishingNewbieOffer:
+        FindFishingNewbieActive:
+        MeetSkillTrainersOffer:
+        MeetSkillTrainersActive:
+        MeetPostmasterOffer:
+        MeetPostmasterActive:
+        FirstMobHuntingOffer_QM:
+        FirstMobHuntingActive_QM:
+        NoActiveQuest:
