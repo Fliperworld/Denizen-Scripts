@@ -103,7 +103,7 @@ Newbie:
                         - zap StoneToolsOffer
                     # Mining quest active
                     - else if <yaml[<[data]>].contains[quests.active.StoneTools]>:
-                        - narrate format:QuestMasterFormat "You putting those tools to work yet?"
+                        - narrate format:QuestMasterFormat "You putting those wooden tools to work yet?"
                         - zap StoneToolsActive
                     # Leather quest offer
                     - else if <yaml[<[data]>].contains[quests.completed.StoneTools]> && <yaml[<[data]>].contains[quests.active.LeatherArmor].not> && <yaml[<[data]>].contains[quests.completed.LeatherArmor].not>:
@@ -243,12 +243,41 @@ Newbie:
                 WoodTools:
                     trigger: /adventure/
                     hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "It's time for me to get out and explore Prosperus. I'm ready for my first adventure!"
+                    - run QuestAcceptHandler def:WoodTools player:<player>
                 SetHome:
                     trigger: /home/
                     hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "I'd like to learn how to set my home."
+                    - run QuestAcceptHandler def:SetHome player:<player>
         WoodtoolsActive:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "How's it going with getting those wood tools?"
+                    - wait 0.7s
+                    - narrate format:QuestMasterFormat "Don't forget, you can get boats from the docks and sail down the river to get out of Dawn's Landing quickly."
         StoneToolsOffer:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "You did a great job getting those wooden tools! Ready to put them to use?"
+            click trigger:
+                script:
+                - run QuestAcceptHandler def:StoneTools player:<player>
+            chat trigger:
+                StoneTools:
+                    trigger: /yes/
+                    hide trigger message: true
+                    script:
+                    - run QuestAcceptHandler def:StoneTools player:<player>
         StoneToolsActive:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "You putting those wooden tools to work yet?"
         LeatherArmorOffer:
         LeatherArmorActive:
         FindReinwaldOffer:
