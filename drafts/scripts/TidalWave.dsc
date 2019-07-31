@@ -21,7 +21,7 @@ WaveShooter:
     - repeat <def[wave_length]>:
         - define total_forward <def[forward].mul[<def[value]>].mul[<def[speed]>]>
         - foreach <def[origin_list]>:
-            - shoot falling_block,concrete,11[fallingblock_drop_item=false] origin:<def[value].add[<def[total_forward]>]> speed:<def[speed]> save:Wave
+            - shoot falling_block,concrete,11[fallingblock_drop_item=false] origin:<def[value].add[<def[total_forward]>]> save:Wave
             - foreach <entry[Wave].shot_entities>:
                 - yaml id:WaveManager set <def[value].uuid>:RemoveOnLand
         - wait 1t
