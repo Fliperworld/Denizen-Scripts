@@ -8,7 +8,7 @@ config:
         money: 100
         quest_points: 1
 messages:
-    offer: "<gray>He Jumps Twice<white>: You can jump, sure. But can you jump... over lava?"
+    offer: "<gray>He Jumps Twice<white>: Show me what you've got!"
     completion: "<gray>He Jumped Twice<white>: You beat the heat! Nice job!"
 player_data:
     DailyJQ1:

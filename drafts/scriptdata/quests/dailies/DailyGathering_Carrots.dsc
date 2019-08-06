@@ -8,7 +8,7 @@ config:
         money: 50
         quest_points: 1
 messages:
-    offer: "<gray>Carrot Carl<white>: We need 5 stacks of carrots today to feed the people of Dawn's Landing. Can you help?"
+    offer: "<gray>Carrot Carl<white>: Please bring me 5 stacks of carrots today so we can feed the people of Dawn's Landing."
     completion: "<gray>Carrot Carl<white>: Wow, thank you so much for your generosity! The people will love these carrots."
 player_data:
     DailyGathering_Carrots:

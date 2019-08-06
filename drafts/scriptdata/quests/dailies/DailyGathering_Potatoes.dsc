@@ -8,7 +8,7 @@ config:
         money: 50
         quest_points: 1
 messages:
-    offer: "<gray>Potato Patrick<white>: We need 5 stacks of potatoes today to feed the people of Dawn's Landing. Can you help?"
+    offer: "<gray>Potato Patrick<white>: Please bring me 5 stacks of potatoes today so we can feed the people of Dawn's Landing."
     completion: "<gray>Potato Patrick<white>: Wow, thank you so much for your generosity! The people will love these potatoes."
 player_data:
     DailyGathering_Potatoes:

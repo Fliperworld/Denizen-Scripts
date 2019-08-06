@@ -8,7 +8,7 @@ config:
         money: 250
         quest_points: 2
 messages:
-    offer: "<gray>He Jumps Death<white>: You've heard of the Death Tower, right? Go and make your way up the first five levels."
+    offer: "<gray>He Jumps Death<white>: Go and make your way up the first five levels of the Death Tower."
     completion: "<gray>He Jumped Death<white>: You're quite the climber! Here's some gold for your trouble."
 player_data:
     DailyJQ_DeathTower:

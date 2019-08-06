@@ -11,7 +11,7 @@ config:
         money: 100
         quest_points: 1
 messages:
-    offer: "<gray>Fishing Newbie<white>: I've got a fishing challenge for you, do you think you're up to it?"
+    offer: "<gray>Fishing Newbie<white>: You've been fishing for a little bit - I think you're ready for a challenge!"
     completion: "<gray>Fishing Newbie<white>: Wow! Nice work!"
 player_data:
     DailyFishingChallenge:

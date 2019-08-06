@@ -8,7 +8,7 @@ config:
         money: 50
         quest_points: 1
 messages:
-    offer: "<gray>Pumpkin Paul<white>: We need 5 stacks of pumpkins today to feed the people of Dawn's Landing. Can you help?"
+    offer: "<gray>Pumpkin Paul<white>: Please bring me 5 stacks of pumpkins today so we can feed the people of Dawn's Landing."
     completion: "<gray>Pumpkin Paul<white>: Wow, thank you so much for your generosity! I'm gonna make some pies."
 player_data:
     DailyGathering_Pumpkins:

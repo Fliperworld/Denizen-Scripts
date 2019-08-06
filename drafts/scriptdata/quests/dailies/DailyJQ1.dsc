@@ -8,7 +8,7 @@ config:
         money: 100
         quest_points: 1
 messages:
-    offer: "<gray>He Jumps Once<white>: You like to jump, don't you? Sure you do. Go beat my challenge."
+    offer: "<gray>He Jumps Once<white>: You must think you're quite the parkour expert! Go and beat my challenge."
     completion: "<gray>He Jumped Once<white>: That wasn't so hard, was it? Here's some gold!"
 player_data:
     DailyJQ1:

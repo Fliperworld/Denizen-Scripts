@@ -11,7 +11,7 @@ config:
         money: 50
         quest_points: 1
 messages:
-    offer: "<gray>Fishing Newbie<white>: Could you show me a little more of your fishing skills?"
+    offer: "<gray>Fishing Newbie<white>: Show me some more of your fishing skills!"
     completion: "<gray>Fishing Newbie<white>: Awesome! Maybe someday I'll be as good as you are!"
 player_data:
     DailyFishing:

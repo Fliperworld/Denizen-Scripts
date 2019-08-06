@@ -8,7 +8,7 @@ config:
         money: 50
         quest_points: 1
 messages:
-    offer: "<gray>Wil Wheaton<white>: We need 5 stacks of wheat today to feed the people of Dawn's Landing. Can you help?"
+    offer: "<gray>Wil Wheaton<white>: Please bring me 5 stacks of wheat today so we can feed the people of Dawn's Landing."
     completion: "<gray>Wil Wheaton<white>: Wow, thank you so much for your generosity! Time to get baking."
 player_data:
     DailyGathering_Wheat:

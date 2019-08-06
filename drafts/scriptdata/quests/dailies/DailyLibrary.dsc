@@ -8,8 +8,8 @@ config:
         money: 250
         quest_points: 1
 messages:
-    offer: "<gray>Bookkeeper<white>: Ah, hello! Well done on navigating the Grand Library. Go to the Quest Master for your reward."
-    completion: "<gray>Bookkeeper<white>: Hey, nice job finding your way through the Grand Library! Here's a little prize."
+    offer: "<gray>Bookkeeper<white>: Head to the Quest Master for your reward."
+    completion: "<darkgreen>Quest Master<white>: Well, look at that! You found your way through the Grand Library. Here's some gold."
 player_data:
     DailyLibrary:
         name: Navigate the Grand Library (Daily)

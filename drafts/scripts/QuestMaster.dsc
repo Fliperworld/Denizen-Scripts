@@ -119,69 +119,69 @@ Newbie:
                         - zap LeatherArmorActive
                     # Meet Reinwald offer
                     - else if <yaml[<[data]>].contains[quests.completed.LeatherArmor]> && <yaml[<[data]>].contains[quests.active.FindReinwald].not> && <yaml[<[data]>].contains[quests.completed.FindReinwald].not>:
-                        - narrate "format:Quest Master Format" "I'm not the only one with quests for you! Why don't you go meet a friend of mine?"
+                        - narrate format:QuestMasterFormat "I'm not the only one with quests for you! Why don't you go meet a friend of mine?"
                         - zap FindReinwaldOffer
                     # Meet Reinwald active
                     - else if <yaml[<[data]>].contains[quests.active.FindReinwald]>:
-                        - narrate "format:Quest Master Format" "Having a hard time finding Warmaster Reinwald? He's just over in the castle, but maybe you can ask another adventurer for help."
+                        - narrate format:QuestMasterFormat "Having a hard time finding Warmaster Reinwald? He's just over in the castle, but maybe you can ask another adventurer for help."
                         - zap FindReinwaldActive
                     # Iron quest offer
                     - else if <yaml[<[data]>].contains[quests.completed.LeatherArmor]> && <yaml[<[data]>].contains[quests.active.IronToolsArmor].not> && <yaml[<[data]>].contains[quests.completed.IronToolsArmor].not>:
-                        - narrate "format:Quest Master Format" "You found Reinwald! Nice work."
+                        - narrate format:QuestMasterFormat "You found Reinwald! Nice work."
                         - wait 0.7s
-                        - narrate "format:Quest Master Format" "I think you're ready to work on another gear upgrade."
+                        - narrate format:QuestMasterFormat "I think you're ready to work on another gear upgrade."
                         - zap IronToolsArmorOffer
                     # Iron quest active
                     - else if <yaml[<[data]>].contains[quests.active.IronToolsArmor]>:
-                        - narrate "format:Quest Master Format" "How's that hunt for iron going?"
+                        - narrate format:QuestMasterFormat "How's that hunt for iron going?"
                         - wait 0.7s
-                        - narrate "format:Quest Master Format" "If you're having a rought time finding it just outside the valley, try going further out."
+                        - narrate format:QuestMasterFormat "If you're having a rough time finding it just outside the valley, try going further out."
                         - wait 0.7s
-                        - narrate "format:Quest Master Format" "Many adventurers have been through these parts! Not so many are brave enough to cross the oceans to the other continents, though. I reckon you've got what it takes."
+                        - narrate format:QuestMasterFormat "Many adventurers have been through these parts! Not so many are brave enough to cross the oceans to the other continents, though. I reckon you've got what it takes."
                         - zap IronToolsArmorActive
                     # Fishing newbie quest offer
                     - else if <yaml[<[data]>].contains[quests.completed.IronToolsArmor]> && <yaml[<[data]>].contains[quests.active.FindFishingNewbie].not> && <yaml[<[data]>].contains[quests.completed.FindFishingNewbie].not>:
-                        - narrate "format:Quest Master Format" "You've been hard at work. Why don't you go find that kid on the docks and teach him how to fish?"
+                        - narrate format:QuestMasterFormat "You've been hard at work. Why don't you go find that kid on the docks and teach him how to fish?"
                         - zap FindFishingNewbieOffer
                     # Fishing newbie quest active
                     - else if <yaml[<[data]>].contains[quests.active.FindFishingNewbie]>:
-                        - narrate "format:Quest Master Format" "Did you find that kid yet? He's just down by the docks."
+                        - narrate format:QuestMasterFormat "Did you find that kid yet? He's just down by the docks."
                         - zap FindFishingNewbieActive
                     # Skill trainer offer
                     - else if <yaml[<[data]>].contains[quests.completed.FindFishingNewbie]> && <yaml[<[data]>].contains[quests.active.MeetSkillTrainers].not> && <yaml[<[data]>].contains[quests.completed.MeetSkillTrainers].not>:
-                        - narrate "format:Quest Master Format" "Did you know there are skill trainers around Dawn's Landing?"
+                        - narrate format:QuestMasterFormat "Did you know there are skill trainers around Dawn's Landing?"
                         - zap MeetSkillTrainersOffer
                     # Skill trainer active
                     - else if <yaml[<[data]>].contains[quests.active.MeetSkillTrainers]>:
-                        - narrate "format:Quest Master Format" "Having trouble finding those skill trainers?"
+                        - narrate format:QuestMasterFormat "Having trouble finding those skill trainers?"
                         - wait 0.7s
-                        - narrate "format:Quest Master Format" "Lucky for you, I wrote a little book with directions."
+                        - narrate format:QuestMasterFormat "Lucky for you, I wrote a little book with directions."
                         - wait 0.7s
                         - adjust <player> show_book:i@SkillTrainerBook
                         - zap MeetSkillTrainersActive
                     # Meet Postmaster offer
                     - else if <yaml[<[data]>].contains[quests.completed.MeetSkillTrainers]> && <yaml[<[data]>].contains[quests.active.MeetPostmaster].not> && <yaml[<[data]>].contains[quests.completed.MeetPostmaster].not>:
-                        - narrate "format:Quest Master Format" "Did you know we have a post office?"
+                        - narrate format:QuestMasterFormat "Did you know we have a post office?"
                         - zap MeetPostmasterOffer
                     # Meet Postmaster active
                     - else if <yaml[<[data]>].contains[quests.active.MeetPostmaster]>:
-                        - narrate "format:Quest Master Format" "The post office is just around the corner from here."
+                        - narrate format:QuestMasterFormat "The post office is just around the corner from here."
                         - zap MeetPostmasterActive
                     # Go talk to Reinwald for first mob hunting quest
                     - else if <yaml[<[data]>].contains[quests.completed.MeetPostmaster]> && <yaml[<[data]>].contains[quests.active.FirstMobHunting].not> && <yaml[<[data]>].contains[quests.completed.FirstMobHunting].not>:
-                        - narrate "format:Quest Master Format" "You know, I reckon Reinwald has a quest for you."
+                        - narrate format:QuestMasterFormat "You know, I reckon Reinwald has a quest for you."
                         - zap FirstMobHuntingOffer_QM
                     # Player has Reinwald mob hunting quest
                     - else if <yaml[<[data]>].contains[quests.active.FirstMobHunting]>:
-                        - narrate "format:Quest Master Format" "You picked up that quest from Reinwald, eh? Don't forget to wear armor!"
+                        - narrate format:QuestMasterFormat "You picked up that quest from Reinwald, eh? Don't forget to wear armor!"
                         - zap FirstMobHuntingActive_QM
                     # No active quest
                     - else:
-                        - narrate "format:Quest Master Format" "Look at you, making your way in the world! I'm very proud."
+                        - narrate format:QuestMasterFormat "Look at you, making your way in the world! I'm very proud."
                         - wait 0.7s
-                        - narrate "format:Quest Master Format" "There are some quests around here that we could use your help with every so often, so check back regularly."
+                        - narrate format:QuestMasterFormat "There are some quests around here that we could use your help with every so often, so check back regularly."
                         - wait 0.7s
-                        - narrate "format:Quest Master Format" "Reinwald and his troops have some similar tasks for you, too, I'm sure."
+                        - narrate format:QuestMasterFormat "Reinwald and his troops have some similar tasks for you, too, I'm sure."
                         - zap NoActiveQuest
         SwabbyDeliveryActive:
             proximity trigger:
@@ -194,8 +194,8 @@ Newbie:
             click trigger:
                 script:
                 - run QuestCompletionHandler def:SwabbyDelivery player:<player>
-                - zap WoodToolsOffer
-        WoodToolsOffer:
+                - zap FirstQuestOffers
+        FirstQuestOffers:
             proximity trigger:
                 entry:
                     script:
@@ -207,16 +207,19 @@ Newbie:
                     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                         - wait 0.7s
                         - narrate format:QuestMasterFormat "I can also teach you how to set a home! It's an important skill for surviving out there."
-                        - zap ChooseWoodTools_SetHome
-                        - narrate "<gray>Right-click the Quest Master!"
+                        - wait 0.7s
+                        - narrate format:QuestMasterFormat "Which quest do you want? Are you ready to get adventuring, or do you want to learn to set your home first?"
+                        - narrate "<gray>Say <green>adventure <gray>for your first adventure, or <green>home <gray>to learn how to set your home!"
+                        - zap ChooseFirstQuest
                         - stop
+                    - zap WoodToolsOffer
                     - narrate "<gray>Right-click the Quest Master!"
             click trigger:
                 script:
                 - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                     - narrate format:QuestMasterFormat "Alright! Which quest do you want? Are you ready to get adventuring, or do you want to learn to set your home first?"
                     - narrate "<gray>Say <green>adventure <gray>for your first adventure, or <green>home <gray>to learn how to set your home!"
-                    - zap ChooseWoodTools_SetHome
+                    - zap ChooseFirstQuest
                 - else:
                     - narrate "<yaml[WoodTools].read[messages.offer]>"
                     - narrate "<gray>Say <green>yes <gray> to accept the quest!"
@@ -227,6 +230,7 @@ Newbie:
                     script:
                     - narrate format:PlayerChatFormat "Yes, I'm ready for my first adventure!"
                     - run QuestAcceptHandler def:WoodTools player:<player>
+                    - zap WoodToolsActive
                 Invalid:
                     trigger: /*/
                     hide trigger message: true
@@ -234,7 +238,7 @@ Newbie:
                     - narrate format:PlayerChatFormat "<context.message>"
                     - narrate format:QuestMasterFormat "I'm not sure what you mean, sorry! If you're ready for your first adventure, just let me know."
                     - narrate "<gray>Say <green>yes <gray> if you're ready to accept the quest, or right-click the Quest Master to hear about it again."
-        ChooseWoodTools_SetHome:
+        ChooseFirstQuest:
             click trigger:
                 script:
                 - narrate format:QuestMasterFormat "Well, which quest do you want to tackle first? Do you want to go on your first adventure, or do you want to learn to set your home?"
@@ -246,12 +250,30 @@ Newbie:
                     script:
                     - narrate format:PlayerChatFormat "It's time for me to get out and explore Prosperus. I'm ready for my first adventure!"
                     - run QuestAcceptHandler def:WoodTools player:<player>
+                    - zap WoodToolsActive
                 SetHome:
                     trigger: /home/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "I'd like to learn how to set my home."
                     - run QuestAcceptHandler def:SetHome player:<player>
+                    - zap SetHomeActive
+        WoodToolsOffer:;
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "Are you ready for your first real adventure?"
+            click trigger:
+                script:
+                - narrate format:PlayerChatFormat "Yes, I'm ready!"
+                - run QuestAcceptHandler def:WoodTools player:<player>
+            chat trigger:
+                WoodToolsOffer:
+                    trigger: /yes/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "Yes, I'm ready!"
+                    - run QuestAcceptHandler def:WoodTools player:<player>
         WoodtoolsActive:
             proximity trigger:
                 entry:
@@ -259,6 +281,21 @@ Newbie:
                     - narrate format:QuestMasterFormat "How's it going with getting those wood tools?"
                     - wait 0.7s
                     - narrate format:QuestMasterFormat "Don't forget, you can get boats from the docks and sail down the river to get out of Dawn's Landing quickly."
+                    - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
+                        - wait 0.7s
+                        - narrate format:QuestMasterFormat "I can also teach you how to set your home, if you want. It's a useful skill!" 
+            chat trigger:
+                HomeYes:
+                    trigger: /yes/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "Yeah, I'd like to learn how to set my home."
+                    - run QuestAcceptHandler def:SetHome player:<player>
+        SetHomeActive:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat
         StoneToolsOffer:
             proximity trigger:
                 entry:
@@ -266,30 +303,188 @@ Newbie:
                     - narrate format:QuestMasterFormat "You did a great job getting those wooden tools! Ready to put them to use?"
             click trigger:
                 script:
+                - narrate format:PlayerChatFormat "I'm ready!"
                 - run QuestAcceptHandler def:StoneTools player:<player>
+                - zap StoneToolsActive
             chat trigger:
                 StoneTools:
                     trigger: /yes/
                     hide trigger message: true
                     script:
+                    - narrate format:PlayerChatFormat "I'm ready!"
                     - run QuestAcceptHandler def:StoneTools player:<player>
+                    - zap StoneToolsActive
         StoneToolsActive:
             proximity trigger:
                 entry:
                     script:
                     - narrate format:QuestMasterFormat "You putting those wooden tools to work yet?"
         LeatherArmorOffer:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "Nice job on that last quest. Now you've got some basic tools, but you're still missing an adventurer's essential. Talk to me for the next quest when you're ready."
+            click trigger:
+                script:
+                - narrate format:PlayerChatFormat "I'm ready!"
+                - run QuestAcceptHandler def:LeatherArmor player:<player>
+                - zap LeatherArmorActive
+            chat trigger:
+                LeatherArmor:
+                    trigger: /yes/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "I'm ready!"
+                    - run QuestAcceptHandler def:LeatherArmor player:<player>
+                    - zap LeatherArmorActive
         LeatherArmorActive:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "Everything MOOving along?"
+                    - wait 0.7s
+                    - narrate format:QuestMasterFormat "You can find cows both around Dawn's Landing and all over the world."
+                    - wait 0.7s
+                    - narrate format:QuestMasterFormat "Just make sure there's some grass around so they show up to munch on it."
         FindReinwaldOffer:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "I'm not the only one with quests for you! Why don't you go meet a friend of mine?"
+            click trigger:
+                script:
+                - narrate format:PlayerChatFormat "Who should I go meet?"
+                - run QuestAcceptHandler def:FindReinwald player:<player>
+                - zap FindReinwaldActive
+            chat trigger:
+                FindReinwald:
+                    trigger: /yes/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "Sure, who should I go meet?"
+                    - run QuestAcceptHandler def:FindReinwald player:<player>
+                    - zap FindReinwaldActive
         FindReinwaldActive:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "Having a hard time finding Warmaster Reinwald? he's just over in the castle, but maybe you can ask another adventurer for help."
         IronToolsArmorOffer:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "You found Reinwald! Nice work."
+                    - wait 0.7s
+                    - narrate format:QuestMasterFormat "I think you're ready for another gear upgrade. What do you think?"
+            click trigger:
+                script:
+                - narrate format:PlayerChatFormat "Sure am!"
+                - run QuestAcceptHandler def:IronToolsArmor player:<player>
+            chat trigger:
+                IronToolsArmorOffer:
+                    trigger: /yes/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "Sure am!"
+                    - run QuestAcceptHandler def:IronToolsArmor player:<player>
         IronToolsArmorActive:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "how's that hunt for iron going?"
+                    - wait 0.7s
+                    - narrate format:QuestMasterFormat "If you're having a rough time finding it just outside the valley, try going further out."
+                    - wait 0.7s
+                    - narrate format:QuestMasterFormat "Many adventurers have been through these parts! Not so many are brave enough to cross the oceans to otehr continents, though. I reckon you've got what it takes."
         FindFishingNewbieOffer:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "You've been hard at work. Why don't you go find that kid on the docks and teach him how to fish?"
+            click trigger:
+                script:
+                - narrate format:PlayerChatFormat "Sure, that sounds nice."
+                - run QuestAcceptHandler def:FindFishingNewbie player:<player>
+                - zap FindFishingNewbieActive
+            chat trigger:
+                FindFishingNewbieOffer:
+                    trigger: /yes/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "Sure, that sounds nice."
+                    - run QuestAcceptHandler def:FindFishingNewbie player:<player>
+                    - zap FindFishingNewbieActive
         FindFishingNewbieActive:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "Did you find that kid yet? He's just down by the docks."
         MeetSkillTrainersOffer:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "Did you know there are skill trainers around Dawn's Landing? Why don't you go meet them?"
+            click trigger:
+                script:
+                - narrate format:PlayerChatFormat "Okay, that sounds interesting!"
+                - run QuestAcceptHandler def:MeetSkillTrainersOffer player:<player>
+                - zap MeetSkillTrainersActive
+            chat trigger:
+                MeetSkillTrainersOffer:
+                    trigger: /yes/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "Okay, that sounds interesting!"
+                    - run QuestAcceptHandler def:MeetSkillTrainersOffer player:<player>
+                    - zap MeetSkillTrainersActive
         MeetSkillTrainersActive:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "Having trouble finding those skill trainers?"
+                    - wait 0.7s
+                    - narrate format:QuestMasterFormat "Lucky for you, I wrote a little book with directions."
+                    - wait 0.7s
+                    - adjust <player> show_book:i@SkillTrainerBook
         MeetPostmasterOffer:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "Did you know we have a post office? Why don't you go meet the Postmaster?"
+            click trigger:
+                script:
+                - narrate format:PlayerChatFormat "Sounds easy enough."
+                - run QuestAcceptHandler def:MeetPostmaster
+                - zap MeetPostmasterActive
+            chat trigger:
+                MeetPostmasterOffer:
+                    trigger: /yes/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "Sounds easy enough."
+                    - run QuestAcceptHandler def:MeetPostmaster
+                    - zap MeetPostmasterActive
         MeetPostmasterActive:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "The post office is just around the corner from here."
         FirstMobHuntingOffer_QM:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "You know, I reckon Reinwald has a quest for you."
         FirstMobHuntingActive_QM:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "You picked up that quest from Reinwald, eh? Don't forget to wear armor!"
         NoActiveQuest:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "Look at you, making your way in the world! I'm very proud."
+                    - wait 0.7s
+                    - narrate format:QuestMasterFormat "There are some quests around here that we could use your help with every so often, so check back regularly."
+                    - wait 0.7s
+                    - narrate format:QuestMasterFormat "Reinwald and his troops have some similar tasks for you, too, I'm sure."
