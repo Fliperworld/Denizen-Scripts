@@ -212,17 +212,15 @@ Newbie:
                         - narrate "<gray>Say <green>adventure <gray>for your first adventure, or <green>home <gray>to learn how to set your home!"
                         - zap ChooseFirstQuest
                         - stop
-                    - zap WoodToolsOffer
-                    - narrate "<gray>Right-click the Quest Master!"
+                    - else:
+                        - zap WoodToolsOffer
+                        - narrate "<gray>Right-click the Quest Master!"
             click trigger:
                 script:
                 - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                     - narrate format:QuestMasterFormat "Alright! Which quest do you want? Are you ready to get adventuring, or do you want to learn to set your home first?"
                     - narrate "<gray>Say <green>adventure <gray>for your first adventure, or <green>home <gray>to learn how to set your home!"
                     - zap ChooseFirstQuest
-                - else:
-                    - narrate "<yaml[WoodTools].read[messages.offer]>"
-                    - narrate "<gray>Say <green>yes <gray> to accept the quest!"
             chat trigger:
                 Confirm:
                     trigger: /Yes/
@@ -250,7 +248,10 @@ Newbie:
                     script:
                     - narrate format:PlayerChatFormat "It's time for me to get out and explore Prosperus. I'm ready for my first adventure!"
                     - run QuestAcceptHandler def:WoodTools player:<player>
-                    - zap WoodToolsActive
+                    - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
+                        - zap WoodToolsActiveOnly
+                    - else:
+                        - zap WoodToolsSetHomeActive
                 SetHome:
                     trigger: /home/
                     hide trigger message: true
@@ -258,7 +259,7 @@ Newbie:
                     - narrate format:PlayerChatFormat "I'd like to learn how to set my home."
                     - run QuestAcceptHandler def:SetHome player:<player>
                     - zap SetHomeActive
-        WoodToolsOffer:;
+        WoodToolsOffer:
             proximity trigger:
                 entry:
                     script:
@@ -274,7 +275,7 @@ Newbie:
                     script:
                     - narrate format:PlayerChatFormat "Yes, I'm ready!"
                     - run QuestAcceptHandler def:WoodTools player:<player>
-        WoodtoolsActive:
+        WoodToolsActiveOnly:
             proximity trigger:
                 entry:
                     script:
@@ -289,13 +290,44 @@ Newbie:
                     trigger: /yes/
                     hide trigger message: true
                     script:
+                    - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
+                        - narrate format:PlayerChatFormat "Yeah, I'd like to learn how to set my home."
+                        - run QuestAcceptHandler def:SetHome player:<player>
+                        - zap WoodToolsSethomeActive
+            click trigger:
+                script:
+                - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                     - narrate format:PlayerChatFormat "Yeah, I'd like to learn how to set my home."
                     - run QuestAcceptHandler def:SetHome player:<player>
-        SetHomeActive:
+                    - zap WoodToolsSethomeActive
+        SetHomeActiveOnly:
             proximity trigger:
                 entry:
                     script:
-                    - narrate format:QuestMasterFormat
+                    - narrate format:QuestMasterFormat "You still need to set your home! Go on, give it a try."
+                    - if <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
+                        - wait 0.7s
+                        - narrate format:QuestMasterFormat "I've also got your first real adventuring quest. Are you ready for it?"
+            chat trigger:
+                SetHomeActiveWoodToolsOffer:
+                    trigger: /yes/
+                    hide trigger message: true
+                    script:
+                    - if <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
+                        - narrate format:PlayerChatFormat "Yes, I'm ready!"
+                        - run QuestAcceptHandler def:WoodTools player:<player>
+                        - zap WoodToolsSethomeActive
+            click trigger:
+                script:
+                - if <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
+                        - narrate format:PlayerChatFormat "Yes, I'm ready!"
+                        - run QuestAcceptHandler def:WoodTools player:<player>
+                        - zap WoodToolsSethomeActive
+        WoodToolsSetHomeActive:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "Still working on getting those wood tools, huh? And you still need to set your home, too! Give it a try."
         StoneToolsOffer:
             proximity trigger:
                 entry:
