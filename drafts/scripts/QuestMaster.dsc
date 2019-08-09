@@ -6,11 +6,12 @@
 QuestMasterAssignment:
     type: assignment
     interact scripts:
-    - 10 Newbie
+    - 10 QuestMasterInteract
     actions:
         on assignment:
         - teleport npc 'location:<anchor:questmaster>'
         - trigger name:proximity toggle:true
+        - trigger name:chat toggle:true
     
 QuestMasterFormat:
     type: format
@@ -46,7 +47,7 @@ QuestMasterStepUpdater:
             - if <s@Newbie.step||null> != Greeting:
                 - zap script:Newbie step:General-Dialogue player:<player>
 
-Newbie:
+QuestMasterInteract:
     type: interact
     steps:
         Greeting*:
@@ -223,7 +224,7 @@ Newbie:
                     - zap ChooseFirstQuest
             chat trigger:
                 Confirm:
-                    trigger: /Yes/
+                    trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Yes, I'm ready for my first adventure!"
@@ -256,9 +257,12 @@ Newbie:
                     trigger: /home/
                     hide trigger message: true
                     script:
-                    - narrate format:PlayerChatFormat "I'd like to learn how to set my home."
-                    - run QuestAcceptHandler def:SetHome player:<player>
-                    - zap SetHomeActive
+                    - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
+                        - narrate format:PlayerChatFormat "I'd like to learn how to set my home."
+                        - run QuestAcceptHandler def:SetHome player:<player>
+                        - zap SetHomeActive
+                    - else:
+                        - announce format:PlayerChatFormat "<context.message>"
         WoodToolsOffer:
             proximity trigger:
                 entry:
@@ -270,7 +274,7 @@ Newbie:
                 - run QuestAcceptHandler def:WoodTools player:<player>
             chat trigger:
                 WoodToolsOffer:
-                    trigger: /yes/
+                    trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Yes, I'm ready!"
@@ -287,13 +291,15 @@ Newbie:
                         - narrate format:QuestMasterFormat "I can also teach you how to set your home, if you want. It's a useful skill!" 
             chat trigger:
                 HomeYes:
-                    trigger: /yes/
+                    trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                         - narrate format:PlayerChatFormat "Yeah, I'd like to learn how to set my home."
                         - run QuestAcceptHandler def:SetHome player:<player>
                         - zap WoodToolsSethomeActive
+                    - else:
+                        - announce format:PlayerChatFormat "<context.message>"
             click trigger:
                 script:
                 - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
@@ -310,13 +316,15 @@ Newbie:
                         - narrate format:QuestMasterFormat "I've also got your first real adventuring quest. Are you ready for it?"
             chat trigger:
                 SetHomeActiveWoodToolsOffer:
-                    trigger: /yes/
+                    trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - if <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
                         - narrate format:PlayerChatFormat "Yes, I'm ready!"
                         - run QuestAcceptHandler def:WoodTools player:<player>
                         - zap WoodToolsSethomeActive
+                    - else:
+                        - announce format:PlayerChatFormat "<context.message>"
             click trigger:
                 script:
                 - if <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
@@ -340,12 +348,17 @@ Newbie:
                 - zap StoneToolsActive
             chat trigger:
                 StoneTools:
-                    trigger: /yes/
+                    trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "I'm ready!"
                     - run QuestAcceptHandler def:StoneTools player:<player>
                     - zap StoneToolsActive
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat "<context.message>"
         StoneToolsActive:
             proximity trigger:
                 entry:
@@ -363,12 +376,17 @@ Newbie:
                 - zap LeatherArmorActive
             chat trigger:
                 LeatherArmor:
-                    trigger: /yes/
+                    trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "I'm ready!"
                     - run QuestAcceptHandler def:LeatherArmor player:<player>
                     - zap LeatherArmorActive
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat "<context.message>"
         LeatherArmorActive:
             proximity trigger:
                 entry:
@@ -390,12 +408,17 @@ Newbie:
                 - zap FindReinwaldActive
             chat trigger:
                 FindReinwald:
-                    trigger: /yes/
+                    trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sure, who should I go meet?"
                     - run QuestAcceptHandler def:FindReinwald player:<player>
                     - zap FindReinwaldActive
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat "<context.message>"
         FindReinwaldActive:
             proximity trigger:
                 entry:
@@ -414,11 +437,16 @@ Newbie:
                 - run QuestAcceptHandler def:IronToolsArmor player:<player>
             chat trigger:
                 IronToolsArmorOffer:
-                    trigger: /yes/
+                    trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sure am!"
                     - run QuestAcceptHandler def:IronToolsArmor player:<player>
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat "<context.message>"
         IronToolsArmorActive:
             proximity trigger:
                 entry:
@@ -440,12 +468,17 @@ Newbie:
                 - zap FindFishingNewbieActive
             chat trigger:
                 FindFishingNewbieOffer:
-                    trigger: /yes/
+                    trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sure, that sounds nice."
                     - run QuestAcceptHandler def:FindFishingNewbie player:<player>
                     - zap FindFishingNewbieActive
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat "<context.message>"
         FindFishingNewbieActive:
             proximity trigger:
                 entry:
@@ -463,12 +496,17 @@ Newbie:
                 - zap MeetSkillTrainersActive
             chat trigger:
                 MeetSkillTrainersOffer:
-                    trigger: /yes/
+                    trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Okay, that sounds interesting!"
                     - run QuestAcceptHandler def:MeetSkillTrainersOffer player:<player>
                     - zap MeetSkillTrainersActive
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat "<context.message>"
         MeetSkillTrainersActive:
             proximity trigger:
                 entry:
@@ -490,12 +528,17 @@ Newbie:
                 - zap MeetPostmasterActive
             chat trigger:
                 MeetPostmasterOffer:
-                    trigger: /yes/
+                    trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sounds easy enough."
                     - run QuestAcceptHandler def:MeetPostmaster
                     - zap MeetPostmasterActive
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat "<context.message>"
         MeetPostmasterActive:
             proximity trigger:
                 entry:

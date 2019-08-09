@@ -2,7 +2,7 @@ config:
     availability:
         offering_npc: 190
     reset:
-        period: weekly
+        period: 7d
         day: friday
         time: "19:00"
     requirements:

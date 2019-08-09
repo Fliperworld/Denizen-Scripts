@@ -2,7 +2,7 @@ config:
     availability:
         offering_npc: 24
     reset:
-        period: daily
+        period: 1d
         time: "19:00"
     rewards:
         money: 50
