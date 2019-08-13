@@ -72,6 +72,7 @@ QuestQuitHandler:
     script:
     - define data <player.uuid>_quest_data
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
+    - narrate "<red>QUEST QUIT: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
 
 QuestCompletionHandler:
     debug: false
@@ -82,6 +83,10 @@ QuestCompletionHandler:
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
     - yaml id:<[data]> set quests.completed.<[quest_internalname]>.completion_count:++
     - yaml id:<[data]> set quests.completed.<[quest_internalname]>.last_completed:<util.date.time.duration>
+    - narrate "<gold>QUEST COMPLETE: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
+    - narrate "<yaml[<[quest_internalname]>].read[messages.completion]>"
+    - narrate "<green>Rewards:"
+    - run QuestRewardHandler def:<[quest_internalname]> player:<player>
 
 QuestRepeatableHandler:
     debug: false
@@ -126,11 +131,18 @@ QuestRewardHandler:
     - define data <player.uuid>_quest_data
     - if <yaml[<[quest_internalname]>].contains[rewards.money]>:
         - money give quantity:<yaml[<[quest_internalname]>].read[rewards.money]> players:<player>
+        - narrate "<gold><yaml[<[quest_internalname]>].read[rewards.money]> gold"
     - if <yaml[<[quest_internalname]>].contains[rewards.items]>:
         - foreach <yaml[<[quest_internalname]>].read[rewards.items]>:
-            - give <def[value]> player:<player>
+            - give <[value]> player:<player>
+            - narrate "<[value].quantity>x <[value].display>"
     - if <yaml[<[quest_internalname]>].contains[rewards.quest_points]>:
         - yaml id:<[data]> set career.quest_points:+:<yaml[<[quest_internalname]>].read[rewards.quest_points]>
     - if <yaml[<[quest_internalname]>].contains[rewards.scripts]>:
         - foreach <yaml[<[quest_internalname]>].read[rewards.scripts]>:
-            - run <[value]> def:<player>|<[quest_internalname]>
+            - run <[value]> def:<[quest_internalname]> player:<player>
+    - if <yaml[<[quest_internalname]>].contains[rewards.commands]>:
+        - foreach <yaml[<[quest_internalname]>].read[rewards.commands]>:
+            - execute as_server <[value]>
+        - foreach <yaml[<[quest_internalname]>].read[rewards.command_text]>:
+            - narrate <[value]>
