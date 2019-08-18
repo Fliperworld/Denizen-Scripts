@@ -38,6 +38,20 @@ QuestAcceptHandler:
     - foreach <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives]>:
         - narrate "• <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.name]>: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.progress]>/<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.total]>"
 
+QuestStageProgressHandler:
+    debug: false
+    type: task
+    definitions: quest_internalname
+    script:
+    - define data <player.uuid>_quest_data
+    - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
+    - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[current_stage]>.progress:++
+    - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[current_stage]>.progress]> >= <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[current_stage]>.total]>:
+        - if <yaml[<[data]>].contains[quests.active.<[quest_internalname]>.stages.<[current_stage].add[1]>]>:
+            - run QuestStageAdvanceHandler def:<[quest_internalname]> player:<player>
+        - else:
+            - run QuestCompletionHandler def:<[quest_internalname]> player:<player>
+
 QuestProgressHandler:
     debug: false
     type: task
@@ -101,27 +115,23 @@ QuestRepeatableHandler:
         - case 7d:
             - if <[current_week]> > <[last_completed].in_weeks>:
                 - determine true
-            - else if <[current_week]> == <[last_completed].in_weeks>:
-                - if <util.date.time.day_of_week> > 5:
-                    - determine true
-                - else if <util.date.time.day_of_week> == 5:
-                    - if <util.date.time.hour> >= 19:
-                        - determine true
+            - else if <[current_week]> == <[last_completed].in_weeks> && <util.date.time.day_of_week> > 5:
+                - determine true
+            - else if <util.date.time.day_of_week> == 5 && <util.date.time.hour> >= 19:
+                - determine true
             - else:
                 - determine false
         - case 1d:
             - if <[current_day].sub[1]> > <[last_completed].in_days>:
                 - determine true
-            - else if <[current_day].sub[1]> == <[last_completed].in_days>:
-                - if <[last_completed].time.hour> < 19:
-                    - determine true
-                - else if <[last_completed].time.hour> >= 19:
-                    - determine false
-            - else if <[current_day]> == <[last_completed].in_days>:
-                - if <util.date.time.hour> >= 19 && <[last_completed].time.hour> < 19:
-                    - determine true
-                - else:
-                    - determine false
+            - else if <[current_day].sub[1]> == <[last_completed].in_days> && <[last_completed].time.hour> < 19:
+                - determine true
+            - else if <[last_completed].time.hour> >= 19:
+                - determine false
+            - else if <[current_day]> == <[last_completed].in_days> && <util.date.time.hour> >= 19 && <[last_completed].time.hour> < 19:
+                - determine true
+            - else:
+                - determine false
 
 QuestRewardHandler:
     debug: false

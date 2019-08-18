@@ -127,45 +127,35 @@
     description: Check the requirements to earn the next rank.
     usage: /rankup
     script:
-    - if <player.in_group[Knight]>
-    {
+    - if <player.in_group[Knight]>:
         - narrate "<&a>Congratulations, you're already at the highest rank currently achievable!"
-    }
-    else if <player.in_group[Apprentice]>
-    {
+    - else if <player.in_group[Apprentice]>:
         - narrate "<&a>You're currently an <&b>Apprentice<&a>! Here are the requirements to level up to <&b>Knight<&a><&co>"
         - execute as_player "ar track 1"
         - execute as_player "ar track 2"
         - execute as_player "ar track 3"
         - execute as_player "ar track 4"
         - execute as_player "ar track 5"
-    }
-    else if <player.in_group[Squire]>
-    {
+    - else if <player.in_group[Squire]>:
         - narrate "<&a>You're currently a <&b>Squire<&a>! Here are the requirements to level up to <&b>Apprentice<&a><&co>"
         - execute as_player "ar track 1"
         - execute as_player "ar track 2"
         - execute as_player "ar track 3"
         - execute as_player "ar track 4"
         - execute as_player "ar track 5"
-    }
-    else if <player.in_group[Page]>
-    {
+    - else if <player.in_group[Page]>:
         - narrate "<&a>You're currently a <&b>Page<&a>! Here are the requirements to level up to <&b>Squire<&a><&co>"
         - execute as_player "ar track 1"
         - execute as_player "ar track 2"
         - execute as_player "ar track 3"
         - execute as_player "ar track 4"
         - execute as_player "ar track 5"
-    }
-    else if <player.in_group[Youngling]>
-    {
+    - else if <player.in_group[Youngling]>:
         - narrate "<&a>You're currently a <&b>Youngling<&a>! Here are the requirements to level up to <&b>Page<&a><&co>"
         - execute as_player "ar track 1"
         - execute as_player "ar track 2"
         - execute as_player "ar track 3"
         - execute as_player "ar track 4"
-    }
 GetNewPlayerBook:
     type: command
     name: newplayerguide

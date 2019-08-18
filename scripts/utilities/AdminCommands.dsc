@@ -1,4 +1,4 @@
-"AdminKit":
+AdminKit:
     type: command
     name: adminkit
     usage: /adminkit
@@ -12,7 +12,7 @@
     - execute as_player "mm items get AdminChest"
     - execute as_player "mm items get AdminLegs"
     - execute as_player "mm items get AdminBoots"
-"Broadcast":
+Broadcast:
     type: command
     name: broadcast
     description: Broadcasts a server-wide message from the Gods.
@@ -23,7 +23,7 @@
     permission message: You dare try to wield the powers of the Gods?
     script:
     - announce "<red>The Gods speak<white>: <context.raw_args>"
-"New":
+NewInventory:
     type: command
     name: new
     usage: /new
@@ -34,7 +34,7 @@
     - inventory clear
     - give wood_axe player:<player>
     - give compass player:<player>
-"Pulp Fiction Ban 1":
+PulpFictionBan1:
     type: command
     name: banpf-1
     usage: /banpf-1 <aqua>playername
@@ -42,14 +42,12 @@
     permission: denizen.ban.pulpfiction
     permission message: You dare try to wield the powers of the Gods?
     script:
-    - if <context.args.is_empty>
-    {
+    - if <context.args.is_empty>:
         - narrate "<red>You forgot to specify a player!"
         - queue clear
-    }
     - announce "<red>The Gods speak<white>: Do you read the Bible, <context.args.get[1]>?"
     - narrate "<green>Now run <aqua>/banpf-2 <context.args.get[1]>"
-"Pulp Fiction Ban 2":
+PulpFictionBan2:
     type: command
     name: banpf-2
     usage: banpf-2 <aqua>playername
@@ -57,11 +55,9 @@
     permission: denizen.ban.pulpfiction
     permission message: You dare try to wield the powers of the Gods?
     script:
-    - if <context.args.is_empty>
-    {
+    - if <context.args.is_empty>:
         - narrate "<red>You forgot to specify a player!"
         - queue clear
-    }
     - announce "<red>The Gods speak<white>: There's a passage I got memorized. Ezekiel 25:17."
     - wait 80t
     - announce "<red>The Gods speak<white>: <&dq>The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness, for he is truly his brother's keeper and the finder of lost children."
@@ -70,7 +66,7 @@
     - wait 80t
     - execute as_player "shock -k <context.args.get[1]>"
     - narrate "<green>Now ban the player."
-"Fill Super Energy":
+FillSuperEnergy:
     type: command
     name: fillsuper
     usage: fillsuper

@@ -292,7 +292,7 @@ QuestMasterInteract:
                     - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                         - wait 0.7s
-                        - narrate format:QuestMasterFormat "I can also teach you how to set your home, if you want. It's a useful skill!" 
+                        - narrate format:QuestMasterFormat "I can also teach you how to set your home, if you want. It's a useful skill!"
             chat trigger:
                 HomeYes:
                     trigger: /yes|sure|okay|great/
@@ -308,10 +308,41 @@ QuestMasterInteract:
             click trigger:
                 script:
                 - define data <player.uuid>_quest_data
-                - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
-                    - narrate format:PlayerChatFormat "Yeah, I'd like to learn how to set my home."
-                    - run QuestAcceptHandler def:SetHome player:<player>
-                    - zap WoodToolsSethomeActive
+                - if <yaml[<[data]>].contains[quests.active.WoodTools]> && <yaml[<[data]>].read[quests.active.Woodtools.current_stage]||0> == 2:
+                    - choose <player.item_in_hand>:
+                        - case wooden_axe:
+                            - if <yaml[<[data]>].read[quests.active.Woodtools.stages.2.objectives.1.progress]> == 0:
+                                - take wooden_axe
+                                - narrate format:QuestMasterFormat "A wooden axe! Axes make it easier to chop down trees."
+                                - yaml id:<[data]> set quests.active.WoodTools.stages.2.objectives.1.progress:1
+                                - run QuestStageProgressHandler def:WoodTools player:<player>
+                        - case wooden_pickaxe:
+                            - if <yaml[<[data]>].read[quests.active.Woodtools.stages.2.objectives.2.progress]> == 0:
+                                - take wooden_pickaxe
+                                - narrate format:QuestMasterFormat "A wooden pickaxe! You can use one of these to mine stone."
+                                - yaml id:<[data]> set quests.active.WoodTools.stages.2.objectives.2.progress:1
+                                - run QuestStageProgressHandler def:WoodTools player:<player>
+                        - case wooden_shovel:
+                            - if <yaml[<[data]>].read[quests.active.Woodtools.stages.2.objectives.3.progress]> == 0:
+                                - take wooden_shovel
+                                - narrate format:QuestMasterFormat "A wooden shovel! This will make it easier for you to dig up dirt, grass, gravel, and sand."
+                                - yaml id:<[data]> set quests.active.WoodTools.stages.2.objectives.3.progress:1
+                                - run QuestStageProgressHandler def:WoodTools player:<player>
+                        - case wooden_sword:
+                            - if <yaml[<[data]>].read[quests.active.Woodtools.stages.2.objectives.4.progress]> == 0:
+                                - take wooden_sword
+                                - narrate format:QuestMasterFormat "A wooden sword! It's a bit better than just punching monsters with your hands."
+                                - yaml id:<[data]> set quests.active.WoodTools.stages.2.objectives.4.progress:1
+                                - run QuestStageProgressHandler def:WoodTools player:<player>
+                        - case wooden_hoe:
+                            - if <yaml[<[data]>].read[quests.active.Woodtools.stages.2.objectives.5.progress]> == 0:
+                                - take wooden_hoe
+                                - narrate format:QuestMasterFormat "A wooden hoe! Farming is a great way to build a life for yourself out there."
+                                - yaml id:<[data]> set quests.active.WoodTools.stages.2.objectives.5.progress:1
+                                - run QuestStageProgressHandler def:WoodTools player:<player>
+                        - case default:
+                            - narrate format:QuestMasterFormat "Still waiting on that full set of wood tools!"
+                            
         SetHomeActiveOnly:
             proximity trigger:
                 entry:

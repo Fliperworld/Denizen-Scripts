@@ -2,5 +2,7 @@
     type: world
     events:
         on player breaks mob_spawner:
-        - determine passively diamond_block
-        - drop xp <context.location> quantity:1395
+        - if <player.gamemode> == survival:
+            - modifyblock <context.location> air
+            - determine passively diamond_block
+            - drop xp <context.location> quantity:1395

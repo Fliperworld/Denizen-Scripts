@@ -1,14 +1,9 @@
-# This thing lets players pay for XP in herbalism if you have mcMMO
-# @author Wahrheit
-# @version 2.0
-# @last-updated December 29th 2017
-
 "Herbalism Master":
     type: assignment
     interact scripts:
     - 10 Herbalism
     actions:
-        on assignment:   
+        on assignment:
         - teleport npc <npc.anchor[herbalismmaster]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
@@ -40,19 +35,15 @@
                     - flag player ChosenAmount:<context.message.replace[regex:\D+]>
                     - announce to_console "player.flag[ChosenAmount] equals <player.flag[ChosenAmount]>"
                     - announce to_console "player.money is <player.money>"
-                    - if <player.flag[ChosenAmount].is[OR_LESS].than[<player.money>]>
-                    {
+                    - if <player.flag[ChosenAmount].is[OR_LESS].than[<player.money>]>:
                         - narrate "format:Herbalism Master Format" "Okay, let's get you trained up."
                         - execute as_server "addxp <player.name> herbalism <player.flag[ChosenAmount].mul[100]||0>"
                         - announce to_console "ran command 'addxp <player.name> herbalism <player.flag[ChosenAmount].mul[100]||0>'"
                         - take money qty:<player.flag[ChosenAmount]>
                         - flag player ChosenAmount:!
-                        - narrate "format:Herbalism Master Format" "All done. Enjoy." 
-                    }
-                    else
-                    {
+                        - narrate "format:Herbalism Master Format" "All done. Enjoy."
+                    - else:
                         - narrate "format:Herbalism Master Format" "You don't have that much gold."
-                    }
                     - zap 'step:Player Seen'
                 'Fail':
                     trigger: "/REGEX:.+/"

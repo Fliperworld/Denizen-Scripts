@@ -17,6 +17,7 @@ player_data:
     WoodTools:
         name: Adventurer's Toolbox
         description: "Head out into the wild, find a tree, and use the logs to craft wooden tools. Bring them back to the Quest Master."
+        current_stage: 1
         stages:
             1:
                 description: "Craft wooden tools."
@@ -41,6 +42,8 @@ player_data:
                         name: "Craft a wooden hoe"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 5
             2:
                 description: "Bring wooden tools to the Quest Master."
                 objectives:
