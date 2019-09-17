@@ -45,6 +45,29 @@ FishingNewbieInteract:
             proximity trigger:
                 script:
                 - narrate format:FishingNewbieFormat "Ready to catch some more fish?"
+            chat trigger:
+                DailyFishingOffer:
+                    trigger: /yes|sure|okay|great/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "Sure am!"
+                    - run QuestAcceptHandler def:DailyFishing player:<player>
+        DailyFishingActive:
+            proximity trigger:
+                script:
+                - narrate format:FishingNewbieFormat "How's your fishing going? Good haul today?"
+                - run QuestProgressHandler def:DailyFishing player:<player>
+        DailyFishingChallengeOffer:
+            proximity trigger:
+                script:
+                - narrate format:FishingNewbieFormat "Your fishing skills are pretty swell. But I've got a challenge for you - are you up for it?"
+            chat trigger:
+                DailyFishingChallengeOffer:
+                    trigger: /yes|sure|okay|great/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "Sure, I'm in!"
+                    - run QuestAcceptHandler def:DailyFishingChallenge player:<player>
 
 FishingNewbieFishingHandler:
     type: world

@@ -342,7 +342,6 @@ QuestMasterInteract:
                                 - run QuestStageProgressHandler def:WoodTools player:<player>
                         - case default:
                             - narrate format:QuestMasterFormat "Still waiting on that full set of wood tools!"
-                            
         SetHomeActiveOnly:
             proximity trigger:
                 entry:
