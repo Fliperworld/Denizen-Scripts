@@ -74,7 +74,7 @@ FishingNewbieFishingHandler:
     debug: false
     events:
         on player fishes while caught_fish:
-        - define data <player.uuid>_quest_data
+        - define data:<player.uuid>_quest_data
         - if <yaml[<[data]>].contains[quests.active.DailyFishing].not> && <yaml[<[data]>].contains[quests.active.DailyFishingChallenge].not> && <yaml[<[data]>].contains[quests.active.TeachFishingNewbie].not>:
             - stop
         - if <yaml[<[data]>].contains[quests.active.DailyFishing]>:

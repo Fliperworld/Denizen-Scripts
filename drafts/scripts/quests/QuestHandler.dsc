@@ -11,7 +11,7 @@ QuestDataHandler:
     type: world
     events:
         on player joins:
-        - define data <player.uuid>_quest_data
+        - define data:<player.uuid>_quest_data
         - if <server.has_file[playerdata/<player.uuid>/quest_data.yml]>:
             - ~yaml load:playerdata/<player.uuid>/quest_data.yml id:<[data]>
         - else:
@@ -27,9 +27,10 @@ QuestAcceptHandler:
     type: task
     definitions: quest_internalname
     script:
-    - define data <player.uuid>_quest_data
+    - define data:<player.uuid>_quest_data
     - yaml id:<[quest_internalname]> copykey:player_data.<[quest_internalname]> quests.active.<[quest_internalname]> to_id:<[data]>
     - yaml id:<[data]> set quests.active.<[quest_internalname]>.current_stage:1
+    - run QuestResetTimeHandler player:<player> def:<[quest_internalname]>
     - define current_stage 1
     - narrate "<yaml[<[quest_internalname]>].read[messages.offer]>"
     - narrate format:QuestNameFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
@@ -43,7 +44,7 @@ QuestStageProgressHandler:
     type: task
     definitions: quest_internalname
     script:
-    - define data <player.uuid>_quest_data
+    - define data:<player.uuid>_quest_data
     - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
     - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[current_stage]>.progress:++
     - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[current_stage]>.progress]> >= <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[current_stage]>.total]>:
@@ -57,7 +58,7 @@ QuestProgressHandler:
     type: task
     definitions: quest_internalname
     script:
-    - define data <player.uuid>_quest_data
+    - define data:<player.uuid>_quest_data
     - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
     - narrate format:QuestNameFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
     - narrate format:QuestDescriptionFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>"
@@ -70,7 +71,7 @@ QuestStageAdvanceHandler:
     type: task
     definitions: quest_internalname
     script:
-    - define data <player.uuid>_quest_data
+    - define data:<player.uuid>_quest_data
     - yaml id:<[data]> set quests.active.<[quest-quest_internalname]>.current_stage:++
     - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
     - narrate format:QuestNameFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
@@ -84,7 +85,7 @@ QuestQuitHandler:
     type: task
     definitions: quest_internalname
     script:
-    - define data <player.uuid>_quest_data
+    - define data:<player.uuid>_quest_data
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
     - narrate "<red>QUEST QUIT: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
 
@@ -93,7 +94,7 @@ QuestCompletionHandler:
     type: task
     definitions: quest_internalname
     script:
-    - define data <player.uuid>_quest_data
+    - define data:<player.uuid>_quest_data
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
     - yaml id:<[data]> set quests.completed.<[quest_internalname]>.completion_count:++
     - yaml id:<[data]> set quests.completed.<[quest_internalname]>.last_completed:<util.date.time.duration>
@@ -115,9 +116,9 @@ QuestRepeatableHandler:
         - case 7d:
             - if <[current_week]> > <[last_completed].in_weeks>:
                 - determine true
-            - else if <[current_week]> == <[last_completed].in_weeks> && <util.date.time.day_of_week> > 5:
+            - else if <[current_week]> == <[last_completed].in_weeks> && <util.date.time.day_of_week> > 6:
                 - determine true
-            - else if <util.date.time.day_of_week> == 5 && <util.date.time.hour> >= 19:
+            - else if <util.date.time.day_of_week> == 6 && <util.date.time.hour> >= 19:
                 - determine true
             - else:
                 - determine false
@@ -138,7 +139,7 @@ QuestRewardHandler:
     type: task
     definitions: quest_internalname
     script:
-    - define data <player.uuid>_quest_data
+    - define data:<player.uuid>_quest_data
     - if <yaml[<[quest_internalname]>].contains[rewards.money]>:
         - money give quantity:<yaml[<[quest_internalname]>].read[rewards.money]> players:<player>
         - narrate "<gold><yaml[<[quest_internalname]>].read[rewards.money]> gold"
@@ -156,3 +157,50 @@ QuestRewardHandler:
             - execute as_server <[value]>
         - foreach <yaml[<[quest_internalname]>].read[rewards.command_text]>:
             - narrate <[value]>
+
+QuestLoginResetHandler:
+    debug: false
+    type: world
+    events:
+        on player joins:
+        - define data:<player.uuid>_quest_data
+        - foreach <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>:
+            - define reset_time:<yaml[<[data]>].read[quests.active.<[quest_internalname]>.reset_time]>
+            - if <util.date.time.duration> >= <[reset_time]>:
+                - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
+                - narrate "<red>QUEST EXPIRED: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
+
+QuestDailyResetHandler:
+    debug: false
+    type: world
+    events:
+        on system time 19:00:
+        - foreach <server.list_online_players> as:player:
+            - define data:<[player].uuid>_quest_data
+            - foreach <yaml[<[data]>].read[quests.active]> as:quest_internalname:
+                - define reset_time:<yaml[<[data]>].read[quests.active.<[quest_internalname]>.reset_time]>
+                - if <util.date.time.duration> >= <[reset_time]>:
+                    - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
+                    - narrate "<red>QUEST EXPIRED: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
+
+QuestResetTimeHandler:
+    debug: false
+    type: task
+    definitions: quest_internalname
+    script:
+    - define data:<player.uuid>_quest_data
+    - define current_week:<util.date.time.duration.in_weeks.round_to[0]>
+    - define current_day:<util.date.time.duration.in_days.round_to[0]>
+    - choose <yaml[<[quest_internalname]>].read[config.reset.period]>:
+        - case 7d:
+            - if <util.date.time.day_of_week> > 6:
+                - yaml id:<[data]> set quests.active.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].add[6d].add[1w].sub[5m]>
+            - else if <util.date.time.day_of_week> == 6 && <util.date.time.hour> >= 19:
+                - yaml id:<[data]> set quests.active.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].add[6d].add[1w].sub[5m]>
+            - else:
+                - yaml id:<[data]> set quests.active.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].add[6d].sub[5m]>
+        - case 1d:
+            - if <util.date.time.hour> >= 19:
+                - yaml id:<[data]> set quests.active.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[1d].add[19h].sub[5m]>
+            - else:
+                - yaml id:<[data]> set quests.active.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].sub[5m]>

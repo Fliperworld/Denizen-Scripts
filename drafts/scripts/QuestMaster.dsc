@@ -68,7 +68,7 @@ QuestMasterInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data <player.uuid>_quest_data
+                    - define data:<player.uuid>_quest_data
                     - if <player.has_flag[QuestMasterSeen].not>:
                         - narrate format:QuestMasterFormat "Well hello there, <player.name>! Nice to meet you."
                         - flag player QuestMasterSeen:true
@@ -204,7 +204,7 @@ QuestMasterInteract:
                     - narrate format:QuestMasterFormat "Say, I think you're ready forsomething more exciting. How about it?"
                     - wait 0.7s
                     - narrate format:QuestMasterFormat "I've got your first real get-out-in-the-world quest for you as soon as you're ready."
-                    - define data <player.uuid>_quest_data
+                    - define data:<player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                         - wait 0.7s
                         - narrate format:QuestMasterFormat "I can also teach you how to set a home! It's an important skill for surviving out there."
@@ -218,7 +218,7 @@ QuestMasterInteract:
                         - narrate "<gray>Right-click the Quest Master!"
             click trigger:
                 script:
-                - define data <player.uuid>_quest_data
+                - define data:<player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                     - narrate format:QuestMasterFormat "Alright! Which quest do you want? Are you ready to get adventuring, or do you want to learn to set your home first?"
                     - narrate "<gray>Say <green>adventure <gray>for your first adventure, or <green>home <gray>to learn how to set your home!"
@@ -250,7 +250,7 @@ QuestMasterInteract:
                     script:
                     - narrate format:PlayerChatFormat "It's time for me to get out and explore Prosperus. I'm ready for my first adventure!"
                     - run QuestAcceptHandler def:WoodTools player:<player>
-                    - define data <player.uuid>_quest_data
+                    - define data:<player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                         - zap WoodToolsActiveOnly
                     - else:
@@ -259,7 +259,7 @@ QuestMasterInteract:
                     trigger: /home/
                     hide trigger message: true
                     script:
-                    - define data <player.uuid>_quest_data
+                    - define data:<player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                         - narrate format:PlayerChatFormat "I'd like to learn how to set my home."
                         - run QuestAcceptHandler def:SetHome player:<player>
@@ -289,7 +289,7 @@ QuestMasterInteract:
                     - narrate format:QuestMasterFormat "How's it going with getting those wood tools?"
                     - wait 0.7s
                     - narrate format:QuestMasterFormat "Don't forget, you can get boats from the docks and sail down the river to get out of Dawn's Landing quickly."
-                    - define data <player.uuid>_quest_data
+                    - define data:<player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                         - wait 0.7s
                         - narrate format:QuestMasterFormat "I can also teach you how to set your home, if you want. It's a useful skill!"
@@ -298,7 +298,7 @@ QuestMasterInteract:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
-                    - define data <player.uuid>_quest_data
+                    - define data:<player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                         - narrate format:PlayerChatFormat "Yeah, I'd like to learn how to set my home."
                         - run QuestAcceptHandler def:SetHome player:<player>
@@ -307,7 +307,7 @@ QuestMasterInteract:
                         - announce format:PlayerChatFormat "<context.message>"
             click trigger:
                 script:
-                - define data <player.uuid>_quest_data
+                - define data:<player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.WoodTools]> && <yaml[<[data]>].read[quests.active.Woodtools.current_stage]||0> == 2:
                     - choose <player.item_in_hand>:
                         - case wooden_axe:
@@ -347,7 +347,7 @@ QuestMasterInteract:
                 entry:
                     script:
                     - narrate format:QuestMasterFormat "You still need to set your home! Go on, give it a try."
-                    - define data <player.uuid>_quest_data
+                    - define data:<player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
                         - wait 0.7s
                         - narrate format:QuestMasterFormat "I've also got your first real adventuring quest. Are you ready for it?"
@@ -356,7 +356,7 @@ QuestMasterInteract:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
-                    - define data <player.uuid>_quest_data
+                    - define data:<player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
                         - narrate format:PlayerChatFormat "Yes, I'm ready!"
                         - run QuestAcceptHandler def:WoodTools player:<player>
@@ -365,7 +365,7 @@ QuestMasterInteract:
                         - announce format:PlayerChatFormat "<context.message>"
             click trigger:
                 script:
-                - define data <player.uuid>_quest_data
+                - define data:<player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
                         - narrate format:PlayerChatFormat "Yes, I'm ready!"
                         - run QuestAcceptHandler def:WoodTools player:<player>

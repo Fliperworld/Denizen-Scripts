@@ -4,7 +4,7 @@ QuestDataConverter:
     events:
         on player joins:
         - wait 2s
-        - define data <player.uuid>_quest_data
+        - define data:<player.uuid>_quest_data
         - define olddata <player.uuid>_quest_data_old
         - if <server.has_file[../Quests/data/<player.uuid>.yml]> && !<player.has_flag[old_quests_data_converted]>:
             - yaml load:../Quests/data/<player.uuid>.yml id:<[olddata]>
