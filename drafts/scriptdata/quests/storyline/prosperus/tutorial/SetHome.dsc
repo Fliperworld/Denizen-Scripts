@@ -5,8 +5,7 @@ config:
         money: 50
         quest_points: 1
 messages:
-    offer: "<darkgreen>Quest Master<white>: 
-    ask-message: "<darkgreen>Quest Master<white>: You'll need more than just a sharp head on your shoulders to survive the wild - let me teach you a trick to help you out. First, set your home with /sethome. Then, go to spawn - either walk or use /spawn - then use /home to get back. I'll give you another quest."
+    offer: "<darkgreen>Quest Master<white>: You'll need more than just a sharp head on your shoulders to survive the wild - let me teach you a trick to help you out. First, set your home with /sethome. Then, go to spawn - either walk or use /spawn - then use /home to get back. I'll give you another quest."
     completion: "<darkgreen>Quest Master<white>: Great job! You can use /sethome and /home as often as you like, and you can have one home on each world."
 player_data:
     SetHome:

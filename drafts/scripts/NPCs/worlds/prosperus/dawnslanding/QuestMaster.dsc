@@ -5,6 +5,7 @@
 
 QuestMasterAssignment:
     type: assignment
+    debug: false
     interact scripts:
     - 10 QuestMasterInteract
     actions:
@@ -15,10 +16,12 @@ QuestMasterAssignment:
     
 QuestMasterFormat:
     type: format
+    debug: false
     format: "<dark_green>Quest Master<white><&co> <text>"
 
 FoundSomeDiamonds:
     type: task
+    debug: false
     script:
     - narrate "<dark_green>Quest Master<white><&co> Not quite all the Treasure Hunters, but here's what you've earned!"
     - give diamond "qty:<player.flag[npccount]>"
@@ -26,6 +29,7 @@ FoundSomeDiamonds:
     - flag player npccount:0
 FoundAllDiamonds:
     type: task
+    debug: false
     script:
     - narrate "<dark_green>Quest Master<white><&co> Oh, I see you found all the Treasure Hunters! Here are your rewards!"
     - give diamond qty:8
@@ -49,6 +53,7 @@ QuestMasterStepUpdater:
 
 QuestMasterInteract:
     type: interact
+    debug: false
     steps:
         Greeting*:
             proximity trigger:
@@ -56,6 +61,7 @@ QuestMasterInteract:
                     script:
                     - if <player.has_flag[QuestMasterSeen]>:
                         - zap GeneralDialogue
+                        - stop
                     - narrate format:QuestMasterFormat "Welcome to the Questing Hall, <player.name>! The folks here have a variety of quests that you can complete to help out our citizens."
                     - wait 0.7s
                     - narrate format:QuestMasterFormat "I've got a series of quests, too, that will help ease you into your adventure. I'll even toss you a little coin for your efforts, as well as a few other surprise bonuses."
@@ -97,7 +103,7 @@ QuestMasterInteract:
                         - narrate format:QuestMasterFormat "How's it going with getting those wood tools?"
                         - wait 0.7s
                         - narrate format:QuestMasterFormat "Don't forget, you can get boats from the docks and sail down the river to get out of Dawn's Landing quickly."
-                        - zap WoodtoolsActive
+                        - zap WoodToolsActive
                     # Mining quest offer
                     - else if <yaml[<[data]>].contains[quests.completed.WoodTools]> && <yaml[<[data]>].contains[quests.active.StoneTools].not> && <yaml[<[data]>].contains[quests.completed.StoneTools].not>:
                         - narrate format:QuestMasterFormat "You did a great job getting those wooden tools! Ready to put them to use?"
@@ -201,7 +207,7 @@ QuestMasterInteract:
                     script:
                     - narrate format:QuestMasterFormat "Thanks for delivering that package from Swabby!"
                     - wait 0.7s
-                    - narrate format:QuestMasterFormat "Say, I think you're ready forsomething more exciting. How about it?"
+                    - narrate format:QuestMasterFormat "Say, I think you're ready for something more exciting. How about it?"
                     - wait 0.7s
                     - narrate format:QuestMasterFormat "I've got your first real get-out-in-the-world quest for you as soon as you're ready."
                     - define data:<player.uuid>_quest_data
@@ -276,12 +282,16 @@ QuestMasterInteract:
                 - narrate format:PlayerChatFormat "Yes, I'm ready!"
                 - run QuestAcceptHandler def:WoodTools player:<player>
             chat trigger:
-                WoodToolsOffer:
+                WoodToolsAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Yes, I'm ready!"
                     - run QuestAcceptHandler def:WoodTools player:<player>
+                    - if <yaml[<[data]>].contains[quests.active.SetHome]>:
+                        - zap WoodToolsSetHomeActive
+                    - else:
+                        - zap WoodToolsActiveOnly
         WoodToolsActiveOnly:
             proximity trigger:
                 entry:
@@ -308,40 +318,26 @@ QuestMasterInteract:
             click trigger:
                 script:
                 - define data:<player.uuid>_quest_data
-                - if <yaml[<[data]>].contains[quests.active.WoodTools]> && <yaml[<[data]>].read[quests.active.Woodtools.current_stage]||0> == 2:
-                    - choose <player.item_in_hand>:
-                        - case wooden_axe:
-                            - if <yaml[<[data]>].read[quests.active.Woodtools.stages.2.objectives.1.progress]> == 0:
-                                - take wooden_axe
-                                - narrate format:QuestMasterFormat "A wooden axe! Axes make it easier to chop down trees."
-                                - yaml id:<[data]> set quests.active.WoodTools.stages.2.objectives.1.progress:1
-                                - run QuestStageProgressHandler def:WoodTools player:<player>
-                        - case wooden_pickaxe:
-                            - if <yaml[<[data]>].read[quests.active.Woodtools.stages.2.objectives.2.progress]> == 0:
-                                - take wooden_pickaxe
-                                - narrate format:QuestMasterFormat "A wooden pickaxe! You can use one of these to mine stone."
-                                - yaml id:<[data]> set quests.active.WoodTools.stages.2.objectives.2.progress:1
-                                - run QuestStageProgressHandler def:WoodTools player:<player>
-                        - case wooden_shovel:
-                            - if <yaml[<[data]>].read[quests.active.Woodtools.stages.2.objectives.3.progress]> == 0:
-                                - take wooden_shovel
-                                - narrate format:QuestMasterFormat "A wooden shovel! This will make it easier for you to dig up dirt, grass, gravel, and sand."
-                                - yaml id:<[data]> set quests.active.WoodTools.stages.2.objectives.3.progress:1
-                                - run QuestStageProgressHandler def:WoodTools player:<player>
-                        - case wooden_sword:
-                            - if <yaml[<[data]>].read[quests.active.Woodtools.stages.2.objectives.4.progress]> == 0:
-                                - take wooden_sword
-                                - narrate format:QuestMasterFormat "A wooden sword! It's a bit better than just punching monsters with your hands."
-                                - yaml id:<[data]> set quests.active.WoodTools.stages.2.objectives.4.progress:1
-                                - run QuestStageProgressHandler def:WoodTools player:<player>
-                        - case wooden_hoe:
-                            - if <yaml[<[data]>].read[quests.active.Woodtools.stages.2.objectives.5.progress]> == 0:
-                                - take wooden_hoe
-                                - narrate format:QuestMasterFormat "A wooden hoe! Farming is a great way to build a life for yourself out there."
-                                - yaml id:<[data]> set quests.active.WoodTools.stages.2.objectives.5.progress:1
-                                - run QuestStageProgressHandler def:WoodTools player:<player>
-                        - case default:
-                            - narrate format:QuestMasterFormat "Still waiting on that full set of wood tools!"
+                - if <yaml[<[data]>].contains[quests.active.WoodTools]> && <yaml[<[data]>].read[quests.active.WoodTools.current_stage]||0> == 2:
+                    - inject WoodToolsQuestDeliveryHandler
+        SetHomeOffer:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:QuestMasterFormat "I've got one quick skill to teach you - it's how to set your home! You'll be able to use magic to jump between Dawn's Landing and wherever you set your home once you learn. Are you ready?"
+            click trigger:
+                script:
+                - narrate format:PlayerChatFormat "That sounds useful, please teach me!"
+                - run QuestAccepthandler def:SetHome player:<player>
+                - zap SetHomeActiveOnly
+            chat trigger:
+                SetHomeAcceptance:
+                    trigger: /yes|sure|okay|great/
+                    hide trigger message: true
+                    script:
+                    - narrate format:PlayerChatFormat "That sounds useful, please teach me!"
+                    - run QuestAccepthandler def:SetHome player:<player>
+                    - zap SetHomeActiveOnly
         SetHomeActiveOnly:
             proximity trigger:
                 entry:
@@ -351,8 +347,9 @@ QuestMasterInteract:
                     - if <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
                         - wait 0.7s
                         - narrate format:QuestMasterFormat "I've also got your first real adventuring quest. Are you ready for it?"
+                    - run QuestProgressHandler def:SetHome player:<player>
             chat trigger:
-                SetHomeActiveWoodToolsOffer:
+                SetHomeActiveWoodToolsAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
@@ -375,6 +372,13 @@ QuestMasterInteract:
                 entry:
                     script:
                     - narrate format:QuestMasterFormat "Still working on getting those wood tools, huh? And you still need to set your home, too! Give it a try."
+                    - define data:<player.uuid>_quest_data
+                    - if <yaml[<[data]>].contains[quests.active.WoodTools]> && <yaml[<[data]>].read[quests.active.WoodTools.current_stage]||0> == 2:
+                            - inject WoodToolsQuestDeliveryHandler
+            click trigger:
+            - define data:<player.uuid>_quest_data
+            - if <yaml[<[data]>].contains[quests.active.WoodTools]> && <yaml[<[data]>].read[quests.active.WoodTools.current_stage]||0> == 2:
+                - inject WoodToolsQuestDeliveryHandler
         StoneToolsOffer:
             proximity trigger:
                 entry:
@@ -386,7 +390,7 @@ QuestMasterInteract:
                 - run QuestAcceptHandler def:StoneTools player:<player>
                 - zap StoneToolsActive
             chat trigger:
-                StoneTools:
+                StoneToolsAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
@@ -403,6 +407,7 @@ QuestMasterInteract:
                 entry:
                     script:
                     - narrate format:QuestMasterFormat "You putting those wooden tools to work yet?"
+                    - run QuestProgressHandler def:StoneTools player:<player>
         LeatherArmorOffer:
             proximity trigger:
                 entry:
@@ -414,7 +419,7 @@ QuestMasterInteract:
                 - run QuestAcceptHandler def:LeatherArmor player:<player>
                 - zap LeatherArmorActive
             chat trigger:
-                LeatherArmor:
+                LeatherArmorAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
@@ -435,6 +440,7 @@ QuestMasterInteract:
                     - narrate format:QuestMasterFormat "You can find cows both around Dawn's Landing and all over the world."
                     - wait 0.7s
                     - narrate format:QuestMasterFormat "Just make sure there's some grass around so they show up to munch on it."
+                    - run QuestProgressHandler def:LeatherArmor player:<player>
         FindReinwaldOffer:
             proximity trigger:
                 entry:
@@ -446,7 +452,7 @@ QuestMasterInteract:
                 - run QuestAcceptHandler def:FindReinwald player:<player>
                 - zap FindReinwaldActive
             chat trigger:
-                FindReinwald:
+                FindReinwaldAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
@@ -463,6 +469,7 @@ QuestMasterInteract:
                 entry:
                     script:
                     - narrate format:QuestMasterFormat "Having a hard time finding Warmaster Reinwald? he's just over in the castle, but maybe you can ask another adventurer for help."
+                    - run QuestProgressHandler def:FindReinwald player:<player>
         IronToolsArmorOffer:
             proximity trigger:
                 entry:
@@ -475,7 +482,7 @@ QuestMasterInteract:
                 - narrate format:PlayerChatFormat "Sure am!"
                 - run QuestAcceptHandler def:IronToolsArmor player:<player>
             chat trigger:
-                IronToolsArmorOffer:
+                IronToolsArmorAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
@@ -495,6 +502,7 @@ QuestMasterInteract:
                     - narrate format:QuestMasterFormat "If you're having a rough time finding it just outside the valley, try going further out."
                     - wait 0.7s
                     - narrate format:QuestMasterFormat "Many adventurers have been through these parts! Not so many are brave enough to cross the oceans to otehr continents, though. I reckon you've got what it takes."
+                    - run QuestProgressHandler def:IronToolsArmor player:<player>
         FindFishingNewbieOffer:
             proximity trigger:
                 entry:
@@ -506,7 +514,7 @@ QuestMasterInteract:
                 - run QuestAcceptHandler def:FindFishingNewbie player:<player>
                 - zap FindFishingNewbieActive
             chat trigger:
-                FindFishingNewbieOffer:
+                FindFishingNewbieAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
@@ -523,6 +531,7 @@ QuestMasterInteract:
                 entry:
                     script:
                     - narrate format:QuestMasterFormat "Did you find that kid yet? He's just down by the docks."
+                    - run QuestProgressHandler def:FindFishingNewbie player:<player>
         MeetSkillTrainersOffer:
             proximity trigger:
                 entry:
@@ -531,15 +540,15 @@ QuestMasterInteract:
             click trigger:
                 script:
                 - narrate format:PlayerChatFormat "Okay, that sounds interesting!"
-                - run QuestAcceptHandler def:MeetSkillTrainersOffer player:<player>
+                - run QuestAcceptHandler def:MeetSkillTrainers player:<player>
                 - zap MeetSkillTrainersActive
             chat trigger:
-                MeetSkillTrainersOffer:
+                MeetSkillTrainersAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Okay, that sounds interesting!"
-                    - run QuestAcceptHandler def:MeetSkillTrainersOffer player:<player>
+                    - run QuestAcceptHandler def:MeetSkillTrainers player:<player>
                     - zap MeetSkillTrainersActive
                 Fallback:
                     trigger: /*/
@@ -555,6 +564,7 @@ QuestMasterInteract:
                     - narrate format:QuestMasterFormat "Lucky for you, I wrote a little book with directions."
                     - wait 0.7s
                     - adjust <player> show_book:i@SkillTrainerBook
+                    - run QuestProgressHandler def:MeetSkillTrainers player:<player>
         MeetPostmasterOffer:
             proximity trigger:
                 entry:
@@ -566,7 +576,7 @@ QuestMasterInteract:
                 - run QuestAcceptHandler def:MeetPostmaster
                 - zap MeetPostmasterActive
             chat trigger:
-                MeetPostmasterOffer:
+                MeetPostmasterAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
@@ -583,6 +593,7 @@ QuestMasterInteract:
                 entry:
                     script:
                     - narrate format:QuestMasterFormat "The post office is just around the corner from here."
+                    - run QuestProgressHandler def:MeetPostmaster player:<player>
         FirstMobHuntingOffer_QM:
             proximity trigger:
                 entry:

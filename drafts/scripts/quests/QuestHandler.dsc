@@ -20,7 +20,7 @@ QuestDataHandler:
             - ~yaml id:<[data]> savefile:playerdata/<player.uuid>/quest_data.yml
         - yaml set id:<[data]> set player_last_known_name:<player.name>
         on player quits:
-        - ~yaml id:<script.yaml_key[data]> savefile:playerdata/<player.uuid>/quest_data.yml
+        - ~yaml id:<[data]> savefile:playerdata/<player.uuid>/quest_data.yml
 
 QuestAcceptHandler:
     debug: false
@@ -42,7 +42,7 @@ QuestAcceptHandler:
 QuestStageProgressHandler:
     debug: false
     type: task
-    definitions: quest_internalname
+    definitions: quest_internalname|objective
     script:
     - define data:<player.uuid>_quest_data
     - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
@@ -52,6 +52,9 @@ QuestStageProgressHandler:
             - run QuestStageAdvanceHandler def:<[quest_internalname]> player:<player>
         - else:
             - run QuestCompletionHandler def:<[quest_internalname]> player:<player>
+    - else if <[objective]||null>:
+        - narrate format:QuestNameFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
+        - narrate "• <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.name]>: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.progress]>/<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.total]>"
 
 QuestProgressHandler:
     debug: false

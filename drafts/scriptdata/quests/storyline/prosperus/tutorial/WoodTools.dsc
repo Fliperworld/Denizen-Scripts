@@ -15,7 +15,7 @@ messages:
     completion: "<darkgreen>Quest Master<white>: Nicely done! Here are your tools back - and I enchanted them for you, too! Ready for your next task?"
 player_data:
     WoodTools:
-        name: Adventurer's Toolbox
+        name: "Adventurer's Toolbox"
         description: "Head out into the wild, find a tree, and use the logs to craft wooden tools. Bring them back to the Quest Master."
         current_stage: 1
         stages:

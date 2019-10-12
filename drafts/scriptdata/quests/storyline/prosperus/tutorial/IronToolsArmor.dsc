@@ -16,6 +16,8 @@ config:
         - iron_spade[enchantments=li@DURABILITY,1]
         - iron_sword[enchantments=li@DURABILITY,1]
         - iron_hoe[enchantments=li@DURABILITY,1]
+        scripts:
+        - IronToolsArmorCompletion
 messages:
     offer: "<darkgreen>Quest Master<white>: You've got some stone tools and some leather armor. Ready for an upgrade to both of those? That's right - it's time for you to hunt down some iron. You'll need to mine iron ore, smelt it in a furnace, and craft it into tools and armor. Bring me a full set of armor and some iron tools to prove you know what you're doing. As usual, I'll enchant them to reward you for your trouble."
     completion: "<darkgreen>Quest Master<white>: Well, would you look at that? You're really making your way out there. Here's all your stuff, plus the enchantments - as promised. Now get out there and use it! Don't forget to keep checking in with Warmaster Reinwald."
