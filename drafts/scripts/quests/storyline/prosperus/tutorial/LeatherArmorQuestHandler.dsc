@@ -1,10 +1,10 @@
-IronToolsArmorCompletion:
+LeatherArmorCompletion:
     type: task
     debug: false
     script:
     - zap FindReinwaldOffer s@QuestMasterInteract
 
-<[quest_internalname]>QuestCraftingHandler:
+LeatherArmorQuestCraftingHandler:
     type: world
     debug: false
     events:
