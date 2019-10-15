@@ -10,6 +10,8 @@ config:
         items:
         - diamond[quantity=1]
         - iron_ingot[quantity=6]
+        scripts:
+        - FirstMobHuntingCompletion
 messages:
     offer: "<darkgreen>Warmaster Reinwald<white>: It's time for you to head out into the world. I've got a lot of work for you to do, but first, I have to make sure you're ready for it. Start by killing a <&a>Zombie<&f>, a <&a>Skeleton<&f>, a <&a>Spider<&f>, and a <&a>Creeper<&f> to show me that you know what you're doing. Be careful, and if you see any Veteran or Elite monsters, I suggest you run. You'll know them when you see them."
     completion: "<darkgreen>Warmaster Reinwald<white>: Great work. I have more for you to do, when you're ready."

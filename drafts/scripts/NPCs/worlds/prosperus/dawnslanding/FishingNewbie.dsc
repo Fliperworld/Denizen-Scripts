@@ -27,7 +27,7 @@ FishingNewbieInteract:
             click trigger:
                 script:
                 - narrate format:PlayerChatformat "Sure, I can help you out."
-                - run QuestAcceptHandler def:TeachFishingNewbie player:<player>
+                - run QuestAcceptHandler def:TeachFishingNewbie
                 - zap TeachFishingNewbieActive
             chat trigger:
                 TeachFishingNewbieOffer:
@@ -35,12 +35,12 @@ FishingNewbieInteract:
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sure, I can help you out."
-                    - run QuestAcceptHandler def:TeachFishingNewbie player:<player>
+                    - run QuestAcceptHandler def:TeachFishingNewbie
         TeachFishingNewbieActive:
             proximity trigger:
                 script:
                 - narrate format:FishingNewbieFormat "Still fishing, huh? Be sure to look for those bubbles in the water!"
-                - run QuestProgressHandler def:TeachFishingNewbie player:<player>
+                - run QuestProgressHandler def:TeachFishingNewbie
         DailyFishingOffer:
             proximity trigger:
                 script:
@@ -51,12 +51,12 @@ FishingNewbieInteract:
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sure am!"
-                    - run QuestAcceptHandler def:DailyFishing player:<player>
+                    - run QuestAcceptHandler def:DailyFishing
         DailyFishingActive:
             proximity trigger:
                 script:
                 - narrate format:FishingNewbieFormat "How's your fishing going? Good haul today?"
-                - run QuestProgressHandler def:DailyFishing player:<player>
+                - run QuestProgressHandler def:DailyFishing
         DailyFishingChallengeOffer:
             proximity trigger:
                 script:
@@ -67,7 +67,7 @@ FishingNewbieInteract:
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sure, I'm in!"
-                    - run QuestAcceptHandler def:DailyFishingChallenge player:<player>
+                    - run QuestAcceptHandler def:DailyFishingChallenge
 
 FishingNewbieFishingHandler:
     type: world
@@ -80,12 +80,12 @@ FishingNewbieFishingHandler:
         - if <yaml[<[data]>].contains[quests.active.DailyFishing]>:
             - yaml id:<[data]> set player_data.DailyFishing.stages.1.objectives.1.progress:++
             - if <yaml[<[data]>].read[player_data.DailyFishing.stages.1.objectives.1.progress]> >= 16:
-                - run QuestCompletionHandler def:DailyFishing player:<player>
+                - run QuestCompletionHandler def:DailyFishing
         - else if <yaml[<[data]>].contains[quests.active.DailyFishingChallenge]>:
             - yaml id:<[data]> set player_data.DailyFishingChallenge.stages.1.objectives.1.progress:++
             - if <yaml[<[data]>].read[player_data.DailyFishingChallenge.stages.1.objectives.1.progress]> >= 32:
-                - run QuestCompletionHandler def:DailyFishingChallenge player:<player>
+                - run QuestCompletionHandler def:DailyFishingChallenge
         - else if <yaml[<[data]>].contains[quests.active.TeachFishingNewbie]>:
             - yaml id:<[data]> set player_data.TeachFishingNewbie.stages.1.objectives.1.progress:++
             - if <yaml[<[data]>].read[player_data.TeachFishingNewbie.stages.1.objectives.1.progress]> >= 16:
-                - run QuestCompletionHandler def:TeachFishingNewbie player:<player>
+                - run QuestCompletionHandler def:TeachFishingNewbie

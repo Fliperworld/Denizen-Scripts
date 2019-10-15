@@ -44,7 +44,7 @@ QuestMasterStepUpdater:
             - queue clear
         - else:
             - if <s@Newbie.step||null> != Greeting:
-                - zap script:Newbie step:General-Dialogue player:<player>
+                - zap script:Newbie step:General-Dialogue
 
 "Newbie":
     type: interact

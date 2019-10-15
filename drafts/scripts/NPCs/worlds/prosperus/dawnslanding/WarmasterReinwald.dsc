@@ -62,7 +62,7 @@ WarmasterReinwaldInteract:
             click trigger:
                 script:
                 - if <yaml[<[data]>].contains[quests.active.FindReinwald]>:
-                    - run QuestCompletionHandler def:FindReinwald player:<player>
+                    - run QuestCompletionHandler def:FindReinwald
         GeneralDialogue:
             proximity trigger:
                 entry:
@@ -75,7 +75,7 @@ WarmasterReinwaldInteract:
             click trigger:
                 script:
                 - if <yaml[<[data]>].contains[quests.active.FindReinwald]>:
-                    - run QuestCompletionHandler def:FindReinwald player:<player>
+                    - run QuestCompletionHandler def:FindReinwald
         FirstMobHuntingOffer:
             proximity trigger:
                 entry:
@@ -86,14 +86,14 @@ WarmasterReinwaldInteract:
             click trigger:
                 script:
                 - narrate format:PlayerChatFormat "Absolutely, I'm ready to fight back!"
-                - run QuestAcceptHandler def:FirstMobHunting player:<player>
+                - run QuestAcceptHandler def:FirstMobHunting
             chat trigger:
                 FirstMobHuntingAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Absolutely, I'm ready to fight back!"
-                    - run QuestAcceptHandler def:FirstMobHunting player:<player>
+                    - run QuestAcceptHandler def:FirstMobHunting
         FirstMobHuntingActive:
             proximity trigger:
                 entry:
@@ -101,7 +101,7 @@ WarmasterReinwaldInteract:
                     - narrate format:WarmasterReinwaldFormat "Hail, <player.name>!"
                     - wait 0.7s
                     - narrate format:WarmasterReinwaldFormat "How is your hunt going?"
-                    - run QuestProgressHandler def:FirstMobHunting player:<player>
+                    - run QuestProgressHandler def:FirstMobHunting
         SkeletalRogueHuntOffer:
             proximity trigger:
                 entry:
@@ -114,14 +114,14 @@ WarmasterReinwaldInteract:
             click trigger:
                 script:
                 - narrate format:PlayerChatFormat "I'm not afraid - I'm ready to hunt those Skeletal Rogues!"
-                - run QuestAcceptHandler def:SkeletalRogueHunt player:<player>
+                - run QuestAcceptHandler def:SkeletalRogueHunt
             chat trigger:
                 SkeletalRogueHuntAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "I'm not afraid - I'm ready to hunt those Skeletal Rogues!"
-                    - run QuestAcceptHandler def:SkeletalRogueHunt player:<player>
+                    - run QuestAcceptHandler def:SkeletalRogueHunt
         SkeletalRogueHuntActive:
             proximity trigger:
                 entry:
@@ -129,7 +129,7 @@ WarmasterReinwaldInteract:
                     - narrate format:WarmasterReinwaldFormat "Hail, <player.name>!"
                     - wait 0.7s
                     - narrate format:WarmasterReinwaldFormat "Still hunting for those Skeletal Rogues? Don't let them get your spirits down! Be sure to bring a shield."
-                    - run QuestProgressHandler def:SkeletalRogueHunt player:<player>
+                    - run QuestProgressHandler def:SkeletalRogueHunt
         VeteranHuntOffer:
             proximity triger:
                 entry:
@@ -140,14 +140,14 @@ WarmasterReinwaldInteract:
             click trigger:
                 script:
                 - narrate format:PlayerChatFormat "Those Veterans won't know what's coming!"
-                - run QuestAcceptHandler def:VeteranHunt player:<player>
+                - run QuestAcceptHandler def:VeteranHunt
             chat trigger:
                 SkeletalRogueHuntAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Those Veterans won't know what's coming!"
-                    - run QuestAcceptHandler def:VeteranHunt player:<player>
+                    - run QuestAcceptHandler def:VeteranHunt
         VeteranHuntActive:
             proximity trigger:
                 entry:
@@ -155,7 +155,7 @@ WarmasterReinwaldInteract:
                     - narrate format:WarmasterReinwaldFormat "Hail, <player.name>!"
                     - wait 0.7s
                     - narrate format:WarmasterReinwaldFormat "You're making great strides against the darkness - keep hunting down those Veterans!"
-                    - run QuestProgressHandler def:VeteranHunt player:<player>
+                    - run QuestProgressHandler def:VeteranHunt
         LichHuntOffer:
             proximity trigger:
                 entry:
@@ -168,14 +168,14 @@ WarmasterReinwaldInteract:
             click trigger:
                 script:
                 - narrate format:PlayerChatFormat "What's one more zombie on the pile? I'm in!"
-                - run QuestAcceptHandler def:LichHunt player:<player>
+                - run QuestAcceptHandler def:LichHunt
             chat trigger:
                 LichHuntAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "What's one more zombie on the pile? I'm in!"
-                    - run QuestAcceptHandler def:LichHunt player:<player>
+                    - run QuestAcceptHandler def:LichHunt
         LichHuntActive:
             proximity trigger:
                 entry:
@@ -183,7 +183,7 @@ WarmasterReinwaldInteract:
                     - narrate format:WarmasterReinwaldFormat "Hail, <player.name>!"
                     - wait 0.7s
                     - narrate format:WarmasterReinwaldFormat "Be careful when you go and hunt that Lich - it won't hold anything back!"
-                    - run QuestProgressHandler def:LichHunt player:<player>
+                    - run QuestProgressHandler def:LichHunt
         EliteHuntOffer:
             proximity trigger:
                 entry:
@@ -194,14 +194,14 @@ WarmasterReinwaldInteract:
             click trigger:
                 script:
                 - narrate format:PlayerChatFormat "I've come so far - I know I can do this!"
-                - run QuestAcceptHandler def:EliteHunt player:<player>
+                - run QuestAcceptHandler def:EliteHunt
             chat trigger:
                 EliteHuntAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "I've come so far - I know I can do this!"
-                    - run QuestAcceptHandler def:EliteHunt player:<player>
+                    - run QuestAcceptHandler def:EliteHunt
         EliteHuntActive:
             proximity trigger:
                 entry:
@@ -209,7 +209,7 @@ WarmasterReinwaldInteract:
                     - narrate format:WarmasterReinwaldFormat "Hail, <player.name>!"
                     - wait 0.7s
                     - narrate format:WarmasterReinwaldFormat "Your efforts to push back the darkness make us all proud. Keep hunting those Elites!"
-                    - run QuestProgressHandler def:EliteHunt player:<player>
+                    - run QuestProgressHandler def:EliteHunt
         EliteHuntComplete:
             proximity trigger:
                 entry:

@@ -22,6 +22,26 @@ QuestDataHandler:
         on player quits:
         - ~yaml id:<[data]> savefile:playerdata/<player.uuid>/quest_data.yml
 
+QuestRequirementsHandler:
+    type: procedure
+    debug: false
+    definitions: quest_internalname
+    script:
+    - define data:<player.uuid>_quest_data
+    # Completed quests
+    - foreach <yaml[<[quest_internalname]>].read[config.requirements.quests_completed]> as:QuestsCompleted:
+        - if <yaml[<[data]>].contains[quests.completed.<[QuestsCompleted]>].not>:
+            - determine false
+    # Player groups
+    - foreach <yaml[<[quest_internalname]>].read[config.requirements.groups]> as:PlayerGroups:
+        - if <player.groups.contains[<[PlayerGroups]>].not>:
+            - determine false
+    # Individual permissions
+    - foreach <yaml[<[quest_internalname]>].read[config.requirements.permissions]> as:PlayerPermissions:
+        - if <player.has_permission[<[PlayerPermissions]>].not>:
+            - determine false
+    - determine true
+
 QuestAcceptHandler:
     debug: false
     type: task
@@ -30,7 +50,7 @@ QuestAcceptHandler:
     - define data:<player.uuid>_quest_data
     - yaml id:<[quest_internalname]> copykey:player_data.<[quest_internalname]> quests.active.<[quest_internalname]> to_id:<[data]>
     - yaml id:<[data]> set quests.active.<[quest_internalname]>.current_stage:1
-    - run QuestResetTimeHandler player:<player> def:<[quest_internalname]>
+    - run QuestResetTimeHandler def:<[quest_internalname]>
     - define current_stage 1
     - narrate "<yaml[<[quest_internalname]>].read[messages.offer]>"
     - narrate format:QuestNameFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
@@ -49,9 +69,9 @@ QuestStageProgressHandler:
     - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[current_stage]>.progress:++
     - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[current_stage]>.progress]> >= <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[current_stage]>.total]>:
         - if <yaml[<[data]>].contains[quests.active.<[quest_internalname]>.stages.<[current_stage].add[1]>]>:
-            - run QuestStageAdvanceHandler def:<[quest_internalname]> player:<player>
+            - run QuestStageAdvanceHandler def:<[quest_internalname]>
         - else:
-            - run QuestCompletionHandler def:<[quest_internalname]> player:<player>
+            - run QuestCompletionHandler def:<[quest_internalname]>
     - else if <[objective]||null>:
         - narrate format:QuestNameFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
         - narrate "• <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.name]>: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.progress]>/<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.total]>"
@@ -104,7 +124,7 @@ QuestCompletionHandler:
     - narrate "<gold>QUEST COMPLETE: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
     - narrate "<yaml[<[quest_internalname]>].read[messages.completion]>"
     - narrate "<green>Rewards:"
-    - run QuestRewardHandler def:<[quest_internalname]> player:<player>
+    - run QuestRewardHandler def:<[quest_internalname]>
 
 QuestRepeatableHandler:
     debug: false
@@ -148,13 +168,13 @@ QuestRewardHandler:
         - narrate "<gold><yaml[<[quest_internalname]>].read[rewards.money]> gold"
     - if <yaml[<[quest_internalname]>].contains[rewards.items]>:
         - foreach <yaml[<[quest_internalname]>].read[rewards.items]>:
-            - give <[value]> player:<player>
+            - give <[value]>
             - narrate "<[value].quantity>x <[value].display>"
     - if <yaml[<[quest_internalname]>].contains[rewards.quest_points]>:
         - yaml id:<[data]> set career.quest_points:+:<yaml[<[quest_internalname]>].read[rewards.quest_points]>
     - if <yaml[<[quest_internalname]>].contains[rewards.scripts]>:
         - foreach <yaml[<[quest_internalname]>].read[rewards.scripts]>:
-            - run <[value]> def:<[quest_internalname]> player:<player>
+            - run <[value]> def:<[quest_internalname]>
     - if <yaml[<[quest_internalname]>].contains[rewards.commands]>:
         - foreach <yaml[<[quest_internalname]>].read[rewards.commands]>:
             - execute as_server <[value]>
