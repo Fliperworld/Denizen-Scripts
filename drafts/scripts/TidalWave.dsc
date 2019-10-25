@@ -3,6 +3,8 @@ WaveShooter:
     definitions: caster
     speed: 0
     script:
+    - if <[caster]||null> == null:
+        - define caster <player>
     - define source <def[caster].location.with_pitch[0]>
     - define forward <def[source].direction.vector>
     - define offset <def[forward].rotate_around_y[<util.pi.div[2]>].div[2]>
@@ -10,7 +12,8 @@ WaveShooter:
     - define wave_width 5
     - define wave_total <def[wave_width].mul[2]>
     - define origin_list li@
-    - define speed 1
+    - define speed 0.5
+    - define wave_landing 3
     - define wave_length 30
     # origin repeat
     - repeat <def[wave_total]>:
@@ -18,10 +21,11 @@ WaveShooter:
         - define origin_list <def[origin_list].include[<def[source].add[<def[total_offset]>]>]>
         - define origin_list <def[origin_list].include[<def[source].sub[<def[total_offset]>]>]>
     # shooting repeat
-    - repeat <def[wave_length]>:
+    - repeat <def[wave_length].div[<[speed]>]>:
         - define total_forward <def[forward].mul[<def[value]>].mul[<def[speed]>]>
+        - define total_landing <def[forward].mul[<def[value]>].mul[<def[speed]>].add[<def[wave_landing]>]>
         - foreach <def[origin_list]>:
-            - shoot falling_block,concrete,11[fallingblock_drop_item=false] origin:<def[value].add[<def[total_forward]>]> save:Wave
+            - shoot falling_block,concrete,11[fallingblock_drop_item=false] origin:<def[value].add[<def[total_forward]>]> destination:<[value].add[<[total_landing]>]> save:Wave
             - foreach <entry[Wave].shot_entities>:
                 - yaml id:WaveManager set <def[value].uuid>:RemoveOnLand
         - wait 1t
