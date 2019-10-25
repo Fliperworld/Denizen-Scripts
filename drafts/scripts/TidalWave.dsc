@@ -13,7 +13,7 @@ WaveShooter:
     - define wave_total <def[wave_width].mul[2]>
     - define origin_list li@
     - define speed 0.5
-    - define wave_landing 3
+    - define wave_landing 5
     - define wave_length 30
     # origin repeat
     - repeat <def[wave_total]>:
@@ -22,12 +22,19 @@ WaveShooter:
         - define origin_list <def[origin_list].include[<def[source].sub[<def[total_offset]>]>]>
     # shooting repeat
     - repeat <def[wave_length].div[<[speed]>]>:
+        - define entities li@
         - define total_forward <def[forward].mul[<def[value]>].mul[<def[speed]>]>
-        - define total_landing <def[forward].mul[<def[value]>].mul[<def[speed]>].add[<def[wave_landing]>]>
-        - foreach <def[origin_list]>:
-            - shoot falling_block,concrete,11[fallingblock_drop_item=false] origin:<def[value].add[<def[total_forward]>]> destination:<[value].add[<[total_landing]>]> save:Wave
-            - foreach <entry[Wave].shot_entities>:
-                - yaml id:WaveManager set <def[value].uuid>:RemoveOnLand
+#        - define total_landing <def[forward].mul[<def[value]>].mul[<def[speed]>].mul[<def[wave_landing]>]>
+        - foreach <def[origin_list]> as:locations:
+#            - shoot falling_block,concrete,11[fallingblock_drop_item=false] origin:<def[value].add[<def[total_forward]>]> destination:<[value].add[<[total_landing]>]> save:Wave
+            - shoot falling_block,concrete,11[fallingblock_drop_item=false] origin:<def[locations].add[<def[total_forward]>]> save:Wave
+            - foreach <entry[Wave].shot_entities> as:shot_blocks:
+                - yaml id:WaveManager set <def[shot_blocks].uuid>:RemoveOnLand
+            - if <[locations].find.living_entities.within[1.0].exclude[<[caster]>].deduplicate.size> > 0:
+                - define entities <[entities].include.[<[locations].find.living_entities.within[1.0]>].exclude[<[caster]>].deduplicate>
+            - if <[entities].size> > 0:
+                - foreach <[entities]> as:HitEntity:
+                    - shoot <[HitEntity]> origin:<[HitEntity].location> destination:<[HitEntity].location.add[0,10,0]>
         - wait 1t
 WaveFlagManager:
     type: world
