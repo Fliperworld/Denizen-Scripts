@@ -1,6 +1,6 @@
 config:
     availability:
-        offering_npc: 11
+        offering_npc: FishingNewbie
     reset:
         period: 1d
         time: "19:00"

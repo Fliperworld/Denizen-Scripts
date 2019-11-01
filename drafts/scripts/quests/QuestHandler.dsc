@@ -217,13 +217,55 @@ QuestResetTimeHandler:
     - choose <yaml[<[quest_internalname]>].read[config.reset.period]>:
         - case 7d:
             - if <util.date.time.day_of_week> > 6:
-                - yaml id:<[data]> set quests.active.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].add[6d].add[1w].sub[5m]>
+                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].add[6d].add[1w].sub[5m]>
             - else if <util.date.time.day_of_week> == 6 && <util.date.time.hour> >= 19:
-                - yaml id:<[data]> set quests.active.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].add[6d].add[1w].sub[5m]>
+                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].add[6d].add[1w].sub[5m]>
             - else:
-                - yaml id:<[data]> set quests.active.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].add[6d].sub[5m]>
+                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].add[6d].sub[5m]>
         - case 1d:
             - if <util.date.time.hour> >= 19:
-                - yaml id:<[data]> set quests.active.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[1d].add[19h].sub[5m]>
+                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[1d].add[19h].sub[5m]>
             - else:
-                - yaml id:<[data]> set quests.active.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].sub[5m]>
+                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].sub[5m]>
+
+QuestAvailabilityHandler:
+    debug: false
+    type: procedure
+    definitions: quest_internalname
+    script:
+    - define data:<player.uuid>_quest_data
+    - if <yaml[<[data]>].read[quests.completed.<[quest_internalname]>].reset_time||null> > <util.date.time.duration>:
+        - determine false
+    - else:
+        - determine true
+
+QuestsAvailableHandler:
+    debug: false
+    type: procedure
+    definitions: npc_name
+    script:
+    - define data:<player.uuid>_quest_data
+    - define quest_list:<yaml[quest_npc_list].read[<[npc_name]>]>
+    - define inventory_list:li@
+    - foreach <[quest_list]>:
+        - if <proc[QuestAvailabilityHandler].context[<[value]>]>:
+            - determine true
+    - else:
+        - determine false
+
+QuestInventoryGUIHandler:
+    debug: false
+    type: task
+    definitions: npc_name
+    script:
+    - define data:<player.uuid>_quest_data
+    - define quest_list:<yaml[quest_npc_list].read[<[npc_name]>]>
+    - define inventory_list:li@
+    - foreach <[quest_list]>:
+        - if <proc[QuestAvailabilityHandler].context[<[value]>]>:
+            - define inventory_list:<[inventory_list].include[i@<[value]>_gui_item]>
+    - if <[inventory_list].size> > 0:
+        - note "in@generic[title=<&6><&l>Quests;size=27;contents=<[inventory_list]>]" as:available_quest_inventory.<player.uuid>
+        - inventory open d:in@available_quest_inventory.<[npc_name]>.<player.uuid>
+    - else:
+        - narrate "<red>No quests available!"

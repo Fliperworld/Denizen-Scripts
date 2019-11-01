@@ -1,6 +1,6 @@
 config:
     availability:
-        offering_npc: 11
+        offering_npc: FishingNewbie
     requirements:
         quests_completed:
         - "FindFishingNewbie"

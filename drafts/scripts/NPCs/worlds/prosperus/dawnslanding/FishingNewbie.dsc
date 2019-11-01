@@ -18,12 +18,25 @@ FishingNewbieInteract:
         Unmet*:
             proximity trigger:
                 script:
-                - narrate format:FishingNewbieFormat "Oh, hi! I'm trying to learn how to fish. Maybe you can help me!"
+                - define data:<player.uuid>_quest_data
+                - if <yaml[<[data]>].contains[quests.active.DailyFishingChallenge]>:
+                    - zap DailyFishingChallengeActive
+                - else if <yaml[<[data]>].contains[quests.completed.DailyFishing]>:
+                    - zap DailyFishingChallengeOffer
+                - else if <yaml[<[data]>].contains[quests.completed.FindFishingNewbie]>:
+                    - zap DailyFishingOffer
+                - else if <yaml[<[data]>].contains[quests.active.FindFishingNewbie]>:
+                    - narrate format:FishingNewbieFormat "Oh, hello! The Quest Master sent you, huh? That's so nice of him, he's always looking out for me."
+                - else:
+                    - narrate format:FishingNewbieFormat "Oh, hi! I'm trying to learn how to fish. Maybe you can help me!"
                 - zap TeachFishingNewbieOffer
         TeachFishingNewbieOffer:
             proximity trigger:
                 script:
-                - narrate format:FishingNewbieFormat "Do you think you can help me learn how to fish?"
+                - if <yaml[<[data]>].contains[quests.active.FindFishingNewbie]>:
+                    - narrate format:FishingNewbieFormat "Oh, hello! The Quest Master sent you, huh? That's so nice of him, he's always looking out for me."
+                - else:
+                    - narrate format:FishingNewbieFormat "Hi again, <player.name>! Do you think you can help me learn how to fish?"
             click trigger:
                 script:
                 - narrate format:PlayerChatformat "Sure, I can help you out."
@@ -44,7 +57,7 @@ FishingNewbieInteract:
         DailyFishingOffer:
             proximity trigger:
                 script:
-                - narrate format:FishingNewbieFormat "Ready to catch some more fish?"
+                - narrate format:FishingNewbieFormat "Howdy, <player.name>! Ready to catch some more fish?"
             chat trigger:
                 DailyFishingOffer:
                     trigger: /yes|sure|okay|great/

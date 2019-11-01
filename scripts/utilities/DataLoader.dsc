@@ -6,3 +6,4 @@ Data_Loader:
         - yaml load:scriptdata/Events.yml id:events
         - yaml load:scriptdata/Rates.yml id:rates
         - yaml load:scriptdata/DropTables.yml id:droptables
+        - yaml load:scriptdata/quests/QuestNPCList.yml id:quest_npc_list
