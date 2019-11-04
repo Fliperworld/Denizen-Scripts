@@ -1,7 +1,7 @@
 FishingNewbieAssignment:
     type: assignment
     interact scripts:
-    - 10 FishingNewbieInteract
+    - FishingNewbieInteract
     actions:
         on assignment:
         - teleport npc 'location:<anchor:fishingnewbie>'

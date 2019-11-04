@@ -269,3 +269,30 @@ QuestInventoryGUIHandler:
         - inventory open d:in@available_quest_inventory.<[npc_name]>.<player.uuid>
     - else:
         - narrate "<red>No quests available!"
+
+QuestGUIItemBuilder:
+    debug: false
+    type: procedure
+    definitions: quest_internalname
+    script:
+    - define quest_name:<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
+    - define item_lore:li@<[quest_name]>
+    - define quest_description:<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>
+    - define item_lore:<[item_lore].include[<[quest_description]>]>
+    - define item_lore:<[item_lore].include[<&6>Rewards:]>
+    - if <yaml[<[quest_internalname]>].read[config.rewards.money]||null> != null:
+        - define lore_money:"<yaml[<[quest_internalname]>].read[config.rewards.money]> gold"
+        - define item_lore:<[item_lore].include[<[lore_money]>]>
+    - if <yaml[<[quest_internalname]>].read[config.rewards.quest_points]||null> != null:
+        - define lore_quest_points:"<yaml[<[quest_internalname]>].read[config.rewards.quest_points]> quest points"
+        - define item_lore:<[item_lore].include[<[lore_quest_points]>]>
+    # Line wrapping time!
+    - define item_lore:<proc[lore_builder].context[40|<[item_lore].escaped>]>
+    - if <item[<[quest_internalname]>_gui_item]||null> != null:
+        - define base_item:<item[<[quest_internalname]>_gui_item]>
+        - if <[base_item].is_enchanted>:
+            - define item_enchantments:<[base_item.enchantments.with_levels]>
+            - determine "i@<[base_item].material_name>[display_name=<[quest_name]>;lore=<[item_lore]>;enchantments=<[item_enchantments]>]"
+    - else:
+        - define item_material:<yaml[<[quest_internalname]>].read[config.material]>
+        - determine i@<[item_material]>[display_name=<[quest_name]>;lore=<[item_lore]>]
