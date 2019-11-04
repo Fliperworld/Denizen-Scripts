@@ -397,11 +397,6 @@ QuestMasterInteract:
                     - narrate format:PlayerChatFormat "I'm ready!"
                     - run QuestAcceptHandler def:StoneTools
                     - zap StoneToolsActive
-                Fallback:
-                    trigger: /*/
-                    hide trigger message: true
-                    script:
-                    - announce format:PlayerChatFormat "<context.message>"
         StoneToolsActive:
             proximity trigger:
                 entry:
@@ -426,11 +421,6 @@ QuestMasterInteract:
                     - narrate format:PlayerChatFormat "I'm ready!"
                     - run QuestAcceptHandler def:LeatherArmor
                     - zap LeatherArmorActive
-                Fallback:
-                    trigger: /*/
-                    hide trigger message: true
-                    script:
-                    - announce format:PlayerChatFormat "<context.message>"
         LeatherArmorActive:
             proximity trigger:
                 entry:
@@ -459,11 +449,6 @@ QuestMasterInteract:
                     - narrate format:PlayerChatFormat "Sure, who should I go meet?"
                     - run QuestAcceptHandler def:FindReinwald
                     - zap FindReinwaldActive
-                Fallback:
-                    trigger: /*/
-                    hide trigger message: true
-                    script:
-                    - announce format:PlayerChatFormat "<context.message>"
         FindReinwaldActive:
             proximity trigger:
                 entry:
@@ -488,11 +473,6 @@ QuestMasterInteract:
                     script:
                     - narrate format:PlayerChatFormat "Sure am!"
                     - run QuestAcceptHandler def:IronToolsArmor
-                Fallback:
-                    trigger: /*/
-                    hide trigger message: true
-                    script:
-                    - announce format:PlayerChatFormat "<context.message>"
         IronToolsArmorActive:
             proximity trigger:
                 entry:
@@ -521,11 +501,6 @@ QuestMasterInteract:
                     - narrate format:PlayerChatFormat "Sure, that sounds nice."
                     - run QuestAcceptHandler def:FindFishingNewbie
                     - zap FindFishingNewbieActive
-                Fallback:
-                    trigger: /*/
-                    hide trigger message: true
-                    script:
-                    - announce format:PlayerChatFormat "<context.message>"
         FindFishingNewbieActive:
             proximity trigger:
                 entry:
@@ -550,11 +525,6 @@ QuestMasterInteract:
                     - narrate format:PlayerChatFormat "Okay, that sounds interesting!"
                     - run QuestAcceptHandler def:MeetSkillTrainers
                     - zap MeetSkillTrainersActive
-                Fallback:
-                    trigger: /*/
-                    hide trigger message: true
-                    script:
-                    - announce format:PlayerChatFormat "<context.message>"
         MeetSkillTrainersActive:
             proximity trigger:
                 entry:
@@ -583,11 +553,6 @@ QuestMasterInteract:
                     - narrate format:PlayerChatFormat "Sounds easy enough."
                     - run QuestAcceptHandler def:MeetPostmaster
                     - zap MeetPostmasterActive
-                Fallback:
-                    trigger: /*/
-                    hide trigger message: true
-                    script:
-                    - announce format:PlayerChatFormat "<context.message>"
         MeetPostmasterActive:
             proximity trigger:
                 entry:

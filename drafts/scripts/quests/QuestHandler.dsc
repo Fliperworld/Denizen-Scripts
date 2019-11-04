@@ -263,7 +263,7 @@ QuestInventoryGUIHandler:
     - define inventory_list:li@
     - foreach <[quest_list]>:
         - if <proc[QuestAvailabilityHandler].context[<[value]>]>:
-            - define inventory_list:<[inventory_list].include[i@<[value]>_gui_item]>
+            - define inventory_list:<[inventory_list].include[<proc[QuestGUIItemBuilder].context[<[value]>]>]>
     - if <[inventory_list].size> > 0:
         - note "in@generic[title=<&6><&l>Quests;size=27;contents=<[inventory_list]>]" as:available_quest_inventory.<player.uuid>
         - inventory open d:in@available_quest_inventory.<[npc_name]>.<player.uuid>

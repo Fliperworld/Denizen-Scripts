@@ -54,33 +54,55 @@ FishingNewbieInteract:
                 script:
                 - narrate format:FishingNewbieFormat "Still fishing, huh? Be sure to look for those bubbles in the water!"
                 - run QuestProgressHandler def:TeachFishingNewbie
-        DailyFishingOffer:
+        DailiesAvailable:
             proximity trigger:
                 script:
-                - narrate format:FishingNewbieFormat "Howdy, <player.name>! Ready to catch some more fish?"
+                - if <yaml[<[data]>].contains[quests.active.DailyFishingChallenge]>:
+                    - narrate format:FishingNewbieFormat "You'd better hurry up if you want to beat my fishing challenge, <player.name>!"
+                - else if <yaml[<[data]>].contains[quests.active.DailyFishingChallenge].not> && <yaml[<[data]>].contains[quests.completed.DailyFishing]>:
+                    - if <yaml[<[data]>].contains[quests.active.DailyFishing]> && <proc[QuestAvailabilityHandler].context[DailyFishingChallenge]>:
+                        - narrate format:FishingNewbieFormat "Still hooking those fish, huh? If you think you've got what it takes, I have an extra challenge for you, too! Sound like fun?"
+                        - flag player FishingNewbieQuest:DailyFishingChallenge duration:10m
+                    - else:
+                        - narrate format:FishingNewbieFormat "Still hooking those fish, huh? Keep up the good work! Fishing is so peaceful, it's a nice way to take a break from fighting monsters."
+                - else if <proc[QuestAvailabilityHandler].context[DailyFishing]>:
+                    - narrate format:FishingNewbieFormat "Howdy, <player.name>! You up for catching some more fish?"
+                    - flag player FishingNewbieQuest:DailyFishing duration:10m
             chat trigger:
-                DailyFishingOffer:
+                FishingQuestAccept:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
-                    - narrate format:PlayerChatFormat "Sure am!"
-                    - run QuestAcceptHandler def:DailyFishing
-        DailyFishingActive:
-            proximity trigger:
-                script:
-                - narrate format:FishingNewbieFormat "How's your fishing going? Good haul today?"
-                - run QuestProgressHandler def:DailyFishing
-        DailyFishingChallengeOffer:
-            proximity trigger:
-                script:
-                - narrate format:FishingNewbieFormat "Your fishing skills are pretty swell. But I've got a challenge for you - are you up for it?"
-            chat trigger:
-                DailyFishingChallengeOffer:
-                    trigger: /yes|sure|okay|great/
-                    hide trigger message: true
-                    script:
-                    - narrate format:PlayerChatFormat "Sure, I'm in!"
-                    - run QuestAcceptHandler def:DailyFishingChallenge
+                    - if <player.has_flag[FishingNewbieQuest]>:
+                        - narrate format:PlayerChatFormat "You got it!"
+                        - run QuestAcceptHandler def:<player.flag[FishingNewbieQuest]>
+#        DailyFishingOffer:
+#            proximity trigger:
+#                script:
+#                - narrate format:FishingNewbieFormat "Howdy, <player.name>! Ready to catch some more fish?"
+#            chat trigger:
+#                DailyFishingOffer:
+#                    trigger: /yes|sure|okay|great/
+#                    hide trigger message: true
+#                    script:
+#                    - narrate format:PlayerChatFormat "Sure am!"
+#                    - run QuestAcceptHandler def:DailyFishing
+#        DailyFishingActive:
+#            proximity trigger:
+#                script:
+#                - narrate format:FishingNewbieFormat "How's your fishing going? Good haul today?"
+#                - run QuestProgressHandler def:DailyFishing
+#        DailyFishingChallengeOffer:
+#            proximity trigger:
+#                script:
+#                - narrate format:FishingNewbieFormat "Your fishing skills are pretty swell. But I've got a challenge for you - are you up for it?"
+#            chat trigger:
+#                DailyFishingChallengeOffer:
+#                    trigger: /yes|sure|okay|great/
+#                    hide trigger message: true
+#                    script:
+#                    - narrate format:PlayerChatFormat "Sure, I'm in!"
+#                    - run QuestAcceptHandler def:DailyFishingChallenge
 
 FishingNewbieFishingHandler:
     type: world
