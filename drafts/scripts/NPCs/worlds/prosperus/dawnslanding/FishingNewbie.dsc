@@ -17,26 +17,28 @@ FishingNewbieInteract:
     steps:
         Unmet*:
             proximity trigger:
-                script:
-                - define data:<player.uuid>_quest_data
-                - if <yaml[<[data]>].contains[quests.active.DailyFishingChallenge]>:
-                    - zap DailyFishingChallengeActive
-                - else if <yaml[<[data]>].contains[quests.completed.DailyFishing]>:
-                    - zap DailyFishingChallengeOffer
-                - else if <yaml[<[data]>].contains[quests.completed.FindFishingNewbie]>:
-                    - zap DailyFishingOffer
-                - else if <yaml[<[data]>].contains[quests.active.FindFishingNewbie]>:
-                    - narrate format:FishingNewbieFormat "Oh, hello! The Quest Master sent you, huh? That's so nice of him, he's always looking out for me."
-                - else:
-                    - narrate format:FishingNewbieFormat "Oh, hi! I'm trying to learn how to fish. Maybe you can help me!"
-                - zap TeachFishingNewbieOffer
+                entry:
+                    script:
+                    - define data:<player.uuid>_quest_data
+                    - if <yaml[<[data]>].contains[quests.active.DailyFishingChallenge]>:
+                        - zap DailyFishingChallengeActive
+                    - else if <yaml[<[data]>].contains[quests.completed.DailyFishing]>:
+                        - zap DailyFishingChallengeOffer
+                    - else if <yaml[<[data]>].contains[quests.completed.FindFishingNewbie]>:
+                        - zap DailyFishingOffer
+                    - else if <yaml[<[data]>].contains[quests.active.FindFishingNewbie]>:
+                        - narrate format:FishingNewbieFormat "Oh, hello! The Quest Master sent you, huh? That's so nice of him, he's always looking out for me."
+                    - else:
+                        - narrate format:FishingNewbieFormat "Oh, hi! I'm trying to learn how to fish. Maybe you can help me!"
+                    - zap TeachFishingNewbieOffer
         TeachFishingNewbieOffer:
             proximity trigger:
-                script:
-                - if <yaml[<[data]>].contains[quests.active.FindFishingNewbie]>:
-                    - narrate format:FishingNewbieFormat "Oh, hello! The Quest Master sent you, huh? That's so nice of him, he's always looking out for me."
-                - else:
-                    - narrate format:FishingNewbieFormat "Hi again, <player.name>! Do you think you can help me learn how to fish?"
+                entry:
+                    script:
+                    - if <yaml[<[data]>].contains[quests.active.FindFishingNewbie]>:
+                        - narrate format:FishingNewbieFormat "Oh, hello! The Quest Master sent you, huh? That's so nice of him, he's always looking out for me."
+                    - else:
+                        - narrate format:FishingNewbieFormat "Hi again, <player.name>! Do you think you can help me learn how to fish?"
             click trigger:
                 script:
                 - narrate format:PlayerChatformat "Sure, I can help you out."
@@ -51,23 +53,27 @@ FishingNewbieInteract:
                     - run QuestAcceptHandler def:TeachFishingNewbie
         TeachFishingNewbieActive:
             proximity trigger:
-                script:
-                - narrate format:FishingNewbieFormat "Still fishing, huh? Be sure to look for those bubbles in the water!"
-                - run QuestProgressHandler def:TeachFishingNewbie
+                entry:
+                    script:
+                    - narrate format:FishingNewbieFormat "Still fishing, huh? Be sure to look for those bubbles in the water!"
+                    - run QuestProgressHandler def:TeachFishingNewbie
         DailiesAvailable:
             proximity trigger:
-                script:
-                - if <yaml[<[data]>].contains[quests.active.DailyFishingChallenge]>:
-                    - narrate format:FishingNewbieFormat "You'd better hurry up if you want to beat my fishing challenge, <player.name>!"
-                - else if <yaml[<[data]>].contains[quests.active.DailyFishingChallenge].not> && <yaml[<[data]>].contains[quests.completed.DailyFishing]>:
-                    - if <yaml[<[data]>].contains[quests.active.DailyFishing]> && <proc[QuestAvailabilityHandler].context[DailyFishingChallenge]>:
-                        - narrate format:FishingNewbieFormat "Still hooking those fish, huh? If you think you've got what it takes, I have an extra challenge for you, too! Sound like fun?"
-                        - flag player FishingNewbieQuest:DailyFishingChallenge duration:10m
-                    - else:
-                        - narrate format:FishingNewbieFormat "Still hooking those fish, huh? Keep up the good work! Fishing is so peaceful, it's a nice way to take a break from fighting monsters."
-                - else if <proc[QuestAvailabilityHandler].context[DailyFishing]>:
-                    - narrate format:FishingNewbieFormat "Howdy, <player.name>! You up for catching some more fish?"
-                    - flag player FishingNewbieQuest:DailyFishing duration:10m
+                entry:
+                    script:
+                    - inject FishingNewbieDailyQuestsCheck
+        QuestAccept:
+            proximity trigger:
+                entry:
+                    script:
+                    - if <player.has_flag[FishingNewbieQuest].not>:
+                        - zap DailiesAvailable
+                        - inject FishingNewbieDailyQuestsCheck
+                exit:
+                    script:
+                    - if <player.has_flag[FishingNewbieQuest]>:
+                        - flag player FishingNewbieQuest:!
+                        - zap DailiesAvailable
             chat trigger:
                 FishingQuestAccept:
                     trigger: /yes|sure|okay|great/
@@ -76,6 +82,25 @@ FishingNewbieInteract:
                     - if <player.has_flag[FishingNewbieQuest]>:
                         - narrate format:PlayerChatFormat "You got it!"
                         - run QuestAcceptHandler def:<player.flag[FishingNewbieQuest]>
+FishingNewbieDailyQuestsCheck:
+    type: task
+    debug: false
+    script:
+    - if <yaml[<[data]>].contains[quests.active.DailyFishingChallenge]>:
+        - narrate format:FishingNewbieFormat "You'd better hurry up if you want to beat my fishing challenge, <player.name>!"
+    - else if <yaml[<[data]>].contains[quests.active.DailyFishingChallenge].not> && <yaml[<[data]>].contains[quests.completed.DailyFishing]>:
+        - if <yaml[<[data]>].contains[quests.active.DailyFishing]> && <proc[QuestAvailabilityHandler].context[DailyFishingChallenge]>:
+            - narrate format:FishingNewbieFormat "Still hooking those fish, huh? If you think you've got what it takes, I have an extra challenge for you, too! Sound like fun?"
+            - flag player FishingNewbieQuest:DailyFishingChallenge duration:10m
+            - zap QuestAccept duration:10m
+        - else:
+            - narrate format:FishingNewbieFormat "Still hooking those fish, huh? Keep up the good work! Fishing is so peaceful, it's a nice way to take a break from fighting monsters."
+    - else if <proc[QuestAvailabilityHandler].context[DailyFishing]>:
+        - narrate format:FishingNewbieFormat "Howdy, <player.name>! You up for catching some more fish?"
+        - flag player FishingNewbieQuest:DailyFishing duration:10m
+        - zap QuestAccept duration:10m
+
+
 #        DailyFishingOffer:
 #            proximity trigger:
 #                script:

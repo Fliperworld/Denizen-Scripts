@@ -248,7 +248,7 @@ QuestsAvailableHandler:
     - define quest_list:<yaml[quest_npc_list].read[<[npc_name]>]>
     - define inventory_list:li@
     - foreach <[quest_list]>:
-        - if <proc[QuestAvailabilityHandler].context[<[value]>]>:
+        - if <proc[QuestAvailabilityHandler].context[<[value]>]> && <yaml[<[data]>].contains[quests.active.<[value]>].not>:
             - determine true
     - else:
         - determine false
@@ -262,13 +262,26 @@ QuestInventoryGUIHandler:
     - define quest_list:<yaml[quest_npc_list].read[<[npc_name]>]>
     - define inventory_list:li@
     - foreach <[quest_list]>:
-        - if <proc[QuestAvailabilityHandler].context[<[value]>]>:
+        - if <proc[QuestAvailabilityHandler].context[<[value]>]> && <yaml[<[data]>].contains[quests.active.<[value]>].not>:
             - define inventory_list:<[inventory_list].include[<proc[QuestGUIItemBuilder].context[<[value]>]>]>
     - if <[inventory_list].size> > 0:
         - note "in@generic[title=<&6><&l>Quests;size=27;contents=<[inventory_list]>]" as:available_quest_inventory.<player.uuid>
         - inventory open d:in@available_quest_inventory.<[npc_name]>.<player.uuid>
     - else:
         - narrate "<red>No quests available!"
+
+QuestInventorySelectionHandler:
+    debug: false
+    type: world
+    events:
+        on player clicks in available_quest_inventory*:
+        - if <context.item.has_nbt[quest_internalname]>:
+            - inventory close
+            - run QuestAcceptHandler def:<context.item.nbt[quest_internalname]>
+        - else:
+            - determine cancelled
+        on player drags in available_quest_inventory*:
+        - determine cancelled
 
 QuestGUIItemBuilder:
     debug: false
@@ -292,7 +305,7 @@ QuestGUIItemBuilder:
         - define base_item:<item[<[quest_internalname]>_gui_item]>
         - if <[base_item].is_enchanted>:
             - define item_enchantments:<[base_item.enchantments.with_levels]>
-            - determine "i@<[base_item].material_name>[display_name=<[quest_name]>;lore=<[item_lore]>;enchantments=<[item_enchantments]>]"
+            - determine "i@<[base_item].material_name>[display_name=<[quest_name]>;lore=<[item_lore]>;enchantments=<[item_enchantments]>;flags=HIDE_ENCHANTS;nbt=quest_internalname/<[quest_internalname]>]"
     - else:
         - define item_material:<yaml[<[quest_internalname]>].read[config.material]>
-        - determine i@<[item_material]>[display_name=<[quest_name]>;lore=<[item_lore]>]
+        - determine i@<[item_material]>[display_name=<[quest_name]>;lore=<[item_lore]>;nbt=quest_internalname/<[quest_internalname]>]

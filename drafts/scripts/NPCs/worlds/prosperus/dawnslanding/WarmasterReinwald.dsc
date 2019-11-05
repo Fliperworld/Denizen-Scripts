@@ -228,6 +228,25 @@ WarmasterReinwaldInteract:
                     - narrate format:WarmasterReinwaldFormat "Hail, <player.name>!"
                     - wait 0.7s
                     - narrate format:WarmasterReinwaldFormat "What fortunes do you bring your Warmaster today?"
-#            click trigger:
-#                script:
-#                - inventory open ReinwaldQuests
+                    - run ReinwaldWeeklyQuestsCheck
+            click trigger:
+                script:
+                - define data:<player.uuid>_quest_data
+                - if <proc[QuestsAvailableHandler].context[WarmasterReinwald]>:
+                    - run QuestInventoryGUIHandler def:WarmasterReinwald
+                - else:
+                    - if <yaml[<[data]>].contains[quests.active.WeeklyEliteHunt]> || <yaml[<[data]>].contains[quests.active.WeeklyVeteranHunt]>:
+                        - narrate format:WarmasterReinwaldFormat "I appreciate your enthusiasm! But you've got all the quests I have to offer right now - keep up the hunt."
+
+ReinwaldWeeklyQuestsCheck:
+    type: task
+    debug: false
+    script:
+    - if <yaml[<[data]>].contains[quests.active.EliteHunt]>:
+        - if <proc[QuestsAvailableHandler].context[WarmasterReinwald]>:
+            - narrate format:WarmasterReinwaldFormat "You're doing a good job hunting those Elites, but I've got more for you, too."
+    - else if <yaml[<[data]>].contains[quests.active.VeteranHunt]>:
+        - if <proc[QuestsAvailableHandler].context[WarmasterReinwald]>:
+            - narrate format:WarmasterReinwaldFormat "You're doing a good job hunting those Veterans, but I've got more for you, too."
+    - else if <proc[QuestsAvailableHandler].context[WarmasterReinwald]>:
+        - narrate format:WarmasterReinwaldFormat "I've got some work for you. Are you ready to get back out there?"
