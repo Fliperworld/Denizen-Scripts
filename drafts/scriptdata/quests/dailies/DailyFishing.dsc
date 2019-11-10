@@ -26,3 +26,5 @@ player_data:
                         name: "Catch 16 fish"
                         progress: 0
                         total: 16
+                progress: 0
+                total: 1

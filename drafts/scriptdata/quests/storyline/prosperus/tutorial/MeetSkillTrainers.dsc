@@ -41,3 +41,5 @@ player_data:
                         name: "Speak to the Master Repairman"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 5

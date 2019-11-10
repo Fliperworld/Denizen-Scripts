@@ -31,3 +31,5 @@ player_data:
                         name: "Kill Elite monsters"
                         progress: 0
                         total: 25
+                progress: 0
+                total: 1

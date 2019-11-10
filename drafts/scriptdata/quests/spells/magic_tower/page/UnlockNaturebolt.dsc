@@ -36,6 +36,8 @@ player_data:
                         name: "Deliver gold ingots"
                         progress: 0
                         total: 64
+                progress: 0
+                total: 4
             2:
                 description: "Bring crystallized experience to the Stoic Sage."
                 objectives:
@@ -43,3 +45,5 @@ player_data:
                         name: "Deliver a chunk of crystallized experience"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1

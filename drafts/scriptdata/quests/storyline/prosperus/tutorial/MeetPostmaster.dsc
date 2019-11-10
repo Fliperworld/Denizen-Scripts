@@ -22,3 +22,5 @@ player_data:
                         name: "Speak to the Postmaster"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1

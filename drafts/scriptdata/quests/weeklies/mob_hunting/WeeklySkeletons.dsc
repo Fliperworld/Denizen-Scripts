@@ -23,3 +23,5 @@ player_data:
                         name: "Slay 500 skeletons"
                         progress: 0
                         total: 500
+                progress: 0
+                total: 1

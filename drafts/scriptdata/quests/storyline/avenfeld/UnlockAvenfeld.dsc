@@ -36,6 +36,8 @@ player_data:
                         name: "Deliver slime balls"
                         progress: 0
                         total: 32
+                progress: 0
+                total: 4
             2:
                 description: "Return to the Royal Geographer"
                 objectives:
@@ -43,6 +45,8 @@ player_data:
                         name: "Speak to the Royal Geographer"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1
             3:
                 description: "Cast the spell to travel to Avenfeld"
                 objectives:
@@ -50,3 +54,5 @@ player_data:
                         name: "Cast realmwarp-avenfeld"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1

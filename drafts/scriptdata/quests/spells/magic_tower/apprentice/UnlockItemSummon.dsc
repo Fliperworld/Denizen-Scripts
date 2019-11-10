@@ -40,6 +40,8 @@ player_data:
                         name: "Deliver gold ingots"
                         progress: 0
                         total: 512
+                progress: 0
+                total: 5
             2:
                 description: "Bring crystallized experience to the Magnificent Mage."
                 objectives:
@@ -47,3 +49,5 @@ player_data:
                         name: "Deliver a bloom of crystallized experience"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1

@@ -22,3 +22,5 @@ player_data:
                         name: "Speak to He Jumped Once"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1

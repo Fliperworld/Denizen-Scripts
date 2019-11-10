@@ -67,3 +67,5 @@ player_data:
                         name: "Bring a wooden hoe to the Quest Master"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 5

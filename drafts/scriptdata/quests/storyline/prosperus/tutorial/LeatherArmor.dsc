@@ -40,6 +40,8 @@ player_data:
                         name: "Craft leather boots"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 4
             2:
                 description: "Bring leather armor to the Quest Master."
                 objectives:
@@ -59,3 +61,5 @@ player_data:
                         name: "Bring leather boots to the Quest Master"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 4

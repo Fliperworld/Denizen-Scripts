@@ -28,3 +28,5 @@ player_data:
                         name: "Deliver gold ingots"
                         progress: 0
                         total: 32
+                progress: 0
+                total: 2

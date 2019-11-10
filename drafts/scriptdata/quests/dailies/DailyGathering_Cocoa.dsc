@@ -22,3 +22,5 @@ player_data:
                         name: "Deliver 320 cocoa"
                         progress: 0
                         total: 320
+                progress: 0
+                total: 1

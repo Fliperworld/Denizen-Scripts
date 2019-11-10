@@ -25,9 +25,9 @@ This file serves to track the progress on converting the existing quests to the 
 - [x] Craft iron tools and armor
     - [x] Dialogue written
     - [x] Script backend written 
-- [ ] Find the Fishing Newbie
+- [x] Find the Fishing Newbie
     - [x] Dialogue written
-    - [ ] Script backend written
+    - [x] Script backend written
 - [ ] Meet the Skill Trainers
     - [x] Dialogue written
     - [ ] Script backend written

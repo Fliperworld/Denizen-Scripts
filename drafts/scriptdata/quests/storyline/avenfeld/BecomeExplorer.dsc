@@ -38,3 +38,5 @@ player_data:
                         name: "Scout the western area of Avenfeld (-4000,0)"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 5

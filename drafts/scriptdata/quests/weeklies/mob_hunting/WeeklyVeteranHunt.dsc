@@ -32,3 +32,5 @@ player_data:
                         name: "Kill Veteran monsters"
                         progress: 0
                         total: 100
+                progress: 0
+                total: 1

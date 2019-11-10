@@ -44,6 +44,8 @@ player_data:
                         name: "Craft a stone hoe"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 5
             2:
                 description: "Bring stone tools to the Quest Master."
                 objectives:
@@ -67,3 +69,5 @@ player_data:
                         name: "Bring a stone hoe to the Quest Master"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 5

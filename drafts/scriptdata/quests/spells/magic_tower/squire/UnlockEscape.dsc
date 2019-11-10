@@ -36,6 +36,8 @@ player_data:
                         name: "Deliver gold ingots"
                         progress: 0
                         total: 256
+                progress: 0
+                total: 4
             2:
                 description: "Bring crystallized experience to the Skilled Sorcerer."
                 objectives:
@@ -43,3 +45,5 @@ player_data:
                         name: "Deliver a billet of crystallized experience"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1

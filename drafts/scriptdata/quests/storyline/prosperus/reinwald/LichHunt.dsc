@@ -24,3 +24,5 @@ player_data:
                         name: "Kill a Lich"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1

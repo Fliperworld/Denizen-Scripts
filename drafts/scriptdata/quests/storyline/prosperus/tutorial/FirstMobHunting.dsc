@@ -39,3 +39,5 @@ player_data:
                         name: "Kill a zombie"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1

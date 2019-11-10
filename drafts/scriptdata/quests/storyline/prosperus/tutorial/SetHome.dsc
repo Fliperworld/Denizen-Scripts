@@ -19,6 +19,8 @@ player_data:
                         name: "Use the /sethome command"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1
             2:
                 description: "Return to spawn."
                 objectives:
@@ -26,6 +28,8 @@ player_data:
                         name: "Use the /spawn command"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1
             3:
                 description: "Visit your home."
                 objectives:
@@ -33,3 +37,5 @@ player_data:
                         name: "Use the /home command"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1

@@ -23,3 +23,5 @@ player_data:
                         name: "Slay 350 cave spiders"
                         progress: 0
                         total: 350
+                progress: 0
+                total: 1

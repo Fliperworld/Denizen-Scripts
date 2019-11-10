@@ -21,4 +21,6 @@ player_data:
                     1:
                         name: "Deliver 320 pumpkins"
                         progress: 0
-                        total: 320
+                        total: 32
+                progress: 0
+                total: 1

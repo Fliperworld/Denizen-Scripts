@@ -52,6 +52,8 @@ player_data:
                         name: "Deliver gold ingots"
                         progress: 0
                         total: 64
+                progress: 0
+                total: 8
             2:
                 description: "Bring crystallized experience to the Wise Wizard."
                 objectives:
@@ -59,3 +61,5 @@ player_data:
                         name: "Deliver a sliver of crystallized experience"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1

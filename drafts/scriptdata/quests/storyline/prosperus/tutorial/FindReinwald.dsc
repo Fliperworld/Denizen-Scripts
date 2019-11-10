@@ -24,3 +24,5 @@ player_data:
                         name: "Speak to Warmaster Reinwald"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1

@@ -19,3 +19,5 @@ player_data:
                         name: "Speak to the Quest Master"
                         progress: 0
                         total: 1
+                progress: 0
+                total: 1

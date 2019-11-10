@@ -23,3 +23,5 @@ player_data:
                         name: "Slay 500 magma cubes"
                         progress: 0
                         total: 350
+                progress: 0
+                total: 1

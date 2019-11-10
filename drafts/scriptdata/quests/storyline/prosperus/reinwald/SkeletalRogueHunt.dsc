@@ -24,3 +24,5 @@ player_data:
                         name: "Kill Skeletal Rogues"
                         progress: 0
                         total: 10
+                progress: 0
+                total: 1

@@ -72,6 +72,8 @@ QuestStageProgressHandler:
             - run QuestStageAdvanceHandler def:<[quest_internalname]>
         - else:
             - run QuestCompletionHandler def:<[quest_internalname]>
+    # Display remaining objectives
+    ## TODO: Replace with a foreach and conditional formatting for completed objectives
     - else if <[objective]||null>:
         - narrate format:QuestNameFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
         - narrate "• <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.name]>: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.progress]>/<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.total]>"
@@ -265,7 +267,7 @@ QuestInventoryGUIHandler:
         - if <proc[QuestAvailabilityHandler].context[<[value]>]> && <yaml[<[data]>].contains[quests.active.<[value]>].not>:
             - define inventory_list:<[inventory_list].include[<proc[QuestGUIItemBuilder].context[<[value]>]>]>
     - if <[inventory_list].size> > 0:
-        - note "in@generic[title=<&6><&l>Quests;size=27;contents=<[inventory_list]>]" as:available_quest_inventory.<player.uuid>
+        - note "in@generic[title=<&6><&l>Quests;size=27;contents=<[inventory_list]>]" as:available_quest_inventory.<[npc_name]>.<player.uuid>
         - inventory open d:in@available_quest_inventory.<[npc_name]>.<player.uuid>
     - else:
         - narrate "<red>No quests available!"
