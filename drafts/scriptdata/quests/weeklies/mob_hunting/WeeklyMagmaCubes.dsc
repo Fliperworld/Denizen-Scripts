@@ -8,6 +8,7 @@ config:
     rewards:
         money: 250
         quest_points: 3
+    material: iron_sword
 messages:
     offer: "<darkgreen>Sir Firestride<white>: We need assistance fighting the magma cube horde, take out 500 for us!"
     completion: "<darkgreen>Sir Firestride<white>: Well done citizen, your contributions are invaluable."

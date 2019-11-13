@@ -9,6 +9,7 @@ config:
         quest_points: 3
         items:
         - diamond[quantity=3]
+    material: paper
 messages:
     offer: "<darkgreen>Dawn Postmaster<white>: We need a package delivered to the post office in Timbervale! Can you take care of it? Be sure to find and unlock the waypoint while you're there! You can find it here: <&a>http://bit.ly/2vHnIdH"
     completion: "<darkgreen>Dawn Postmaster<white>: Thanks so much! Here's a little payment for your hard work."

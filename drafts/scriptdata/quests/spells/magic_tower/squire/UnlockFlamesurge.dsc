@@ -10,6 +10,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: blaze_powder
 messages:
     offer: "<darkgreen>Skilled Sorcerer<white>: The Flamesurge spell hurls a flamesurge ahead of you, igniting and damaging enemies nearby when it hits. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Skilled Sorcerer<white>: Congratulations, you're ready to learn Flamesurge! Give it a try with <&dq>/cast flamesurge.<&dq>"

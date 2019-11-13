@@ -10,6 +10,7 @@ config:
         items:
         - diamond
         - emerald
+    material: compass
 messages:
     offer: "<darkgreen>Quest Master<white>: Have you noticed yourself learning any skills while you're out adventuring? Well, we've got some trainers here around Dawn's Landing that will share their knowledge of those arts with you - for some coin, of course. Go meet the lot of them, and I'll give you a reward for your troubles."
     completion: "<darkgreen>Quest Master<white>: Great job! Remember where they are, and visit them if you need help with your skills. There are a few others around, too, if you want to go find them on your own time."

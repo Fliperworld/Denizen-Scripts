@@ -8,6 +8,7 @@ config:
     rewards:
         money: 250
         quest_points: 3
+    material: iron_sword
 messages:
     offer: "<darkgreen>Lady Brightsword<white>: We need assistance fighting the cave spiders, take out 350 for us!"
     completion: "<darkgreen>Lady Brightsword<white>: Well done citizen, your contributions are invaluable."

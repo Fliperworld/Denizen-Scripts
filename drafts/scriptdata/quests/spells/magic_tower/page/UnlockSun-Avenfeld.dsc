@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: glowstone
 messages:
     offer: "<darkgreen>Stoic Sage<white>: ecause you already know the spell to summon the sun in Prosperus, I can teach you the spell to summon it in Avenfeld. I just need a few more ingredients. Bring me redstone and gold bars."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Sun-Avenfeld! Give it a try with <&dq>/cast sun-avenfeld.<&dq>"

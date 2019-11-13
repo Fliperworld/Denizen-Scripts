@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: brick
 messages:
     offer: "<darkgreen>Stoic Sage<white>: The Enchant Arrows: Nature spell enchants your arrows with nature magic, allowing you to briefly root enemies hit by them for its duration. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Enchant Arrows: Nature! Give it a try with <&dq>/cast enchantarrows-nature.<&dq>"

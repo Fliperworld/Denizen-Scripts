@@ -17,6 +17,7 @@ config:
         - "mm i give -s <player> QuestVeteranDrops 20"
         - "mm i give -s <player> QuestVeteranMeleeDrops 10"
         - "mm i give -s <player> QuestVeteranRangedDrops 10"
+    material: diamond_sword
 messages:
     offer: "<darkgreen>Warmaster Reinwald<white>: Veteran monsters continue to pose a threat. If you get out there and take them down, we'll give you some rewards from our supply cache."
     completion: "<darkgreen>Warmaster Reinwald<white>: Excellent work."

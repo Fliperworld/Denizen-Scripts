@@ -7,6 +7,7 @@ config:
     rewards:
         money: 50
         quest_points: 1
+    material: carrot
 messages:
     offer: "<gray>Carrot Carl<white>: Please bring me 5 stacks of carrots today so we can feed the people of Dawn's Landing."
     completion: "<gray>Carrot Carl<white>: Wow, thank you so much for your generosity! The people will love these carrots."

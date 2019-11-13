@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: wheat
 messages:
     offer: "<darkgreen>Wise Wizard<white>: The Food spell is a must-have for an encumbrance-conscious adventurer. When cast, it will satiate your cravings! Bring me the items I need, and I can teach it to you."
     completion: "<darkgreen>Wise Wizard<white>: Congratulations, you're ready to learn Food! Give it a try with <&dq>/cast food.<&dq>"

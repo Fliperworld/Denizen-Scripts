@@ -7,6 +7,7 @@ config:
     rewards:
         money: 50
         quest_points: 1
+    material: compass
 messages:
     offer: "<darkgreen>Quest Master<white>: The post office has some directions to other towns. Why don't you go find the postmaster?"
     completion: "<darkgreen>Quest Master<white>: Well done, that wasn't so bad."

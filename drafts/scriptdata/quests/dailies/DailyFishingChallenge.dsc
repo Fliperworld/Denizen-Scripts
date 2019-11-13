@@ -10,7 +10,7 @@ config:
     rewards:
         money: 100
         quest_points: 1
-        material: fishing_rod
+    material: fishing_rod
 messages:
     offer: "<gray>Fishing Newbie<white>: You've been fishing for a little bit - I think you're ready for a challenge!"
     completion: "<gray>Fishing Newbie<white>: Wow! Nice work!"

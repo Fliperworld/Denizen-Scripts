@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: ender_pearl
 messages:
     offer: "<darkgreen>Magnificent Mage<white>: The Shadow Stun spell allows you to briefly stun your foe and teleport behind them. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Magnificent Mage<white>: Congratulations, you're ready to learn Shadow Stun! Give it a try with <&dq>/cast shadowstun.<&dq>"

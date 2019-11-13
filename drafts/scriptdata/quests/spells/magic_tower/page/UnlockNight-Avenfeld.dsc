@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: sea_lantern
 messages:
     offer: "<darkgreen>Stoic Sage<white>: Because you already know the spell to summon night in Prosperus, I can teach you the spell to summon it in Avenfeld. I just need a few more ingredients. Bring me redstone and gold bars."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Night-Avenfeld! Give it a try with <&dq>/cast night-avenfeld.<&dq>"

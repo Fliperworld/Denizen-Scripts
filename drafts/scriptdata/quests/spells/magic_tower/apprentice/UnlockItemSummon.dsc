@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: fishing_rod
 messages:
     offer: "<darkgreen>Magnificent Mage<white>: The Item Summon spell allows you to manipulate spacial magic and bring all nearby items on the ground to you. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Magnificent Mage<white>: Congratulations, you're ready to learn Item Summon! Give it a try with <&dq>/cast itemsummon.<&dq>"

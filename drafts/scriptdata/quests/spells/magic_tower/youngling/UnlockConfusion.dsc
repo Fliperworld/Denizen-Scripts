@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: brown_mushroom
 messages:
     offer: "<darkgreen>Wise Wizard<white>: The Confusion spell is powerful, but volatile. If you can gather me the magical ingredients, I can teach it to you. It will cause monsters in a small area around you to begin attacking each other."
     completion: "<darkgreen>Wise Wizard<white>: Congratulations, you're ready to learn Confusion! Give it a try with <&dq>/cast confusion.<&dq>"

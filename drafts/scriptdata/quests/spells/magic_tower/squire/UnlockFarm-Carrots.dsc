@@ -10,6 +10,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: carrot
 messages:
     offer: "<darkgreen>Skilled Sorcerer<white>: The Farm-Carrots spell allows you to channel nature magic to grow a large number of carrots around you. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Skilled Sorcerer<white>: Congratulations, you're ready to learn Farm-Carrots! Give it a try with <&dq>/cast farm-carrots.<&dq>"

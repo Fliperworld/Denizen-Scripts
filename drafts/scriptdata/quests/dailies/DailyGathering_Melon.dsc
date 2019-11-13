@@ -7,6 +7,7 @@ config:
     rewards:
         money: 50
         quest_points: 1
+    material: melon
 messages:
     offer: "<gray>Melon Matt<white>: Please bring me 5 stacks of melon slices today so we can feed the people of Dawn's Landing."
     completion: "<gray>Melon Matt<white>: Wow, thank you so much for your generosity! The people will love this melon."

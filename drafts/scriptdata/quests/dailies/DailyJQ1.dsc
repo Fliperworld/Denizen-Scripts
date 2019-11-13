@@ -7,6 +7,7 @@ config:
     rewards:
         money: 100
         quest_points: 1
+    material: leather_boots
 messages:
     offer: "<gray>He Jumps Once<white>: You must think you're quite the parkour expert! Go and beat my challenge."
     completion: "<gray>He Jumped Once<white>: That wasn't so hard, was it? Here's some gold!"

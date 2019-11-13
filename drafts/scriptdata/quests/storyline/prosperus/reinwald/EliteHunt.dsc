@@ -16,6 +16,7 @@ config:
         - "mm i give -s <player> BurnishedBoots 1"
         command_text:
         - "<gold>1 set of Burnished armor"
+    material: diamond_sword
 messages:
     offer: "<darkgreen>Warmaster Reinwald<white>: Those Elite-level monsters aren't going anywhere, and we need your help to fight them off. Get to it."
     completion: "<darkgreen>Warmaster Reinwald<white>: Phenomenal work - you're getting quite good at this. I think you're ready for a new adventure! Go and find the Royal Geographer."

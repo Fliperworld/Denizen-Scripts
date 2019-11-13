@@ -7,6 +7,7 @@ config:
     rewards:
         money: 50
         quest_points: 1
+    material: compass
 messages:
     offer: "<darkgreen>Vale Postmaster<white>: Now that you're here, why don't you go find the town's waypoint? Once you unlock it, you can visit whenever you like."
     completion: "<darkgreen>Vale Postmaster<white>: Great job! Use /ftw to view the waypoints you've unlocked. To return to Timbervale at any time, just type /ftw timbervale."

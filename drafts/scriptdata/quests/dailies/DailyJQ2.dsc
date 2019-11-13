@@ -7,6 +7,7 @@ config:
     rewards:
         money: 100
         quest_points: 1
+    material: leather_boots
 messages:
     offer: "<gray>He Jumps Twice<white>: Show me what you've got!"
     completion: "<gray>He Jumped Twice<white>: You beat the heat! Nice job!"

@@ -7,6 +7,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: compass
 messages:
     offer: "<darkgreen>Royal Geographer<white>: You seem to have a hungering for adventure, and your combat skills are nothing to scoff at. Go find the entrance to the Fire Temple - you may want to challenge the Temple someday, so you might as well visit the altar."
     completion: "<darkgreen>Royal Geographer<white>: Nice job reaching the altar! If you decide to challenge the Temple, may the Gods smile upon you."

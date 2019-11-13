@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: glowstone_dust
 messages:
     offer: "<darkgreen>Stoic Sage<white>: The Lightwalk spell puts a light beneath your feet as you walk around. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Lightwalk! Give it a try with <&dq>/cast lightwalk.<&dq>"

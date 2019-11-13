@@ -17,6 +17,7 @@ config:
         - "mm i give -s <player> QuestEliteDrops 20"
         - "mm i give -s <player> QuestEliteMeleeDrops 10"
         - "mm i give -s <player> QuestEliteRangedDrops 10"
+    material: diamond_sword
 messages:
     offer: "<darkgreen>Warmaster Reinwald<white>: Elite monsters continue to pose a threat. If you get out there and take them down, we'll give you some rewards from our supply cache."
     completion: "<darkgreen>Warmaster Reinwald<white>: Excellent work."

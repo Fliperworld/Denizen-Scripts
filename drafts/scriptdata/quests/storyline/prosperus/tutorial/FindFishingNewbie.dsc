@@ -7,6 +7,7 @@ config:
     rewards:
         items:
         - fishing_rod
+    material: compass
 messages:
     offer: "<darkgreen>Quest Master<white>: There's someone over at the docks that needs some help learning how to fish. Go talk to him and I'll give you a fishing pole so you can help him out."
     completion: "<gray>Fishing Newbie<white>: Hi there! Can you help me learn to fish? The Quest Master said to give you this fishing pole!"

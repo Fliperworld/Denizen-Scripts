@@ -9,6 +9,7 @@ config:
     rewards:
         money: 250
         quest_points: 5
+    material: ender_eye
 messages:
     offer: "<darkgreen>Royal Geographer<white>: We've made new developments in magical transportation. We've discovered a new realm, Avenfeld! I'd like you to go there. I can teach you the spell, but you'll need to gather the requisite magical items in order to visit. Bring them to me when you're ready."
     completion: "<darkgreen>Royal Geographer<white>: Congratulations - you've made it to Avenfeld! I'm sure further adventures are afield."

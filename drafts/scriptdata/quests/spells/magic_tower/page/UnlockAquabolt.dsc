@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: water_bucket
 messages:
     offer: "<darkgreen>Stoic Sage<white>: The Aquabolt spell hurls a bolt of water magic ahead of you, damaging and slowing the first enemy hit. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Aquabolt! Give it a try with <&dq>/cast aquabolt.<&dq>"

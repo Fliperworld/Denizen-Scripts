@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: glowstone
 messages:
     offer: "<darkgreen>Stoic Sage<white>: The Sun spell will focus solar energy to summon the sun in Prosperus. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Sun! Give it a try with <&dq>/cast sun.<&dq>"

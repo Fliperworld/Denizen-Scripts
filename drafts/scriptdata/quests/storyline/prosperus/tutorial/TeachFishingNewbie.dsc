@@ -7,6 +7,7 @@ config:
     rewards:
         money: 250
         quest_points: 1
+    material: fishing_rod
 messages:
     offer: "<gray>Fishing Newbie<white>: I'm trying to learn how to fish... if you can teach me, I'll give you a bunch of gold."
     completion: "<gray>Fishing Newbie<white>: Thanks so much! I hope this gold helps you."

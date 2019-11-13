@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: ender_pearl
 messages:
     offer: "<darkgreen>Skilled Sorcerer<white>: The Escape spell allows you to immediately escape to Dawn's Landing from wherever you are in the multiverse. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Skilled Sorcerer<white>: Congratulations, you're ready to learn Escape! Give it a try with <&dq>/cast escape.<&dq>"

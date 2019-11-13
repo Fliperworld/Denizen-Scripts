@@ -7,6 +7,7 @@ config:
     rewards:
         money: 250
         quest_points: 2
+    material: leather_boots
 messages:
     offer: "<gray>He Jumps Death<white>: Go and make your way up the first five levels of the Death Tower."
     completion: "<gray>He Jumped Death<white>: You're quite the climber! Here's some gold for your trouble."

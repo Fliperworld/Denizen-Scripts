@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: sea_lantern
 messages:
     offer: "<darkgreen>Stoic Sage<white>: The Night spell will channel lunar forces to bring night upon you in Prosperus. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Night! Give it a try with <&dq>/cast night.<&dq>"

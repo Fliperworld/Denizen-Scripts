@@ -14,6 +14,7 @@ config:
         - "mm i give -s <player> ImbuedChest 1"
         - "mm i give -s <player> ImbuedLegs 1"
         - "mm i give -s <player> ImbuedBoots 1"
+    material: iron_sword
 messages:
     offer: "<darkgreen>Warmaster Reinwald<white>: Your initial assault against the Skeletal Rogues was a success, and for that, we thank you. You're now ready to take on more intense challenges. Accordingly, your next task is to eliminate the rising squadrons of Veteran-level monsters that have been appearing across the land."
     completion: "<darkgreen>Warmaster Reinwald<white>: Fantastic work. You stand as a bulwark against the darkness."

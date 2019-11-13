@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: ender_pearl
 messages:
     offer: "<darkgreen>Wise Wizard<white>: You look like you'd like to get your feet wet dabbling in practical magic, does that sound about right? Great. I can teach you your first spell, Blink. It'll let you teleport small distances!"
     completion: "<darkgreen>Wise Wizard<white>: Congratulations, you're ready to learn Blink! Give it a try with <&dq>/cast blink.<&dq>"

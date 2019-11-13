@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: wheat
 messages:
     offer: "<darkgreen>Stoic Sage<white>: The Farm spell allows you to magically summon crops around you. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Farm! Give it a try with <&dq>/cast farm.<&dq>"

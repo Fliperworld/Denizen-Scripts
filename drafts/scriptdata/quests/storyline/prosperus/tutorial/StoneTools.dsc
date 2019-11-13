@@ -13,6 +13,7 @@ config:
         - stone_spade[enchantments=li@DURABILITY,1]
         - stone_sword[enchantments=li@DURABILITY,1]
         - stone_hoe[enchantments=li@DURABILITY,1]
+    material: stone_axe
 messages:
     offer: "<darkgreen>Quest Master<white>: You had to break wood to get those tools - now it's time to use them to break some stone. Get back out there and get mining! Once you have some stone, use it to craft a set of stone tools, and bring them to me. I'll enchant them for you!"
     completion: "<darkgreen>Quest Master<white>: Hey, nicely done! Ready for your next step?"

@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: oak_leaves
 messages:
     offer: "<darkgreen>Stoic Sage<white>: The Naturebolt spell hurls a bolt of nature magic ahead of you, damaging and briefly rooting the first enemy hit. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Naturebolt! Give it a try with <&dq>/cast naturebolt.<&dq>"

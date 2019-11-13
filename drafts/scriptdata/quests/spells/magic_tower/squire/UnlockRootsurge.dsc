@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: oak_log
 messages:
     offer: "<darkgreen>Skilled Sorcerer<white>: The Rootsurge spell runs a wave of roots along the ground in front of you, damaging and rooting any hit enemies. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Skilled Sorcerer<white>: Congratulations, you're ready to learn Rootsurge! Give it a try with <&dq>/cast rootsurge.<&dq>"

@@ -10,6 +10,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: blaze_powder
 messages:
     offer: "<darkgreen>Skilled Sorcerer<white>: The Fire Nova spell creates an expanding ring of fire around you to burn your foes. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Skilled Sorcerer<white>: Congratulations, you're ready to learn Fire Nova! Give it a try with <&dq>/cast firenova.<&dq>"

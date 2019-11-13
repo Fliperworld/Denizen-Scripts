@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: diamond_boots
 messages:
     offer: "<darkgreen>Skilled Sorcerer<white>: The Tenacity spell temporarily channels your will to resist knockback from enemies. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Skilled Sorcerer<white>: Congratulations, you're ready to learn Tenacity! Give it a try with <&dq>/cast tenacity.<&dq>"

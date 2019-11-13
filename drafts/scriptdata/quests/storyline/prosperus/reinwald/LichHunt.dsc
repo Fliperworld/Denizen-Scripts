@@ -9,6 +9,7 @@ config:
         quest_points: 5
         items:
         - diamond[quantity=8]
+    material: diamond_sword
 messages:
     offer: "<darkgreen>Warmaster Reinwald<white>: The forces of darkness are strong, but I think you're ready for a bigger challenge. I want you to hunt your first Elite-level monster - a Lich."
     completion: "<darkgreen>Warmaster Reinwald<white>: I'm proud of you. Keep your wits about you, there's more work to do."

@@ -7,6 +7,7 @@ config:
     rewards:
         money: 250
         quest_points: 5
+    material: compass
 messages:
     offer: "<darkgreen>Royal Geographer<white>: With the reports you've sent us from Avenfeld, we've learned a lot about the various realms we've been able to gain access to. It looks like there are some fluctuations in all of them - Avenfeld, the End, the Heavens, the Nether... occasionally, they radically shift, so we're going to need to actively maintain our records! We'd like to enlist you as an explorer - we'll pay you to keep sending us good information. Go scout out each of the cardinal directions."
     completion: "<darkgreen>Royal Geographer<white>: Excellent! Happy to have you on board. Get out there and start exploring - we'll keep track of your progress, and make sure you get paid for it. If you're one of the first few explorers to reach each region, you'll get more than those who come after you. And, as you explore more and more, we'll even give you occasional bonuses to reward you for your progress."

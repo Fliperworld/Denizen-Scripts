@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: fishing_rod
 messages:
     offer: "<darkgreen>Stoic Sage<white>: The Deathgrip spell allows you to pull an enemy to you. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Deathgrip! Give it a try with <&dq>/cast deathgrip.<&dq>"

@@ -7,6 +7,7 @@ config:
     rewards:
         money: 250
         quest_points: 1
+    material: book
 messages:
     offer: "<gray>Bookkeeper<white>: Head to the Quest Master for your reward."
     completion: "<darkgreen>Quest Master<white>: Well, look at that! You found your way through the Grand Library. Here's some gold."

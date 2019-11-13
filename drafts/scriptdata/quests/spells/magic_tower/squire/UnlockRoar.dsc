@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: fishing_rod
 messages:
     offer: "<darkgreen>Skilled Sorcerer<white>: The Roar spell taunts all nearby monsters to attack you. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Skilled Sorcerer<white>: Congratulations, you're ready to learn Roar! Give it a try with <&dq>/cast roar.<&dq>"

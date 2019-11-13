@@ -4,6 +4,7 @@ config:
     rewards:
         money: 100
         quest_points: 1
+    material: potion[color=242,142,28]
 messages:
     offer: "<darkgreen>Swabby<white>: Can you take this package to the Quest Master in the questing hall for me? I owe him a bottle of rum!"
     completion: "<darkgreen>Quest Master<white>: Hey, thanks! I'm out of rum. This'll be real good. Say, you look like the adventuring type. You up for some quests?"

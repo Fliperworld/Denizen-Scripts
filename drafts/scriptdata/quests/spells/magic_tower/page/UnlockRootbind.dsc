@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: oak_log
 messages:
     offer: "<darkgreen>Stoic Sage<white>: The Rootbind spell runs roots across the ground in front of you, damaging and rooting enemies hit. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Rootbind! Give it a try with <&dq>/cast rootbind.<&dq>"

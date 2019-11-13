@@ -10,6 +10,7 @@ config:
         - wood_spade[enchantments=li@DURABILITY,1]
         - wood_sword[enchantments=li@DURABILITY,1]
         - wood_hoe[enchantments=li@DURABILITY,1]
+    material: wooden_axe
 messages:
     offer: "<darkgreen>Quest Master<white>: It's time for your adventure to begin! Go out into the wild, scavenge for resources, and craft your first set of wooden tools. Then, bring them to me, and I'll enchant them."
     completion: "<darkgreen>Quest Master<white>: Nicely done! Here are your tools back - and I enchanted them for you, too! Ready for your next task?"

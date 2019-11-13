@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: feather
 messages:
     offer: "<darkgreen>Stoic Sage<white>: The Gust spell forces back enemies in a line in front of you, damaging them both initially and when they fall. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Gust! Give it a try with <&dq>/cast gust.<&dq>"

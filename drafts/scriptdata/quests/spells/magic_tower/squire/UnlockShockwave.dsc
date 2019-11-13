@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: anvil
 messages:
     offer: "<darkgreen>Skilled Sorcerer<white>: The Shockwave spell channels your might to smash the ground and push back enemies around you. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Skilled Sorcerer<white>: Congratulations, you're ready to learn Shockwave! Give it a try with <&dq>/cast shockwave.<&dq>"

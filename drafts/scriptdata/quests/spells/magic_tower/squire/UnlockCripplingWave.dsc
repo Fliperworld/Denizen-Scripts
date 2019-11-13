@@ -10,6 +10,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: soul_sand
 messages:
     offer: "<darkgreen>Skilled Sorcerer<white>: The Crippling Wave spell temporarily slows all enemies in a small area around you. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Skilled Sorcerer<white>: Congratulations, you're ready to learn Crippling Wave! Give it a try with <&dq>/cast cripplingwave.<&dq>"

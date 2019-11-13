@@ -9,6 +9,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: feather
 messages:
     offer: "<darkgreen>Stoic Sage<white>: The Windbolt spell hurls a bolt of wind magic ahead of you, damaging the first enemy hit and knocking them back. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Stoic Sage<white>: Congratulations, you're ready to learn Windbolt! Give it a try with <&dq>/cast windbolt.<&dq>"

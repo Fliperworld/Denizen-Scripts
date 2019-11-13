@@ -8,6 +8,7 @@ config:
     rewards:
         money: 250
         quest_points: 3
+    material: iron_sword
 messages:
     offer: "<darkgreen>Sir Firestride<white>: We need assistance fighting the pig zombie infestation, take out 350 for us!"
     completion: "<darkgreen>Sir Firestride<white>: Well done citizen, your contributions are invaluable."

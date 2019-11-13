@@ -10,6 +10,7 @@ config:
     rewards:
         money: 100
         quest_points: 3
+    material: blaze_powder
 messages:
     offer: "<darkgreen>Magnificent Mage<white>: Searing Flames deals intense damage to enemies on fire and ignites those that are not already aflame. When you're ready to learn it, bring me what I need so that I can teach you."
     completion: "<darkgreen>Magnificent Mage<white>: Congratulations, you're ready to learn Searing Flames! Give it a try with <&dq>/cast searingflames.<&dq>"

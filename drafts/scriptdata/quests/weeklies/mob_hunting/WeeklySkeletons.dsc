@@ -8,6 +8,7 @@ config:
     rewards:
         money: 250
         quest_points: 3
+    material: wooden_sword
 messages:
     offer: "<darkgreen>Lady Brightsword<white>: We need assistance fighting the skeleton infestation, take out 500 for us!"
     completion: "<darkgreen>Lady Brightsword<white>: Well done citizen, your contributions are invaluable."

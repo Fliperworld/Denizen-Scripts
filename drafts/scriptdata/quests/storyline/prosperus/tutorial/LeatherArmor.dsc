@@ -13,6 +13,7 @@ config:
         - leather_boots[enchantments=li@DURABILITY,1]
         scripts:
         - LeatherArmorCompletion
+    material: leather_chestplate
 messages:
     offer: "<darkgreen>Quest Master<white>: I reckon you'll want to start heading down deeper to mine some iron. But those caves can be dangerous! Why don't you make some armor? Hunt some cows, use their hides to craft a set of leather armor, and then bring it to me. You know what happens then, right? You guessed it - I'll enchant it!"
     completion: "<darkgreen>Quest Master<white>: Hey, that's the stuff. Here's your armor back, with a little touch of magic to boot!"

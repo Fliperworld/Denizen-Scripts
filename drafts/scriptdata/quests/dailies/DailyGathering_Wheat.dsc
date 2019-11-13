@@ -7,6 +7,7 @@ config:
     rewards:
         money: 50
         quest_points: 1
+    material: wheat
 messages:
     offer: "<gray>Wil Wheaton<white>: Please bring me 5 stacks of wheat today so we can feed the people of Dawn's Landing."
     completion: "<gray>Wil Wheaton<white>: Wow, thank you so much for your generosity! Time to get baking."
