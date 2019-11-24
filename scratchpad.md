@@ -146,3 +146,12 @@ Hover while aiming
 * Hint at skill trainer locations
 
 * Force user to open book
+
+## Player pages
+
+* Key concept - Shareable pages with player information and progress
+ * Rank
+ * VIP?
+ * Statistics
+ * Quest progress
+ * A la Pokemon league cards
