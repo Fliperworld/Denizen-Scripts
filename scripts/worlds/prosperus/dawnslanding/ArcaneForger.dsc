@@ -16,7 +16,7 @@
 
 "Arcane Forger Forging":
     type: interact
-    debug: false
+    debug: true
     steps:
         "Player Seen*":
             proximity trigger:
@@ -54,7 +54,7 @@
 
 VeteranToken:
     type: item
-    debug: false
+    debug: true
     material: bone[flags=li@HIDE_ENCHANTS;nbt=li@BadLuckToken/Veteran|uncraftable/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
     display name: "<&9>Phantasmal Bones"
     lore_list:
@@ -102,18 +102,18 @@ VeteranToken:
     enchantments:
     - MENDING:1
 
-"Arcane Forger Inventory Handler":
+ArcaneForgerInventoryHandler:
     type: world
-    debug: false
+    debug: true
     events:
         on server start:
         - flag server VeteranToolForgeCost:150
         - flag server VeteranWeaponForgeCost:200
         - flag server EliteToolForgeCost:900
         - flag server EliteWeaponForgeCost:1200
-        on player clicks in ArcaneForgerInventoryMenu:
+        on player clicks in ArcaneForgerInventoryMenu priority:100:
         - determine cancelled
-        on player drags in ArcaneForgerInventoryMenu:
+        on player drags in ArcaneForgerInventoryMenu priority:100:
         - determine cancelled
         on player clicks VeteranToolForge in ArcaneForgerInventoryMenu:
         - inventory close d:in@ArcaneForgerInventoryMenu

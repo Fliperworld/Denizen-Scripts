@@ -62,7 +62,7 @@ EliteBox:
 
 daily-login-spinner:
     type: task
-    debug: false
+    debug: true
     speed: 0
     script:
     # Create some cleared lists to work with
@@ -153,8 +153,8 @@ daily-login-spinner:
         - queue clear
     - else:
         - wait 1s
-        - narrate "<&a>You got <&f><def[daily-roll-list].get[54].display||<def[daily-roll-list].get[54].formatted.to_titlecase>><&a>!"
-        - announce to_console "<player.name> got <def[daily-roll-list].get[54].display||<def[daily-roll-list].get[54].formatted.to_titlecase>>"
+        - narrate "<&a>You got <&f><def[daily-roll-list].get[54].as_item.display||<def[daily-roll-list].get[54].as_item.formatted.to_titlecase>><&a>!"
+        - announce to_console "<player.name> got <def[daily-roll-list].get[54].as_item.display||<def[daily-roll-list].get[54].as_item.formatted.to_titlecase>>"
         - give <def[daily-roll-list].get[54]>
         - note remove as:daily-spinner.<player.uuid>
         - flag player cannot_close_inv:!
@@ -188,8 +188,8 @@ Veteran-Spinner:
         - run Elite-Spinner
     - else:
         - wait 1s
-        - narrate "<&a>You got <&f><def[veteran-roll-list].get[54].display||<def[veteran-roll-list].get[54].formatted.to_titlecase>><&a>!"
-        - announce to_console "<player.name> got <def[veteran-roll-list].get[54].display||<def[veteran-roll-list].get[54].formatted.to_titlecase>>"
+        - narrate "<&a>You got <&f><def[veteran-roll-list].get[54].display||<def[veteran-roll-list].get[54].as_item.formatted.to_titlecase>><&a>!"
+        - announce to_console "<player.name> got <def[veteran-roll-list].get[54].display||<def[veteran-roll-list].get[54].as_item.formatted.to_titlecase>>"
         - give <def[veteran-roll-list].get[54]>
         - flag player cannot_close_inv:!
         - note remove as:veteran-spinner.<player.uuid>
@@ -219,8 +219,8 @@ Elite-Spinner:
         - wait <util.e.power[<def[value].mul[0.125].sub[3]>].round_up>t
 
     - wait 1s
-    - narrate "<&a>You got <&f><def[elite-roll-list].get[54].display||<def[elite-roll-list].get[54].formatted.to_titlecase>><&a>!"
-    - announce to_console "<player.name> got <def[elite-roll-list].get[54].display||<def[elite-roll-list].get[54].formatted.to_titlecase>>"
+    - narrate "<&a>You got <&f><def[elite-roll-list].get[54].display||<def[elite-roll-list].get[54].as_item.formatted.to_titlecase>><&a>!"
+    - announce to_console "<player.name> got <def[elite-roll-list].get[54].display||<def[elite-roll-list].get[54].as_item.formatted.to_titlecase>>"
     - give <def[elite-roll-list].get[54]>
     - flag player cannot_close_inv:!
     - note remove as:elite-spinner.<player.uuid>

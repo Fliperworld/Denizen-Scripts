@@ -6,7 +6,7 @@ lore_builder:
     debug: false
     script:
     - define newlist li@
-    - foreach <parse:<def[lore].unescaped.as_list>>:
+    - foreach <def[lore].unescaped.as_list.parsed>:
         - if <def[value].length> <= <def[linesize]>:
             - define newlist <def[newlist].include[<def[value]>]>
         - else:

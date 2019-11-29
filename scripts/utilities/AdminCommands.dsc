@@ -1,4 +1,4 @@
-AdminKit:
+AdminKitCommand:
     type: command
     name: adminkit
     usage: /adminkit
@@ -12,7 +12,33 @@ AdminKit:
     - execute as_player "mm items get AdminChest"
     - execute as_player "mm items get AdminLegs"
     - execute as_player "mm items get AdminBoots"
-Broadcast:
+CombatKitCommand:
+    type: command
+    name: combatkit
+    usage: /combatkit
+    description: Gives a kit of items for playtesting.
+    permission: denizen.combatkit
+    permission message: Not for you.
+    script:
+    - inventory clear
+    - equip <player> head:<mythic_item[AdminHelm]> chest:<mythic_item[AdminChest]> legs:<mythic_item[AdminLegs]> boots:<mythic_item[AdminBoots]> offhand:<mythic_item[BurnishedShield]>
+    - give <mythic_item[SkeletalDarkKnightSword]>
+    - give <mythic_item[SharpshooterBow]>
+    - inventory set o:arrow[quantity=64] d:<player.inventory> slot:10
+    - inventory set o:arrow[quantity=64] d:<player.inventory> slot:11
+CombatBuffCommand:
+    type: command
+    name: combatbuff
+    usage: /combatbuff
+    description: Gives buffs for combat.
+    permission: denien.combatbuff
+    permission message: Not for you.
+    script:
+    - cast speed duration:1hr power:2 <player>
+    - cast increase_damage duration:1hr power:2 <player>
+    - cast regeneration duration:1hr power:2 <player>
+    - cast fire_resistance duration:1hr power:1 <player>
+BroadcastCommand:
     type: command
     name: broadcast
     description: Broadcasts a server-wide message from the Gods.
@@ -23,7 +49,7 @@ Broadcast:
     permission message: You dare try to wield the powers of the Gods?
     script:
     - announce "<red>The Gods speak<white>: <context.raw_args>"
-NewInventory:
+NewCommand:
     type: command
     name: new
     usage: /new
@@ -34,7 +60,7 @@ NewInventory:
     - inventory clear
     - give wood_axe
     - give compass
-PulpFictionBan1:
+PulpFictionBan1Command:
     type: command
     name: banpf-1
     usage: /banpf-1 <aqua>playername
@@ -44,10 +70,10 @@ PulpFictionBan1:
     script:
     - if <context.args.is_empty>:
         - narrate "<red>You forgot to specify a player!"
-        - queue clear
+        - stop
     - announce "<red>The Gods speak<white>: Do you read the Bible, <context.args.get[1]>?"
     - narrate "<green>Now run <aqua>/banpf-2 <context.args.get[1]>"
-PulpFictionBan2:
+PulpFictionBan2Command:
     type: command
     name: banpf-2
     usage: banpf-2 <aqua>playername

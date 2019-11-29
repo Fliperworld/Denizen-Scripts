@@ -76,8 +76,6 @@ MCL_Events:
 #
     - if <queue.list> !contains 'q@MCL_UpdateCheck':
       - run locally delay:1t updateCheck 'id:MCL_UpdateCheck'
-    - if <queue.list> !contains 'q@MCL_SendMetrics':
-      - run locally delay:1t sendMetrics 'id:MCL_SendMetrics'
 
     on server start:
     - if <queue.list> !contains 'q@MCL_UpdateCheck':
@@ -104,11 +102,6 @@ MCL_Events:
     - else if '<def[repoVersion]>' != '<def[currentVersion]>':
       - run s@msgPrefixed instantly 'def:MCL|<&7>What happened? You are on version <&o><def[currentVersion]><&7> and the repo says <&o><def[repoVersion]><&7>!'
 
-  sendMetrics:
-#    - run s@msgPrefixed instantly 'def:MCL|<&3>Sending usage metrics...'
-    - ~webget "http://stats.denizenscript.com/tracker?script=<s@MSG_Version.yaml_key[id]>&version=<s@MSG_Version.yaml_key[version]>&players=<server.list_online_players.size>&denizen_version=<server.denizen_version.replace[-SNAPSHOT].before[ ]>&jenkins_build=<server.denizen_version.after[(build ].before[)]>&bukkit_version=<server.bukkit_version>" 'save:send'
-    - if !<entry[send].result.starts_with[SUCCESS]||false>:
-      - run s@msgPrefixed instantly 'def:MCL|<&c>Metrics failed!'
 #
 #---------------------------------------
 #
@@ -219,7 +212,7 @@ msgBoxed:
     - ^define pagesInfo '<&7><&o>Page <&f><def[page]> <&7><&o>of <&f><def[pageTotal]>'
     - ^define pad '<def[pageWidth].sub[<def[heading].strip_color.length>].sub[<def[pagesInfo].strip_color.length>].mul[1.5].round>'
     - ^if !<player.is_player||false>:
-      - ^announce to_console "<&5>|<&pipe.pad_left[<def[pageWidth]>].with[-]>"
+      - ^announce to_console "<&5>|<&5.pad_left[<def[pageWidth]>].with[-]>|"
       - ^announce to_console "<&5>|<&sp><&sp><&sp><&6><def[heading]> <&7.pad_right[<def[pad]>].with[ ]><def[pagesInfo]>"
       - ^announce to_console "<&5>|<&f>"
       - ^foreach <def[lines]>:
@@ -251,11 +244,11 @@ msgBoxed:
           - define tcommand '/<def[split].get[3].replace[\u0026].with[&].unescaped>'
           - define hover '<def[split].get[4].replace[\u0026].with[&].unescaped>'
           - define button '"color":"<def[c]>","text":"<def[text]>","clickEvent":{"action":"run_command","value":"<def[tcommand]>"},"hoverEvent":{"action":"show_text","value":"<def[hover]>"}'
-        - else if '%type' == 'hint':
+        - else if '<def[type]>' == 'hint':
           - define hint '/<def[split].get[3].replace[\u0026].with[&].unescaped>'
           - define hover '<def[split].get[4].before_last[<&dq>].replace[\u0026].with[&].unescaped>'
           - define button '"text":"<def[text]>","clickEvent":{"action":"suggest_command","value":"<def[hint]>"},"hoverEvent":{"action":"show_text","value":"<def[hover]>"}'
-        - else if '%type' == 'suggest':
+        - else if '<def[type]>' == 'suggest':
           - define suggest '<def[split].get[3].replace[\u0026].with[&].unescaped>'
           - define hover '<def[split].get[4].before_last[<&dq>].replace[\u0026].with[&].unescaped>'
           - define button '"text":"<def[text]>","clickEvent":{"action":"suggest_command","value":"<def[suggest]>"},"hoverEvent":{"action":"show_text","value":"<def[hover]>"}'
@@ -297,7 +290,7 @@ msgBoxed:
     - ^define tpad '"text":"<&7.pad_right[<def[pad]>].with[ ]>"'
     - ^define p '"text":"<&7><&o>Page<&sp>"'
     - ^define o '"text":"<&7><&o><&sp>of<&sp>"'
-    - ^narrate "<&5>|<&pipe.pad_left[<def[pageWidth]>].with[-]>"
+    - ^narrate "<&5>|<&5.pad_left[<def[pageWidth]>].with[-]>|"
     - ^execute as_server 'tellraw <player.name> {"text":"","extra":[{<def[prefix]>},<def[finalHeading]>,{<def[tpad]>},{<def[p]>},{<def[buttonThis]>},{<def[o]>},{<def[buttonNext]>}]}'
     - ^narrate "<&5>|"
 
@@ -342,7 +335,7 @@ msgBoxed:
     - ^mark 'end'
     - ^define scroll '<&d>S<&5>-<&d>c<&5>-<&d>r<&5>-<&d>o<&5>-<&d>l<&5>-<&d>l<&5>---<&d>U<&5>-<&d>p<&5>'
     - ^define pad '<def[pageWidth].sub[<def[scroll].strip_color.length>].div[2].round_up>'
-    - ^narrate "<&5><&pipe.pad_right[<def[pad]>].with[-]>-<def[scroll]><&pipe.pad_left[<def[pad]>].with[-]>"
+    - ^narrate "<&5><&5.pad_right[<def[pad]>].with[-]>|-<def[scroll]><&5.pad_left[<def[pad]>].with[-]>|"
 #
 #  END msgBoxed
 #--------------------------------------

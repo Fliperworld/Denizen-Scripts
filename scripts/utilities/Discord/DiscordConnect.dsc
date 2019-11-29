@@ -14,6 +14,7 @@
     - announce to_console "Denizen Bot has successfully loaded via the test script"
 "New Player Alert":
     type: world
+    debug: false
     events:
         on player logs in for the first time:
         - discord id:sxr message channel:343105813293826059 "<&lt><&at><&amp>223441207341219840<&gt>, **<player.name>** has joined the server for the first time! Say hello in <&lt><&ns>191040977652285450<&gt>!"
@@ -23,6 +24,7 @@
         - announce to_console "Created money account for <player.name>"
 "Death Message Repeater":
     type: world
+    debug: false
     events:
         on player dies:
         - discord id:sxr message channel:191040977652285450 ":skull: <context.message>"

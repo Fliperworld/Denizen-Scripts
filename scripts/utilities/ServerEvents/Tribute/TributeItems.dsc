@@ -14,9 +14,9 @@ TokenExpiration:
     debug: false
     events:
         on player opens inventory:
-        - if <context.inventory.list_contents.filter[scriptname.is[==].to[GodsTribute]].filter[nbt[expiration].is[or_less].than[<util.date.time.duration.add[2d].in_weeks>]].size> == 0:
-            queue clear
+        - if <context.inventory.list_contents.filter[scriptname.is[==].to[GodsTribute]].filter[nbt[expiration].is[or_less].than[<util.date.time.duration.sub[<util.date.time.day_of_week>d].add[1d].in_weeks>]].size> == 0:
+            - stop
         - else:
-            - foreach <context.inventory.list_contents.filter[scriptname.is[==].to[GodsTribute]].filter[nbt[expiration].is[or_less].than[<util.date.time.duration.add[2d].in_weeks>]]>:
+            - foreach <context.inventory.list_contents.filter[scriptname.is[==].to[GodsTribute]].filter[nbt[expiration].is[or_less].than[<util.date.time.duration.sub[<util.date.time.day_of_week>d].add[1d].in_weeks>]]>:
                 - take <def[value]> quantity:<def[value].quantity> from:<context.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."

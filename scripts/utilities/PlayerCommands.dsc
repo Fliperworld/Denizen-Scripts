@@ -1,5 +1,5 @@
 # https://one.denizenscript.com/denizen/lngs/command%20script%20containers
-"Tower of the Gods":
+TowerOfTheGodsCommand:
     type: command
     name: godstower
     description: Warp to the Tower of the Gods parkour course.
@@ -11,7 +11,7 @@
     script:
     - execute as_server "warp <player.name> godstower"
     - narrate "<green>Welcome to the Tower of the Gods! You can get back to the main world with the '<proc[msgcommand].context[<aqua>/spawn|spawn|<aqua>/spawn]><green>' command."
-"Death Tower":
+DeathTowerCommand:
     type: command
     name: deathtower
     description: Warp to the Death Tower parkour course.
@@ -23,7 +23,7 @@
     script:
     - execute as_server "warp <player.name> deathtower"
     - narrate "<green>Welcome to the Death Tower! You can get back to the main world with the '<proc[msgcommand].context[<aqua>/spawn|spawn|<aqua>/spawn]><green>' command."
-"Boat Race 1":
+BoatRace1Command:
     type: command
     name: boatrace-1
     description: Warp to the Suicune boat race.
@@ -37,7 +37,7 @@
     - wait 20t
     - execute as_server "give <player.name> boat"
     - narrate "<green>Welcome to the Suicune boat race!"
-"Boat Race 2":
+BoatRace2Command:
     type: command
     name: boatrace-2
     description: Warp to the frozen caves boat race.
@@ -49,7 +49,7 @@
     - wait 20t
     - execute as_server "give <player.name> boat"
     - narrate "<green>Welcome to the frozen caves boat race!"
-"Help":
+HelpCommand:
     type: command
     name: help
     description: Get some information about the server and helpful commands.
@@ -74,7 +74,7 @@
     - narrate "<proc[msgcommand].context[<aqua>/quests|quests|<aqua>/quests]><white> - View commands for managing your quests. You can also see the quests you're currently on with <aqua>/quest<white>."
     - narrate ""
     - narrate "<aqua><&o>Need more help?<&r><aqua> Join the forums at <proc[msgUrl].context[<green>http://summaxr.com|summaxr.com|<green>Click me!]><aqua>!"
-"Map":
+MapCommand:
     type: command
     name: map
     description: Get a link to our online map.
@@ -82,10 +82,10 @@
     script:
     - narrate "<gold>-=<aqua><&n>Online World Map<gold>=-"
     - narrate ""
-    - narrate "<white>Click the link below to check out our live map - the world is huge! Type <proc[msgcommand].context[<aqua>/dynmap webregister|dynmap webregister|<aqua>/dynmap webregister]> to set up webchat!"
+    - narrate "<white>Click the link below to check out our live map - the world is huge!"
     - narrate ""
     - narrate "<proc[msgUrl].context[<green>http://mc.summaxr.com|mc.summaxr.com|<green>Click me!]>"
-"Ranks":
+RanksCommand:
     type: command
     name: ranks
     description: Get information about our server ranks.
@@ -96,7 +96,7 @@
     - narrate "Our world has a wide range of ranks available for its adventurers to achieve. As you rank up, you get new abilities and become even more powerful and prestigious."
     - narrate ""
     - narrate "<aqua>For a list of ranks<white> and how to get them, please visit: <proc[msgUrl].context[<green>http://summaxr.com/mcranks|summaxr.com/mcranks|<green>Click me!]>"
-"Patreon":
+PatreonCommand:
     type: command
     name: patreon
     description: Get information about Patreon.
@@ -107,21 +107,21 @@
     - narrate "Please consider backing us on Patreon if you enjoy the server! As we reach goals, perks are unlocked for all players on the server!"
     - narrate ""
     - narrate "<aqua>To learn more and become a Patron,<white> please visit: <proc[msgUrl].context[<green>https://patreon.com/summacrossroads|patreon.com/summacrossroads|<green>Click me!]>"
-"Gold":
+GoldCommand:
     type: command
     name: gold
     description: Check your gold balance. Alias for /money.
     usage: /gold
     script:
     - execute as_player "money <context.raw_args>"
-"Balance":
+BalanceCommand:
     type: command
     name: balance
     description: Check your gold balance. Alias for /money.
     usage: /balance
     script:
     - execute as_player "money <context.raw_args>"
-"Rankup":
+RankupCommand:
     type: command
     name: rankup
     description: Check the requirements to earn the next rank.
@@ -156,7 +156,7 @@
         - execute as_player "ar track 2"
         - execute as_player "ar track 3"
         - execute as_player "ar track 4"
-GetNewPlayerBook:
+GetNewPlayerBookCommand:
     type: command
     name: newplayerguide
     description: View the New Player Guide.
