@@ -28,9 +28,9 @@ This file serves to track the progress on converting the existing quests to the 
 - [x] Find the Fishing Newbie
     - [x] Dialogue written
     - [x] Script backend written
-- [ ] Meet the Skill Trainers
+- [x] Meet the Skill Trainers
     - [x] Dialogue written
-    - [ ] Script backend written
+    - [x] Script backend written
 - [ ] Meet the Postmaster
     - [x] Dialogue written
     - [ ] Script backend written
