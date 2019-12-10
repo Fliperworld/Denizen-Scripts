@@ -42,25 +42,26 @@ YAML_AntiFarm:
             - determine NO_DROPS_OR_XP
             - stop
 
-        on mm denizen death:
+        on mythicmob mob dies:
         
         # Check to see if any timers exist on this block
-        - if <yaml[antifarm-flags].contains[expirations.<context.activemob.location.simple>]>:
+        - if <yaml[antifarm-flags].contains[expirations.<context.entity.location.simple>]>:
         # If yes, clear any old timers
-            - yaml id:antifarm-flags set expirations.<context.activemob.location.simple>:<yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>].as_list.filter[in_seconds.is[more].than[<util.date.time.duration.in_seconds>]]>
+            - yaml id:antifarm-flags set expirations.<context.entity.location.simple>:<yaml[antifarm-flags].read[expirations.<context.entity.location.simple>].as_list.filter[in_seconds.is[more].than[<util.date.time.duration.in_seconds>]]>
 
         # Add a timer for this mob's death
-        - yaml id:antifarm-flags set expirations.<context.activemob.location.simple>:<list[<util.date.time.duration.add[30m]>].include[<yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>]||li@>]>
+        - yaml id:antifarm-flags set expirations.<context.entity.location.simple>:<list[<util.date.time.duration.add[30m]>].include[<yaml[antifarm-flags].read[expirations.<context.entity.location.simple>]||<list[]>>]>
 
         # Check to see whether there are too many timers on this block
-        - if <yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>].as_list.size||0> >= 3:
+        - if <yaml[antifarm-flags].read[expirations.<context.entity.location.simple>].as_list.size||0> >= 3:
             # Debug messages
-#            - announce to_console "[DEBUG] MythicMobs YAML same location: <context.activemob.location.simple>"
-#            - announce to_console "[DEBUG] MythicMobs YAML same location size: <yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>].as_list.size>"
+#            - announce to_console "[DEBUG] MythicMobs YAML same location: <context.entity.location.simple>"
+#            - announce to_console "[DEBUG] MythicMobs YAML same location size: <yaml[antifarm-flags].read[expirations.<context.entity.location.simple>].as_list.size>"
 
             # Cancel drops and experience
-            - determine drops:li@;money:0;exp:0
-            - stop
+            - determine passively xp:0
+            - determine passively currency:0
+            - determine passively <list[]>
         
         on mythicmobs lootdrop:
         - if <yaml[antifarm-flags].contains[expirations.<context.activemob.location.simple>]>:
@@ -116,11 +117,13 @@ YAML_AntiFarm:
         
         
         
-        on mm denizen death:
-        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<context.activemob.uuid||null>]||null>:
+        on mythicmob mob dies:
+        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<context.entity.uuid||null>]||null>:
 #            - announce to_console "[DEBUG] MythicMobs YAML spawner"
-            - determine drops:li@;money:0;exp:0
-            - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<context.activemob.uuid>
+            - determine passively xp:0
+            - determine passively currency:0
+            - determine passively <list[]>
+            - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<context.entity.uuid>
         
         on mythicmobs lootdrop:
         - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<context.activemob.uuid||null>]||null>:
