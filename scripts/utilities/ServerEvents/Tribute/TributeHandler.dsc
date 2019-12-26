@@ -30,6 +30,7 @@ Tribute_Activate_Task:
     - yaml id:rates savefile:scriptdata/Rates.yml
     - yaml id:events savefile:scriptdata/Events.yml
     - announce to_console "Reloading scripts"
+    - discord id:sxr message channel:191040977652285450 "**Tribute is active! Seek the favor of the Gods and bring Tribute to the Oracle in Dawn's Landing!**"
     - reload
 
 Tribute_Handler:
@@ -56,6 +57,7 @@ Tribute_Handler:
                 - yaml id:rates savefile:scriptdata/Rates.yml
                 - yaml id:events savefile:scriptdata/Events.yml
                 - announce to_console "Reloading scripts"
+                - discord id:sxr message channel:191040977652285450 "**Tribute is active! Seek the favor of the Gods and bring Tribute to the Oracle in Dawn's Landing!**"
                 - reload
         - else if <util.date.format[EEE]> == Mon:
             - if <yaml[events].read[tribute.active]> == false:
