@@ -90,6 +90,7 @@ tribute_npc_format:
                                 - announce "<&c>The Gods speak<&f>: The Gods smile upon Prosperus. Thanks to the offerings by <player.name>, we offer a Blessing of Wisdom."
                                 - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, <&at>here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Wisdom!**"
                         - yaml id:events savefile:scriptdata/Events.yml
+                        - flag player blessing_selection:!
                         - zap General
                     - else:
                         - narrate format:tribute_npc_format "You don't seem to have that much Tribute. Did you misspeak?"
