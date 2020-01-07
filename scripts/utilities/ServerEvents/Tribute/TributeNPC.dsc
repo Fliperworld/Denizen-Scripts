@@ -164,41 +164,62 @@ Tribute_Inventory_Handler:
         on player drags in Tribute_Inventory:
         - determine cancelled
 
+Tribute_Cap_Procedure:
+    type: procedure
+    definitions: upgrade_type
+    script:
+    - if <yaml[events].read[tribute.<[upgrade_type]>.rate]> == <yaml[events].read[tribute.<[upgrade_type]>.cap]>:
+        - determine "<&a>Maximum blessing achieved!"
+    - else:
+        - determine "<&a>Progress to upgrade: <yaml[events].read[tribute.<[upgrade_type]>.progress]> / <yaml[events].read[tribute.<[upgrade_type]>.upgrades.<yaml[events].read[tribute.<[upgrade_type]>.rate]>]>"
+
 Tribute_mcMMO:
     type: item
     debug: false
-    material: diamond_pickaxe[flags=li@HIDE_ENCHANTS;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
+    material: diamond_pickaxe
     display name: "<&6>Blessing of Skillfulness"
     lore_list:
     - "<&f>Pray for the Gods to bless your ability to learn skills."
     - "<&a>Increases mcMMO EXP rate"
     - "<&a>Current rate: <yaml[events].read[tribute.mcmmo.rate]>x"
-    - "<&a>Progress to upgrade: <yaml[events].read[tribute.mcmmo.progress]> / <yaml[events].read[tribute.mcmmo.upgrades.<yaml[events].read[tribute.mcmmo.rate]>]>"
+    - "<proc[Tribute_Cap_Procedure].context[mcmmo]>"
     enchantments:
     - MENDING:1
+    mechanisms:
+        lore: <proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>
+        flags:
+        - HIDE_ENCHANTS
 
 Tribute_DropRate:
     type: item
     debug: false
-    material: gold_ingot[flags=li@HIDE_ENCHANTS;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
+    material: gold_ingot
     display name: "<&6>Blessing of Luck"
     lore_list:
     - "<&f>Pray for the Gods to bless your ability to find rare items from slain monsters."
     - "<&a>Increases rare drop rate"
     - "<&a>Current rate: <yaml[events].read[tribute.drops.rate]>x"
-    - "<&a>Progress to upgrade: <yaml[events].read[tribute.drops.progress]> / <yaml[events].read[tribute.drops.upgrades.<yaml[events].read[tribute.drops.rate]>]>"
+    - "<proc[Tribute_Cap_Procedure].context[drops]>"
     enchantments:
     - MENDING:1
+    mechanisms:
+        lore: <proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>
+        flags:
+        - HIDE_ENCHANTS
 
 Tribute_Experience:
     type: item
     debug: false
-    material: i@exp_bottle[flags=li@HIDE_ENCHANTS;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
+    material: i@exp_bottle
     display name: "<&6>Blessing of Wisdom"
     lore_list:
     - "<&f>Pray for the Gods to bless your ability to gain experience from slain monsters."
     - "<&a>Increases monster experience drop rate"
     - "<&a>Current rate: <yaml[events].read[tribute.experience.rate]>x"
-    - "<&a>Progress to upgrade: <yaml[events].read[tribute.experience.progress]> / <yaml[events].read[tribute.experience.upgrades.<yaml[events].read[tribute.experience.rate]>]>"
+    - "<proc[Tribute_Cap_Procedure].context[experience]>"
     enchantments:
     - MENDING:1
+    mechanisms:
+        lore: <proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>
+        flags:
+        - HIDE_ENCHANTS

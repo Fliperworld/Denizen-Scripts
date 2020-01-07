@@ -1,6 +1,7 @@
 tribute:
   drops:
     rate: '1'
+    cap: '4'
     progress: '0'
     upgrades:
       '1': 250
@@ -9,6 +10,7 @@ tribute:
       '4': 2000
   mcmmo:
     rate: '1'
+    cap: '4'
     progress: '0'
     upgrades:
       '1': 250
@@ -18,6 +20,7 @@ tribute:
   active: 'false'
   experience:
     rate: '1'
+    cap: '4'
     progress: '0'
     upgrades:
       '1': 250
