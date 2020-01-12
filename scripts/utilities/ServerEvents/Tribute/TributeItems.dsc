@@ -15,16 +15,16 @@ GodsTribute:
         nbt:
         - event_item/gods_tribute
         - uncraftable/true
-        - expiration/<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[9d].in_days>
+        - expiration/<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[9d].in_days.round_down>
 
 TokenExpiration:
     type: world
-    debug: false
+    debug: true
     events:
         on player opens inventory:
-        - if <context.inventory.list_contents.filter[scriptname.is[==].to[GodsTribute]].filter[nbt[expiration].is[or_less].than[<util.date.time.duration.in_days>].size> == 0:
+        - if <context.inventory.list_contents.filter[scriptname.is[==].to[GodsTribute]].filter[nbt[expiration].is[or_less].than[<util.date.time.duration.in_days.round_down>]].size> == 0:
             - stop
         - else:
-            - foreach <context.inventory.list_contents.filter[scriptname.is[==].to[GodsTribute]].filter[nbt[expiration].is[or_less].than[<util.date.time.duration.in_days>]]>:
+            - foreach <context.inventory.list_contents.filter[scriptname.is[==].to[GodsTribute]].filter[nbt[expiration].is[or_less].than[<util.date.time.duration.in_days.round_down>]]>:
                 - take <def[value]> quantity:<def[value].quantity> from:<context.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
