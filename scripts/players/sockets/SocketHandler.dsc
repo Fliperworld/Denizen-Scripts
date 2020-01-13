@@ -155,9 +155,9 @@ prismatic_seer_inventory_handler:
         - wait 30s
         - flag server SocketAddCost:32
         - flag server SealedPotentialCost:64
-        on player clicks in prismatic_seer_menu:
+        on player clicks in prismatic_seer_menu priority:100:
         - determine cancelled
-        on player drags in prismatic_seer_menu:
+        on player drags in prismatic_seer_menu priority:100:
         - determine cancelled
         on player clicks socket_add in prismatic_seer_menu:
         - inventory close d:in@prismatic_seer_menu
@@ -381,7 +381,7 @@ prismatic_seer_gem_add_gem_handler:
                     - define nbt_attributes_list:<context.item.nbt_keys.filter[matches[gem_attribute[0-9]+]].alphanumeric>
                     - foreach <[nbt_attributes_list]>:
                         #- announce to_console "NBT <context.item.nbt[<[value]>]>"
-                        - define attribute_location:<[item].nbt_attributes.as_list.find_partial[<context.item.nbt[<[value]>].before_last[/]>]||0>
+                        - define attribute_location:<[item].nbt_attributes.as_list.parse[unescaped].find_partial[<context.item.nbt[<[value]>].before_last[/].unescaped>]||0>
                         - if <[attribute_location]> >= 1:
                             - adjust <[item]> "nbt_attributes:<[item].nbt_attributes.as_list.set[<[item].nbt_attributes.as_list.get[<[attribute_location]>].before_last[/]>/<context.item.nbt[<[value]>].after_last[/].add[<[item].nbt_attributes.as_list.get[<[attribute_location]>].after_last[/]>]>].at[<[attribute_location]>]>" save:edited
                             - define item:<entry[edited].result>
