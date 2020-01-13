@@ -338,7 +338,7 @@ prismatic_seer_gem_add_item_handler:
             - if <[valid_gems].size> >= 1:
                 - narrate format:prismatic_seer_format "Okay, here are the gems you can add to that item."
                 - note "in@generic[title=Available Gems;size=45;contents=<[valid_gems]>]" as:sockets_gem_add.<player.uuid>
-                - inventory open "d:in@sockets_gem_add.<player.uuid>"
+                - inventory open d:in@sockets_gem_add.<player.uuid>
             - else:
                 - narrate format:prismatic_seer_format "Sorry, you don't have any valid gems for that item."
         - else if <context.item> == i@air:
@@ -383,10 +383,10 @@ prismatic_seer_gem_add_gem_handler:
                         #- announce to_console "NBT <context.item.nbt[<[value]>]>"
                         - define attribute_location:<[item].nbt_attributes.as_list.parse[unescaped].find_partial[<context.item.nbt[<[value]>].before_last[/].unescaped>]||0>
                         - if <[attribute_location]> >= 1:
-                            - adjust <[item]> "nbt_attributes:<[item].nbt_attributes.as_list.set[<[item].nbt_attributes.as_list.get[<[attribute_location]>].before_last[/]>/<context.item.nbt[<[value]>].after_last[/].add[<[item].nbt_attributes.as_list.get[<[attribute_location]>].after_last[/]>]>].at[<[attribute_location]>]>" save:edited
+                            - adjust <[item]> nbt_attributes:<[item].nbt_attributes.as_list.set[<[item].nbt_attributes.as_list.get[<[attribute_location]>].before_last[/]>/<context.item.nbt[<[value]>].after_last[/].add[<[item].nbt_attributes.as_list.get[<[attribute_location]>].after_last[/]>]>].at[<[attribute_location]>]> save:edited
                             - define item:<entry[edited].result>
                         - else:
-                            - adjust <[item]> "nbt_attributes:<[item].nbt_attributes.as_list.include[<context.item.nbt[<[value]>]>]>" save:edited
+                            - adjust <[item]> nbt_attributes:<[item].nbt_attributes.as_list.include[<context.item.nbt[<[value]>]>]> save:edited
                             - define item:<entry[edited].result>
                     ## Adjust the lore
                     # First line after "<&6>Sockets"
@@ -396,12 +396,12 @@ prismatic_seer_gem_add_gem_handler:
                     # Set up the lore line for the socket
                     # Can probably eliminate this if chain if gems have standardized colors for their names
                     - if <context.item.nbt[gem_type]> == attack:
-                        - define socket_new_line "<&c><context.item.display.strip_color>"
+                        - define socket_new_line:<&c><context.item.display.strip_color>
                     - else if <context.item.nbt[gem_type]> == defense:
-                        - define socket_new_line "<&9><context.item.display.strip_color>"
+                        - define socket_new_line:<&9><context.item.display.strip_color>
                     - else if <context.item.nbt[gem_type]> == utility:
-                        - define socket_new_line "<&a><context.item.display.strip_color>"
-                    - adjust <[item]> "lore:<[item].lore.set[<[socket_new_line]>].at[<[socket_target]>]>" save:edited
+                        - define socket_new_line:<&a><context.item.display.strip_color>
+                    - adjust <[item]> lore:<[item].lore.set[<[socket_new_line]>].at[<[socket_target]>]> save:edited
                     - define item:<entry[edited].result>
                     # Check whether any open sockets remain; if not, remove sockets_open
                     - if <[item].nbt_keys.filter[matches[socket[0-9]+_empty]].alphanumeric.size> == 0:
