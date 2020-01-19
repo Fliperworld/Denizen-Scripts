@@ -130,6 +130,9 @@ This file serves to track the progress on converting the existing quests to the 
     - [ ] Script backend written
 
 ### Page
+- [ ] Aquabolt Spell
+    - [ ] Dialogue written
+    - [ ] Script backend written
 - [ ] Cripple Spell
     - [ ] Dialogue written
     - [ ] Script backend written
@@ -157,6 +160,9 @@ This file serves to track the progress on converting the existing quests to the 
 - [ ] Lightwalk Spell
     - [ ] Dialogue written
     - [ ] Script backend written
+- [ ] Naturebolt Spell
+    - [ ] Dialogue written
+    - [ ] Script backend written
 - [ ] Night Spell
     - [ ] Dialogue written
     - [ ] Script backend written
@@ -179,6 +185,9 @@ This file serves to track the progress on converting the existing quests to the 
     - [ ] Dialogue written
     - [ ] Script backend written
 - [ ] Sun-Heavens Spell
+    - [ ] Dialogue written
+    - [ ] Script backend written
+- [ ] Windbolt Spell
     - [ ] Dialogue written
     - [ ] Script backend written
 
@@ -223,6 +232,9 @@ This file serves to track the progress on converting the existing quests to the 
     - [ ] Dialogue written
     - [ ] Script backend written
 - [ ] Tenacity Spell
+    - [ ] Dialogue written
+    - [ ] Script backend written
+- [ ] Windwalk Spell
     - [ ] Dialogue written
     - [ ] Script backend written
 
