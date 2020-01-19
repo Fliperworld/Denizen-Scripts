@@ -63,6 +63,7 @@ WarmasterReinwaldInteract:
                 script:
                 - if <yaml[<[data]>].contains[quests.active.FindReinwald]>:
                     - run QuestCompletionHandler def:FindReinwald
+                    - zap FirstMobHuntingOffer
         GeneralDialogue:
             proximity trigger:
                 entry:
@@ -76,6 +77,7 @@ WarmasterReinwaldInteract:
                 script:
                 - if <yaml[<[data]>].contains[quests.active.FindReinwald]>:
                     - run QuestCompletionHandler def:FindReinwald
+                    - zap FirstMobHuntingOffer
         FirstMobHuntingOffer:
             proximity trigger:
                 entry:
@@ -87,6 +89,7 @@ WarmasterReinwaldInteract:
                 script:
                 - narrate format:PlayerChatFormat "Absolutely, I'm ready to fight back!"
                 - run QuestAcceptHandler def:FirstMobHunting
+                - zap FirstMobHuntingActive
             chat trigger:
                 FirstMobHuntingAcceptance:
                     trigger: /yes|sure|okay|great/
@@ -94,6 +97,7 @@ WarmasterReinwaldInteract:
                     script:
                     - narrate format:PlayerChatFormat "Absolutely, I'm ready to fight back!"
                     - run QuestAcceptHandler def:FirstMobHunting
+                    - zap FirstMobHuntingActive
         FirstMobHuntingActive:
             proximity trigger:
                 entry:
@@ -115,6 +119,7 @@ WarmasterReinwaldInteract:
                 script:
                 - narrate format:PlayerChatFormat "I'm not afraid - I'm ready to hunt those Skeletal Rogues!"
                 - run QuestAcceptHandler def:SkeletalRogueHunt
+                - zap SkeletalRogueHuntActive
             chat trigger:
                 SkeletalRogueHuntAcceptance:
                     trigger: /yes|sure|okay|great/
@@ -122,6 +127,7 @@ WarmasterReinwaldInteract:
                     script:
                     - narrate format:PlayerChatFormat "I'm not afraid - I'm ready to hunt those Skeletal Rogues!"
                     - run QuestAcceptHandler def:SkeletalRogueHunt
+                    - zap SkeletalRogueHuntActive
         SkeletalRogueHuntActive:
             proximity trigger:
                 entry:
@@ -141,6 +147,7 @@ WarmasterReinwaldInteract:
                 script:
                 - narrate format:PlayerChatFormat "Those Veterans won't know what's coming!"
                 - run QuestAcceptHandler def:VeteranHunt
+                - zap VeteranHuntActive
             chat trigger:
                 SkeletalRogueHuntAcceptance:
                     trigger: /yes|sure|okay|great/
@@ -148,6 +155,7 @@ WarmasterReinwaldInteract:
                     script:
                     - narrate format:PlayerChatFormat "Those Veterans won't know what's coming!"
                     - run QuestAcceptHandler def:VeteranHunt
+                    - zap VeteranHuntActive
         VeteranHuntActive:
             proximity trigger:
                 entry:
@@ -169,6 +177,7 @@ WarmasterReinwaldInteract:
                 script:
                 - narrate format:PlayerChatFormat "What's one more zombie on the pile? I'm in!"
                 - run QuestAcceptHandler def:LichHunt
+                - zap LichHuntActive
             chat trigger:
                 LichHuntAcceptance:
                     trigger: /yes|sure|okay|great/
@@ -176,6 +185,7 @@ WarmasterReinwaldInteract:
                     script:
                     - narrate format:PlayerChatFormat "What's one more zombie on the pile? I'm in!"
                     - run QuestAcceptHandler def:LichHunt
+                    - zap LichHuntActive
         LichHuntActive:
             proximity trigger:
                 entry:
@@ -195,6 +205,7 @@ WarmasterReinwaldInteract:
                 script:
                 - narrate format:PlayerChatFormat "I've come so far - I know I can do this!"
                 - run QuestAcceptHandler def:EliteHunt
+                - zap EliteHuntActive
             chat trigger:
                 EliteHuntAcceptance:
                     trigger: /yes|sure|okay|great/
@@ -202,6 +213,7 @@ WarmasterReinwaldInteract:
                     script:
                     - narrate format:PlayerChatFormat "I've come so far - I know I can do this!"
                     - run QuestAcceptHandler def:EliteHunt
+                    - zap EliteHuntActive
         EliteHuntActive:
             proximity trigger:
                 entry:

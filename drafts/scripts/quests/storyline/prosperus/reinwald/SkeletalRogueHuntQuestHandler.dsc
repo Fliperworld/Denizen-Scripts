@@ -15,6 +15,6 @@ SkeletalRogueHuntHandler:
             - stop
         - if <context.entity.name.starts_with[&9].not||null>:
             - stop
-        - if <context.entity.mythicmob> == SkeletalRogue:
+        - if <context.entity.mythicmob||null> == SkeletalRogue:
             - yaml id:<[data]> set quests.active.SkeletalRogueHunt.stages.1.objectives.1.progress:++
             - run QuestStageProgressHandler def:SkeletalRogueHunt|1
