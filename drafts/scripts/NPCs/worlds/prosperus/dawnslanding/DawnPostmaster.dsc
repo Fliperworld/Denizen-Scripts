@@ -47,7 +47,7 @@ DawnPostmasterInteract:
                     - if <yaml[<[data]>].contains[quests.active.FindDawnPostmaster]>:
                         - narrate format:DawnPostmasterFormat "Oh, hello! The Quest Master sent you, huh? That's so nice of him, he's always looking out for me."
                     - else:
-                        - narrate format:DawnPostmasterFormat "Hi again, <player.name>! Do you think you can help me learn how to fish?"
+                        - narrate format:DawnPostmasterFormat "Hi again, <player.name>! Have you visited all the settlements of Prosperus yet?"
             click trigger:
                 script:
                 - narrate format:PlayerChatformat "He sure did!"

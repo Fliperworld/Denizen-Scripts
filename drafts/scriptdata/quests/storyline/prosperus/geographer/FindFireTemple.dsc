@@ -9,19 +9,26 @@ config:
         quest_points: 3
     material: compass
 messages:
-    offer: "<darkgreen>Royal Geographer<white>: You seem to have a hungering for adventure, and your combat skills are nothing to scoff at. Go find the entrance to the Fire Temple - you may want to challenge the Temple someday, so you might as well visit the altar."
-    completion: "<darkgreen>Royal Geographer<white>: Nice job reaching the altar! If you decide to challenge the Temple, may the Gods smile upon you."
+    offer: "<darkgreen>Royal Geographer<white>: The Altar of Flame is a sacred location, and the Sage is an important bastion against the darkness. Please, find the Altar and ensure the Sage is safe."
+    completion: "<darkgreen>Royal Geographer<white>: Thank you so much for checking on the Sage of Flame!"
 player_data:
     FindFireTemple:
-        name: Find the entrance to the Fire Temple
-        description: "The Royal Geographer suggested that you go find the entrance to the Fire Temple. You might challenge it someday, so you might as well know where it is, right?"
+        name: Find the Altar of Flame
+        description: "The Royal Geographer asked that you go find the Altar of Flame and check on the Sage."
         stages:
             1:
-                description: "Reach the entrance to the Fire Temple"
+                description: "Reach the Altar of Flame"
                 objectives:
                     1:
-                        name: "Entrance reached"
+                        name: "Altar of Flame reached"
                         progress: 0
                         total: 1
                 progress: 0
                 total: 1
+            2:
+                description: "Return to the Royal Geographer"
+                objectives:
+                    2:
+                        name: "Royal Geographer spoken to"
+                        progress: 0
+                        total: 1

@@ -1,18 +1,18 @@
 RoyalGeographerAssignment:
-type: assignment
-debug: false
-interact scripts:
-- 10 RoyalGeographerInteract
-actions:
-    on assignment:
-    - teleport npc 'location:<anchor:RoyalGeographer>'
-    - trigger name:proximity toggle:true
-    - trigger name:chat toggle:true
+    type: assignment
+    debug: false
+    interact scripts:
+    - 10 RoyalGeographerInteract
+    actions:
+        on assignment:
+        - teleport npc 'location:<anchor:RoyalGeographer>'
+        - trigger name:proximity toggle:true
+        - trigger name:chat toggle:true
 
 RoyalGeographerFormat:
-type: format
-debug: false
-format: "<dark_green>Royal Geographer<white><&co> <text>"
+    type: format
+    debug: false
+    format: "<dark_green>Royal Geographer<white><&co> <text>"
 
 RoyalGeographerInteract:
     type: interact
@@ -23,232 +23,132 @@ RoyalGeographerInteract:
                 entry:
                     script:
                     - define data:<player.uuid>_quest_data
-                    - if <yaml[<[data]>].contains[quests.completed.EliteHunt]>:
-                        - zap EliteHuntCompleted
-                    - else if <yaml[<[data]>].contains[quests.completed.LichHunt]>:
-                        - if <yaml[<[data]>].contains[quests.active.EliteHunt]>:
-                            - zap EliteHuntActive
+                    - if <yaml[<[data]>].contains[quests.completed.FindFireTemple]> && <yaml[<[data]>].contains[quests.completed.FindWaterTemple]> && <yaml[<[data]>].contains[quests.completed.UnlockAvenfeld]>:
+                        - zap NoRoyalGeographerStorylineQuests
+                    - else if <yaml[<[data]>].contains[quests.completed.EliteHunt]>:
+                        - if <yaml[<[data]>].contains[quests.active.UnlockAvenfeld]>:
+                            - zap UnlockAvenfeldActive
                         - else:
-                            - zap EliteHuntOffer
-                    - else if <yaml[<[data]>].contains[quests.completed.VeteranHunt]>:
-                        - if <yaml[<[data]>].contains[quests.active.LichHunt]>:
-                            - zap LichHuntActive
-                        - else:
-                            - zap LichHuntOffer
-                    - else if <yaml[<[data]>].contains[quests.completed.SkeletalRogueHunt]>:
-                        - if <yaml[<[data]>].contains[quests.active.VeteranHunt]>:
-                            - zap VeteranHuntActive
-                        - else:
-                            - zap VeteranHuntOffer
-                    - else if <yaml[<[data]>].contains[quests.completed.FirstMobHunting]>:
-                        - if <yaml[<[data]>].contains[quests.active.SkeletalRogueHunt]>:
-                            - zap SkeletalRogueHuntActive
-                        - else:
-                            - zap SkeletalRogueHuntOffer
-                    - else if <yaml[<[data]>].contains[quests.completed.FindReinwald]>:
-                        - if <yaml[<[data]>].contains[quests.active.FirstMobHunting]>:
-                            - zap FirstMobHuntingActive
-                        - else:
-                            - zap FirstMobHuntingOffer
-                    - else if <player.has_flag[ReinwaldSeen]>:
+                            - zap UnlockAvenfeldOffer
+                    - else if <player.has_flag[RoyalGeographerSeen]>:
                         - zap GeneralDialogue
-                        - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
+                        - narrate format:RoyalGeographerFormat "Good day, <player.name>!"
                     - else:
-                        - flag player ReinwaldSeen:true
-                        - narrate format:RoyalGeographerFormat "Hail, <player.name>! Pleasure to meet you. Here to help with the fight against the darkness?"
+                        - flag player RoyalGeographerSeen:true
+                        - narrate format:RoyalGeographerFormat "Aha! <player.name>, I presume? Salutations."
                         - zap GeneralDialogue
-            click trigger:
-                script:
-                - if <yaml[<[data]>].contains[quests.active.FindReinwald]>:
-                    - run QuestCompletionHandler def:FindReinwald
-                    - zap FirstMobHuntingOffer
         GeneralDialogue:
             proximity trigger:
                 entry:
                     script:
-                    - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
-                    - if <yaml[<[data]>].contains[quests.active.FindReinwald]>:
-                        - wait 0.7s
-                        - narrate format:RoyalGeographerFormat "Did the Quest Master send you?"
-                        - narrate "<gray>Right-click Reinwald to complete the quest!"
-            click trigger:
-                script:
-                - if <yaml[<[data]>].contains[quests.active.FindReinwald]>:
-                    - run QuestCompletionHandler def:FindReinwald
-                    - zap FirstMobHuntingOffer
-        FirstMobHuntingOffer:
+                    - narrate format:RoyalGeographerFormat "Good day, <player.name>!"
+        UnlockAvenfeldOffer:
             proximity trigger:
                 entry:
                     script:
                     - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
                     - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "You look like you're just about ready to start hunting some monsters. How about it?"
+                    - narrate format:RoyalGeographerFormat "I've been looking for an adventurer to take on a challenge - exploring a new world. Can I count on you?"
             click trigger:
                 script:
-                - narrate format:PlayerChatFormat "Absolutely, I'm ready to fight back!"
-                - run QuestAcceptHandler def:FirstMobHunting
-                - zap FirstMobHuntingActive
+                - narrate format:PlayerChatFormat "Yes, I'm up for anything!"
+                - run QuestAcceptHandler def:UnlockAvenfeld
+                - zap UnlockAvenfeldActive
             chat trigger:
-                FirstMobHuntingAcceptance:
+                UnlockAvenfeldAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
-                    - narrate format:PlayerChatFormat "Absolutely, I'm ready to fight back!"
-                    - run QuestAcceptHandler def:FirstMobHunting
-                    - zap FirstMobHuntingActive
-        FirstMobHuntingActive:
+                    - narrate format:PlayerChatFormat "Yes, I'm up for anything!"
+                    - run QuestAcceptHandler def:UnlockAvenfeld
+                    - zap UnlockAvenfeldActive
+        UnlockAvenfeldActive:
             proximity trigger:
                 entry:
                     script:
-                    - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
+                    - narrate format:RoyalGeographerFormat "Good day, <player.name>!"
                     - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "How is your hunt going?"
-                    - run QuestProgressHandler def:FirstMobHunting
-        SkeletalRogueHuntOffer:
+                    - narrate format:RoyalGeographerFormat "Still gathering those ingredients?"
+                    - run QuestProgressHandler def:UnlockAvenfeld
+        FindFireTempleOffer:
             proximity trigger:
                 entry:
                     script:
-                    - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
+                    - narrate format:RoyalGeographerFormat "Good day, <player.name>!"
                     - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "You've fought your first monsters, but the darkness is growing. When you're ready, I have your next challenge - I need you to hunt and kill Skeletal Rogues."
+                    - narrate format:RoyalGeographerFormat "In the south of Prosperus is the Altar of Flame, a sacred altar to the Gods attuned with the element of fire. The Sage of Flame guards a portal there that leads to the Fire Temple."
                     - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "Skeletal Rogues are what we classify as '<&9>Veteran<&f>' monsters. They're going to put up much more of a fight, but I think you can take 'em."
+                    - narrate format:RoyalGeographerFormat "I haven't heard from the Sage in some time. Can you please go check on him?"
             click trigger:
                 script:
-                - narrate format:PlayerChatFormat "I'm not afraid - I'm ready to hunt those Skeletal Rogues!"
-                - run QuestAcceptHandler def:SkeletalRogueHunt
-                - zap SkeletalRogueHuntActive
+                - narrate format:PlayerChatFormat "You can count on me - I'll go check on the Sage of Flame!"
+                - run QuestAcceptHandler def:FindFireTemple
+                - zap FindFireTempleActive
             chat trigger:
-                SkeletalRogueHuntAcceptance:
+                FindFireTempleAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
-                    - narrate format:PlayerChatFormat "I'm not afraid - I'm ready to hunt those Skeletal Rogues!"
-                    - run QuestAcceptHandler def:SkeletalRogueHunt
-                    - zap SkeletalRogueHuntActive
-        SkeletalRogueHuntActive:
+                    - narrate format:PlayerChatFormat "You can count on me - I'll go check on the Sage of Flame!"
+                    - run QuestAcceptHandler def:FindFireTemple
+                    - zap FindFireTempleActive
+        FindFireTempleActive:
             proximity trigger:
                 entry:
                     script:
-                    - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
+                    - narrate format:RoyalGeographerFormat "Good day, <player.name>!"
                     - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "Still hunting for those Skeletal Rogues? Don't let them get your spirits down! Be sure to bring a shield."
-                    - run QuestProgressHandler def:SkeletalRogueHunt
-        VeteranHuntOffer:
+                    - narrate format:RoyalGeographerFormat "Have you found the Altar of Flame yet?"
+                    - define data:<player.uuid>_quest_data
+                    - if <yaml[<[data]>].contains[quests.active.FindFireTemple]> && <yaml[<[data]>].read[quests.active.FindFireTemple.current_stage]> == 2:
+                        - run QuestCompletionHandler def:FindFireTemple
+                        - zap FindWaterTempleOffer
+                    - else:
+                        - run QuestProgressHandler def:FindFireTemple
+        FindWaterTempleOffer:
             proximity triger:
                 entry:
                     script:
-                    - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
+                    - narrate format:RoyalGeographerFormat "Good day, <player.name>!"
                     - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "Skeletal Rogues were just the beginning of your endeavors - there are far more Veteran monsters out there, and as soon as you're ready, we need you to slay as many as you can."
+                    - narrate format:RoyalGeographerFormat "In the northern waters of Prosperus is the Altar of Water, a sacred altar to the Gods attuned with the element of water. The Sage of Water guards a portal there that leads to the Water Temple."
+                    - wait 0.7s
+                    - narrate format:RoyalGeographerFormat "I haven't heard from the Sage in some time. Can you please go check on him?"
             click trigger:
                 script:
-                - narrate format:PlayerChatFormat "Those Veterans won't know what's coming!"
-                - run QuestAcceptHandler def:VeteranHunt
-                - zap VeteranHuntActive
+                - narrate format:PlayerChatFormat "You can count on me - I'll go check on the Sage of Water!"
+                - run QuestAcceptHandler def:FindWaterTemple
+                - zap FindWaterTempleActive
             chat trigger:
                 SkeletalRogueHuntAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
-                    - narrate format:PlayerChatFormat "Those Veterans won't know what's coming!"
-                    - run QuestAcceptHandler def:VeteranHunt
-                    - zap VeteranHuntActive
-        VeteranHuntActive:
+                    - narrate format:PlayerChatFormat "You can count on me - I'll go check on the Sage of Water!"
+                    - run QuestAcceptHandler def:FindWaterTemple
+                    - zap FindWaterTempleActive
+        FindWaterTempleActive:
             proximity trigger:
                 entry:
                     script:
-                    - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
+                    - narrate format:RoyalGeographerFormat "Good day, <player.name>!"
                     - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "You're making great strides against the darkness - keep hunting down those Veterans!"
-                    - run QuestProgressHandler def:VeteranHunt
-        LichHuntOffer:
+                    - narrate format:RoyalGeographerFormat "Have you found the Altar of Water yet?"
+                    - define data:<player.uuid>_quest_data
+                    - if <yaml[<[data]>].contains[quests.active.FindWaterTemple]> && <yaml[<[data]>].read[quests.active.FindWaterTemple.current_stage]> == 2:
+                        - run QuestCompletionHandler def:FindWaterTemple
+                        - zap NoRoyalGeographerStorylineQuests
+                    - else:
+                        - run QuestProgressHandler def:FindWaterTemple
+        NoRoyalGeographerStorylineQuests:
             proximity trigger:
                 entry:
                     script:
-                    - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
+                    - narrate format:RoyalGeographerFormat "Good day, <player.name>!"
                     - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "You've slain your fair share of Veterans by now, so it's time to move on to something a little more challenging."
-                    - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "It's time for you to hunt a monster that we classify as an '<&d>Elite<&f>'. They're even tougher than Veterans, and substantially more clever. Are you up to the task?"
-            click trigger:
-                script:
-                - narrate format:PlayerChatFormat "What's one more zombie on the pile? I'm in!"
-                - run QuestAcceptHandler def:LichHunt
-                - zap LichHuntActive
-            chat trigger:
-                LichHuntAcceptance:
-                    trigger: /yes|sure|okay|great/
-                    hide trigger message: true
-                    script:
-                    - narrate format:PlayerChatFormat "What's one more zombie on the pile? I'm in!"
-                    - run QuestAcceptHandler def:LichHunt
-                    - zap LichHuntActive
-        LichHuntActive:
-            proximity trigger:
-                entry:
-                    script:
-                    - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
-                    - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "Be careful when you go and hunt that Lich - it won't hold anything back!"
-                    - run QuestProgressHandler def:LichHunt
-        EliteHuntOffer:
-            proximity trigger:
-                entry:
-                    script:
-                    - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
-                    - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "You've slain your first Elite, and thus proven that you're ready to take on the Elite ranks in greater numbers. You know what I'm about to ask - go and crush them wherever they are."
-            click trigger:
-                script:
-                - narrate format:PlayerChatFormat "I've come so far - I know I can do this!"
-                - run QuestAcceptHandler def:EliteHunt
-                - zap EliteHuntActive
-            chat trigger:
-                EliteHuntAcceptance:
-                    trigger: /yes|sure|okay|great/
-                    hide trigger message: true
-                    script:
-                    - narrate format:PlayerChatFormat "I've come so far - I know I can do this!"
-                    - run QuestAcceptHandler def:EliteHunt
-                    - zap EliteHuntActive
-        EliteHuntActive:
-            proximity trigger:
-                entry:
-                    script:
-                    - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
-                    - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "Your efforts to push back the darkness make us all proud. Keep hunting those Elites!"
-                    - run QuestProgressHandler def:EliteHunt
-        EliteHuntComplete:
-            proximity trigger:
-                entry:
-                    script:
-                    - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
-                    - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "Now that you've proven you're a reliable recruit, I'm willing to share some of the war coffers with you. In exchange for you slaying more Veterans and Elites, of course!"
-                    - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "Each week, if you can take down enough baddies, I'll share some extra loot with you. Just be sure to come find me!"
-                    - narrate "<gray>Right-click Warmaster Reinwald to view available quests!"
-                    - zap NoReinwaldStorylineQuests
-        NoReinwaldStorylineQuests:
-            proximity trigger:
-                entry:
-                    script:
-                    - narrate format:RoyalGeographerFormat "Hail, <player.name>!"
-                    - wait 0.7s
-                    - narrate format:RoyalGeographerFormat "What fortunes do you bring your Warmaster today?"
-                    - run ReinwaldWeeklyQuestsCheck
-            click trigger:
-                script:
-                - define data:<player.uuid>_quest_data
-                - if <proc[QuestsAvailableHandler].context[RoyalGeographer]>:
-                    - run QuestInventoryGUIHandler def:RoyalGeographer
-                - else:
-                    - if <yaml[<[data]>].contains[quests.active.WeeklyEliteHunt]> || <yaml[<[data]>].contains[quests.active.WeeklyVeteranHunt]>:
-                        - narrate format:RoyalGeographerFormat "I appreciate your enthusiasm! But you've got all the quests I have to offer right now - keep up the hunt."
+                    - narrate format:RoyalGeographerFormat "How goes your adventuring?"
 
-ReinwaldWeeklyQuestsCheck:
+RoyalGeographerWeeklyQuestsCheck:
     type: task
     debug: false
     script:

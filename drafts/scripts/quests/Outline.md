@@ -77,12 +77,12 @@ This file serves to track the progress on converting the existing quests to the 
 - [ ] Become an Explorer
     - [ ] Dialogue written
     - [ ] Script backend written
-- [ ] Find the Fire Temple
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Find the Water Temple
-    - [ ] Dialogue written
-    - [ ] Script backend written
+- [x] Find the Fire Temple
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Find the Water Temple
+    - [x] Dialogue written
+    - [x] Script backend written
 
 ## Spell Quests
 

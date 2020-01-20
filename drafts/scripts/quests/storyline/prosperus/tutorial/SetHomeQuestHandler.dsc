@@ -16,22 +16,22 @@ SetHomeQuestHandler:
         on sethome command:
         - if <yaml[<[data]>].contains[quests.active.SetHome].not>:
             - stop
-        - if <yaml[<[data]>].[quests.active.SetHome.stages.1.objectives.1.progress]> == 0:
+        - if <yaml[<[data]>].read[quests.active.SetHome.stages.1.objectives.1.progress]> == 0:
             - yaml id:<[data]> set quests.active.SetHome.stages.1.objectives.1.progress:1
             - run QuestStageProgressHandler def:SetHome|1
         on home command:
         - if <yaml[<[data]>].contains[quests.active.SetHome].not>:
             - stop
-        - else if <yaml[<[data]>].[quests.active.SetHome.stages.1.objectives.1.progress]> == 0:
+        - else if <yaml[<[data]>].read[quests.active.SetHome.stages.1.objectives.1.progress]> == 0:
             - if <context.args.get[1]> == "set":
                 - yaml id:<[data]> set quests.active.SetHome.stages.1.objectives.1.progress:1
                 - run QuestStageProgressHandler def:SetHome|1
-        - else if <yaml[<[data]>].[quests.active.SetHome.stages.3.objectives.1.progress]> == 0:
+        - else if <yaml[<[data]>].read[quests.active.SetHome.stages.3.objectives.1.progress]> == 0:
             - yaml id:<[data]> set quests.active.SetHome.stages.1.objectives.3.progress:1
             - run QuestStageProgressHandler def:SetHome|1
         on spawn command:
         - if <yaml[<[data]>].contains[quests.active.SetHome].not>:
             - stop
-        - if <yaml[<[data]>].[quests.active.SetHome.stages.2.objectives.1.progress]> == 0:
+        - if <yaml[<[data]>].read[quests.active.SetHome.stages.2.objectives.1.progress]> == 0:
             - yaml id:<[data]> set quests.active.SetHome.stages.2.objectives.1.progress:1
             - run QuestStageProgressHandler def:SetHome|1

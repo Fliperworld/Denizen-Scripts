@@ -1,20 +1,20 @@
 # TODO: Repeatable quests
 
 WarmasterReinwaldAssignment:
-type: assignment
-debug: false
-interact scripts:
-- 10 WarmasterReinwaldInteract
-actions:
-    on assignment:
-    - teleport npc 'location:<anchor:warmasterreinwald>'
-    - trigger name:proximity toggle:true
-    - trigger name:chat toggle:true
+    type: assignment
+    debug: false
+    interact scripts:
+    - 10 WarmasterReinwaldInteract
+    actions:
+        on assignment:
+        - teleport npc 'location:<anchor:warmasterreinwald>'
+        - trigger name:proximity toggle:true
+        - trigger name:chat toggle:true
 
 WarmasterReinwaldFormat:
-type: format
-debug: false
-format: "<dark_green>Warmaster Reinwald<white><&co> <text>"
+    type: format
+    debug: false
+    format: "<dark_green>Warmaster Reinwald<white><&co> <text>"
 
 WarmasterReinwaldInteract:
     type: interact
