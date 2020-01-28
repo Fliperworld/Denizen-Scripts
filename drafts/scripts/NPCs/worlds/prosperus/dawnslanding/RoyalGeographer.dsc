@@ -70,6 +70,10 @@ RoyalGeographerInteract:
                     - wait 0.7s
                     - narrate format:RoyalGeographerFormat "Still gathering those ingredients?"
                     - run QuestProgressHandler def:UnlockAvenfeld
+            click trigger:
+                script:
+                - run UnlockAvenfeldQuestDeliveryHandler
+                
         FindFireTempleOffer:
             proximity trigger:
                 entry:
