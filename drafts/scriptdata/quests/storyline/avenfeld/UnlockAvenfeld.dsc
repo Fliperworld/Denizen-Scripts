@@ -40,15 +40,6 @@ player_data:
                 progress: 0
                 total: 4
             2:
-                description: "Return to the Royal Geographer"
-                objectives:
-                    1:
-                        name: "Speak to the Royal Geographer"
-                        progress: 0
-                        total: 1
-                progress: 0
-                total: 1
-            3:
                 description: "Cast the spell to travel to Avenfeld"
                 objectives:
                     1:

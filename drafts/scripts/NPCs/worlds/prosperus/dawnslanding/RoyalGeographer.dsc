@@ -72,7 +72,12 @@ RoyalGeographerInteract:
                     - run QuestProgressHandler def:UnlockAvenfeld
             click trigger:
                 script:
-                - run UnlockAvenfeldQuestDeliveryHandler
+                - define data:<player.uuid>_quest_data
+                - define quest_internalname:UnlockAvenfeld
+                - if !<yaml[<[data]>].contains[quests.active.<[quest_internalname]>]>:
+                    - stop
+                - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]> == 1:
+                    - inject UnlockAvenfeldQuestDeliveryHandler
                 
         FindFireTempleOffer:
             proximity trigger:
